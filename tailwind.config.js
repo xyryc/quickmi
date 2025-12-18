@@ -7,40 +7,41 @@ module.exports = {
     extend: {
       fontFamily: {
         "sf-pro-regular" : ['SF-Pro-Regular'],
-        "sf-pro-medium" : ['SF-Pro-Medium']
+        "sf-pro-medium" : ['SF-Pro-Medium'],
+        "sf-pro-semibold": ['SF-Pro-Semibold']
       },
 
        colors: {
-        "base": "#0F73F7",
-        "secondary": "#FDFDFD",
-        "gray": "#A2A2A2",
+        "custom-base": "#0F73F7",
+        "custom-secondary": "#FDFDFD",
+        "custom-gray": "#A2A2A2",
 
         black: "#111111",
-        "dark-gray": "#7A7A7A",
-        "soft-gray": "#E3E6F0",
-        "light-gray": "#EBEBEB",
-        "gray-dark": "#4D4D4D",
+        "custom-dark-gray": "#7A7A7A",
+        "custom-soft-gray": "#E3E6F0",
+        "custom-light-gray": "#EBEBEB",
+        "custom-gray-dark": "#4D4D4D",
 
         // status
-        "light-yellow":"#FFF7D6",
-        "orange": "#F3934F",
-        "light-orange": "#FCE8D9",
-        "red": "#F34F4F",
-        "light-red": "#FFF0EE",
-        "green": "#008364",
-        "light-green": "#E4F6E8",
-        "yellow": "#F1C400",
+        "custom-light-yellow":"#FFF7D6",
+        "custom-orange": "#F3934F",
+        "custom-light-orange": "#FCE8D9",
+        "custom-custom-red": "#F34F4F",
+        "custom-light-red": "#FFF0EE",
+        "custom-green": "#008364",
+        "custom-light-green": "#E4F6E8",
+        "custom-yellow": "#F1C400",
 
         // blue
-        "blue-100": "#CFE3FD",
-        "blue-200": "#9FC7FC",
-        "blue-300": "#6FABFA",
-        "blue-400": "#3F8FF9",
-        "blue-500": "#0F73F7",
-        "blue-600": "#0C5CC6",
-        "blue-700": "#094594",
-        "blue-800": "#062E63",
-        "blue-900": "#031731",
+        "custom-blue-100": "#CFE3FD",
+        "custom-blue-200": "#9FC7FC",
+        "custom-blue-300": "#6FABFA",
+        "custom-blue-400": "#3F8FF9",
+        "custom-blue-500": "#0F73F7",
+        "custom-blue-600": "#0C5CC6",
+        "custom-blue-700": "#094594",
+        "custom-blue-800": "#062E63",
+        "custom-blue-900": "#031731",
        }
     },
   },

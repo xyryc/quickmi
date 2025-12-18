@@ -10,6 +10,7 @@ export default function RootLayout() {
   const [fontsLoaded] = useFonts({
     "SF-Pro-Regular": require("../assets/fonts/SF-Pro-Text-Regular.otf"),
     "SF-Pro-Medium": require("../assets/fonts/SF-Pro-Text-Medium.otf"),
+    "SF-Pro-Semibold": require("../assets/fonts/SF-Pro-Text-Semibold.otf"),
   });
 
   useEffect(() => {
