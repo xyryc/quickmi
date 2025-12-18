@@ -2,6 +2,7 @@ import ButtonPrimary from "@/components/ButtonPrimary";
 import { Image } from "expo-image";
 import { LinearGradient } from "expo-linear-gradient";
 import { useRouter } from "expo-router";
+import { isValidPhoneNumber } from "libphonenumber-js";
 import React, { useState } from "react";
 import {
   ScrollView,
@@ -11,11 +12,63 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
+import PhoneInput from "react-native-international-phone-number";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 const SignUp = () => {
   const router = useRouter();
   const [name, setName] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [selectedCountry, setSelectedCountry] = useState(null);
+  const [phoneError, setPhoneError] = useState("");
+
+  const validatePhoneNumber = (phone: string, country: any) => {
+    if (!phone || phone.length === 0) {
+      setPhoneError("Phone number is required");
+      return false;
+    }
+
+    if (!country || !country.idd?.root) {
+      setPhoneError("Please select a country");
+      return false;
+    }
+
+    try {
+      // Remove spaces from phone number
+      const cleanPhone = phone.replace(/\s/g, "");
+
+      // Use idd.root which already includes the +
+      const fullNumber = `${country.idd.root}${cleanPhone}`;
+
+      console.log("Validating:", fullNumber);
+      const isValid = isValidPhoneNumber(fullNumber);
+
+      if (!isValid) {
+        setPhoneError("Please enter a valid phone number");
+        return false;
+      }
+      setPhoneError("");
+      return true;
+    } catch (error) {
+      console.log("Validation error:", error);
+      setPhoneError("Invalid phone number format");
+      return false;
+    }
+  };
+
+  const handleSubmit = () => {
+    const isPhoneValid = validatePhoneNumber(phoneNumber, selectedCountry);
+
+    if (!isPhoneValid) {
+      return;
+    }
+
+    const cleanPhone = phoneNumber.replace(/\s/g, "");
+    const fullPhoneNumber = `${selectedCountry.idd.root}${cleanPhone}`;
+
+    console.log("User entered", fullPhoneNumber);
+    router.push("/(auth)/verify-code");
+  };
 
   return (
     <SafeAreaView className="border flex-1" edges={["left", "right", "bottom"]}>
@@ -47,7 +100,7 @@ const SignUp = () => {
 
             <TextInput
               placeholder="Enter your name"
-              className="mb-4 border border-custom-soft-gray rounded-lg p-4 font-sf-pro-regular text-base"
+              className="mb-4 border border-custom-soft-gray rounded-lg p-4 font-sf-pro-regular text-base placeholder:text-gray-500"
               value={name}
               onChangeText={setName}
               autoCapitalize="words"
@@ -57,19 +110,53 @@ const SignUp = () => {
               Enter Your Phone Number
             </Text>
 
-            <TextInput
-              placeholder="Enter your name"
-              className="mb-4 border border-custom-soft-gray rounded-lg p-4 font-sf-pro-regular text-base"
-              value={name}
-              onChangeText={setName}
-              autoCapitalize="words"
+            <PhoneInput
+              className="placeholder:text-[#6b7280]"
+              value={phoneNumber}
+              selectedCountry={selectedCountry}
+              onChangeSelectedCountry={(country) => {
+                console.log("Country selected:", country);
+                console.log("Has callingCode?", country.callingCode); // Check this
+                console.log("IDD root:", country.idd?.root); // And this
+                setSelectedCountry(country);
+                if (phoneNumber.length > 0) {
+                  validatePhoneNumber(phoneNumber, country);
+                }
+              }}
+              onChangePhoneNumber={(text) => {
+                console.log(
+                  "Phone changed:",
+                  text,
+                  "Country:",
+                  selectedCountry
+                );
+                setPhoneNumber(text);
+                if (text.length > 0 && selectedCountry) {
+                  validatePhoneNumber(text, selectedCountry);
+                } else if (text.length === 0) {
+                  setPhoneError("");
+                }
+              }}
+              defaultCountry="US"
+              placeholder="Enter phone number"
+              phoneInputStyles={{
+                container: {
+                  backgroundColor: "white",
+                  borderRadius: 8,
+                  borderColor: phoneError ? "#EF4444" : "#E5E7EB",
+                  borderWidth: 1,
+                  marginBottom: 28,
+                },
+                input: {
+                  fontFamily: "SF-Pro-Regular",
+                  fontSize: 14,
+                  fontWeight: "400",
+                },
+              }}
             />
           </View>
 
-          <ButtonPrimary
-            onPress={() => router.push("/(onboarding)/step3")}
-            title="Continue"
-          />
+          <ButtonPrimary onPress={handleSubmit} title="Continue" />
 
           <View className="my-4 flex-row items-center gap-2">
             <View className="w-[46%] h-[1px] bg-gray-200" />
