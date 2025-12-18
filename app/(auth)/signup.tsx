@@ -40,7 +40,7 @@ const SignUp = () => {
       // Use idd.root which already includes the +
       const fullNumber = `${country.idd.root}${cleanPhone}`;
 
-      console.log("Validating:", fullNumber);
+      // console.log("Validating:", fullNumber);
       const isValid = isValidPhoneNumber(fullNumber);
 
       if (!isValid) {
@@ -50,7 +50,7 @@ const SignUp = () => {
       setPhoneError("");
       return true;
     } catch (error) {
-      console.log("Validation error:", error);
+      // console.log("Validation error:", error);
       setPhoneError("Invalid phone number format");
       return false;
     }
@@ -66,8 +66,11 @@ const SignUp = () => {
     const cleanPhone = phoneNumber.replace(/\s/g, "");
     const fullPhoneNumber = `${selectedCountry.idd.root}${cleanPhone}`;
 
-    console.log("User entered", fullPhoneNumber);
-    router.push("/(auth)/verify-code");
+    // console.log("User entered", fullPhoneNumber);
+    router.push({
+      pathname: "/(auth)/verify-code",
+      params: { phoneNumber: fullPhoneNumber },
+    });
   };
 
   return (
@@ -115,21 +118,21 @@ const SignUp = () => {
               value={phoneNumber}
               selectedCountry={selectedCountry}
               onChangeSelectedCountry={(country) => {
-                console.log("Country selected:", country);
-                console.log("Has callingCode?", country.callingCode); // Check this
-                console.log("IDD root:", country.idd?.root); // And this
+                // console.log("Country selected:", country);
+                // console.log("Has callingCode?", country.callingCode);
+                // console.log("IDD root:", country.idd?.root);
                 setSelectedCountry(country);
                 if (phoneNumber.length > 0) {
                   validatePhoneNumber(phoneNumber, country);
                 }
               }}
               onChangePhoneNumber={(text) => {
-                console.log(
-                  "Phone changed:",
-                  text,
-                  "Country:",
-                  selectedCountry
-                );
+                // console.log(
+                //   "Phone changed:",
+                //   text,
+                //   "Country:",
+                //   selectedCountry
+                // );
                 setPhoneNumber(text);
                 if (text.length > 0 && selectedCountry) {
                   validatePhoneNumber(text, selectedCountry);
