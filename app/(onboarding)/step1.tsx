@@ -69,7 +69,10 @@ const Step1 = () => {
               }
             />
 
-            <TouchableOpacity className="flex-row items-center justify-center py-3">
+            <TouchableOpacity
+              onPress={() => router.push("/(auth)/signup")}
+              className="flex-row items-center justify-center py-3"
+            >
               <Text className="font-sf-pro-medium">Skip</Text>
               <MaterialIcons
                 name="keyboard-double-arrow-right"
