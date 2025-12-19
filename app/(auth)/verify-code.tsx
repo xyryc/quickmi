@@ -1,6 +1,6 @@
 import { LinearGradient } from "expo-linear-gradient";
 import { useLocalSearchParams, useRouter } from "expo-router";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   ScrollView,
   StatusBar,
@@ -28,14 +28,11 @@ const VerifyCode = () => {
     setValue,
   });
 
-  const handleVerify = () => {
+  useEffect(() => {
     if (value.length === CELL_COUNT) {
-      // Call your verification API here
-      console.log("Verifying code:", value);
-
-      // router.push("/(onboarding)/step1");
+      router.push("/(user)/home");
     }
-  };
+  }, [value]);
 
   return (
     <SafeAreaView className="border flex-1" edges={["left", "right", "bottom"]}>

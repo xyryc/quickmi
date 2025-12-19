@@ -59,11 +59,12 @@ const SignUp = () => {
   const handleSubmit = () => {
     const isPhoneValid = validatePhoneNumber(phoneNumber, selectedCountry);
 
-    if (!isPhoneValid) {
-      return;
-    }
+    // if (!isPhoneValid) {
+    //   return;
+    // }
 
     const cleanPhone = phoneNumber.replace(/\s/g, "");
+    // @ts-ignore
     const fullPhoneNumber = `${selectedCountry.idd.root}${cleanPhone}`;
 
     // console.log("User entered", fullPhoneNumber);
