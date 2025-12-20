@@ -75,7 +75,12 @@ const Home = () => {
         </View>
 
         {/* main content */}
-        <ScrollView className="px-5 pt-5">
+        <ScrollView
+          className="px-5 pt-5"
+          contentContainerStyle={{
+            paddingBottom: 40,
+          }}
+        >
           {/* instant delivery */}
           <TouchableOpacity className="py-3 px-4 bg-white flex-row items-center justify-between gap-3 rounded-xl mb-3 elevation-md">
             <View className="flex-row items-center gap-3">
@@ -147,55 +152,257 @@ const Home = () => {
             </Text>
           </View>
 
-          {/* history cards */}
-          <View className="border border-[#E3E6F0] p-4 rounded-xl elevation-sm bg-white">
-            {/* 1st row */}
-            <View className="flex-row justify-between items-center">
-              {/* date */}
-              <View className="flex-row items-center gap-2">
-                <View className="w-2 h-2 bg-blue-500 rounded-full" />
-                <Text className="font-sf-pro-regular text-base">
-                  14 may 2025, 04:40
-                </Text>
-              </View>
-
-              {/* currency */}
-              <Text className="font-sf-pro-medium text-base">$150</Text>
-            </View>
-
-            {/* 2nd row */}
-            <View className="flex-row justify-between items-center mt-3.5">
-              <View>
-                <View className="flex-row items-center gap-2 ml-0.5">
-                  <FontAwesome6 name="person" size={14} color="black" />
-                  <Text className="font-sf-pro-regular text-xs">
-                    Block B, Banasree, Dhaka.
+          {/* history cards container */}
+          <View>
+            <TouchableOpacity className="mb-4 border border-[#E3E6F0] p-4 rounded-xl elevation-sm bg-white">
+              {/* 1st row */}
+              <View className="flex-row justify-between items-center">
+                {/* date */}
+                <View className="flex-row items-center gap-2">
+                  <View className="w-2 h-2 bg-blue-500 rounded-full" />
+                  <Text className="font-sf-pro-regular text-base">
+                    14 may 2025, 04:40
                   </Text>
                 </View>
 
-                <Text className="my-1"> |</Text>
-
-                <View className="flex-row items-center gap-1">
-                  <Ionicons name="location-sharp" size={14} color="#0F73F7" />
-
-                  <Text className="font-sf-pro-regular text-xs">
-                    Green Road, Dhanmondi, Dhaka.
-                  </Text>
-                </View>
+                {/* currency */}
+                <Text className="font-sf-pro-medium text-base">$150</Text>
               </View>
 
-              <Image
-                source="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTXpdpAD2WforjNOXjrovpTAGSJKeFFn3AhKCYndxUUGoepbo36bvFeDhYYiv2EXdlauQtHqMjsrKvn103gY57FgYUN1xNrSnTW1h9bt_TqPQ&s=10"
-                style={{
-                  width: 50,
-                  height: 50,
-                  borderRadius: 999,
-                  borderWidth: 2,
-                  borderColor: "#0F73F7",
-                }}
-                contentFit="cover"
-              />
-            </View>
+              {/* 2nd row */}
+              <View className="flex-row justify-between items-center mt-3.5">
+                <View>
+                  <View className="flex-row items-center gap-2 ml-0.5">
+                    <FontAwesome6 name="person" size={14} color="black" />
+                    <Text className="font-sf-pro-regular text-xs">
+                      Block B, Banasree, Dhaka.
+                    </Text>
+                  </View>
+
+                  <Text className="my-1"> |</Text>
+
+                  <View className="flex-row items-center gap-1">
+                    <Ionicons name="location-sharp" size={14} color="#0F73F7" />
+
+                    <Text className="font-sf-pro-regular text-xs">
+                      Green Road, Dhanmondi, Dhaka.
+                    </Text>
+                  </View>
+                </View>
+
+                <Image
+                  source="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTXpdpAD2WforjNOXjrovpTAGSJKeFFn3AhKCYndxUUGoepbo36bvFeDhYYiv2EXdlauQtHqMjsrKvn103gY57FgYUN1xNrSnTW1h9bt_TqPQ&s=10"
+                  style={{
+                    width: 50,
+                    height: 50,
+                    borderRadius: 999,
+                    borderWidth: 2,
+                    borderColor: "#0F73F7",
+                  }}
+                  contentFit="cover"
+                />
+              </View>
+            </TouchableOpacity>
+
+            <TouchableOpacity className="mb-4 border border-[#E3E6F0] p-4 rounded-xl elevation-sm bg-white">
+              {/* 1st row */}
+              <View className="flex-row justify-between items-center">
+                {/* date */}
+                <View className="flex-row items-center gap-2">
+                  <View className="w-2 h-2 bg-blue-500 rounded-full" />
+                  <Text className="font-sf-pro-regular text-base">
+                    14 may 2025, 04:40
+                  </Text>
+                </View>
+
+                {/* currency */}
+                <Text className="font-sf-pro-medium text-base">$150</Text>
+              </View>
+
+              {/* 2nd row */}
+              <View className="flex-row justify-between items-center mt-3.5">
+                <View>
+                  <View className="flex-row items-center gap-2 ml-0.5">
+                    <FontAwesome6 name="person" size={14} color="black" />
+                    <Text className="font-sf-pro-regular text-xs">
+                      Block B, Banasree, Dhaka.
+                    </Text>
+                  </View>
+
+                  <Text className="my-1"> |</Text>
+
+                  <View className="flex-row items-center gap-1">
+                    <Ionicons name="location-sharp" size={14} color="#0F73F7" />
+
+                    <Text className="font-sf-pro-regular text-xs">
+                      Green Road, Dhanmondi, Dhaka.
+                    </Text>
+                  </View>
+                </View>
+
+                <Image
+                  source="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTXpdpAD2WforjNOXjrovpTAGSJKeFFn3AhKCYndxUUGoepbo36bvFeDhYYiv2EXdlauQtHqMjsrKvn103gY57FgYUN1xNrSnTW1h9bt_TqPQ&s=10"
+                  style={{
+                    width: 50,
+                    height: 50,
+                    borderRadius: 999,
+                    borderWidth: 2,
+                    borderColor: "#0F73F7",
+                  }}
+                  contentFit="cover"
+                />
+              </View>
+            </TouchableOpacity>
+
+            <TouchableOpacity className="mb-4 border border-[#E3E6F0] p-4 rounded-xl elevation-sm bg-white">
+              {/* 1st row */}
+              <View className="flex-row justify-between items-center">
+                {/* date */}
+                <View className="flex-row items-center gap-2">
+                  <View className="w-2 h-2 bg-blue-500 rounded-full" />
+                  <Text className="font-sf-pro-regular text-base">
+                    14 may 2025, 04:40
+                  </Text>
+                </View>
+
+                {/* currency */}
+                <Text className="font-sf-pro-medium text-base">$150</Text>
+              </View>
+
+              {/* 2nd row */}
+              <View className="flex-row justify-between items-center mt-3.5">
+                <View>
+                  <View className="flex-row items-center gap-2 ml-0.5">
+                    <FontAwesome6 name="person" size={14} color="black" />
+                    <Text className="font-sf-pro-regular text-xs">
+                      Block B, Banasree, Dhaka.
+                    </Text>
+                  </View>
+
+                  <Text className="my-1"> |</Text>
+
+                  <View className="flex-row items-center gap-1">
+                    <Ionicons name="location-sharp" size={14} color="#0F73F7" />
+
+                    <Text className="font-sf-pro-regular text-xs">
+                      Green Road, Dhanmondi, Dhaka.
+                    </Text>
+                  </View>
+                </View>
+
+                <Image
+                  source="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTXpdpAD2WforjNOXjrovpTAGSJKeFFn3AhKCYndxUUGoepbo36bvFeDhYYiv2EXdlauQtHqMjsrKvn103gY57FgYUN1xNrSnTW1h9bt_TqPQ&s=10"
+                  style={{
+                    width: 50,
+                    height: 50,
+                    borderRadius: 999,
+                    borderWidth: 2,
+                    borderColor: "#0F73F7",
+                  }}
+                  contentFit="cover"
+                />
+              </View>
+            </TouchableOpacity>
+
+            <TouchableOpacity className="mb-4 border border-[#E3E6F0] p-4 rounded-xl elevation-sm bg-white">
+              {/* 1st row */}
+              <View className="flex-row justify-between items-center">
+                {/* date */}
+                <View className="flex-row items-center gap-2">
+                  <View className="w-2 h-2 bg-blue-500 rounded-full" />
+                  <Text className="font-sf-pro-regular text-base">
+                    14 may 2025, 04:40
+                  </Text>
+                </View>
+
+                {/* currency */}
+                <Text className="font-sf-pro-medium text-base">$150</Text>
+              </View>
+
+              {/* 2nd row */}
+              <View className="flex-row justify-between items-center mt-3.5">
+                <View>
+                  <View className="flex-row items-center gap-2 ml-0.5">
+                    <FontAwesome6 name="person" size={14} color="black" />
+                    <Text className="font-sf-pro-regular text-xs">
+                      Block B, Banasree, Dhaka.
+                    </Text>
+                  </View>
+
+                  <Text className="my-1"> |</Text>
+
+                  <View className="flex-row items-center gap-1">
+                    <Ionicons name="location-sharp" size={14} color="#0F73F7" />
+
+                    <Text className="font-sf-pro-regular text-xs">
+                      Green Road, Dhanmondi, Dhaka.
+                    </Text>
+                  </View>
+                </View>
+
+                <Image
+                  source="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTXpdpAD2WforjNOXjrovpTAGSJKeFFn3AhKCYndxUUGoepbo36bvFeDhYYiv2EXdlauQtHqMjsrKvn103gY57FgYUN1xNrSnTW1h9bt_TqPQ&s=10"
+                  style={{
+                    width: 50,
+                    height: 50,
+                    borderRadius: 999,
+                    borderWidth: 2,
+                    borderColor: "#0F73F7",
+                  }}
+                  contentFit="cover"
+                />
+              </View>
+            </TouchableOpacity>
+
+            <TouchableOpacity className="mb-4 border border-[#E3E6F0] p-4 rounded-xl elevation-sm bg-white">
+              {/* 1st row */}
+              <View className="flex-row justify-between items-center">
+                {/* date */}
+                <View className="flex-row items-center gap-2">
+                  <View className="w-2 h-2 bg-blue-500 rounded-full" />
+                  <Text className="font-sf-pro-regular text-base">
+                    14 may 2025, 04:40
+                  </Text>
+                </View>
+
+                {/* currency */}
+                <Text className="font-sf-pro-medium text-base">$150</Text>
+              </View>
+
+              {/* 2nd row */}
+              <View className="flex-row justify-between items-center mt-3.5">
+                <View>
+                  <View className="flex-row items-center gap-2 ml-0.5">
+                    <FontAwesome6 name="person" size={14} color="black" />
+                    <Text className="font-sf-pro-regular text-xs">
+                      Block B, Banasree, Dhaka.
+                    </Text>
+                  </View>
+
+                  <Text className="my-1"> |</Text>
+
+                  <View className="flex-row items-center gap-1">
+                    <Ionicons name="location-sharp" size={14} color="#0F73F7" />
+
+                    <Text className="font-sf-pro-regular text-xs">
+                      Green Road, Dhanmondi, Dhaka.
+                    </Text>
+                  </View>
+                </View>
+
+                <Image
+                  source="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTXpdpAD2WforjNOXjrovpTAGSJKeFFn3AhKCYndxUUGoepbo36bvFeDhYYiv2EXdlauQtHqMjsrKvn103gY57FgYUN1xNrSnTW1h9bt_TqPQ&s=10"
+                  style={{
+                    width: 50,
+                    height: 50,
+                    borderRadius: 999,
+                    borderWidth: 2,
+                    borderColor: "#0F73F7",
+                  }}
+                  contentFit="cover"
+                />
+              </View>
+            </TouchableOpacity>
           </View>
         </ScrollView>
       </LinearGradient>
