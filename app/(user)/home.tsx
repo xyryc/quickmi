@@ -16,10 +16,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 
 const Home = () => {
   return (
-    <SafeAreaView
-      className="border flex-1"
-      edges={["top", "left", "right", "bottom"]}
-    >
+    <SafeAreaView className="flex-1" edges={["top", "left", "right"]}>
       <StatusBar backgroundColor="#D3E6FF" barStyle="dark-content" />
 
       <LinearGradient
