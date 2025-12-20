@@ -16,7 +16,7 @@ module.exports = {
         "custom-secondary": "#FDFDFD",
         "custom-gray": "#A2A2A2",
 
-        black: "#111111",
+        "custom-black": "#111111",
         "custom-dark-gray": "#7A7A7A",
         "custom-soft-gray": "#E3E6F0",
         "custom-light-gray": "#EBEBEB",

@@ -1,12 +1,21 @@
+import HistoryCard from "@/components/HistoryCard";
 import ScreenHeader from "@/components/ScreenHeader";
 import SearchBar from "@/components/Searchbar";
+import TabFilter from "@/components/TabFilter";
 import { LinearGradient } from "expo-linear-gradient";
 import React, { useState } from "react";
-import { StatusBar } from "react-native";
+import { ScrollView, StatusBar, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 const History = () => {
   const [searchQuery, setSearchQuery] = useState("");
+  const [activeTab, setActiveTab] = useState("completed");
+
+  const tabs = [
+    { id: "completed", label: "Completed", icon: "checkmark-circle" },
+    { id: "ongoing", label: "Ongoing", icon: "bicycle" },
+    { id: "cancelled", label: "Cancelled", icon: "ban-outline" },
+  ];
 
   return (
     <SafeAreaView className="flex-1" edges={["top", "left", "right"]}>
@@ -29,6 +38,26 @@ const History = () => {
         />
 
         {/* tabs */}
+        <View>
+          <TabFilter
+            tabs={tabs}
+            activeTab={activeTab}
+            setActiveTab={setActiveTab}
+          />
+        </View>
+
+        {/* history cards */}
+        <ScrollView className="mx-5">
+          <HistoryCard />
+
+          <HistoryCard />
+
+          <HistoryCard />
+
+          <HistoryCard />
+
+          <HistoryCard />
+        </ScrollView>
       </LinearGradient>
     </SafeAreaView>
   );
