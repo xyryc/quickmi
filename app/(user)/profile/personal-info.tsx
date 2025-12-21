@@ -53,7 +53,9 @@ const PersonalInfo = () => {
                 (225) 555-0118
               </Text>
             </View>
-            <TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => router.push("/profile/update-phone-number")}
+            >
               <Text className="font-sf-pro-regular text-sm text-[#0F73F7]">
                 Edit
               </Text>
