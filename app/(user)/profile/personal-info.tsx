@@ -1,6 +1,7 @@
 import ScreenHeader from "@/components/ScreenHeader";
 import { Feather, Ionicons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
+import { router } from "expo-router";
 import React from "react";
 import {
   ScrollView,
@@ -34,7 +35,9 @@ const PersonalInfo = () => {
                 Darlene Robertson
               </Text>
             </View>
-            <TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => router.push("/profile/update-name")}
+            >
               <Text className="font-sf-pro-regular text-sm text-[#0F73F7]">
                 Edit
               </Text>
