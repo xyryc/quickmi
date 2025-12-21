@@ -1,11 +1,16 @@
 import React from "react";
-import { Text, View } from "react-native";
+import { Text, TouchableOpacity } from "react-native";
 
-const ButtonSecondary = () => {
+const ButtonSecondary = ({ className, onPress, title, icon, iconPosition }) => {
   return (
-    <View>
-      <Text>ButtonSecondary</Text>
-    </View>
+    <TouchableOpacity
+      onPress={onPress}
+      className={`${iconPosition === "left" ? "flex-row-reverse" : "flex-row"}
+                    ${className} flex-row items-center justify-center gap-2 bg-white border-2 border-custom-blue-500 py-3 rounded-2xl`}
+    >
+      <Text className="font-sf-pro-semibold text-black">{title}</Text>
+      {icon}
+    </TouchableOpacity>
   );
 };
 
