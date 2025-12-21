@@ -1,19 +1,33 @@
+import ButtonPrimary from "@/components/ButtonPrimary";
 import ButtonSecondary from "@/components/ButtonSecondary";
-import { Entypo, Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
+import {
+  AntDesign,
+  Entypo,
+  Feather,
+  Ionicons,
+  MaterialCommunityIcons,
+  SimpleLineIcons,
+} from "@expo/vector-icons";
 import { Image } from "expo-image";
 import { LinearGradient } from "expo-linear-gradient";
 import React from "react";
-import { ScrollView, StatusBar, Text, View } from "react-native";
+import {
+  ScrollView,
+  StatusBar,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 const Profile = () => {
   return (
-    <SafeAreaView className="flex-1" edges={["top", "left", "right"]}>
+    <SafeAreaView className="flex-1 pb-28" edges={["top", "left", "right"]}>
       <StatusBar backgroundColor="#D3E6FF" barStyle="dark-content" />
 
       <LinearGradient
         colors={["#D3E6FF", "#FFFFFF"]}
-        locations={[0, 0.3]}
+        locations={[0.1, 1]}
         style={{ flex: 1 }}
       >
         {/* header */}
@@ -22,17 +36,19 @@ const Profile = () => {
         {/* history cards */}
         <ScrollView className="mx-5" showsVerticalScrollIndicator={false}>
           {/* Personal info */}
-          <View className="mt-8 bg-white rounded-xl p-3.5">
+          <View className="mt-8 bg-white rounded-xl p-3.5 border-spacing-0.5 border-[#E3E6F0]">
             {/* profile image */}
             <View className="flex items-center relative">
               <Image
-                source={{ uri: "https://picsum.photos/512" }}
+                source={{
+                  uri: "https://randomuser.me/api/portraits/men/10.jpg",
+                }}
                 style={{
                   height: 100,
                   width: 100,
                   borderRadius: 100,
                 }}
-                contentFit="contain"
+                contentFit="cover"
               />
 
               {/* camera icon */}
@@ -73,6 +89,98 @@ const Profile = () => {
                 icon={<Entypo name="wallet" size={20} color="#0F73F7" />}
               />
             </View>
+
+            {/*  Switch to Agent mode */}
+            <ButtonPrimary
+              title=" Switch to Agent mode"
+              className="mt-4"
+              icon={<AntDesign name="car" size={20} color="white" />}
+              iconPosition="left"
+            />
+
+            <Text className="mt-4 font-sf-pro-medium">Account Information</Text>
+            <TouchableOpacity className="flex-row items-center gap-2 py-3">
+              <MaterialCommunityIcons
+                name="account-edit-outline"
+                size={20}
+                color="#4D4D4D"
+              />
+              <Text className="font-sf-pro-medium text-sm text-[#4D4D4D]">
+                Personal Information
+              </Text>
+            </TouchableOpacity>
+          </View>
+
+          {/* Saved place */}
+
+          <View className="mt-3.5 bg-white rounded-xl p-3.5 border-spacing-0.5 border-[#E3E6F0]">
+            <Text className=" font-sf-pro-medium">Saved place</Text>
+
+            {/* home location */}
+
+            <TouchableOpacity className="flex-row items-center gap-2 py-3">
+              <Feather name="home" size={20} color="#4D4D4D" />
+              <Text className="font-sf-pro-medium text-sm text-[#4D4D4D]">
+                Enter home location
+              </Text>
+            </TouchableOpacity>
+
+            {/* work location */}
+
+            <TouchableOpacity className="flex-row items-center gap-2 py-3">
+              <Feather name="briefcase" size={20} color="#4D4D4D" />
+              <Text className="font-sf-pro-medium text-sm text-[#4D4D4D]">
+                Enter Work location
+              </Text>
+            </TouchableOpacity>
+
+            {/* work location */}
+
+            <TouchableOpacity className="flex-row items-center gap-2 py-3">
+              <SimpleLineIcons name="location-pin" size={20} color="#4D4D4D" />
+              <Text className="font-sf-pro-medium text-sm text-[#4D4D4D]">
+                Add a place
+              </Text>
+            </TouchableOpacity>
+          </View>
+
+          {/* Setting */}
+
+          <View className="mt-3.5 bg-white rounded-xl p-3.5 border-spacing-0.5 border-[#E3E6F0]">
+            <Text className=" font-sf-pro-medium">Setting</Text>
+
+            {/* home location */}
+
+            <TouchableOpacity className="flex-row items-center gap-2 py-3">
+              <MaterialCommunityIcons
+                name="shield-check-outline"
+                size={20}
+                color="#4D4D4D"
+              />
+              <Text className="font-sf-pro-medium text-sm text-[#4D4D4D]">
+                Permission
+              </Text>
+            </TouchableOpacity>
+
+            {/* work location */}
+
+            <TouchableOpacity className="flex-row items-center gap-2 py-3">
+              <Ionicons name="settings-outline" size={20} color="#4D4D4D" />
+              <Text className="font-sf-pro-medium text-sm text-[#4D4D4D]">
+                Settings
+              </Text>
+            </TouchableOpacity>
+          </View>
+
+          {/* Setting */}
+
+          <View className="mt-3.5 bg-white rounded-xl p-3.5 border-spacing-0.5 border-[#E3E6F0]">
+            <TouchableOpacity className="flex-row items-center gap-2 py-3">
+              <SimpleLineIcons name="logout" size={20} color="#4D4D4D" />
+              <Text className="font-sf-pro-medium text-sm text-[#4D4D4D]">
+                Log Out
+              </Text>
+            </TouchableOpacity>
           </View>
         </ScrollView>
       </LinearGradient>
