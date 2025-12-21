@@ -10,6 +10,7 @@ import {
 } from "@expo/vector-icons";
 import { Image } from "expo-image";
 import { LinearGradient } from "expo-linear-gradient";
+import { router } from "expo-router";
 import React from "react";
 import {
   ScrollView,
@@ -22,12 +23,12 @@ import { SafeAreaView } from "react-native-safe-area-context";
 
 const Profile = () => {
   return (
-    <SafeAreaView className="flex-1 pb-28" edges={["top", "left", "right"]}>
+    <SafeAreaView className="flex-1 mb-28" edges={["top", "left", "right"]}>
       <StatusBar backgroundColor="#D3E6FF" barStyle="dark-content" />
 
       <LinearGradient
         colors={["#D3E6FF", "#FFFFFF"]}
-        locations={[0.1, 1]}
+        locations={[0.3, 1]}
         style={{ flex: 1 }}
       >
         {/* header */}
@@ -36,7 +37,7 @@ const Profile = () => {
         {/* history cards */}
         <ScrollView className="mx-5" showsVerticalScrollIndicator={false}>
           {/* Personal info */}
-          <View className="mt-8 bg-white rounded-xl p-3.5 border-spacing-0.5 border-[#E3E6F0]">
+          <View className="mt-8 bg-white rounded-xl p-3.5 border-spacing-0.5 border-[#E3E6F0] shadow-md">
             {/* profile image */}
             <View className="flex items-center relative">
               <Image
@@ -99,7 +100,10 @@ const Profile = () => {
             />
 
             <Text className="mt-4 font-sf-pro-medium">Account Information</Text>
-            <TouchableOpacity className="flex-row items-center gap-2 py-3">
+            <TouchableOpacity
+              onPress={() => router.push("/profile/personal-info")}
+              className="flex-row items-center gap-2 py-3"
+            >
               <MaterialCommunityIcons
                 name="account-edit-outline"
                 size={20}
@@ -113,7 +117,7 @@ const Profile = () => {
 
           {/* Saved place */}
 
-          <View className="mt-3.5 bg-white rounded-xl p-3.5 border-spacing-0.5 border-[#E3E6F0]">
+          <View className="mt-3.5 bg-white rounded-xl p-3.5 border-spacing-0.5 border-[#E3E6F0] shadow-md">
             <Text className=" font-sf-pro-medium">Saved place</Text>
 
             {/* home location */}
@@ -146,7 +150,7 @@ const Profile = () => {
 
           {/* Setting */}
 
-          <View className="mt-3.5 bg-white rounded-xl p-3.5 border-spacing-0.5 border-[#E3E6F0]">
+          <View className="mt-3.5 bg-white rounded-xl p-3.5 border-spacing-0.5 border-[#E3E6F0] shadow-md">
             <Text className=" font-sf-pro-medium">Setting</Text>
 
             {/* home location */}
@@ -172,9 +176,9 @@ const Profile = () => {
             </TouchableOpacity>
           </View>
 
-          {/* Setting */}
+          {/* logout */}
 
-          <View className="mt-3.5 bg-white rounded-xl p-3.5 border-spacing-0.5 border-[#E3E6F0]">
+          <View className="mt-3.5 mb-5 bg-[#ffffff] rounded-xl p-3.5 border-spacing-0.5 border-[#E3E6F0] shadow-md">
             <TouchableOpacity className="flex-row items-center gap-2 py-3">
               <SimpleLineIcons name="logout" size={20} color="#4D4D4D" />
               <Text className="font-sf-pro-medium text-sm text-[#4D4D4D]">
