@@ -122,7 +122,10 @@ const Profile = () => {
 
             {/* home location */}
 
-            <TouchableOpacity className="flex-row items-center gap-2 py-3">
+            <TouchableOpacity
+              onPress={() => router.push("/(user)/profile/home-location")}
+              className="flex-row items-center gap-2 py-3"
+            >
               <Feather name="home" size={20} color="#4D4D4D" />
               <Text className="font-sf-pro-medium text-sm text-[#4D4D4D]">
                 Enter home location
@@ -131,16 +134,22 @@ const Profile = () => {
 
             {/* work location */}
 
-            <TouchableOpacity className="flex-row items-center gap-2 py-3">
+            <TouchableOpacity
+              onPress={() => router.push("/profile/work-location")}
+              className="flex-row items-center gap-2 py-3"
+            >
               <Feather name="briefcase" size={20} color="#4D4D4D" />
               <Text className="font-sf-pro-medium text-sm text-[#4D4D4D]">
                 Enter Work location
               </Text>
             </TouchableOpacity>
 
-            {/* work location */}
+            {/* add-place location */}
 
-            <TouchableOpacity className="flex-row items-center gap-2 py-3">
+            <TouchableOpacity
+              onPress={() => router.push("/profile/add-place")}
+              className="flex-row items-center gap-2 py-3"
+            >
               <SimpleLineIcons name="location-pin" size={20} color="#4D4D4D" />
               <Text className="font-sf-pro-medium text-sm text-[#4D4D4D]">
                 Add a place
@@ -155,7 +164,10 @@ const Profile = () => {
 
             {/* home location */}
 
-            <TouchableOpacity className="flex-row items-center gap-2 py-3">
+            <TouchableOpacity
+              onPress={() => router.push("/profile/permission")}
+              className="flex-row items-center gap-2 py-3"
+            >
               <MaterialCommunityIcons
                 name="shield-check-outline"
                 size={20}

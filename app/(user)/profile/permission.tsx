@@ -1,5 +1,6 @@
 import ButtonPrimary from "@/components/ButtonPrimary";
 import ScreenHeader from "@/components/ScreenHeader";
+import { SimpleLineIcons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
 import React from "react";
 import {
@@ -8,22 +9,21 @@ import {
   ScrollView,
   StatusBar,
   Text,
-  TextInput,
   View,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-const UpdatePhoneNumber = () => {
+const permission = () => {
   return (
     <SafeAreaView className="flex-1" edges={["top", "left", "right"]}>
       <StatusBar backgroundColor="#D3E6FF" barStyle="dark-content" />
 
       <LinearGradient
         colors={["#D3E6FF", "#FFFFFF"]}
-        locations={[0, 0.4]}
+        locations={[0, 0.2]}
         style={{ flex: 1 }}
       >
-        <ScreenHeader title="Update email address" />
+        <ScreenHeader title="Permission" />
 
         <KeyboardAvoidingView
           style={{ flex: 1 }}
@@ -36,17 +36,21 @@ const UpdatePhoneNumber = () => {
             showsVerticalScrollIndicator={false}
             contentContainerStyle={{ paddingBottom: 120 }}
           >
-            <Text className="mt-5 text-sm">
-              Your email is used for delivery receipts and account recovery.
-            </Text>
+            <View className="mt-3">
+              {/* location access */}
 
-            <Text className="mt-3.5 text-sm font-sf-pro-medium">
-              Email Address
-            </Text>
-            <TextInput
-              className="mt-2 p-4 px-5 border border-[#E3E6F0] rounded-xl bg-white"
-              placeholder="Enter email address"
-            />
+              <View className="flex-row justify-between items-center mx-3 py-3 border-b border-[#E3E6F0]">
+                <View className="flex-row items-center gap-2">
+                  <SimpleLineIcons
+                    name="location-pin"
+                    size={24}
+                    color="black"
+                  />
+                  <Text>Location Access </Text>
+                </View>
+                <Text>Location </Text>
+              </View>
+            </View>
           </ScrollView>
 
           {/* bottom button */}
@@ -59,4 +63,4 @@ const UpdatePhoneNumber = () => {
   );
 };
 
-export default UpdatePhoneNumber;
+export default permission;

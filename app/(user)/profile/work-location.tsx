@@ -1,5 +1,6 @@
 import ButtonPrimary from "@/components/ButtonPrimary";
 import ScreenHeader from "@/components/ScreenHeader";
+import { EvilIcons, Octicons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
 import React from "react";
 import {
@@ -7,13 +8,12 @@ import {
   Platform,
   ScrollView,
   StatusBar,
-  Text,
   TextInput,
   View,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-const UpdatePhoneNumber = () => {
+const HomeLocation = () => {
   return (
     <SafeAreaView className="flex-1" edges={["top", "left", "right"]}>
       <StatusBar backgroundColor="#D3E6FF" barStyle="dark-content" />
@@ -23,7 +23,7 @@ const UpdatePhoneNumber = () => {
         locations={[0, 0.4]}
         style={{ flex: 1 }}
       >
-        <ScreenHeader title="Update email address" />
+        <ScreenHeader title="Work" />
 
         <KeyboardAvoidingView
           style={{ flex: 1 }}
@@ -36,17 +36,13 @@ const UpdatePhoneNumber = () => {
             showsVerticalScrollIndicator={false}
             contentContainerStyle={{ paddingBottom: 120 }}
           >
-            <Text className="mt-5 text-sm">
-              Your email is used for delivery receipts and account recovery.
-            </Text>
-
-            <Text className="mt-3.5 text-sm font-sf-pro-medium">
-              Email Address
-            </Text>
-            <TextInput
-              className="mt-2 p-4 px-5 border border-[#E3E6F0] rounded-xl bg-white"
-              placeholder="Enter email address"
-            />
+            <View className="flex-row justify-between items-center mt-4 px-4 py-1 border border-[#E3E6F0] rounded-xl bg-white">
+              <View className="flex-row gap-1 items-center">
+                <EvilIcons name="search" size={24} color="black" />
+                <TextInput className="" placeholder="Search location" />
+              </View>
+              <Octicons name="location" size={20} color="#0F73F7" />
+            </View>
           </ScrollView>
 
           {/* bottom button */}
@@ -59,4 +55,4 @@ const UpdatePhoneNumber = () => {
   );
 };
 
-export default UpdatePhoneNumber;
+export default HomeLocation;

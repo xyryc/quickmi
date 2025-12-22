@@ -44,7 +44,7 @@ const UpdatePhoneNumber = () => {
               Phone Number
             </Text>
             <TextInput
-              className="mt-2 p-4 border border-[#E3E6F0] rounded-xl"
+              className="mt-2 py-4 px-4 border border-[#E3E6F0] rounded-xl bg-white"
               placeholder="Enter Phone Number"
               keyboardType="numeric"
             />
