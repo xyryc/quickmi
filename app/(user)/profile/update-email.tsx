@@ -13,7 +13,7 @@ import {
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-const UpdateName = () => {
+const UpdatePhoneNumber = () => {
   return (
     <SafeAreaView className="flex-1" edges={["top", "left", "right"]}>
       <StatusBar backgroundColor="#D3E6FF" barStyle="dark-content" />
@@ -23,7 +23,7 @@ const UpdateName = () => {
         locations={[0, 0.4]}
         style={{ flex: 1 }}
       >
-        <ScreenHeader title="Update your name" />
+        <ScreenHeader title="Update email address" />
 
         <KeyboardAvoidingView
           style={{ flex: 1 }}
@@ -37,16 +37,16 @@ const UpdateName = () => {
             contentContainerStyle={{ paddingBottom: 120 }}
           >
             <Text className="mt-5 text-sm">
-              Please enter your name as it appears on your ID or {"\n"}passport.
+              Your email is used for delivery receipts and account recovery.
             </Text>
 
             <Text className="mt-3.5 text-sm font-sf-pro-medium">
-              First Name
+              Email Address
             </Text>
-            <TextInput className="mt-2 p-4 border border-[#E3E6F0] rounded-xl" />
-
-            <Text className="mt-5 text-sm font-sf-pro-medium">Last Name</Text>
-            <TextInput className="mt-2 p-4 border border-[#E3E6F0] rounded-xl" />
+            <TextInput
+              className="mt-2 p-4 border border-[#E3E6F0] rounded-xl"
+              placeholder="Enter email address"
+            />
           </ScrollView>
 
           {/* bottom button */}
@@ -59,4 +59,4 @@ const UpdateName = () => {
   );
 };
 
-export default UpdateName;
+export default UpdatePhoneNumber;

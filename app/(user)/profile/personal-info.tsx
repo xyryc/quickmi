@@ -68,10 +68,12 @@ const PersonalInfo = () => {
             <View className="flex-row items-center gap-3">
               <Ionicons name="mail-outline" size={24} color="#4D4D4D" />
               <Text className="font-sf-pro-medium text-sm text-black">
-                (225) 555-0118
+                dolores.chambers@example.com
               </Text>
             </View>
-            <TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => router.push("/profile/update-email")}
+            >
               <Text className="font-sf-pro-regular text-sm text-[#0F73F7]">
                 Edit
               </Text>

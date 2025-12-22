@@ -46,11 +46,12 @@ const UpdatePhoneNumber = () => {
             <TextInput
               className="mt-2 p-4 border border-[#E3E6F0] rounded-xl"
               placeholder="Enter Phone Number"
+              keyboardType="numeric"
             />
           </ScrollView>
 
           {/* bottom button */}
-          <View className="px-5 pb-28">
+          <View className="px-5 pb-32">
             <ButtonPrimary title="Save" />
           </View>
         </KeyboardAvoidingView>
