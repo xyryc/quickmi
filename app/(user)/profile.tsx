@@ -180,7 +180,10 @@ const Profile = () => {
 
             {/* work location */}
 
-            <TouchableOpacity className="flex-row items-center gap-2 py-3">
+            <TouchableOpacity
+              onPress={() => router.push("/(user)/profile/settings/settings")}
+              className="flex-row items-center gap-2 py-3"
+            >
               <Ionicons name="settings-outline" size={20} color="#4D4D4D" />
               <Text className="font-sf-pro-medium text-sm text-[#4D4D4D]">
                 Settings

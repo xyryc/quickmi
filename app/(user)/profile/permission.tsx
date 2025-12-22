@@ -1,4 +1,3 @@
-import ButtonPrimary from "@/components/ButtonPrimary";
 import { ButtonToggle } from "@/components/ButtonToggle";
 import ScreenHeader from "@/components/ScreenHeader";
 import { FontAwesome6, Ionicons, SimpleLineIcons } from "@expo/vector-icons";
@@ -105,11 +104,6 @@ const permission = () => {
               </View>
             </View>
           </ScrollView>
-
-          {/* bottom button */}
-          <View className="px-5 pb-32">
-            <ButtonPrimary title="Save" />
-          </View>
         </KeyboardAvoidingView>
       </LinearGradient>
     </SafeAreaView>
