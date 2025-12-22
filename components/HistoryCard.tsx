@@ -3,9 +3,12 @@ import { Image } from "expo-image";
 import React from "react";
 import { Text, TouchableOpacity, View } from "react-native";
 
-const HistoryCard = () => {
+const HistoryCard = ({ onPress }) => {
   return (
-    <TouchableOpacity className="mb-4 border border-[#E3E6F0] p-4 rounded-xl elevation-sm bg-white">
+    <TouchableOpacity
+      onPress={onPress}
+      className="mb-4 border border-[#E3E6F0] p-4 rounded-xl elevation-sm bg-white"
+    >
       {/* 1st row */}
       <View className="flex-row justify-between items-center">
         {/* date */}

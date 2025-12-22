@@ -3,11 +3,13 @@ import ScreenHeader from "@/components/ScreenHeader";
 import SearchBar from "@/components/Searchbar";
 import TabFilter from "@/components/TabFilter";
 import { LinearGradient } from "expo-linear-gradient";
+import { useRouter } from "expo-router";
 import React, { useState } from "react";
 import { ScrollView, StatusBar, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 const History = () => {
+  const router = useRouter();
   const [searchQuery, setSearchQuery] = useState("");
   const [activeTab, setActiveTab] = useState("completed");
 
@@ -47,16 +49,16 @@ const History = () => {
         </View>
 
         {/* history cards */}
-        <ScrollView className="mx-5">
-          <HistoryCard />
+        <ScrollView className="mx-5" showsVerticalScrollIndicator={false}>
+          <HistoryCard onPress={() => router.push("/history/1")} />
 
-          <HistoryCard />
+          <HistoryCard onPress={() => router.push("/history/1")} />
 
-          <HistoryCard />
+          <HistoryCard onPress={() => router.push("/history/1")} />
 
-          <HistoryCard />
+          <HistoryCard onPress={() => router.push("/history/1")} />
 
-          <HistoryCard />
+          <HistoryCard onPress={() => router.push("/history/1")} />
         </ScrollView>
       </LinearGradient>
     </SafeAreaView>

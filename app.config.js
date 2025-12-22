@@ -1,4 +1,4 @@
-{
+module.exports =  {
   "expo": {
     "name": "quickmi",
     "slug": "quickmi",
@@ -9,10 +9,18 @@
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
+      "config": {
+        "googleMapsApiKey": process.env.GOOGLE_MAPS_API_KEY_IOS
+      },
       "supportsTablet": true,
       "bundleIdentifier": "com.xyryc.quickmi"
     },
     "android": {
+      "config": {
+        "googleMaps": {
+          "apiKey": process.env.GOOGLE_MAPS_API_KEY_ANDROID
+        }
+      },
       "adaptiveIcon": {
         "backgroundColor": "#E6F4FE",
         "foregroundImage": "./assets/images/android-icon-foreground.png",
