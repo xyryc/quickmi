@@ -2,6 +2,7 @@ import ButtonPrimary from "@/components/ButtonPrimary";
 import ScreenHeader from "@/components/ScreenHeader";
 import { Feather, MaterialIcons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
+import { router } from "expo-router";
 import React from "react";
 import {
   KeyboardAvoidingView,
@@ -49,7 +50,10 @@ const Settings = () => {
               </TouchableOpacity>
 
               {/* About Us */}
-              <TouchableOpacity className="flex-row justify-between border-b border-[#E3E6F0] items-center py-3 mt-3">
+              <TouchableOpacity
+                onPress={() => router.push("/(user)/profile/settings/about")}
+                className="flex-row justify-between border-b border-[#E3E6F0] items-center py-3 mt-3"
+              >
                 <Text>About Us</Text>
                 <MaterialIcons
                   name="arrow-forward-ios"
@@ -79,7 +83,12 @@ const Settings = () => {
               </TouchableOpacity>
 
               {/* Privacy Policy */}
-              <TouchableOpacity className="flex-row justify-between border-b border-[#E3E6F0] items-center py-3 mt-3">
+              <TouchableOpacity
+                onPress={() =>
+                  router.push("/(user)/profile/settings/privacy-policy")
+                }
+                className="flex-row justify-between border-b border-[#E3E6F0] items-center py-3 mt-3"
+              >
                 <Text>Privacy Policy</Text>
                 <MaterialIcons
                   name="arrow-forward-ios"
@@ -89,7 +98,12 @@ const Settings = () => {
               </TouchableOpacity>
 
               {/* Terms of service */}
-              <TouchableOpacity className="flex-row justify-between border-b border-[#E3E6F0] items-center py-3 mt-3">
+              <TouchableOpacity
+                onPress={() =>
+                  router.push("/(user)/profile/settings/terms-condition")
+                }
+                className="flex-row justify-between border-b border-[#E3E6F0] items-center py-3 mt-3"
+              >
                 <Text>Terms of service</Text>
                 <MaterialIcons
                   name="arrow-forward-ios"
