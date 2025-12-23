@@ -78,7 +78,12 @@ const Settings = () => {
               </TouchableOpacity>
 
               {/* Support Requests */}
-              <TouchableOpacity className="flex-row justify-between border-b border-[#E3E6F0] items-center py-3 mt-3">
+              <TouchableOpacity
+                onPress={() =>
+                  router.push("/(user)/profile/settings/support-requests")
+                }
+                className="flex-row justify-between border-b border-[#E3E6F0] items-center py-3 mt-3"
+              >
                 <Text>Support Requests</Text>
                 <MaterialIcons
                   name="arrow-forward-ios"
