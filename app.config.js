@@ -37,6 +37,13 @@ module.exports =  {
       "favicon": "./assets/images/favicon.png"
     },
     "plugins": [
+      [                                                                                                    
+      "expo-location",                                                                                   
+      {                                                                                                  
+        locationAlwaysAndWhenInUsePermission: "Allow $(PRODUCT_NAME) to use your location for pickups.",                                                                                             
+        locationWhenInUsePermission: "Allow $(PRODUCT_NAME) to use your location for pickups."           
+      }                                                                                                  
+    ],     
       "expo-router",
       [
         "expo-splash-screen",
