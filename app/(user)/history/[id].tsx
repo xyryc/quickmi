@@ -1,7 +1,12 @@
 import { FontAwesome6, Ionicons, MaterialIcons } from "@expo/vector-icons";
+import BottomSheet, {
+  BottomSheetScrollView,
+  BottomSheetView,
+} from "@gorhom/bottom-sheet";
 import { useRouter } from "expo-router";
-import React, { useRef } from "react";
-import { TouchableOpacity, View } from "react-native";
+import React, { useMemo, useRef } from "react";
+import { Text, TouchableOpacity, View } from "react-native";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 import MapView, { Marker, Polyline, PROVIDER_GOOGLE } from "react-native-maps";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
@@ -23,64 +28,125 @@ const ParcelOngoing = () => {
     address: "Green Road, Dhanmondi, Dhaka.",
   };
 
+  // Create a ref for the bottom sheet
+  const bottomSheetRef = useRef<BottomSheet>(null);
+
+  // Define snap points: 20% and 80% of screen
+  const snapPoints = useMemo(() => ["20%", "80%"], []);
+
   return (
-    <View className="flex-1">
-      <MapView
-        ref={mapRef}
-        provider={PROVIDER_GOOGLE}
-        style={{ flex: 1 }}
-        initialRegion={{
-          latitude: (pickupLocation.latitude + dropoffLocation.latitude) / 2,
-          longitude: (pickupLocation.longitude + dropoffLocation.longitude) / 2,
-          latitudeDelta: 0.1,
-          longitudeDelta: 0.1,
-        }}
-      >
-        {/* Pickup Marker */}
-        <Marker coordinate={pickupLocation}>
-          <View className="items-center">
-            <View className="bg-black rounded-full p-2">
-              <FontAwesome6 name="person" size={16} color="white" />
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <View style={{ flex: 1 }}>
+        <View className="flex-1">
+          <MapView
+            ref={mapRef}
+            provider={PROVIDER_GOOGLE}
+            style={{ flex: 1 }}
+            initialRegion={{
+              latitude:
+                (pickupLocation.latitude + dropoffLocation.latitude) / 2,
+              longitude:
+                (pickupLocation.longitude + dropoffLocation.longitude) / 2,
+              latitudeDelta: 0.1,
+              longitudeDelta: 0.1,
+            }}
+          >
+            {/* Pickup Marker */}
+            <Marker coordinate={pickupLocation}>
+              <View className="items-center">
+                <View className="bg-black rounded-full p-2">
+                  <FontAwesome6 name="person" size={16} color="white" />
+                </View>
+                <View className="w-0.5 h-4 bg-black" />
+              </View>
+            </Marker>
+
+            {/* Dropoff Marker */}
+            <Marker coordinate={dropoffLocation}>
+              <View className="items-center">
+                <View className="bg-blue-500 rounded-full p-2">
+                  <Ionicons name="location-sharp" size={20} color="white" />
+                </View>
+                <View className="w-1 h-1 bg-blue-500 rounded-full" />
+              </View>
+            </Marker>
+
+            {/* Route Line */}
+            <Polyline
+              coordinates={[pickupLocation, dropoffLocation]}
+              strokeColor="#0F73F7"
+              strokeWidth={3}
+              lineDashPattern={[1]}
+            />
+          </MapView>
+
+          {/* Back Button */}
+          <TouchableOpacity
+            onPress={() => router.back()}
+            className="absolute top-4 left-4 bg-white rounded-full p-3 shadow-lg border border-[#0F73F7E5]"
+            style={{
+              marginTop: insets.top,
+              shadowColor: "#000",
+              shadowOffset: { width: 0, height: 2 },
+              shadowOpacity: 0.25,
+              shadowRadius: 3.84,
+              elevation: 5,
+            }}
+          >
+            <MaterialIcons name="keyboard-arrow-left" size={24} color="black" />
+          </TouchableOpacity>
+        </View>
+
+        {/* Bottom Sheet */}
+        <BottomSheet
+          ref={bottomSheetRef}
+          index={0} // Start at first snap point (20%)
+          snapPoints={snapPoints}
+          enablePanDownToClose={false}
+        >
+          {/* Always visible header section */}
+          <BottomSheetView style={{ padding: 16 }}>
+            <View
+              style={{ flexDirection: "row", justifyContent: "space-between" }}
+            >
+              {/* Call Button */}
+              <TouchableOpacity>
+                <Text>Tracking Number: #12345</Text>
+                <Text>Status: In Transit</Text>
+              </TouchableOpacity>
+
+              {/* Message Button */}
+              <TouchableOpacity>
+                <Text>Tracking Number: #12345</Text>
+                <Text>Status: In Transit</Text>
+              </TouchableOpacity>
             </View>
-            <View className="w-0.5 h-4 bg-black" />
-          </View>
-        </Marker>
 
-        {/* Dropoff Marker */}
-        <Marker coordinate={dropoffLocation}>
-          <View className="items-center">
-            <View className="bg-blue-500 rounded-full p-2">
-              <Ionicons name="location-sharp" size={20} color="white" />
+            {/* Rider Info */}
+            <View
+              style={{
+                flexDirection: "row",
+                alignItems: "center",
+                marginTop: 16,
+              }}
+            >
+              <Text>Tracking Number: #12345</Text>
+              <Text>Status: In Transit</Text>
             </View>
-            <View className="w-1 h-1 bg-blue-500 rounded-full" />
-          </View>
-        </Marker>
+          </BottomSheetView>
 
-        {/* Route Line */}
-        <Polyline
-          coordinates={[pickupLocation, dropoffLocation]}
-          strokeColor="#0F73F7"
-          strokeWidth={3}
-          lineDashPattern={[1]}
-        />
-      </MapView>
-
-      {/* Back Button */}
-      <TouchableOpacity
-        onPress={() => router.back()}
-        className="absolute top-4 left-4 bg-white rounded-full p-3 shadow-lg border border-[#0F73F7E5]"
-        style={{
-          marginTop: insets.top,
-          shadowColor: "#000",
-          shadowOffset: { width: 0, height: 2 },
-          shadowOpacity: 0.25,
-          shadowRadius: 3.84,
-          elevation: 5,
-        }}
-      >
-        <MaterialIcons name="keyboard-arrow-left" size={24} color="black" />
-      </TouchableOpacity>
-    </View>
+          {/* Scrollable content section */}
+          <BottomSheetScrollView>
+            {/* Package Details */}
+            <View style={{ padding: 16 }}>
+              <Text>Tracking Number: #12345</Text>
+              <Text>Status: In Transit</Text>
+              {/* Add all other details here */}
+            </View>
+          </BottomSheetScrollView>
+        </BottomSheet>
+      </View>
+    </GestureHandlerRootView>
   );
 };
 
