@@ -70,6 +70,7 @@ const Profile = () => {
             {/* secondary inbox button */}
             <View className="flex-row gap-2 mt-4 ">
               <ButtonSecondary
+                onPress={() => router.push("/(user)/profile/inbox")}
                 iconPosition="left"
                 className="flex-1 !border !border-[#E3E6F0]"
                 title="Inbox"
@@ -84,6 +85,7 @@ const Profile = () => {
 
               {/* secondary Wallet button */}
               <ButtonSecondary
+                onPress={() => router.push("/(user)/profile/wallet")}
                 iconPosition="left"
                 className="flex-1 !border !border-[#E3E6F0]"
                 title="Wallet"
