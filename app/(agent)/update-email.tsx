@@ -1,7 +1,5 @@
 import ButtonPrimary from "@/components/ButtonPrimary";
 import ScreenHeader from "@/components/ScreenHeader";
-import { AntDesign } from "@expo/vector-icons";
-import { Image } from "expo-image";
 import { LinearGradient } from "expo-linear-gradient";
 import React from "react";
 import {
@@ -10,10 +8,12 @@ import {
   ScrollView,
   StatusBar,
   Text,
+  TextInput,
+  View,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-const PromoCode = () => {
+const UpdatePhoneNumber = () => {
   return (
     <SafeAreaView className="flex-1" edges={["top", "left", "right"]}>
       <StatusBar backgroundColor="#D3E6FF" barStyle="dark-content" />
@@ -23,7 +23,7 @@ const PromoCode = () => {
         locations={[0, 0.4]}
         style={{ flex: 1 }}
       >
-        <ScreenHeader title="Promo code" />
+        <ScreenHeader title="Update email address" />
 
         <KeyboardAvoidingView
           style={{ flex: 1 }}
@@ -32,36 +32,31 @@ const PromoCode = () => {
         >
           {/* scrollable content */}
           <ScrollView
-            className="flex-1 mx-5 "
+            className="flex-1 mx-5"
             showsVerticalScrollIndicator={false}
-            contentContainerStyle={{
-              paddingBottom: 120,
-              justifyContent: "center",
-              alignItems: "center",
-              flex: 1,
-            }}
+            contentContainerStyle={{ paddingBottom: 120 }}
           >
-            <Image
-              source={require("@/assets/images/logo.svg")}
-              contentFit="contain"
-              style={{ width: 175, height: 130 }}
-            />
-            <Text className="text-base font-sf-pro-regular text-center text-[#A2A2A2] mb-4 mt-8">
-              You don’t have any promo code.
+            <Text className="mt-5 text-sm">
+              Your email is used for delivery receipts and account recovery.
             </Text>
+
+            <Text className="mt-3.5 text-sm font-sf-pro-medium">
+              Email Address
+            </Text>
+            <TextInput
+              className="mt-2 p-4 px-5 border border-[#E3E6F0] rounded-xl bg-white"
+              placeholder="Enter email address"
+            />
           </ScrollView>
 
-          {/* button  */}
-          <ButtonPrimary
-            title="Apply Promo"
-            className="mx-5 mb-32"
-            iconPosition="left"
-            icon={<AntDesign name="plus" size={20} color="white" />}
-          />
+          {/* bottom button */}
+          <View className="px-5 pb-32">
+            <ButtonPrimary title="Save" />
+          </View>
         </KeyboardAvoidingView>
       </LinearGradient>
     </SafeAreaView>
   );
 };
 
-export default PromoCode;
+export default UpdatePhoneNumber;
