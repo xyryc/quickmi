@@ -97,7 +97,23 @@ export default function UserLayout() {
 
       {/* nested screens */}
       <Tabs.Screen
-        name="history/[id]"
+        name="history/ongoing/[id]"
+        options={{
+          href: null,
+          tabBarStyle: { display: "none" },
+        }}
+      />
+
+      <Tabs.Screen
+        name="history/completed/[id]"
+        options={{
+          href: null,
+          tabBarStyle: { display: "none" },
+        }}
+      />
+
+      <Tabs.Screen
+        name="history/cancelled/[id]"
         options={{
           href: null,
           tabBarStyle: { display: "none" },
