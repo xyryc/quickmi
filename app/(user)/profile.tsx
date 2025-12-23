@@ -95,7 +95,7 @@ const Profile = () => {
 
             {/*  Switch to Agent mode */}
             <ButtonPrimary
-              onPress={() => router.push("/(agent)/profile")}
+              onPress={() => router.push("/(agent)/profile/profile")}
               title=" Switch to Agent mode"
               className="mt-4"
               icon={<AntDesign name="car" size={20} color="white" />}

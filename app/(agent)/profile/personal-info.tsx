@@ -82,7 +82,7 @@ const PersonalInfo = () => {
                 </Text>
               </View>
               <TouchableOpacity
-                onPress={() => router.push("/(agent)/update-name")}
+                onPress={() => router.push("/(agent)/profile/update-name")}
               >
                 <Text className="font-sf-pro-regular text-sm text-[#0F73F7]">
                   Edit
@@ -100,7 +100,9 @@ const PersonalInfo = () => {
                 </Text>
               </View>
               <TouchableOpacity
-                onPress={() => router.push("/(agent)/update-phone-number")}
+                onPress={() =>
+                  router.push("/(agent)/profile/update-phone-number")
+                }
               >
                 <Text className="font-sf-pro-regular text-sm text-[#0F73F7]">
                   Edit
@@ -118,7 +120,7 @@ const PersonalInfo = () => {
                 </Text>
               </View>
               <TouchableOpacity
-                onPress={() => router.push("/(agent)/update-email")}
+                onPress={() => router.push("/(agent)/profile/update-email")}
               >
                 <Text className="font-sf-pro-regular text-sm text-[#0F73F7]">
                   Edit
@@ -135,7 +137,7 @@ const PersonalInfo = () => {
                 </Text>
               </View>
               <TouchableOpacity
-                onPress={() => router.push("/(agent)/car-information")}
+                onPress={() => router.push("/(agent)/profile/car-information")}
               >
                 <Text className="font-sf-pro-regular text-sm text-[#0F73F7]">
                   Edit

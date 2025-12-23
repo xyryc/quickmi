@@ -82,7 +82,7 @@ const Profile = () => {
                   </Text>
                 </View>
                 <TouchableOpacity
-                  onPress={() => router.push("/(agent)/personal-info")}
+                  onPress={() => router.push("/(agent)/profile/personal-info")}
                 >
                   <Text className="font-sf-pro-regular text-xs text-[#0F73F7]">
                     Go to profile
@@ -97,7 +97,7 @@ const Profile = () => {
             {/* secondary inbox button */}
             <View className="flex-row gap-2 mt-4 ">
               <ButtonSecondary
-                onPress={() => router.push("/(user)/profile/inbox")}
+                onPress={() => router.push("/(agent)/profile/inbox")}
                 iconPosition="left"
                 className="flex-1 !border !border-[#E3E6F0]"
                 title="Inbox"
@@ -125,7 +125,7 @@ const Profile = () => {
 
           <View className="mt-3.5 bg-white rounded-xl p-3.5 border-spacing-0.5 border-[#E3E6F0] shadow-md">
             <TouchableOpacity
-              onPress={() => router.push("/profile/permission")}
+              onPress={() => router.push("/(agent)/profile/permission")}
               className="flex-row items-center gap-2 py-3"
             >
               <MaterialCommunityIcons
