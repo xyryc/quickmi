@@ -40,7 +40,12 @@ const Settings = () => {
           >
             <View className="mt-8">
               {/* change password */}
-              <TouchableOpacity className="flex-row justify-between border-b border-[#E3E6F0] items-center py-3 mt-3">
+              <TouchableOpacity
+                onPress={() =>
+                  router.push("/(user)/profile/settings/change-password")
+                }
+                className="flex-row justify-between border-b border-[#E3E6F0] items-center py-3 mt-3"
+              >
                 <Text>Change Password</Text>
                 <MaterialIcons
                   name="arrow-forward-ios"
