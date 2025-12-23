@@ -75,34 +75,32 @@ const ParcelCompleted = () => {
             <View className="mt-2">
               <View className="flex-row gap-2">
                 {/* left */}
-                <View className="flex-row justify-between gap-2">
-                  <View>
-                    <Octicons
-                      className="mb-2"
-                      name="location"
-                      size={18}
-                      color="#0F73F7"
-                    />
+                <View>
+                  <Octicons
+                    className="mb-2"
+                    name="location"
+                    size={18}
+                    color="#0F73F7"
+                  />
 
-                    <AntDesign
-                      className="rotate-90"
-                      name="dash"
-                      size={16}
-                      color="#80aad9"
-                    />
-                    <AntDesign
-                      className="rotate-90"
-                      name="dash"
-                      size={16}
-                      color="#80aad9"
-                    />
-                    <AntDesign
-                      className="rotate-90"
-                      name="dash"
-                      size={16}
-                      color="#80aad9"
-                    />
-                  </View>
+                  <AntDesign
+                    className="rotate-90"
+                    name="dash"
+                    size={16}
+                    color="#80aad9"
+                  />
+                  <AntDesign
+                    className="rotate-90"
+                    name="dash"
+                    size={16}
+                    color="#80aad9"
+                  />
+                  <AntDesign
+                    className="rotate-90"
+                    name="dash"
+                    size={16}
+                    color="#80aad9"
+                  />
                 </View>
 
                 {/* right */}
@@ -138,15 +136,13 @@ const ParcelCompleted = () => {
             <View className="mt-2">
               <View className="flex-row gap-2">
                 {/* left */}
-                <View className="flex-row justify-between gap-2">
-                  <View>
-                    <Octicons
-                      className="mb-2"
-                      name="location"
-                      size={18}
-                      color="#0F73F7"
-                    />
-                  </View>
+                <View>
+                  <Octicons
+                    className="mb-2"
+                    name="location"
+                    size={18}
+                    color="#0F73F7"
+                  />
                 </View>
 
                 {/* right */}
@@ -186,6 +182,53 @@ const ParcelCompleted = () => {
 
                 <StatusBadge status="completed" />
               </View>
+            </View>
+          </View>
+
+          {/* receipt section */}
+          <View className="border border-[#005FDC24] p-4 rounded-xl mt-3.5">
+            <Text className="font-sf-pro-semibold text-base">Receipt</Text>
+
+            <View className="flex-row items-center justify-between mb-1">
+              <Text className="text-sm font-sf-pro-regular">Base fare</Text>
+
+              <View className="flex-row items-center gap-2">
+                <Text className="text-sm font-sf-pro-medium line-through text-red-500">
+                  $140
+                </Text>
+                <Text className="text-sm font-sf-pro-medium">$150</Text>
+              </View>
+            </View>
+
+            <View className="flex-row items-center justify-between mb-1">
+              <Text className="text-sm font-sf-pro-regular">Distance</Text>
+              <Text className="text-sm font-sf-pro-medium">$10</Text>
+            </View>
+
+            <View className="flex-row items-center justify-between mb-1">
+              <Text className="text-sm font-sf-pro-regular">Time</Text>
+              <Text className="text-sm font-sf-pro-medium">$0.60</Text>
+            </View>
+
+            {/* dotted line */}
+            <View className="w-full my-2 border-t border-dashed border-gray-400" />
+
+            <View className="flex-row items-center justify-between mb-1">
+              <Text className="text-sm font-sf-pro-medium">Subtotal</Text>
+              <Text className="text-sm font-sf-pro-medium">$17</Text>
+            </View>
+
+            <View className="flex-row items-center justify-between mb-1">
+              <Text className="text-sm font-sf-pro-regular">Discount</Text>
+              <Text className="text-sm font-sf-pro-medium">-$6</Text>
+            </View>
+
+            {/* dotted line */}
+            <View className="w-full my-2 border-t border-dashed border-gray-500" />
+
+            <View className="flex-row items-center justify-between mb-1">
+              <Text className="text-base font-sf-pro-medium">Net Fare</Text>
+              <Text className="text-sm font-sf-pro-semibold">$11</Text>
             </View>
           </View>
         </View>
