@@ -6,7 +6,7 @@ import { Tabs } from "expo-router";
 import { View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
-export default function AuthLayout() {
+export default function UserLayout() {
   const insets = useSafeAreaInsets();
 
   return (
@@ -17,9 +17,9 @@ export default function AuthLayout() {
           backgroundColor: "transparent",
           height: 80 + insets.bottom,
           borderWidth: 0.1,
-          borderTopWidth: 0.7,
-          borderColor: "#005FDC24",
-          borderTopColor: "#005FDCE5",
+          // borderTopWidth: 0.7,
+          borderColor: "#005FDCE5",
+          // borderTopColor: "#005FDCE5",
           paddingTop: 12,
           borderTopLeftRadius: 26,
           borderTopRightRadius: 26,
@@ -92,6 +92,82 @@ export default function AuthLayout() {
               )}
             </View>
           ),
+        }}
+      />
+
+      {/* nested screens */}
+      <Tabs.Screen
+        name="history/[id]"
+        options={{
+          href: null,
+          tabBarStyle: { display: "none" },
+        }}
+      />
+
+      <Tabs.Screen
+        name="profile/add-place"
+        options={{
+          href: null,
+        }}
+      />
+      <Tabs.Screen
+        name="profile/home-location"
+        options={{
+          href: null,
+        }}
+      />
+      <Tabs.Screen
+        name="profile/permission"
+        options={{
+          href: null,
+        }}
+      />
+      <Tabs.Screen
+        name="profile/personal-info"
+        options={{
+          href: null,
+        }}
+      />
+      <Tabs.Screen
+        name="profile/update-email"
+        options={{
+          href: null,
+        }}
+      />
+      <Tabs.Screen
+        name="profile/update-name"
+        options={{
+          href: null,
+        }}
+      />
+      <Tabs.Screen
+        name="profile/update-phone-number"
+        options={{
+          href: null,
+        }}
+      />
+      <Tabs.Screen
+        name="profile/work-location"
+        options={{
+          href: null,
+        }}
+      />
+      <Tabs.Screen
+        name="profile/settings/about"
+        options={{
+          href: null,
+        }}
+      />
+      <Tabs.Screen
+        name="profile/settings/change-password"
+        options={{
+          href: null,
+        }}
+      />
+      <Tabs.Screen
+        name="profile/settings/privacy-policy"
+        options={{
+          href: null,
         }}
       />
     </Tabs>

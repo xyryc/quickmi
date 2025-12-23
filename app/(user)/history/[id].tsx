@@ -1,4 +1,3 @@
-import { useLocation } from "@/hooks/useLocation";
 import { FontAwesome6, Ionicons, MaterialIcons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
 import React, { useRef } from "react";
@@ -10,12 +9,6 @@ const ParcelOngoing = () => {
   const router = useRouter();
   const insets = useSafeAreaInsets();
   const mapRef = useRef<MapView>(null);
-  const { location, address, errorMsg, loading, refetch } = useLocation();
-  console.log("From History", location, address, errorMsg, loading, refetch);
-
-  //  useEffect(() => {
-  //     // getInitialLocation();
-  //   }, []);
 
   // Sample data - replace with actual data from params
   const pickupLocation = {
