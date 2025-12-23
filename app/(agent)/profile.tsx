@@ -6,6 +6,7 @@ import {
   Feather,
   Ionicons,
   MaterialCommunityIcons,
+  MaterialIcons,
   SimpleLineIcons,
 } from "@expo/vector-icons";
 import { Image } from "expo-image";
@@ -36,36 +37,62 @@ const Profile = () => {
 
         {/* history cards */}
         <ScrollView className="mx-5" showsVerticalScrollIndicator={false}>
+          {/* account */}
+          <View className="  rounded-xl p-3.5 border-spacing-0.5 border-[#E3E6F0] flex-row justify-between ">
+            <Text className="font-sf-pro-medium text-3xl text-[#031731]">
+              Account
+            </Text>
+            <AntDesign
+              name="close"
+              size={22}
+              color="black"
+              className="bg-white p-2 rounded-full"
+            />
+          </View>
+
           {/* Personal info */}
-          <View className="mt-8 bg-white rounded-xl p-3.5 border-spacing-0.5 border-[#E3E6F0] shadow-md">
+          <View className="mt-4 bg-white rounded-xl p-3.5 border-spacing-0.5 border-[#E3E6F0] shadow-md">
             {/* profile image */}
-            <View className="flex items-center relative">
+            <View className="flex-row gap-3 items-center px-3 py-2 bg-white shadow-2xl android:elevation-4">
               <Image
                 source={{
                   uri: "https://randomuser.me/api/portraits/men/10.jpg",
                 }}
                 style={{
-                  height: 100,
-                  width: 100,
+                  height: 55,
+                  width: 55,
                   borderRadius: 100,
                 }}
                 contentFit="cover"
               />
 
-              {/* camera icon */}
-              <Ionicons
-                className="absolute left-56 bottom-2 bg-[#0F73F7] p-1 border border-white rounded-full"
-                name="camera-outline"
-                size={16}
-                color="white"
-              />
+              {/* details */}
+              <View className="">
+                <Text className="font-sf-pro-medium text-sm text-[#031731]">
+                  John Doe
+                </Text>
+                <View className="flex-row items-center gap-2">
+                  <AntDesign name="star" size={14} color="#FFD700" />
+                  <Text className="font-sf-pro-medium text-xs text-[#1F1D1D]">
+                    3.35
+                  </Text>
+                  <Text>|</Text>
+                  <Text className="font-sf-pro-regular text-xs text-[#4D4D4D]">
+                    150 Delivery
+                  </Text>
+                </View>
+                <TouchableOpacity
+                  onPress={() => router.push("/(agent)/personal-info")}
+                >
+                  <Text className="font-sf-pro-regular text-xs text-[#0F73F7]">
+                    Go to profile
+                  </Text>
+                </TouchableOpacity>
+              </View>
             </View>
 
             {/* profile name */}
             {/*  <Text className="font-sf-pro-medium text-base text-custom-blue-900 mb-1"> */}
-            <Text className="text-center mt-3.5 font-sf-pro-medium text-xl text-black">
-              Darlene Robertson
-            </Text>
 
             {/* secondary inbox button */}
             <View className="flex-row gap-2 mt-4 ">
@@ -92,81 +119,11 @@ const Profile = () => {
                 icon={<Entypo name="wallet" size={20} color="#0F73F7" />}
               />
             </View>
-
-            {/*  Switch to Agent mode */}
-            <ButtonPrimary
-              onPress={() => router.push("/(agent)/profile")}
-              title=" Switch to Agent mode"
-              className="mt-4"
-              icon={<AntDesign name="car" size={20} color="white" />}
-              iconPosition="left"
-            />
-
-            <Text className="mt-4 font-sf-pro-medium">Account Information</Text>
-            <TouchableOpacity
-              onPress={() => router.push("/profile/personal-info")}
-              className="flex-row items-center gap-2 py-3"
-            >
-              <MaterialCommunityIcons
-                name="account-edit-outline"
-                size={20}
-                color="#4D4D4D"
-              />
-              <Text className="font-sf-pro-medium text-sm text-[#4D4D4D]">
-                Personal Information
-              </Text>
-            </TouchableOpacity>
-          </View>
-
-          {/* Saved place */}
-
-          <View className="mt-3.5 bg-white rounded-xl p-3.5 border-spacing-0.5 border-[#E3E6F0] shadow-md">
-            <Text className=" font-sf-pro-medium">Saved place</Text>
-
-            {/* home location */}
-
-            <TouchableOpacity
-              onPress={() => router.push("/(user)/profile/home-location")}
-              className="flex-row items-center gap-2 py-3"
-            >
-              <Feather name="home" size={20} color="#4D4D4D" />
-              <Text className="font-sf-pro-medium text-sm text-[#4D4D4D]">
-                Enter home location
-              </Text>
-            </TouchableOpacity>
-
-            {/* work location */}
-
-            <TouchableOpacity
-              onPress={() => router.push("/profile/work-location")}
-              className="flex-row items-center gap-2 py-3"
-            >
-              <Feather name="briefcase" size={20} color="#4D4D4D" />
-              <Text className="font-sf-pro-medium text-sm text-[#4D4D4D]">
-                Enter Work location
-              </Text>
-            </TouchableOpacity>
-
-            {/* add-place location */}
-
-            <TouchableOpacity
-              onPress={() => router.push("/profile/add-place")}
-              className="flex-row items-center gap-2 py-3"
-            >
-              <SimpleLineIcons name="location-pin" size={20} color="#4D4D4D" />
-              <Text className="font-sf-pro-medium text-sm text-[#4D4D4D]">
-                Add a place
-              </Text>
-            </TouchableOpacity>
           </View>
 
           {/* Setting */}
 
           <View className="mt-3.5 bg-white rounded-xl p-3.5 border-spacing-0.5 border-[#E3E6F0] shadow-md">
-            <Text className=" font-sf-pro-medium">Setting</Text>
-
-            {/* home location */}
-
             <TouchableOpacity
               onPress={() => router.push("/profile/permission")}
               className="flex-row items-center gap-2 py-3"
@@ -181,7 +138,49 @@ const Profile = () => {
               </Text>
             </TouchableOpacity>
 
-            {/* work location */}
+            <TouchableOpacity
+              onPress={() => router.push("/(user)/profile/settings/settings")}
+              className="flex-row items-center gap-2 py-3"
+            >
+              <AntDesign name="car" size={20} color="#4D4D4D" />
+              <Text className="font-sf-pro-medium text-sm text-[#4D4D4D]">
+                My Ride
+              </Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity
+              onPress={() => router.push("/(user)/profile/settings/settings")}
+              className="flex-row items-center gap-2 py-3"
+            >
+              <Ionicons name="wallet-outline" size={20} color="#4D4D4D" />
+              <Text className="font-sf-pro-medium text-sm text-[#4D4D4D]">
+                Wallet
+              </Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity
+              onPress={() => router.push("/(user)/profile/settings/settings")}
+              className="flex-row items-center gap-2 py-3"
+            >
+              <Ionicons
+                name="notifications-outline"
+                size={20}
+                color="#4D4D4D"
+              />
+              <Text className="font-sf-pro-medium text-sm text-[#4D4D4D]">
+                Notifications
+              </Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity
+              onPress={() => router.push("/(user)/profile/settings/settings")}
+              className="flex-row items-center gap-2 py-3"
+            >
+              <MaterialIcons name="support-agent" size={20} color="#4D4D4D" />
+              <Text className="font-sf-pro-medium text-sm text-[#4D4D4D]">
+                Support Requests
+              </Text>
+            </TouchableOpacity>
 
             <TouchableOpacity
               onPress={() => router.push("/(user)/profile/settings/settings")}
@@ -192,11 +191,9 @@ const Profile = () => {
                 Settings
               </Text>
             </TouchableOpacity>
-          </View>
 
-          {/* logout */}
+            <View className="border-b border-[#A2A2A2] my-6" />
 
-          <View className="mt-3.5 mb-5 bg-[#ffffff] rounded-xl p-3.5 border-spacing-0.5 border-[#E3E6F0] shadow-md">
             <TouchableOpacity className="flex-row items-center gap-2 py-3">
               <SimpleLineIcons name="logout" size={20} color="#4D4D4D" />
               <Text className="font-sf-pro-medium text-sm text-[#4D4D4D]">
@@ -204,7 +201,16 @@ const Profile = () => {
               </Text>
             </TouchableOpacity>
           </View>
+
+          {/* logout */}
         </ScrollView>
+
+        <ButtonPrimary
+          title=" Switch to User mode"
+          className="mx-5"
+          icon={<Feather name="user" size={18} color="white" />}
+          iconPosition="left"
+        />
       </LinearGradient>
     </SafeAreaView>
   );
