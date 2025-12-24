@@ -126,6 +126,20 @@ export default function UserLayout() {
           href: null,
         }}
       />
+
+      <Tabs.Screen
+        name="profile/inbox"
+        options={{
+          href: null,
+        }}
+      />
+
+      <Tabs.Screen
+        name="profile/wallet"
+        options={{
+          href: null,
+        }}
+      />
       <Tabs.Screen
         name="profile/home-location"
         options={{
@@ -175,6 +189,36 @@ export default function UserLayout() {
         }}
       />
       <Tabs.Screen
+        name="profile/settings/help"
+        options={{
+          href: null,
+        }}
+      />
+      <Tabs.Screen
+        name="profile/settings/settings"
+        options={{
+          href: null,
+        }}
+      />
+      <Tabs.Screen
+        name="profile/settings/promo-code"
+        options={{
+          href: null,
+        }}
+      />
+      <Tabs.Screen
+        name="profile/settings/terms-condition"
+        options={{
+          href: null,
+        }}
+      />
+      <Tabs.Screen
+        name="profile/settings/support-requests"
+        options={{
+          href: null,
+        }}
+      />
+      <Tabs.Screen
         name="profile/settings/change-password"
         options={{
           href: null,
@@ -182,6 +226,14 @@ export default function UserLayout() {
       />
       <Tabs.Screen
         name="profile/settings/privacy-policy"
+        options={{
+          href: null,
+        }}
+      />
+
+      {/* instant delivery */}
+      <Tabs.Screen
+        name="instant-delivery/select-location"
         options={{
           href: null,
         }}
