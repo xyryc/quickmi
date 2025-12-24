@@ -2,6 +2,7 @@ import ScreenHeader from "@/components/ScreenHeader";
 import WalletCard from "@/components/WalletCard";
 import { Feather } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
+import { router } from "expo-router";
 import React from "react";
 import {
   KeyboardAvoidingView,
@@ -46,7 +47,12 @@ const Wallet = () => {
             </Text>
 
             {/* Add debit/credit card */}
-            <TouchableOpacity className=" flex-row items-center justify-between mt-2 border border-[#E3E6F0] rounded-xl p-4 mt-3">
+            <TouchableOpacity
+              onPress={() =>
+                router.push("/(agent)/profile/wallet/card-details")
+              }
+              className=" flex-row items-center justify-between border border-[#E3E6F0] rounded-xl p-4 mt-3"
+            >
               <View className="flex-row items-center">
                 <Feather name="plus" size={24} color="black" />
                 <Text className="font-sf-pro-medium text-base text-black ml-2">
