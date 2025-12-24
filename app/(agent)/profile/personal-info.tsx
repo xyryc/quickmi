@@ -137,6 +137,23 @@ const PersonalInfo = () => {
                 </Text>
               </View>
               <TouchableOpacity
+                onPress={() => router.push("/(agent)/profile/driving-license")}
+              >
+                <Text className="font-sf-pro-regular text-sm text-[#0F73F7]">
+                  Edit
+                </Text>
+              </TouchableOpacity>
+            </View>
+
+            {/* Car Information*/}
+            <View className="flex-row justify-between items-center mt-5 border-b border-[#E3E6F0] mx-3 py-2 pb-4">
+              <View className="flex-row items-center gap-3">
+                <AntDesign name="idcard" size={24} color="#4D4D4D" />
+                <Text className="font-sf-pro-medium text-sm text-black">
+                  Car Information
+                </Text>
+              </View>
+              <TouchableOpacity
                 onPress={() => router.push("/(agent)/profile/car-information")}
               >
                 <Text className="font-sf-pro-regular text-sm text-[#0F73F7]">

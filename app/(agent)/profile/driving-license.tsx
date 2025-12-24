@@ -14,7 +14,7 @@ import {
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-const CarInformation = () => {
+const DrivingLicense = () => {
   return (
     <SafeAreaView className="flex-1" edges={["top", "left", "right"]}>
       <StatusBar backgroundColor="#D3E6FF" barStyle="dark-content" />
@@ -24,7 +24,7 @@ const CarInformation = () => {
         locations={[0, 0.4]}
         style={{ flex: 1 }}
       >
-        <ScreenHeader title="Car Information" />
+        <ScreenHeader title="Driving License" />
 
         <KeyboardAvoidingView
           style={{ flex: 1 }}
@@ -37,27 +37,17 @@ const CarInformation = () => {
             showsVerticalScrollIndicator={false}
             contentContainerStyle={{ paddingBottom: 120 }}
           >
-            <Text className="mt-3.5  font-sf-pro-medium">Car Name</Text>
+            <Text className="mt-3.5  font-sf-pro-medium">
+              Driving License No
+            </Text>
             <TextInput
               className="mt-2 p-4 border border-[#E3E6F0] rounded-xl bg-white"
-              placeholder="Enter car name"
-            />
-
-            <Text className="mt-5  font-sf-pro-medium">Car Model</Text>
-            <TextInput
-              className="mt-2 p-4 border border-[#E3E6F0] rounded-xl bg-white"
-              placeholder="Enter car model"
-            />
-
-            <Text className="mt-5  font-sf-pro-medium">Number plate No</Text>
-            <TextInput
-              className="mt-2 p-4 border border-[#E3E6F0] rounded-xl bg-white"
-              placeholder="Enter number plate no"
+              placeholder="3264 35465 341654 "
             />
 
             {/* Upload car registration picture */}
             <Text className="mt-8 text-base font-sf-pro-medium text-center">
-              Upload your car registration picture
+              Upload Your Driving License picture (Front)
             </Text>
             <View
               style={{
@@ -77,7 +67,7 @@ const CarInformation = () => {
 
             {/* Upload car registration picture */}
             <Text className="mt-8 text-base font-sf-pro-medium text-center">
-              Upload your Car number plate picture
+              Upload Your Driving License picture (Back)
             </Text>
             <View
               style={{
@@ -106,4 +96,4 @@ const CarInformation = () => {
   );
 };
 
-export default CarInformation;
+export default DrivingLicense;

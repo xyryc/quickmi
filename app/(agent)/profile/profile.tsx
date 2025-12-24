@@ -112,7 +112,7 @@ const Profile = () => {
 
               {/* secondary Wallet button */}
               <ButtonSecondary
-                onPress={() => router.push("/(user)/profile/wallet")}
+                onPress={() => {}}
                 iconPosition="left"
                 className="flex-1 !border !border-[#E3E6F0]"
                 title="Wallet"
