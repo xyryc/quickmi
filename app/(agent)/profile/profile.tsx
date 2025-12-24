@@ -173,7 +173,9 @@ const Profile = () => {
             </TouchableOpacity>
 
             <TouchableOpacity
-              // onPress={() => router.push("/(user)/profile/settings/settings")}
+              onPress={() =>
+                router.push("/(agent)/profile/settings/support-requests")
+              }
               className="flex-row items-center gap-2 py-3"
             >
               <MaterialIcons name="support-agent" size={20} color="#4D4D4D" />
@@ -183,7 +185,7 @@ const Profile = () => {
             </TouchableOpacity>
 
             <TouchableOpacity
-              // onPress={() => router.push("/(user)/profile/settings/settings")}
+              onPress={() => router.push("/(agent)/profile/settings/settings")}
               className="flex-row items-center gap-2 py-3"
             >
               <Ionicons name="settings-outline" size={20} color="#4D4D4D" />
