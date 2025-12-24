@@ -1,3 +1,4 @@
+import { getUserRole, setAuthCompleted } from "@/utils/storage";
 import { LinearGradient } from "expo-linear-gradient";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import React, { useEffect, useState } from "react";
@@ -30,9 +31,23 @@ const VerifyCode = () => {
 
   useEffect(() => {
     if (value.length === CELL_COUNT) {
-      router.push("/(user)/home");
+      handleVerifySuccess();
     }
   }, [value]);
+
+  const handleVerifySuccess = async () => {
+    await setAuthCompleted();
+
+    // Get user's selected role
+    const role = await getUserRole();
+
+    // Navigate based on role
+    if (role === "agent") {
+      router.replace("/(agent-verification)");
+    } else {
+      router.replace("/(user)/home");
+    }
+  };
 
   return (
     <SafeAreaView className="border flex-1" edges={["left", "right", "bottom"]}>

@@ -12,12 +12,23 @@ const History = () => {
   const router = useRouter();
   const [searchQuery, setSearchQuery] = useState("");
   const [activeTab, setActiveTab] = useState("completed");
+  const parcelId = "QM-343";
 
   const tabs = [
     { id: "completed", label: "Completed", icon: "checkmark-circle" },
     { id: "ongoing", label: "Ongoing", icon: "bicycle" },
     { id: "cancelled", label: "Cancelled", icon: "ban-outline" },
   ];
+
+  const handleNavigation = (parcelId: string) => {
+    if (activeTab === "completed") {
+      router.push(`/history/completed/${parcelId}`);
+    } else if (activeTab === "ongoing") {
+      router.push(`/history/ongoing/${parcelId}`);
+    } else if (activeTab === "cancelled") {
+      router.push(`/history/cancelled/${parcelId}`);
+    }
+  };
 
   return (
     <SafeAreaView className="flex-1" edges={["top", "left", "right"]}>
@@ -50,15 +61,15 @@ const History = () => {
 
         {/* history cards */}
         <ScrollView className="mx-5" showsVerticalScrollIndicator={false}>
-          <HistoryCard onPress={() => router.push("/history/1")} />
+          <HistoryCard onPress={() => handleNavigation(parcelId)} />
 
-          <HistoryCard onPress={() => router.push("/history/1")} />
+          <HistoryCard onPress={() => handleNavigation(parcelId)} />
 
-          <HistoryCard onPress={() => router.push("/history/1")} />
+          <HistoryCard onPress={() => handleNavigation(parcelId)} />
 
-          <HistoryCard onPress={() => router.push("/history/1")} />
+          <HistoryCard onPress={() => handleNavigation(parcelId)} />
 
-          <HistoryCard onPress={() => router.push("/history/1")} />
+          <HistoryCard onPress={() => handleNavigation(parcelId)} />
         </ScrollView>
       </LinearGradient>
     </SafeAreaView>

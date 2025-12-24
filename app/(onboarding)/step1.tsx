@@ -1,4 +1,5 @@
 import ButtonPrimary from "@/components/ButtonPrimary";
+import { setHasCompletedOnboarding } from "@/utils/storage";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import { Image } from "expo-image";
@@ -16,6 +17,11 @@ import { SafeAreaView } from "react-native-safe-area-context";
 
 const Step1 = () => {
   const router = useRouter();
+
+  const handleSkip = async () => {
+    await setHasCompletedOnboarding();
+    router.replace("/(auth)/signup");
+  };
 
   return (
     <SafeAreaView className="border flex-1" edges={["left", "right", "bottom"]}>
@@ -70,7 +76,7 @@ const Step1 = () => {
             />
 
             <TouchableOpacity
-              onPress={() => router.push("/(auth)/signup")}
+              onPress={handleSkip}
               className="flex-row items-center justify-center py-3"
             >
               <Text className="font-sf-pro-medium">Skip</Text>
