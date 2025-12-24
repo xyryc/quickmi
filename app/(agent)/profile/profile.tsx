@@ -149,7 +149,7 @@ const Profile = () => {
             </TouchableOpacity>
 
             <TouchableOpacity
-              onPress={() => router.push("/(user)/profile/settings/settings")}
+              onPress={() => router.push("/(agent)/profile/wallet/wallet")}
               className="flex-row items-center gap-2 py-3"
             >
               <Ionicons name="wallet-outline" size={20} color="#4D4D4D" />
