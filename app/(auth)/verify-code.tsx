@@ -43,7 +43,7 @@ const VerifyCode = () => {
 
     // Navigate based on role
     if (role === "agent") {
-      router.replace("/(agent)");
+      router.replace("/(agent-verification)");
     } else {
       router.replace("/(user)/home");
     }
