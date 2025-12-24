@@ -42,11 +42,11 @@ const VerifyCode = () => {
     const role = await getUserRole();
 
     // Navigate based on role
-    if (role === "agent") {
-      router.replace("/(agent-verification)");
-    } else {
-      router.replace("/(user)/home");
-    }
+    // if (role === "agent") {
+    //   router.replace("/(agent-verification)");
+    // } else {
+    //   router.replace("/(user)/home");
+    // }
   };
 
   return (

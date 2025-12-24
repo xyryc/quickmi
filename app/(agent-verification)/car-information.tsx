@@ -15,7 +15,7 @@ import {
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-const NationalId = () => {
+const CarInformation = () => {
   return (
     <SafeAreaView className="flex-1" edges={["top", "left", "right"]}>
       <StatusBar backgroundColor="#D3E6FF" barStyle="dark-content" />
@@ -25,7 +25,7 @@ const NationalId = () => {
         locations={[0, 0.4]}
         style={{ flex: 1 }}
       >
-        <ScreenHeader title="National ID" />
+        <ScreenHeader title="Car Information" />
 
         <KeyboardAvoidingView
           style={{ flex: 1 }}
@@ -38,15 +38,27 @@ const NationalId = () => {
             showsVerticalScrollIndicator={false}
             contentContainerStyle={{ paddingBottom: 120 }}
           >
-            <Text className="mt-3.5  font-sf-pro-medium">National ID No</Text>
+            <Text className="mt-3.5  font-sf-pro-medium">Car Name</Text>
             <TextInput
               className="mt-2 p-4 border border-[#E3E6F0] rounded-xl bg-white"
-              placeholder="3264 35465 341654 "
+              placeholder="Enter car name"
+            />
+
+            <Text className="mt-5  font-sf-pro-medium">Car Model</Text>
+            <TextInput
+              className="mt-2 p-4 border border-[#E3E6F0] rounded-xl bg-white"
+              placeholder="Enter car model"
+            />
+
+            <Text className="mt-5  font-sf-pro-medium">Number plate No</Text>
+            <TextInput
+              className="mt-2 p-4 border border-[#E3E6F0] rounded-xl bg-white"
+              placeholder="Enter number plate no"
             />
 
             {/* Upload car registration picture */}
             <Text className="mt-8 text-base font-sf-pro-medium text-center">
-              Upload your National ID picture (Front)
+              Upload your car registration picture
             </Text>
             <View
               style={{
@@ -66,7 +78,7 @@ const NationalId = () => {
 
             {/* Upload car registration picture */}
             <Text className="mt-8 text-base font-sf-pro-medium text-center">
-              Upload your National ID picture (Back)
+              Upload your Car number plate picture
             </Text>
             <View
               style={{
@@ -86,7 +98,7 @@ const NationalId = () => {
           </ScrollView>
 
           {/* bottom button */}
-          <View className="px-5 pb-32">
+          <View className="px-5 mb-14">
             <ButtonPrimary
               onPress={() => router.push("/(agent-verification)")}
               title="Submit"
@@ -98,4 +110,4 @@ const NationalId = () => {
   );
 };
 
-export default NationalId;
+export default CarInformation;

@@ -10,12 +10,11 @@ import {
   ScrollView,
   StatusBar,
   Text,
-  TextInput,
   View,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-const NationalId = () => {
+const UploadPicture = () => {
   return (
     <SafeAreaView className="flex-1" edges={["top", "left", "right"]}>
       <StatusBar backgroundColor="#D3E6FF" barStyle="dark-content" />
@@ -25,7 +24,7 @@ const NationalId = () => {
         locations={[0, 0.4]}
         style={{ flex: 1 }}
       >
-        <ScreenHeader title="National ID" />
+        <ScreenHeader title="Upload your picture" />
 
         <KeyboardAvoidingView
           style={{ flex: 1 }}
@@ -38,35 +37,9 @@ const NationalId = () => {
             showsVerticalScrollIndicator={false}
             contentContainerStyle={{ paddingBottom: 120 }}
           >
-            <Text className="mt-3.5  font-sf-pro-medium">National ID No</Text>
-            <TextInput
-              className="mt-2 p-4 border border-[#E3E6F0] rounded-xl bg-white"
-              placeholder="3264 35465 341654 "
-            />
-
             {/* Upload car registration picture */}
-            <Text className="mt-8 text-base font-sf-pro-medium text-center">
-              Upload your National ID picture (Front)
-            </Text>
-            <View
-              style={{
-                borderStyle: "dashed",
-                borderWidth: 1,
-                borderColor: "#000000",
-                justifyContent: "center",
-                alignItems: "center",
-              }}
-              className="mt-5 p-4 h-36 border border-[#000000] rounded-xl bg-white"
-            >
-              <Entypo name="camera" size={40} color="black" />
-              <Text className="mt-3 text-[#1D242D] text-xl font-sf-pro-regular">
-                Upload
-              </Text>
-            </View>
-
-            {/* Upload car registration picture */}
-            <Text className="mt-8 text-base font-sf-pro-medium text-center">
-              Upload your National ID picture (Back)
+            <Text className="mt-8 text-base font-sf-pro-medium ">
+              Upload your picture
             </Text>
             <View
               style={{
@@ -86,7 +59,7 @@ const NationalId = () => {
           </ScrollView>
 
           {/* bottom button */}
-          <View className="px-5 pb-32">
+          <View className="px-5 pb-16">
             <ButtonPrimary
               onPress={() => router.push("/(agent-verification)")}
               title="Submit"
@@ -98,4 +71,4 @@ const NationalId = () => {
   );
 };
 
-export default NationalId;
+export default UploadPicture;

@@ -52,8 +52,8 @@ export default function Index() {
 
   // Step 4: Navigate based on role
   if (userRole === "agent") {
-    return <Redirect href="/(agent)" />;
+    return <Redirect href="/(agent-verification)" />;
   }
 
-  return <Redirect href="/(user)/home" />;
+  // return <Redirect href="/(user)/home" />;
 }
