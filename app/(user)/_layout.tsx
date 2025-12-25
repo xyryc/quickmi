@@ -96,6 +96,7 @@ export default function UserLayout() {
       />
 
       {/* nested screens */}
+
       <Tabs.Screen
         name="history/ongoing/[id]"
         options={{
@@ -233,9 +234,18 @@ export default function UserLayout() {
 
       {/* instant delivery */}
       <Tabs.Screen
+        name="instant-delivery/location-picker"
+        options={{
+          href: null,
+          tabBarStyle: { display: "none" },
+        }}
+      />
+
+      <Tabs.Screen
         name="instant-delivery/select-location"
         options={{
           href: null,
+          tabBarStyle: { display: "none" },
         }}
       />
       <Tabs.Screen

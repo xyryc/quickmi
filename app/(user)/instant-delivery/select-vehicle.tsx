@@ -3,7 +3,7 @@ import RideCard from "@/components/RideCard";
 import { FontAwesome6, Ionicons, MaterialIcons } from "@expo/vector-icons";
 import BottomSheet, { BottomSheetScrollView } from "@gorhom/bottom-sheet";
 import { useRouter } from "expo-router";
-import React, { useMemo, useRef } from "react";
+import React, { useMemo, useRef, useState } from "react";
 import { Text, TouchableOpacity, View } from "react-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import MapView, { Marker, Polyline, PROVIDER_GOOGLE } from "react-native-maps";
@@ -14,6 +14,7 @@ const SelectVehicle = () => {
   const insets = useSafeAreaInsets();
   const mapRef = useRef<MapView>(null);
 
+  // part 1
   // Sample data - replace with actual data from params
   const pickupLocation = {
     latitude: 23.7808,
@@ -32,6 +33,36 @@ const SelectVehicle = () => {
 
   // Define snap points: 20% and 80% of screen
   const snapPoints = useMemo(() => ["70%"], []);
+
+  // part 2
+  const vehicles = [
+    {
+      id: "bike-1",
+      type: "bike",
+      name: "Bike",
+      price: "$100",
+      time: "10 min away",
+    },
+    {
+      id: "car-1",
+      type: "car",
+      name: "Car",
+      price: "$200",
+      time: "5 min away",
+    },
+    {
+      id: "van-1",
+      type: "van",
+      name: "Van",
+      price: "$300",
+      time: "15 min away",
+    },
+  ];
+  const [selectedVehicle, setSelectedVehicle] = useState<string | null>(null);
+
+  const handleVehicleSelect = (vehicleId: string) => {
+    setSelectedVehicle(vehicleId);
+  };
 
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
@@ -118,14 +149,14 @@ const SelectVehicle = () => {
               style={{ flexGrow: 0, flexShrink: 1 }}
               showsVerticalScrollIndicator={false}
             >
-              <RideCard className="mb-4" rideType="bike" />
-
-              <RideCard className="mb-4" rideType="car" />
-
-              <RideCard className="mb-4" rideType="van" />
-              <RideCard className="mb-4" rideType="van" />
-
-              <RideCard className="mb-4" rideType="van" />
+              {vehicles.map((vehicle) => (
+                <RideCard
+                  key={vehicle.id}
+                  className="mb-4"
+                  rideType={vehicle.type}
+                  onPress={() => handleVehicleSelect(vehicle.id)}
+                />
+              ))}
             </BottomSheetScrollView>
 
             <View className="border-t border-gray-200 " />
