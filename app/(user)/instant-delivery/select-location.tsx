@@ -1,17 +1,23 @@
 import SearchBar from "@/components/Searchbar";
+import { useRouter } from "expo-router";
 import React from "react";
 import { Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 const SelectLocation = () => {
+  const router = useRouter();
+
   return (
     <SafeAreaView>
       <View className="mx-5 my-5">
         <Text className="font-sf-pro-medium text-lg mb-4">Select Location</Text>
 
-        <View className="mb-3">
+        <TouchableOpacity
+          onPress={() => router.push("/instant-delivery/select-vehicle")}
+          className="mb-3"
+        >
           <SearchBar placeholder="Search Pickup" />
-        </View>
+        </TouchableOpacity>
 
         <SearchBar placeholder="Search Drop Off" />
 
