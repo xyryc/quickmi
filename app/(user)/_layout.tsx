@@ -15,7 +15,7 @@ export default function UserLayout() {
         headerShown: false,
         tabBarStyle: {
           backgroundColor: "transparent",
-          height: 80 + insets.bottom,
+          height: 65 + insets.bottom,
           borderWidth: 0.1,
           // borderTopWidth: 0.7,
           borderColor: "#005FDCE5",
@@ -236,6 +236,13 @@ export default function UserLayout() {
         name="instant-delivery/select-location"
         options={{
           href: null,
+        }}
+      />
+      <Tabs.Screen
+        name="instant-delivery/select-vehicle"
+        options={{
+          href: null,
+          tabBarStyle: { display: "none" },
         }}
       />
     </Tabs>
