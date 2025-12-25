@@ -1,6 +1,11 @@
-import { Feather } from "@expo/vector-icons";
+import { Feather, Ionicons } from "@expo/vector-icons";
 import React from "react";
-import { TextInput, TextInputProps, View } from "react-native";
+import {
+  TextInput,
+  TextInputProps,
+  TouchableOpacity,
+  View,
+} from "react-native";
 
 interface SearchBarProps extends TextInputProps {
   placeholder?: string;
@@ -10,6 +15,8 @@ interface SearchBarProps extends TextInputProps {
   iconColor?: string;
   containerClassName?: string;
   inputClassName?: string;
+  showLocationPicker?: boolean;
+  locationPickerPath?: any;
 }
 
 export default function SearchBar({
@@ -20,6 +27,8 @@ export default function SearchBar({
   iconColor = "#A2A2A2",
   containerClassName,
   inputClassName,
+  showLocationPicker,
+  locationPickerPath,
   ...rest
 }: SearchBarProps) {
   return (
@@ -36,6 +45,12 @@ export default function SearchBar({
         onChangeText={onChangeText}
         {...rest}
       />
+
+      {showLocationPicker && (
+        <TouchableOpacity onPress={locationPickerPath}>
+          <Ionicons name="location" size={24} color="#0F73F7" />
+        </TouchableOpacity>
+      )}
     </View>
   );
 }

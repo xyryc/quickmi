@@ -2,7 +2,7 @@ import { Image } from "expo-image";
 import React from "react";
 import { Text, TouchableOpacity, View } from "react-native";
 
-const RideCard = ({ className, rideType }) => {
+const RideCard = ({ className, rideType, onPress }) => {
   const getVehicleImage = () => {
     switch (rideType) {
       case "bike":
@@ -18,6 +18,7 @@ const RideCard = ({ className, rideType }) => {
 
   return (
     <TouchableOpacity
+      onPress={onPress}
       className={`border border-gray-200 rounded-xl px-2 py-3 flex-row items-center gap-4 ${className}`}
     >
       <Image
