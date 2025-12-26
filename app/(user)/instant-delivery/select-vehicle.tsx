@@ -1,20 +1,32 @@
-import ButtonPrimary from "@/components/ButtonPrimary";
-import RideCard from "@/components/RideCard";
+import AcceptDeclineOffer from "@/components/AcceptDeclineOffer";
+import ArrivingDetails from "@/components/ArrivingDetails";
+import OfferPrice from "@/components/OfferPrice";
+import ReceiverDetails from "@/components/ReceiverDetails";
+import SelectRide from "@/components/SelectRide";
+import WaitForDriver from "@/components/WaitForDriver";
 import { FontAwesome6, Ionicons, MaterialIcons } from "@expo/vector-icons";
-import BottomSheet, { BottomSheetScrollView } from "@gorhom/bottom-sheet";
+import BottomSheet from "@gorhom/bottom-sheet";
 import { useRouter } from "expo-router";
 import React, { useMemo, useRef, useState } from "react";
-import { Text, TouchableOpacity, View } from "react-native";
+import { TouchableOpacity, View } from "react-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import MapView, { Marker, Polyline, PROVIDER_GOOGLE } from "react-native-maps";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
+
+// Type definition for booking steps
+type BookingStep =
+  | "select-ride"
+  | "receiver-details"
+  | "offer-price"
+  | "wait-driver"
+  | "accept-decline"
+  | "arriving-details";
 
 const SelectVehicle = () => {
   const router = useRouter();
   const insets = useSafeAreaInsets();
   const mapRef = useRef<MapView>(null);
 
-  // part 1
   // Sample data - replace with actual data from params
   const pickupLocation = {
     latitude: 23.7808,
@@ -32,36 +44,164 @@ const SelectVehicle = () => {
   const bottomSheetRef = useRef<BottomSheet>(null);
 
   // Define snap points: 20% and 80% of screen
-  const snapPoints = useMemo(() => ["70%"], []);
+  const snapPoints = useMemo(() => ["60%"], []);
 
-  // part 2
+  // step flow
   const vehicles = [
     {
       id: "bike-1",
-      type: "bike",
+      type: "bike" as const,
       name: "Bike",
       price: "$100",
       time: "10 min away",
+      description: "Affordable delivery for quick trips",
     },
     {
       id: "car-1",
-      type: "car",
+      type: "car" as const,
       name: "Car",
       price: "$200",
       time: "5 min away",
+      description: "Comfortable delivery for medium packages",
     },
     {
       id: "van-1",
-      type: "van",
+      type: "van" as const,
       name: "Van",
       price: "$300",
       time: "15 min away",
+      description: "Spacious delivery for large items",
+    },
+    {
+      id: "bike-2",
+      type: "bike" as const,
+      name: "Bike",
+      price: "$100",
+      time: "10 min away",
+      description: "Affordable delivery for quick trips",
+    },
+    {
+      id: "car-2",
+      type: "car" as const,
+      name: "Car",
+      price: "$200",
+      time: "5 min away",
+      description: "Comfortable delivery for medium packages",
+    },
+    {
+      id: "van-2",
+      type: "van" as const,
+      name: "Van",
+      price: "$300",
+      time: "15 min away",
+      description: "Spacious delivery for large items",
     },
   ];
-  const [selectedVehicle, setSelectedVehicle] = useState<string | null>(null);
 
+  const driverOffer = {
+    driverId: "driver-123",
+    driverName: "John Doe",
+    driverPhoto: "https://i.pravatar.cc/150?img=33",
+    rating: 4.8,
+    phoneNumber: "+1234567890",
+    vehicleType: "Toyota Corolla",
+    vehicleNumber: "ABC-1234",
+    vehicleColor: "Silver",
+    price: "$150",
+    estimatedTime: "5 mins",
+    currentLocation: "500m away from pickup point",
+    estimatedArrival: "5 mins", // Added for ArrivingDetails
+  };
+
+  const [currentStep, setCurrentStep] = useState("select-ride");
+  const [selectedVehicle, setSelectedVehicle] = useState<string | null>(null);
+  const [receiverDetails, setReceiverDetails] = useState({
+    name: "",
+    phone: "",
+    address: "",
+  });
+  const [offeredPrice, setOfferedPrice] = useState<string>("$100");
+
+  const selectedVehicleData = vehicles.find((v) => v.id === selectedVehicle);
+  const suggestedPrice = selectedVehicleData?.price || "$100";
+
+  // step 1
+  // Called when user taps on a ride card
   const handleVehicleSelect = (vehicleId: string) => {
     setSelectedVehicle(vehicleId);
+  };
+
+  // Called when user clicks "Choose Car" button
+  const handleSelectRideNext = () => {
+    if (selectedVehicle) {
+      setCurrentStep("receiver-details");
+    }
+  };
+
+  // step 2
+  // Called when user clicks "Confirm Receiver" button
+  const handleReceiverDetailsNext = () => {
+    setCurrentStep("offer-price");
+  };
+
+  // Called when user clicks "Skip" button
+  const handleReceiverDetailsSkip = () => {
+    setCurrentStep("offer-price");
+  };
+
+  // Called when user clicks back arrow
+  const handleReceiverDetailsBack = () => {
+    setCurrentStep("select-ride");
+  };
+
+  // step 3
+  // Called when user clicks "Submit Offer" button
+  // Receives the price user entered/selected
+  const handleOfferPriceNext = (price: string) => {
+    setOfferedPrice(price);
+    setCurrentStep("wait-driver");
+  };
+
+  // Called when user clicks back arrow
+  const handleOfferPriceBack = () => {
+    setCurrentStep("receiver-details");
+  };
+
+  // step 4
+  // Called automatically when driver accepts (simulated after 5 seconds)
+  const handleDriverAccepted = () => {
+    setCurrentStep("accept-decline");
+  };
+
+  // Called when user clicks "Cancel Request" button
+  const handleCancelSearch = () => {
+    setCurrentStep("offer-price");
+  };
+
+  // step 5
+  // Called when user clicks "Accept Offer" button
+  const handleAcceptOffer = () => {
+    setCurrentStep("arriving-details");
+  };
+
+  // Called when user clicks "Decline" button
+  const handleDeclineOffer = () => {
+    setCurrentStep("wait-driver");
+  };
+
+  // step 6
+  // Called when user clicks the phone call button
+  const handleCallDriver = () => {
+    console.log("Calling driver...");
+    // Phone call is handled inside the component
+  };
+
+  // Called when user clicks "Cancel Ride" button
+  const handleCancelRide = () => {
+    // Reset to initial state
+    setCurrentStep("select-ride");
+    setSelectedVehicle(null);
+    setReceiverDetails({ name: "", phone: "", address: "" });
   };
 
   return (
@@ -137,48 +277,67 @@ const SelectVehicle = () => {
           enableContentPanningGesture={false}
         >
           {/* Scrollable content section */}
-
           <View className="px-5 flex-1">
-            <Text className="text-xl font-sf-pro-medium text-center mb-4">
-              Rider Details
-            </Text>
+            {/* Step 1: Select Ride */}
+            {currentStep === "select-ride" && (
+              <SelectRide
+                vehicles={vehicles}
+                selectedVehicle={selectedVehicle}
+                onVehicleSelect={handleVehicleSelect}
+                onNext={handleSelectRideNext}
+                // bottomInset={insets.bottom}
+              />
+            )}
 
-            {/* Scrollable Ride List */}
-            <BottomSheetScrollView
-              contentContainerStyle={{ paddingBottom: 100 }}
-              style={{ flexGrow: 0, flexShrink: 1 }}
-              showsVerticalScrollIndicator={false}
-            >
-              {vehicles.map((vehicle) => (
-                <RideCard
-                  key={vehicle.id}
-                  className="mb-4"
-                  rideType={vehicle.type}
-                  onPress={() => handleVehicleSelect(vehicle.id)}
-                />
-              ))}
-            </BottomSheetScrollView>
+            {/* Step 2: Receiver Details */}
+            {currentStep === "receiver-details" && (
+              <ReceiverDetails
+                receiverDetails={receiverDetails}
+                onDetailsChange={setReceiverDetails}
+                onNext={handleReceiverDetailsNext}
+                onSkip={handleReceiverDetailsSkip}
+                onBack={handleReceiverDetailsBack}
+              />
+            )}
 
-            <View className="border-t border-gray-200 " />
+            {/* Step 3: Offer Price */}
+            {currentStep === "offer-price" && (
+              <OfferPrice
+                suggestedPrice={suggestedPrice}
+                onNext={handleOfferPriceNext}
+                onBack={handleOfferPriceBack}
+                bottomInset={insets.bottom}
+              />
+            )}
 
-            {/* choose car, promo section */}
-            <View
-              style={{
-                marginBottom: insets.bottom + 20,
-              }}
-            >
-              <TouchableOpacity className="flex-row justify-between items-center px-2 py-3 mb-2.5">
-                <Text className="font-sf-pro-regular text-base">Add Promo</Text>
+            {/* Step 4: Wait for Driver */}
+            {currentStep === "wait-driver" && (
+              <WaitForDriver
+                onDriverAccepted={handleDriverAccepted}
+                onCancel={handleCancelSearch}
+                bottomInset={insets.bottom}
+              />
+            )}
 
-                <MaterialIcons
-                  name="keyboard-arrow-right"
-                  size={24}
-                  color="black"
-                />
-              </TouchableOpacity>
+            {/* Step 5: Accept/Decline Offer */}
+            {currentStep === "accept-decline" && (
+              <AcceptDeclineOffer
+                driverOffer={driverOffer}
+                onAccept={handleAcceptOffer}
+                onDecline={handleDeclineOffer}
+                bottomInset={insets.bottom}
+              />
+            )}
 
-              <ButtonPrimary title="Choose Car" />
-            </View>
+            {/* Step 6: Arriving Details */}
+            {currentStep === "arriving-details" && (
+              <ArrivingDetails
+                driverDetails={driverOffer}
+                onCallDriver={handleCallDriver}
+                onCancelRide={handleCancelRide}
+                bottomInset={insets.bottom}
+              />
+            )}
           </View>
         </BottomSheet>
       </View>
