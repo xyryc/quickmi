@@ -3,7 +3,7 @@ import React from "react";
 import { Text, View } from "react-native";
 import ButtonSecondary from "./ButtonSecondary";
 
-const WalletCard = () => {
+const WalletCard = ({ handleDeosit }: any) => {
   return (
     <View className=" mt-2.5">
       {/* card image */}
@@ -25,7 +25,11 @@ const WalletCard = () => {
             </View>
             <View>
               {/* buttons */}
-              <ButtonSecondary title={"Deposits"} className={"px-8"} />
+              <ButtonSecondary
+                title={"Deposits"}
+                className={"px-8"}
+                onPress={handleDeosit}
+              />
               <ButtonSecondary title={"Cash Out"} className={"px-8 mt-2"} />
             </View>
           </View>
