@@ -6,7 +6,7 @@ const ButtonSecondary = ({ className, onPress, title, icon, iconPosition }) => {
     <TouchableOpacity
       onPress={onPress}
       className={`${iconPosition === "left" ? "flex-row-reverse" : "flex-row"}
-                    ${className} flex-row items-center justify-center gap-2 bg-white border-2 border-custom-blue-500 py-3 rounded-2xl`}
+                    ${className} flex-row items-center justify-center gap-2 bg-white border-2 border-blue-500 py-2 rounded-2xl`}
     >
       <Text className="font-sf-pro-semibold text-black">{title}</Text>
       {icon}

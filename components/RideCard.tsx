@@ -1,8 +1,9 @@
+import { MaterialIcons } from "@expo/vector-icons";
 import { Image } from "expo-image";
 import React from "react";
 import { Text, TouchableOpacity, View } from "react-native";
 
-const RideCard = ({ className, rideType, onPress }) => {
+const RideCard = ({ className, rideType, vehicle, isSelected, onPress }) => {
   const getVehicleImage = () => {
     switch (rideType) {
       case "bike":
@@ -19,7 +20,9 @@ const RideCard = ({ className, rideType, onPress }) => {
   return (
     <TouchableOpacity
       onPress={onPress}
-      className={`border border-gray-200 rounded-xl px-2 py-3 flex-row items-center gap-4 ${className}`}
+      className={`border rounded-xl px-2 py-3 flex-row items-center gap-4 ${
+        isSelected ? "border-blue-500 bg-blue-50" : "border-gray-200"
+      } ${className}`}
     >
       <Image
         source={getVehicleImage()}
@@ -32,21 +35,32 @@ const RideCard = ({ className, rideType, onPress }) => {
 
       <View className="flex-1">
         <View className="flex-row justify-between mb-1">
-          <Text className="text-sm font-sf-pro-medium">Bike</Text>
-          <Text className="text-sm font-sf-pro-medium">$100</Text>
+          <Text className="text-sm font-sf-pro-medium">
+            {vehicle?.name || "Bike"}
+          </Text>
+          <Text className="text-sm font-sf-pro-medium">
+            {vehicle?.price || "$100"}
+          </Text>
         </View>
 
         <View className="flex-row justify-between mb-1">
-          <Text className="text-xs font-sf-pro-regular">10 min away</Text>
+          <Text className="text-xs font-sf-pro-regular">
+            {vehicle?.time || "10 min away"}
+          </Text>
           <Text className="text-[9px] font-sf-pro-medium text-green-700">
             Offer your fare
           </Text>
         </View>
 
         <Text className="text-xs font-sf-pro-regular" numberOfLines={2}>
-          Affordable delivery for your daily commute
+          {vehicle?.description || "Affordable delivery for your daily commute"}
         </Text>
       </View>
+
+      {/* Selection Indicator */}
+      {isSelected && (
+        <MaterialIcons name="check-circle" size={24} color="#3B82F6" />
+      )}
     </TouchableOpacity>
   );
 };
