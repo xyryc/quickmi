@@ -1,23 +1,29 @@
 import ButtonPrimary from "@/components/ButtonPrimary";
-import { MaterialIcons } from "@expo/vector-icons";
-import { BottomSheetScrollView } from "@gorhom/bottom-sheet";
+import { Ionicons, MaterialIcons, SimpleLineIcons } from "@expo/vector-icons";
 import React, { useState } from "react";
-import { Text, TextInput, TouchableOpacity, View } from "react-native";
+import { Text, TouchableOpacity, View } from "react-native";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
+import ButtonSecondary from "./ButtonSecondary";
+import RideCard from "./RideCard";
 
 interface OfferPriceProps {
   suggestedPrice: string;
   onNext: (offeredPrice: string) => void;
   onBack: () => void;
-  bottomInset: number;
+  handleCancelRide;
 }
 
 const OfferPrice: React.FC<OfferPriceProps> = ({
+  selectedVehicleData,
   suggestedPrice,
   onNext,
   onBack,
-  bottomInset,
+  handleCancelRide,
 }) => {
   const [offeredPrice, setOfferedPrice] = useState(suggestedPrice);
+  const insets = useSafeAreaInsets();
+
+  // console.log("from offer price", selectedVehicleData);
 
   const handleQuickSelect = (adjustment: string) => {
     const basePrice = parseInt(suggestedPrice.replace("$", ""));
@@ -32,90 +38,90 @@ const OfferPrice: React.FC<OfferPriceProps> = ({
     setOfferedPrice(`$${newPrice}`);
   };
 
+  const handlePrice = (status) => {};
+
   return (
     <View className="flex-1">
-      <View className="flex-row items-center justify-between mb-4">
-        <TouchableOpacity onPress={onBack} className="p-2">
-          <MaterialIcons name="keyboard-arrow-left" size={24} color="black" />
-        </TouchableOpacity>
-        <Text className="text-xl font-sf-pro-medium">Offer Your Price</Text>
-        <View style={{ width: 40 }} />
-      </View>
-
-      <BottomSheetScrollView
-        contentContainerStyle={{ paddingBottom: 100 }}
-        showsVerticalScrollIndicator={false}
-      >
-        {/* Suggested Price */}
-        <View className="bg-blue-50 rounded-xl p-4 mb-4">
-          <Text className="text-sm font-sf-pro-regular text-gray-600 mb-1">
-            Suggested Price
-          </Text>
-          <Text className="text-2xl font-sf-pro-medium text-blue-600">
-            {suggestedPrice}
-          </Text>
+      <View>
+        <View className="flex-row items-center justify-between mb-4">
+          <TouchableOpacity onPress={onBack} className="p-2">
+            <MaterialIcons name="keyboard-arrow-left" size={24} color="black" />
+          </TouchableOpacity>
+          <Text className="text-xl font-sf-pro-medium">Offer Your Price</Text>
+          <View style={{ width: 40 }} />
         </View>
 
-        {/* Offer Price Input */}
-        <View className="mb-4">
-          <Text className="text-sm font-sf-pro-medium mb-2 text-gray-700">
-            Your Offer
-          </Text>
-          <View
-            className="flex-row items-center border border-gray-300 rounded-xl     
-  px-4 py-3"
-          >
-            <Text className="text-xl font-sf-pro-medium text-gray-600 mr-2">
-              $
+        {/* selected vehicle data */}
+        <RideCard vehicle={selectedVehicleData} />
+
+        {/* price calculator */}
+        <View className="flex-row items-center px-3 py-2 border border-[#E3E6F0] mt-2 rounded-lg mb-6">
+          <TouchableOpacity onPress={() => handlePrice("minus")}>
+            <SimpleLineIcons name="minus" size={24} color="black" />
+          </TouchableOpacity>
+
+          <View className="items-center flex-1">
+            <Text className="font-sf-pro-regular text-base">$150</Text>
+            <Text className="font-sf-pro-regular text-[10px]">
+              Recommended fare: $150
             </Text>
-            <TextInput
-              className="flex-1 font-sf-pro-regular text-base"
-              placeholder="Enter your offer"
-              value={offeredPrice.replace("$", "")}
-              onChangeText={(text) => setOfferedPrice(`$${text}`)}
-              keyboardType="numeric"
+          </View>
+
+          <TouchableOpacity onPress={() => handlePrice("minus")}>
+            <SimpleLineIcons name="plus" size={24} color="black" />
+          </TouchableOpacity>
+        </View>
+
+        {/* who will pay */}
+        <View className="flex-row items-center justify-between mb-2.5">
+          <Text className="text-base font-sf-pro-medium">Who will pay?</Text>
+
+          <View className="flex-row items-center gap-2 bg-[#9FC7FC40] p-1 rounded-xl">
+            <ButtonPrimary
+              title="Sender"
+              icon={
+                <Ionicons name="checkmark-circle" size={16} color="white" />
+              }
+              iconPosition="left"
+              className="px-3 !py-2"
+            />
+            <ButtonPrimary
+              title="Receiver"
+              // icon={<Ionicons name="checkmark-circle" size={16} color="white" />}
+              iconPosition="left"
+              className="px-3 !py-2 bg-[#e7f1fe]"
+              textClassName="!text-black"
             />
           </View>
         </View>
 
-        {/* Quick Price Options */}
-        <View className="mb-4">
-          <Text className="text-sm font-sf-pro-medium mb-2 text-gray-700">
-            Quick Select
-          </Text>
-          <View className="flex-row gap-2">
-            {["-$10", "-$5", "Suggested", "+$5", "+$10"].map((option) => (
-              <TouchableOpacity
-                key={option}
-                className="flex-1 border border-gray-300 rounded-lg py-2               
-  items-center"
-                onPress={() => handleQuickSelect(option)}
-              >
-                <Text className="text-xs font-sf-pro-medium">{option}</Text>
-              </TouchableOpacity>
-            ))}
-          </View>
-        </View>
+        <View className="border-t border-gray-200 " />
 
-        {/* Info Box */}
-        <View className="bg-yellow-50 border border-yellow-200 rounded-xl p-4">
-          <Text className="text-sm font-sf-pro-regular text-gray-700">
-            💡 Tip: Offering a competitive price increases your chances of
-            finding a driver quickly!
-          </Text>
-        </View>
-      </BottomSheetScrollView>
+        {/* Quick Price Options */}
+        <TouchableOpacity className="flex-row justify-between items-center px-2 py-3">
+          <Text className="font-sf-pro-regular text-base">Cash</Text>
+
+          <MaterialIcons name="keyboard-arrow-right" size={24} color="black" />
+        </TouchableOpacity>
+      </View>
 
       {/* Action Button */}
       <View
-        className="border-t border-gray-200 pt-4"
-        style={{
-          marginBottom: bottomInset + 20,
-        }}
+        className="flex-row items-center gap-2"
+        // style={{
+        //   marginBottom: insets.bottom,
+        // }}
       >
+        <ButtonSecondary
+          title="Cancel"
+          onPress={handleCancelRide}
+          className="w-[48%]"
+        />
+
         <ButtonPrimary
-          title="Submit Offer"
+          title="Confirm"
           onPress={() => onNext(offeredPrice)}
+          className="w-[48%]"
         />
       </View>
     </View>

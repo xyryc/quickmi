@@ -1,4 +1,3 @@
-import { MaterialIcons } from "@expo/vector-icons";
 import { Image } from "expo-image";
 import React from "react";
 import { Text, TouchableOpacity, View } from "react-native";
@@ -58,9 +57,9 @@ const RideCard = ({ className, rideType, vehicle, isSelected, onPress }) => {
       </View>
 
       {/* Selection Indicator */}
-      {isSelected && (
+      {/* {isSelected && (
         <MaterialIcons name="check-circle" size={24} color="#3B82F6" />
-      )}
+      )} */}
     </TouchableOpacity>
   );
 };
