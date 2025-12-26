@@ -1,7 +1,6 @@
-import { MaterialIcons } from "@expo/vector-icons";
-import { BottomSheetScrollView } from "@gorhom/bottom-sheet";
+import { MaterialCommunityIcons, Octicons } from "@expo/vector-icons";
 import React, { useEffect, useState } from "react";
-import { ActivityIndicator, Text, TouchableOpacity, View } from "react-native";
+import { Text, TouchableOpacity, View } from "react-native";
 
 interface WaitForDriverProps {
   onDriverAccepted: () => void;
@@ -24,7 +23,7 @@ const WaitForDriver: React.FC<WaitForDriverProps> = ({
     // Simulate driver accepting after 5 seconds (for demo)
     const timeout = setTimeout(() => {
       onDriverAccepted();
-    }, 5000);
+    }, 500000);
 
     return () => {
       clearInterval(interval);
@@ -39,65 +38,103 @@ const WaitForDriver: React.FC<WaitForDriverProps> = ({
   };
 
   return (
-    <>
+    <View className="flex-1">
       <Text className="text-xl font-sf-pro-medium text-center mb-4">
-        Finding Driver...
+        Waiting for a Driver...
       </Text>
 
-      <BottomSheetScrollView
-        contentContainerStyle={{ paddingBottom: 100 }}
-        showsVerticalScrollIndicator={false}
-      >
-        {/* Loading Animation */}
-        <View className="items-center justify-center py-8">
-          <ActivityIndicator size="large" color="#0F73F7" />
-          <Text className="text-base font-sf-pro-regular text-gray-600 mt-4">
-            Searching for available drivers...
-          </Text>
-          <Text className="text-sm font-sf-pro-regular text-gray-500 mt-2">
-            Time elapsed: {formatTime(timeWaiting)}
-          </Text>
+      <View className="items-center">
+        <View className="w-12 h-12 border border-[#0F73F724] rounded-full items-center justify-center">
+          <MaterialCommunityIcons
+            name="package-variant-closed-remove"
+            size={22}
+            color="#4D4D4D"
+          />
         </View>
 
-        {/* Status Cards */}
-        <View className="space-y-3">
-          <View className="bg-blue-50 rounded-xl p-4 flex-row items-start mb-3">
-            <MaterialIcons
-              name="check-circle"
-              size={24}
+        <TouchableOpacity onPress={onCancel} className="mt-2">
+          <Text className="font-sf-pro-semibold text-xs text-[#F34F4F]">
+            Cancel order
+          </Text>
+        </TouchableOpacity>
+      </View>
+
+      {/* receiver info */}
+      <View className="mt-2 border border-[#E3E6F0] rounded-xl p-4">
+        {/* 1st row */}
+        <View className="flex-row justify-between items-center mb-3.5">
+          <Text className="font-sf-pro-semibold text-base">#5R9G87R</Text>
+          <View className="flex-row items-center gap-1">
+            <Octicons name="dot-fill" size={6} color="#BABFC5" />
+            <Text className="text-gray-400 text-sm font-sf-pro-regular">
+              14 may 2023
+            </Text>
+          </View>
+        </View>
+
+        <View className="flex-row gap-2">
+          {/* left */}
+          <View>
+            <Octicons
+              className="mb-2"
+              name="location"
+              size={20}
               color="#0F73F7"
-              style={{ marginRight: 12 }}
             />
-            <View className="flex-1">
-              <Text className="text-sm font-sf-pro-medium mb-1">
-                Ride Request Sent
-              </Text>
-              <Text className="text-xs font-sf-pro-regular text-gray-600">
-                Your request has been sent to nearby drivers
-              </Text>
-            </View>
           </View>
 
-          <View className="bg-gray-50 rounded-xl p-4 flex-row items-start">
-            <ActivityIndicator
-              size="small"
-              color="#666"
-              style={{ marginRight: 12, marginTop: 2 }}
-            />
-            <View className="flex-1">
-              <Text className="text-sm font-sf-pro-medium mb-1">
-                Waiting for Response
-              </Text>
-              <Text className="text-xs font-sf-pro-regular text-gray-600">
-                Drivers are reviewing your offer
+          {/* right */}
+          <View className="flex-1">
+            {/* 1st row */}
+            <View className="flex items-start">
+              <Text className="font-sf-pro-semibold text-base">To</Text>
+              <Text className="font-sf-pro-regular text-blue-400 text-xs">
+                Receiver Details
               </Text>
             </View>
+
+            <Text className="text-sm font-sf-pro-regular mt-3">
+              2nd Floor 01, 25 Mao Tse Toung Blvd (245), Phnom Penh 12302,
+              Cambodia
+            </Text>
           </View>
         </View>
-      </BottomSheetScrollView>
+      </View>
+
+      {/* pricing info */}
+      <View className="p-4 border border-[#E3E6F0] mt-3.5 rounded-xl">
+        <View className="flex-row items-center justify-between mb-3">
+          <Text className="font-sf-pro-regular text-sm text-gray-400">
+            Suggested Price
+          </Text>
+
+          <Text className="text-lg font-sf-pro-medium">$150</Text>
+        </View>
+
+        <View className="flex-row items-center justify-between mb-3">
+          <Text className="font-sf-pro-regular text-sm text-gray-400">
+            Distance
+          </Text>
+
+          <Text className="text-lg font-sf-pro-medium">5.39 KM</Text>
+        </View>
+
+        <View className="flex-row items-center justify-between">
+          <Text className="font-sf-pro-regular text-sm text-gray-400">
+            Your offer price
+          </Text>
+
+          <View className="flex-row items-center">
+            <Text className="text-lg font-sf-pro-medium text-red-500 line-through">
+              $150
+            </Text>
+            <Text className="text-lg font-sf-pro-medium">$140</Text>
+          </View>
+        </View>
+      </View>
 
       {/* Cancel Button */}
-      <View
+      {/* <View
         className="border-t border-gray-200 pt-4"
         style={{
           marginBottom: bottomInset + 20,
@@ -111,8 +148,8 @@ const WaitForDriver: React.FC<WaitForDriverProps> = ({
             Cancel Request
           </Text>
         </TouchableOpacity>
-      </View>
-    </>
+      </View> */}
+    </View>
   );
 };
 

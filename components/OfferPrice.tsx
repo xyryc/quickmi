@@ -25,19 +25,6 @@ const OfferPrice: React.FC<OfferPriceProps> = ({
 
   // console.log("from offer price", selectedVehicleData);
 
-  const handleQuickSelect = (adjustment: string) => {
-    const basePrice = parseInt(suggestedPrice.replace("$", ""));
-    let newPrice = basePrice;
-
-    if (adjustment === "-$10") newPrice = basePrice - 10;
-    else if (adjustment === "-$5") newPrice = basePrice - 5;
-    else if (adjustment === "Suggested") newPrice = basePrice;
-    else if (adjustment === "+$5") newPrice = basePrice + 5;
-    else if (adjustment === "+$10") newPrice = basePrice + 10;
-
-    setOfferedPrice(`$${newPrice}`);
-  };
-
   const [price, setPrice] = useState(150);
   const handlePrice = (status) => {
     if (status === "plus") {
@@ -96,8 +83,8 @@ const OfferPrice: React.FC<OfferPriceProps> = ({
               title="Receiver"
               // icon={<Ionicons name="checkmark-circle" size={16} color="white" />}
               iconPosition="left"
-              className="px-3 !py-2 bg-[#e7f1fe]"
-              textClassName="!text-black"
+              className="px-3 !py-2 !bg-transparent"
+              textClassName="!text-gray-600"
             />
           </View>
         </View>
