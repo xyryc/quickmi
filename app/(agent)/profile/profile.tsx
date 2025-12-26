@@ -139,7 +139,7 @@ const Profile = () => {
             </TouchableOpacity>
 
             <TouchableOpacity
-              // onPress={() => router.push("/(user)/profile/settings/settings")}
+              onPress={() => router.push("/(agent)/profile/ride/ride")}
               className="flex-row items-center gap-2 py-3"
             >
               <AntDesign name="car" size={20} color="#4D4D4D" />

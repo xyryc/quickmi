@@ -3,7 +3,6 @@ import ScreenHeader from "@/components/ScreenHeader";
 import { AntDesign, FontAwesome6, MaterialIcons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
 import { router } from "expo-router";
-import React from "react";
 import {
   KeyboardAvoidingView,
   Platform,
@@ -149,7 +148,11 @@ const UploadDocument = () => {
               />
             </TouchableOpacity>
           </ScrollView>
-          <ButtonPrimary title={"Submit"} className={"mb-10 mx-5"} />
+          <ButtonPrimary
+            title={"Submit"}
+            className={"mb-10 mx-5"}
+            onPress={() => router.push("/(user)/home")}
+          />
         </KeyboardAvoidingView>
       </LinearGradient>
     </SafeAreaView>
