@@ -33,7 +33,7 @@ const Wallet = () => {
   const successSnapPoints = useMemo(() => ["45%"], []);
 
   //  Confirm deposit handler
-  const handleDeposit = useCallback(() => {
+  const handleWithdraw = useCallback(() => {
     console.log("Opening confirm deposit modal...");
     confirmModalRef.current?.present();
   }, []);
@@ -86,7 +86,7 @@ const Wallet = () => {
                 contentContainerStyle={{ paddingBottom: 120 }}
               >
                 {/* wallet card */}
-                <WalletCard handleDeosit={handleDeposit} />
+                <WalletCard handleWithdraw={handleWithdraw} />
 
                 {/* Payment method */}
                 <Text className="font-sf-pro-medium mt-4 text-base text-black">
@@ -173,7 +173,7 @@ const Wallet = () => {
             </KeyboardAvoidingView>
           </LinearGradient>
 
-          {/*  CONFIRM DEPOSIT MODAL */}
+          {/*  CONFIRM withdeow MODAL */}
           <BottomSheetModal
             ref={confirmModalRef}
             index={0}
@@ -218,7 +218,7 @@ const Wallet = () => {
             </BottomSheetScrollView>
           </BottomSheetModal>
 
-          {/*  SUCCESS DEPOSIT MODAL */}
+          {/*  SUCCESS withdeow MODAL */}
           <BottomSheetModal
             ref={successModalRef}
             index={0}
