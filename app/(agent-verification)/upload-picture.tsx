@@ -55,8 +55,8 @@ const UploadPicture = () => {
     const result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.Images,
       allowsEditing: true,
-      aspect: [4, 3],
-      quality: 0.8,
+      // aspect: [4, 3],
+      quality: 1,
     });
 
     if (!result.canceled && result.assets[0]) {
@@ -71,8 +71,8 @@ const UploadPicture = () => {
 
     const result = await ImagePicker.launchCameraAsync({
       allowsEditing: true,
-      aspect: [4, 3],
-      quality: 0.8,
+      // aspect: [4, 3],
+      quality: 1,
     });
 
     if (!result.canceled && result.assets[0]) {
@@ -153,7 +153,7 @@ const UploadPicture = () => {
                 borderWidth: 1,
                 borderColor: "#000000",
               }}
-              className="mt-5 p-4 h-36 rounded-xl bg-white overflow-hidden"
+              className="mt-5 h-36 rounded-xl bg-white overflow-hidden"
             >
               {selectedImage ? (
                 // Show selected image
@@ -184,7 +184,7 @@ const UploadPicture = () => {
             </TouchableOpacity>
 
             {/* Show file info if image is selected */}
-            {selectedImage && (
+            {/* {selectedImage && (
               <View className="mt-4 bg-green-50 p-3 rounded-lg border border-green-200">
                 <Text className="text-green-700 font-sf-pro-medium">
                   ✓ Picture uploaded successfully
@@ -193,7 +193,7 @@ const UploadPicture = () => {
                   Tap the image to change or remove
                 </Text>
               </View>
-            )}
+            )} */}
           </ScrollView>
 
           {/* bottom button */}
