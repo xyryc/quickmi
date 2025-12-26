@@ -1,7 +1,6 @@
 import ButtonPrimary from "@/components/ButtonPrimary";
 import ButtonSecondary from "@/components/ButtonSecondary";
-import { MaterialIcons } from "@expo/vector-icons";
-import { BottomSheetScrollView } from "@gorhom/bottom-sheet";
+import { Ionicons, MaterialCommunityIcons, Octicons } from "@expo/vector-icons";
 import { Image } from "expo-image";
 import React from "react";
 import { Text, View } from "react-native";
@@ -31,100 +30,111 @@ const AcceptDeclineOffer: React.FC<AcceptDeclineOfferProps> = ({
   bottomInset,
 }) => {
   return (
-    <>
+    <View className="flex-1">
       <Text className="text-xl font-sf-pro-medium text-center mb-4">
         Driver Found!
       </Text>
 
-      <BottomSheetScrollView
-        contentContainerStyle={{ paddingBottom: 100 }}
-        showsVerticalScrollIndicator={false}
-      >
-        {/* Driver Info Card */}
-        <View className="bg-white border border-gray-200 rounded-xl p-4 mb-4">
-          {/* Driver Profile */}
-          <View className="flex-row items-center mb-4">
-            <Image
-              source={driverOffer.driverPhoto}
-              style={{
-                width: 60,
-                height: 60,
-                borderRadius: 30,
-              }}
-              contentFit="cover"
-            />
-            <View className="flex-1 ml-3">
-              <Text className="text-lg font-sf-pro-medium">
-                {driverOffer.driverName}
-              </Text>
-              <View className="flex-row items-center mt-1">
-                <MaterialIcons name="star" size={16} color="#FFA500" />
-                <Text className="text-sm font-sf-pro-regular text-gray-600 ml-1">
-                  {driverOffer.rating} Rating
-                </Text>
-              </View>
-            </View>
-          </View>
+      {/* location */}
+      <View className="flex-row items-center gap-2 mt-1.5 mb-4">
+        <View className="flex-row items-center gap-1.5">
+          <Ionicons name="car-sport-outline" size={24} color="black" />
+          <Text className="text-xs font-sf-pro-medium text-gray-600">
+            Lamborghini Aventador
+          </Text>
+        </View>
+        <View className="bg-[#0F73F7] px-2 py-1 rounded-lg">
+          <Text className="font-sf-pro-semibold text-xs text-white">
+            SK 7776-41
+          </Text>
+        </View>
+      </View>
 
-          {/* Vehicle Info */}
-          <View className="border-t border-gray-200 pt-3">
-            <View className="flex-row justify-between mb-2">
-              <Text className="text-sm font-sf-pro-regular text-gray-600">
-                Vehicle Type
-              </Text>
-              <Text className="text-sm font-sf-pro-medium">
-                {driverOffer.vehicleType}
-              </Text>
-            </View>
-            <View className="flex-row justify-between mb-2">
-              <Text className="text-sm font-sf-pro-regular text-gray-600">
-                Vehicle Number
-              </Text>
-              <Text className="text-sm font-sf-pro-medium">
-                {driverOffer.vehicleNumber}
-              </Text>
-            </View>
-            <View className="flex-row justify-between mb-2">
-              <Text className="text-sm font-sf-pro-regular text-gray-600">
-                Estimated Arrival
-              </Text>
-              <Text className="text-sm font-sf-pro-medium">
-                {driverOffer.estimatedTime}
-              </Text>
+      {/* user info */}
+      <View className="flex-row justify-between items-center">
+        <View className="flex-row items-center gap-2">
+          <Image
+            source="https://media.licdn.com/dms/image/v2/D5603AQFMeZ7i9ybZgw/profile-displayphoto-shrink_200_200/B56ZS29wLQHwAY-/0/1738236429558?e=2147483647&v=beta&t=RTX-UGEWSzuEb-Gv2bqXqREzQX15FMKi0TK1HJBAKuE"
+            style={{
+              width: 62,
+              height: 62,
+              borderRadius: 99,
+            }}
+            contentFit="cover"
+          />
+
+          <View>
+            <Text className="text-lg font-sf-pro-medium text-gray-700">
+              Md Talath Un Nabi Anik
+            </Text>
+
+            <View className="flex-row items-center gap-1 mt-1.5">
+              <Octicons name="star-fill" size={16} color="#FFD700" />
+              <Text className="font-sf-pro-medium text-sm">4.5</Text>
             </View>
           </View>
         </View>
+      </View>
 
-        {/* Price Info */}
-        <View className="bg-green-50 border border-green-200 rounded-xl p-4 mb-4">
-          <Text className="text-sm font-sf-pro-regular text-gray-600 mb-1">
-            Agreed Price
+      {/* pricing info */}
+      <View className="p-4 border border-[#E3E6F0] my-3.5 rounded-xl">
+        <View className="flex-row items-center justify-between mb-3">
+          <Text className="font-sf-pro-regular text-sm text-gray-400">
+            Suggested Fare
           </Text>
-          <Text className="text-3xl font-sf-pro-medium text-green-600">
-            {driverOffer.price}
-          </Text>
+
+          <Text className="text-lg font-sf-pro-medium">$150</Text>
         </View>
 
-        {/* Info Message */}
-        <View className="bg-blue-50 border border-blue-200 rounded-xl p-4">
-          <Text className="text-sm font-sf-pro-regular text-gray-700">
-            ⏰ This offer will expire in 30 seconds. Please accept or decline
-            quickly!
+        <View className="flex-row items-center justify-between mb-3">
+          <Text className="font-sf-pro-regular text-sm text-gray-400">
+            Distance
           </Text>
+
+          <Text className="text-lg font-sf-pro-medium">5.39 KM</Text>
         </View>
-      </BottomSheetScrollView>
+
+        <View className="flex-row items-center justify-between">
+          <View className="flex-row items-center gap-2">
+            <Text className="font-sf-pro-regular text-sm text-gray-400">
+              Charge
+            </Text>
+            <Ionicons name="alert-circle" size={16} color="#0f73f7" />
+          </View>
+
+          <View className="flex-row items-center gap-1">
+            <Text className="text-lg font-sf-pro-medium text-red-500 line-through">
+              $150
+            </Text>
+            <Text className="text-lg font-sf-pro-medium">$140</Text>
+          </View>
+        </View>
+      </View>
 
       {/* Action Buttons */}
       <View
-        className="border-t border-gray-200 pt-4"
+        className="pt-4"
         style={{
           marginBottom: bottomInset + 20,
         }}
       >
         <ButtonPrimary title="Accept Offer" onPress={onAccept} />
-        <ButtonSecondary title="Decline" onPress={onDecline} className="mt-3" />
+
+        <ButtonSecondary
+          title="Decline"
+          onPress={onDecline}
+          className="mt-3"
+          icon={
+            <MaterialCommunityIcons
+              name="package-variant-closed-remove"
+              size={16}
+              color="#0F73F7"
+            />
+          }
+          iconPosition="left"
+        />
       </View>
-    </>
+    </View>
   );
 };
 

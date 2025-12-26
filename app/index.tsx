@@ -55,5 +55,5 @@ export default function Index() {
     return <Redirect href="/(agent-verification)" />;
   }
 
-  // return <Redirect href="/(user)/home" />;
+  return <Redirect href="/(user)/home" />;
 }

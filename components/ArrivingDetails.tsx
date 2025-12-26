@@ -1,8 +1,14 @@
-import { FontAwesome, MaterialIcons } from "@expo/vector-icons";
+import {
+  FontAwesome6,
+  Ionicons,
+  MaterialCommunityIcons,
+  Octicons,
+} from "@expo/vector-icons";
 import { BottomSheetScrollView } from "@gorhom/bottom-sheet";
 import { Image } from "expo-image";
 import React from "react";
 import { Linking, Text, TouchableOpacity, View } from "react-native";
+import ButtonPrimary from "./ButtonPrimary";
 
 interface DriverDetails {
   driverId: string;
@@ -37,150 +43,169 @@ const ArrivingDetails: React.FC<ArrivingDetailsProps> = ({
   };
 
   return (
-    <>
-      <Text className="text-xl font-sf-pro-medium text-center mb-4">
-        Driver is Arriving
-      </Text>
+    <View className="flex-1">
+      {/* time  */}
+      <View className="flex-row justify-between">
+        <Text className="text-lg font-sf-pro-medium">
+          Arriving in 7 minutes
+        </Text>
+        <FontAwesome6 name="location-dot" size={20} color="#0F73F7" />
+      </View>
 
-      <BottomSheetScrollView
-        contentContainerStyle={{ paddingBottom: 100 }}
-        showsVerticalScrollIndicator={false}
-      >
-        {/* Arrival Status */}
-        <View className="bg-green-50 border border-green-200 rounded-xl p-4 mb-4">
-          <Text className="text-2xl font-sf-pro-medium text-green-600 text-center">
-            {driverDetails.estimatedArrival}
-          </Text>
-          <Text
-            className="text-sm font-sf-pro-regular text-gray-600 text-center       
-  mt-1"
-          >
-            Estimated arrival time
+      {/* location */}
+      <View className="flex-row items-center gap-2 mt-1.5 mb-4">
+        <View className="flex-row items-center gap-1.5">
+          <Ionicons name="car-sport-outline" size={24} color="black" />
+          <Text className="text-xs font-sf-pro-medium text-gray-600">
+            Lamborghini Aventador
           </Text>
         </View>
+        <View className="bg-[#0F73F7] px-2 py-1 rounded-lg">
+          <Text className="font-sf-pro-semibold text-xs text-white">
+            SK 7776-41
+          </Text>
+        </View>
+      </View>
 
-        {/* Driver Card */}
-        <View className="bg-white border border-gray-200 rounded-xl p-4 mb-4">
-          {/* Driver Profile */}
-          <View className="flex-row items-center justify-between mb-4">
-            <View className="flex-row items-center flex-1">
+      {/* Scrollable content section */}
+      <BottomSheetScrollView
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={{ paddingBottom: 120 }}
+      >
+        <View>
+          {/* profile with message call */}
+          <View className="flex-row justify-between items-center">
+            <View className="flex-row items-center gap-2">
               <Image
-                source={driverDetails.driverPhoto}
+                source="https://media.licdn.com/dms/image/v2/D5603AQFMeZ7i9ybZgw/profile-displayphoto-shrink_200_200/B56ZS29wLQHwAY-/0/1738236429558?e=2147483647&v=beta&t=RTX-UGEWSzuEb-Gv2bqXqREzQX15FMKi0TK1HJBAKuE"
                 style={{
-                  width: 60,
-                  height: 60,
-                  borderRadius: 30,
+                  width: 62,
+                  height: 62,
+                  borderRadius: 99,
                 }}
                 contentFit="cover"
               />
-              <View className="flex-1 ml-3">
-                <Text className="text-lg font-sf-pro-medium">
-                  {driverDetails.driverName}
+
+              <View>
+                <Text className="text-lg font-sf-pro-medium text-gray-700">
+                  Md Talath Un Nabi Anik
                 </Text>
-                <View className="flex-row items-center mt-1">
-                  <MaterialIcons name="star" size={16} color="#FFA500" />
-                  <Text className="text-sm font-sf-pro-regular text-gray-600 ml-1">
-                    {driverDetails.rating}
-                  </Text>
+
+                <View className="flex-row items-center gap-1 mt-1.5">
+                  <Octicons name="star-fill" size={16} color="#FFD700" />
+                  <Text className="font-sf-pro-medium text-sm">4.5</Text>
                 </View>
               </View>
             </View>
 
-            {/* Call Button */}
-            <TouchableOpacity
-              onPress={handleCall}
-              className="bg-green-500 rounded-full w-12 h-12 items-center              
-  justify-center"
-            >
-              <FontAwesome name="phone" size={20} color="white" />
-            </TouchableOpacity>
+            <View className="flex-row items-center gap-3">
+              <View className="w-11 h-11 rounded-full items-center justify-center bg-[#CFE3FD42] border border-[#0F73F724]">
+                <MaterialCommunityIcons
+                  name="message-processing-outline"
+                  size={20}
+                  color="#4D4D4D"
+                />
+              </View>
+
+              <View className="w-11 h-11 rounded-full items-center justify-center bg-[#CFE3FD42] border border-[#0F73F724]">
+                <Ionicons name="call-outline" size={20} color="#4D4D4D" />
+              </View>
+            </View>
           </View>
 
-          {/* Vehicle Details */}
-          <View className="border-t border-gray-200 pt-3">
-            <View className="flex-row items-center mb-2">
-              <MaterialIcons name="directions-car" size={20} color="#666" />
-              <Text className="text-sm font-sf-pro-medium ml-2">
-                {driverDetails.vehicleType} • {driverDetails.vehicleColor}
+          {/* receiver details */}
+          <View className="border border-[#005FDC24] p-4 rounded-xl mt-3.5">
+            <View className="flex-row items-center gap-1 ">
+              <Text className="font-sf-pro-semibold text-base">#5R9G87R</Text>
+
+              <Octicons name="dot-fill" size={6} color="#BABFC5" />
+
+              <Text className="text-gray-400 text-sm font-sf-pro-regular">
+                14 may 2023
               </Text>
             </View>
-            <View className="flex-row items-center mb-2">
-              <MaterialIcons
-                name="confirmation-number"
-                size={20}
-                color="#666"
+
+            <View className="flex-row gap-2 mt-3.5 pr-4">
+              <Octicons name="location" size={24} color="#0F73F7" />
+
+              <View>
+                <Text className="text-base font-sf-pro-semibold">To</Text>
+                <Text className="font-sf-pro-regular text-xs text-blue-500">
+                  Receiver Details
+                </Text>
+
+                <Text className="font-sf-pro-regular text-sm mt-2">
+                  2nd Floor 01, 25 Mao Tse Toung Blvd (245), Phnom Penh 12302,
+                  Cambodia
+                </Text>
+              </View>
+            </View>
+          </View>
+
+          {/* distance and fair details */}
+          <View className="border border-[#005FDC24] mt-3.5 p-4 rounded-xl">
+            <View className="flex-row justify-between">
+              <Text className="text-sm font-sf-pro-regular text-gray-400">
+                Distance
+              </Text>
+
+              <View className="flex-row items-center gap-1">
+                <Text className="text-sm font-sf-pro-regular text-gray-400">
+                  Charge
+                </Text>
+                <Ionicons name="information-circle" size={14} color="#0F73F7" />
+              </View>
+            </View>
+
+            <View className="flex-row justify-between items-center mt-1">
+              <Text className="font-sf-pro-medium text-lg ">5.53 KM</Text>
+
+              <View className="flex-row items-center">
+                <Text className="font-sf-pro-medium text-sm text-red-500 line-through">
+                  $150
+                </Text>
+                <Text className="font-sf-pro-medium text-lg">$140</Text>
+              </View>
+            </View>
+
+            <View className="flex-row justify-between items-center pt-1.5">
+              <Text className="font-sf-pro-medium text-base">
+                Who will pay?
+              </Text>
+
+              <ButtonPrimary
+                title="Sender"
+                className="!py-2 px-3"
+                iconPosition="left"
+                icon={
+                  <Ionicons name="checkmark-circle" size={24} color="white" />
+                }
               />
-              <Text className="text-sm font-sf-pro-medium ml-2">
-                {driverDetails.vehicleNumber}
-              </Text>
-            </View>
-            <View className="flex-row items-center">
-              <MaterialIcons name="location-on" size={20} color="#666" />
-              <Text
-                className="text-sm font-sf-pro-regular text-gray-600 ml-2          
-  flex-1"
-              >
-                {driverDetails.currentLocation}
-              </Text>
             </View>
           </View>
-        </View>
 
-        {/* Price Summary */}
-        <View className="bg-blue-50 border border-blue-200 rounded-xl p-4 mb-4">
-          <View className="flex-row justify-between items-center">
-            <Text className="text-sm font-sf-pro-regular text-gray-600">
-              Total Fare
-            </Text>
-            <Text className="text-2xl font-sf-pro-medium text-blue-600">
-              {driverDetails.price}
+          {/* driver details, cancel delivery */}
+          <View className="border border-[#005FDC24] flex-row items-center gap-2 bg-[#CFE3FD] mt-4 py-3 px-4 rounded-t-xl">
+            <Ionicons name="share-outline" size={24} color="black" />
+            <Text className="font-sf-pro-regular text-base">
+              Share driver details
             </Text>
           </View>
-        </View>
 
-        {/* Action Options */}
-        <View className="flex-row gap-3">
           <TouchableOpacity
-            className="flex-1 border border-gray-300 rounded-xl py-3   
-  items-center"
+            onPress={onCancelRide}
+            className="flex-row items-center gap-2 px-4 border border-[#005FDC24] py-3 rounded-b-xl"
           >
-            <MaterialIcons name="message" size={24} color="#0F73F7" />
-            <Text className="text-xs font-sf-pro-medium mt-1">Message</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            className="flex-1 border border-gray-300 rounded-xl py-3   
-  items-center"
-          >
-            <MaterialIcons name="share" size={24} color="#0F73F7" />
-            <Text className="text-xs font-sf-pro-medium mt-1">Share</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            className="flex-1 border border-gray-300 rounded-xl py-3   
-  items-center"
-          >
-            <MaterialIcons name="info" size={24} color="#0F73F7" />
-            <Text className="text-xs font-sf-pro-medium mt-1">Help</Text>
+            <MaterialCommunityIcons
+              name="archive-cancel-outline"
+              size={24}
+              color="black"
+            />
+            <Text>Cancel Delivery</Text>
           </TouchableOpacity>
         </View>
       </BottomSheetScrollView>
-
-      {/* Cancel Button */}
-      <View
-        className="border-t border-gray-200 pt-4"
-        style={{
-          marginBottom: bottomInset + 20,
-        }}
-      >
-        <TouchableOpacity
-          className="bg-red-500 rounded-xl py-4 items-center"
-          onPress={onCancelRide}
-        >
-          <Text className="text-white font-sf-pro-medium text-base">
-            Cancel Ride
-          </Text>
-        </TouchableOpacity>
-      </View>
-    </>
+    </View>
   );
 };
 

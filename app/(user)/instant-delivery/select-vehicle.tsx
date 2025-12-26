@@ -1,6 +1,8 @@
 import AcceptDeclineOffer from "@/components/AcceptDeclineOffer";
 import ArrivingDetails from "@/components/ArrivingDetails";
+import DriverDetails from "@/components/DriverDetails";
 import OfferPrice from "@/components/OfferPrice";
+import PaymentMethodSelection from "@/components/PaymentMethodSelection";
 import ReceiverDetails from "@/components/ReceiverDetails";
 import SelectRide from "@/components/SelectRide";
 import WaitForDriver from "@/components/WaitForDriver";
@@ -18,9 +20,11 @@ type BookingStep =
   | "select-ride"
   | "receiver-details"
   | "offer-price"
+  | "payment-method-selection"
   | "wait-driver"
   | "accept-decline"
-  | "arriving-details";
+  | "arriving-details"
+  | "driver-details";
 
 const SelectVehicle = () => {
   const router = useRouter();
@@ -167,6 +171,25 @@ const SelectVehicle = () => {
     setCurrentStep("receiver-details");
   };
 
+  // step 3.5
+  const [paymentMethod, setPaymentMethod] = useState<string>("cash");
+
+  // Payment Method handlers
+  const handlePaymentMethodNext = (method: string) => {
+    setPaymentMethod(method);
+    setCurrentStep("wait-driver");
+  };
+
+  const handlePaymentMethodBack = () => {
+    setCurrentStep("offer-price");
+  };
+
+  const handleCashPress = () => {
+    // Navigate to payment method or do something
+    console.log("Cash button pressed");
+    setCurrentStep("payment-method-selection");
+  };
+
   // step 4
   // Called automatically when driver accepts (simulated after 5 seconds)
   const handleDriverAccepted = () => {
@@ -202,6 +225,22 @@ const SelectVehicle = () => {
     setCurrentStep("select-ride");
     setSelectedVehicle(null);
     setReceiverDetails({ name: "", phone: "", address: "" });
+  };
+
+  // step 6.5
+  // Driver Details handlers
+  const handleShareDriverDetails = () => {
+    setCurrentStep("driver-details");
+  };
+
+  const handleDriverDetailsBack = () => {
+    setCurrentStep("arriving-details");
+  };
+
+  const handleShareDetails = () => {
+    // Implement share functionality
+    console.log("Sharing driver details...");
+    // You can use React Native Share API here
   };
 
   return (
@@ -308,7 +347,15 @@ const SelectVehicle = () => {
                 onNext={handleOfferPriceNext}
                 onBack={handleOfferPriceBack}
                 handleCancelRide={handleCancelRide}
+                onCashPress={handleCashPress}
                 bottomInset={insets.bottom}
+              />
+            )}
+            {/* Step 3.5: Payment Method */}
+            {currentStep === "payment-method-selection" && (
+              <PaymentMethodSelection
+                onNext={handlePaymentMethodNext}
+                onBack={handlePaymentMethodBack}
               />
             )}
 
@@ -338,6 +385,15 @@ const SelectVehicle = () => {
                 onCallDriver={handleCallDriver}
                 onCancelRide={handleCancelRide}
                 bottomInset={insets.bottom}
+              />
+            )}
+
+            {/* Step 6.5: Driver Details */}
+            {currentStep === "driver-details" && (
+              <DriverDetails
+                driverDetails={driverOffer}
+                onBack={handleDriverDetailsBack}
+                onShare={handleShareDetails}
               />
             )}
           </View>

@@ -23,7 +23,7 @@ const WaitForDriver: React.FC<WaitForDriverProps> = ({
     // Simulate driver accepting after 5 seconds (for demo)
     const timeout = setTimeout(() => {
       onDriverAccepted();
-    }, 500000);
+    }, 5000);
 
     return () => {
       clearInterval(interval);
@@ -39,9 +39,17 @@ const WaitForDriver: React.FC<WaitForDriverProps> = ({
 
   return (
     <View className="flex-1">
-      <Text className="text-xl font-sf-pro-medium text-center mb-4">
+      <Text className="text-xl font-sf-pro-medium text-center">
         Waiting for a Driver...
       </Text>
+
+      {/* waiting time */}
+      <Text className="text-xs text-center mt-2 mb-4">
+        Elapsed time: {timeWaiting} seconds
+      </Text>
+
+      {/* progress */}
+      <View></View>
 
       <View className="items-center">
         <View className="w-12 h-12 border border-[#0F73F724] rounded-full items-center justify-center">
@@ -105,7 +113,7 @@ const WaitForDriver: React.FC<WaitForDriverProps> = ({
       <View className="p-4 border border-[#E3E6F0] mt-3.5 rounded-xl">
         <View className="flex-row items-center justify-between mb-3">
           <Text className="font-sf-pro-regular text-sm text-gray-400">
-            Suggested Price
+            Suggested Fare
           </Text>
 
           <Text className="text-lg font-sf-pro-medium">$150</Text>
