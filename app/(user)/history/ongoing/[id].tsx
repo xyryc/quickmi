@@ -268,6 +268,7 @@ const ParcelOngoing = () => {
                     Share driver details
                   </Text>
                 </View>
+
                 <TouchableOpacity className="flex-row items-center gap-2 px-4 border border-[#005FDC24] py-3 rounded-b-xl">
                   <MaterialCommunityIcons
                     name="archive-cancel-outline"
