@@ -25,7 +25,6 @@ interface ReceiverDetailsProps {
   onNext: () => void;
   onSkip: () => void;
   onBack: () => void;
-  bottomInset: number;
 }
 
 const ReceiverDetails: React.FC<ReceiverDetailsProps> = ({

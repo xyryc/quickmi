@@ -303,9 +303,11 @@ const SelectVehicle = () => {
             {/* Step 3: Offer Price */}
             {currentStep === "offer-price" && (
               <OfferPrice
+                selectedVehicleData={selectedVehicleData}
                 suggestedPrice={suggestedPrice}
                 onNext={handleOfferPriceNext}
                 onBack={handleOfferPriceBack}
+                handleCancelRide={handleCancelRide}
                 bottomInset={insets.bottom}
               />
             )}
