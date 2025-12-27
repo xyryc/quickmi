@@ -167,8 +167,8 @@ const ParcelOngoing = () => {
 
                   <View className="flex-row items-center gap-3">
                     <View className="w-11 h-11 rounded-full items-center justify-center bg-[#CFE3FD42] border border-[#0F73F724]">
-                      <MaterialCommunityIcons
-                        name="message-processing-outline"
+                      <Ionicons
+                        name="chatbox-ellipses-outline"
                         size={20}
                         color="#4D4D4D"
                       />

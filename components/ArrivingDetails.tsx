@@ -29,12 +29,14 @@ interface ArrivingDetailsProps {
   onCallDriver: () => void;
   onCancelRide: () => void;
   bottomInset: number;
+  onShareDriverDetails: () => void;
 }
 
 const ArrivingDetails: React.FC<ArrivingDetailsProps> = ({
   driverDetails,
   onCallDriver,
   onCancelRide,
+  onShareDriverDetails,
   bottomInset,
 }) => {
   const handleCall = () => {
@@ -100,8 +102,8 @@ const ArrivingDetails: React.FC<ArrivingDetailsProps> = ({
 
             <View className="flex-row items-center gap-3">
               <View className="w-11 h-11 rounded-full items-center justify-center bg-[#CFE3FD42] border border-[#0F73F724]">
-                <MaterialCommunityIcons
-                  name="message-processing-outline"
+                <Ionicons
+                  name="chatbox-ellipses-outline"
                   size={20}
                   color="#4D4D4D"
                 />
@@ -185,12 +187,15 @@ const ArrivingDetails: React.FC<ArrivingDetailsProps> = ({
           </View>
 
           {/* driver details, cancel delivery */}
-          <View className="border border-[#005FDC24] flex-row items-center gap-2 bg-[#CFE3FD] mt-4 py-3 px-4 rounded-t-xl">
+          <TouchableOpacity
+            onPress={onShareDriverDetails}
+            className="border border-[#005FDC24] flex-row items-center gap-2 bg-[#CFE3FD] mt-4 py-3 px-4 rounded-t-xl"
+          >
             <Ionicons name="share-outline" size={24} color="black" />
             <Text className="font-sf-pro-regular text-base">
               Share driver details
             </Text>
-          </View>
+          </TouchableOpacity>
 
           <TouchableOpacity
             onPress={onCancelRide}

@@ -1,6 +1,4 @@
-import ButtonPrimary from "@/components/ButtonPrimary";
-import ButtonSecondary from "@/components/ButtonSecondary";
-import { Ionicons, MaterialIcons } from "@expo/vector-icons";
+import { Ionicons, MaterialIcons, Octicons } from "@expo/vector-icons";
 import { Image } from "expo-image";
 import React from "react";
 import { Linking, Text, TouchableOpacity, View } from "react-native";
@@ -42,115 +40,82 @@ const DriverDetails: React.FC<DriverDetailsProps> = ({
         </View>
 
         {/* Driver Photo and Name */}
-        <View className="items-center mb-6">
-          <Image
-            source={{ uri: driverDetails.driverPhoto }}
-            style={{ width: 100, height: 100, borderRadius: 50 }}
-            contentFit="cover"
-          />
-          <Text className="text-2xl font-sf-pro-semibold mt-3">
-            {driverDetails.driverName}
-          </Text>
-          <View className="flex-row items-center gap-1 mt-1">
-            <Ionicons name="star" size={16} color="#FFB800" />
-            <Text className="text-base font-sf-pro-regular">
-              {driverDetails.rating}
-            </Text>
+        <View className="flex-row justify-between items-center mb-8">
+          <View className="flex-row items-center gap-2">
+            <Image
+              source="https://media.licdn.com/dms/image/v2/D5603AQFMeZ7i9ybZgw/profile-displayphoto-shrink_200_200/B56ZS29wLQHwAY-/0/1738236429558?e=2147483647&v=beta&t=RTX-UGEWSzuEb-Gv2bqXqREzQX15FMKi0TK1HJBAKuE"
+              style={{
+                width: 62,
+                height: 62,
+                borderRadius: 99,
+              }}
+              contentFit="cover"
+            />
+
+            <View>
+              <Text className="text-lg font-sf-pro-medium text-gray-700">
+                Md Talath Un Nabi Anik
+              </Text>
+
+              <View className="flex-row items-center gap-1 mt-1.5">
+                <Octicons name="star-fill" size={16} color="#FFD700" />
+                <Text className="font-sf-pro-medium text-sm">4.5</Text>
+
+                <Text className="font-sf-pro-regular text-xs text-[#4D4D4D]">
+                  |
+                </Text>
+
+                <Text className="font-sf-pro-regular text-xs text-[#4D4D4D]">
+                  150 Delivery
+                </Text>
+              </View>
+            </View>
+          </View>
+
+          <View className="flex-row items-center gap-3">
+            <View className="w-11 h-11 rounded-full items-center justify-center bg-[#CFE3FD42] border border-[#0F73F724]">
+              <Ionicons
+                name="chatbox-ellipses-outline"
+                size={20}
+                color="#4D4D4D"
+              />
+            </View>
+
+            <View className="w-11 h-11 rounded-full items-center justify-center bg-[#CFE3FD42] border border-[#0F73F724]">
+              <Ionicons name="call-outline" size={20} color="#4D4D4D" />
+            </View>
           </View>
         </View>
 
         {/* Driver Information */}
-        <View className="gap-4">
-          {/* Phone Number */}
-          <View
-            className="flex-row items-center justify-between p-4 bg-gray-50        
-  rounded-lg"
-          >
-            <View className="flex-row items-center gap-3">
-              <Ionicons name="call-outline" size={20} color="#0F73F7" />
-              <View>
-                <Text className="text-xs font-sf-pro-regular text-gray-500">
-                  Phone Number
-                </Text>
-                <Text className="text-base font-sf-pro-medium">
-                  {driverDetails.phoneNumber}
-                </Text>
-              </View>
-            </View>
-            <TouchableOpacity
-              onPress={handleCall}
-              className="bg-[#0F73F7] p-2 rounded-full"
-            >
-              <Ionicons name="call" size={20} color="white" />
-            </TouchableOpacity>
+        <View className="p-4 border border-[#E3E6F0] rounded-xl">
+          <TouchableOpacity onPress={handleCall}>
+            <Text className="text-sm font-sf-pro-medium mb-2">
+              Phone number
+            </Text>
+            <Text className="font-sf-pro-regular text-sm">
+              +(880) 1570 233 979
+            </Text>
+          </TouchableOpacity>
+
+          <View className="border-t border-gray-200 my-3" />
+
+          <View>
+            <Text className="text-sm font-sf-pro-medium mb-2">
+              License plate number
+            </Text>
+            <Text className="font-sf-pro-regular text-sm">SK 7776-41</Text>
           </View>
 
-          {/* Vehicle Type */}
-          <View className="flex-row items-center gap-3 p-4 bg-gray-50 rounded-lg">
-            <Ionicons name="car-outline" size={20} color="#0F73F7" />
-            <View>
-              <Text className="text-xs font-sf-pro-regular text-gray-500">
-                Vehicle Type
-              </Text>
-              <Text className="text-base font-sf-pro-medium">
-                {driverDetails.vehicleType}
-              </Text>
-            </View>
-          </View>
+          <View className="border-t border-gray-200 my-3" />
 
-          {/* Vehicle Number */}
-          <View className="flex-row items-center gap-3 p-4 bg-gray-50 rounded-lg">
-            <MaterialIcons
-              name="confirmation-number"
-              size={20}
-              color="#0F73F7"
-            />
-            <View>
-              <Text className="text-xs font-sf-pro-regular text-gray-500">
-                Vehicle Number
-              </Text>
-              <Text className="text-base font-sf-pro-medium">
-                {driverDetails.vehicleNumber}
-              </Text>
-            </View>
-          </View>
-
-          {/* Vehicle Color */}
-          <View className="flex-row items-center gap-3 p-4 bg-gray-50 rounded-lg">
-            <Ionicons name="color-palette-outline" size={20} color="#0F73F7" />
-            <View>
-              <Text className="text-xs font-sf-pro-regular text-gray-500">
-                Vehicle Color
-              </Text>
-              <Text className="text-base font-sf-pro-medium">
-                {driverDetails.vehicleColor}
-              </Text>
-            </View>
-          </View>
-
-          {/* Estimated Arrival */}
-          <View className="flex-row items-center gap-3 p-4 bg-gray-50 rounded-lg">
-            <Ionicons name="time-outline" size={20} color="#0F73F7" />
-            <View>
-              <Text className="text-xs font-sf-pro-regular text-gray-500">
-                Estimated Arrival
-              </Text>
-              <Text className="text-base font-sf-pro-medium">
-                {driverDetails.estimatedArrival}
-              </Text>
-            </View>
+          <View>
+            <Text className="text-sm font-sf-pro-medium mb-2">Vehicle</Text>
+            <Text className="font-sf-pro-regular text-sm">
+              Toyota Vitz, Black
+            </Text>
           </View>
         </View>
-      </View>
-
-      {/* Action Buttons */}
-      <View className="flex-row items-center gap-2 mt-4">
-        <ButtonSecondary title="Back" onPress={onBack} className="w-[48%]" />
-        <ButtonPrimary
-          title="Share Details"
-          onPress={onShare}
-          className="w-[48%]"
-        />
       </View>
     </View>
   );

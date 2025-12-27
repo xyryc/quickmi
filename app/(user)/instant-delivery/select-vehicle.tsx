@@ -186,7 +186,7 @@ const SelectVehicle = () => {
 
   const handleCashPress = () => {
     // Navigate to payment method or do something
-    console.log("Cash button pressed");
+    // console.log("Cash button pressed");
     setCurrentStep("payment-method-selection");
   };
 
@@ -240,6 +240,7 @@ const SelectVehicle = () => {
   const handleShareDetails = () => {
     // Implement share functionality
     console.log("Sharing driver details...");
+    setCurrentStep("driver-details");
     // You can use React Native Share API here
   };
 
@@ -384,6 +385,7 @@ const SelectVehicle = () => {
                 driverDetails={driverOffer}
                 onCallDriver={handleCallDriver}
                 onCancelRide={handleCancelRide}
+                onShareDriverDetails={handleShareDriverDetails}
                 bottomInset={insets.bottom}
               />
             )}

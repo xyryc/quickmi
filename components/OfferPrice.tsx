@@ -107,12 +107,7 @@ const OfferPrice: React.FC<OfferPriceProps> = ({
       </View>
 
       {/* Action Button */}
-      <View
-        className="flex-row items-center gap-2"
-        // style={{
-        //   marginBottom: insets.bottom,
-        // }}
-      >
+      <View className="flex-row items-center gap-2">
         <ButtonSecondary
           title="Cancel"
           onPress={handleCancelRide}
