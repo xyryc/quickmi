@@ -82,7 +82,9 @@ const Home = () => {
         >
           {/* instant delivery */}
           <TouchableOpacity
-            onPress={() => router.push("/instant-delivery/select-location")}
+            onPress={() =>
+              router.push("/(user)/instant-delivery/select-location")
+            }
             className="py-3 px-4 bg-white flex-row items-center justify-between gap-3 rounded-xl mb-3 elevation-md"
           >
             <View className="flex-row items-center gap-3">
@@ -115,11 +117,16 @@ const Home = () => {
           </TouchableOpacity>
 
           {/* schedule delivery */}
-          <TouchableOpacity className="py-3 px-4 bg-white flex-row items-center justify-between gap-3 rounded-xl elevation-md">
+          <TouchableOpacity
+            onPress={() =>
+              router.push("/(user)/schedule-delivery/select-location")
+            }
+            className="py-3 px-4 bg-white flex-row items-center justify-between gap-3 rounded-xl elevation-md"
+          >
             <View className="flex-row items-center gap-3">
               <View className="p-3 border border-[#0F73F724] rounded-full">
                 <Image
-                  source={require("@/assets/images/instant_delivery.svg")}
+                  source={require("@/assets/images/schedule_delivery.svg")}
                   style={{
                     width: 36,
                     height: 36,
@@ -130,10 +137,10 @@ const Home = () => {
 
               <View>
                 <Text className="font-sf-pro-medium text-base text-custom-blue-900 mb-1">
-                  Instant Delivery
+                  Schedule Delivery
                 </Text>
                 <Text className="font-sf-pro-medium text-xs text-gray-400">
-                  Immediate Pickup, Fast Delivery
+                  Plan Ahead, Get On-Time Delivery
                 </Text>
               </View>
             </View>

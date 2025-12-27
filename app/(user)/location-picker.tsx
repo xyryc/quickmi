@@ -41,9 +41,7 @@ const LocationPicker = () => {
 
       {/* Back Button */}
       <TouchableOpacity
-        onPress={() =>
-          router.replace("/(user)/instant-delivery/select-location")
-        }
+        onPress={() => router.back()}
         className="absolute top-4 left-4 bg-white rounded-full w-11 h-11 items-center justify-center shadow-lg border border-[#0F73F7E5]"
         style={{
           marginTop: insets.top,

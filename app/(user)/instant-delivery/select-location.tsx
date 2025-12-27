@@ -21,17 +21,13 @@ const SelectLocation = () => {
           placeholder="Search Pickup"
           showLocationPicker
           containerClassName="mb-3"
-          locationPickerPath={() =>
-            router.push("/(user)/instant-delivery/location-picker")
-          }
+          locationPickerPath={() => router.push("/(user)/location-picker")}
         />
 
         <SearchBar
           placeholder="Search Drop Off"
           showLocationPicker
-          locationPickerPath={() =>
-            router.push("/(user)/instant-delivery/location-picker")
-          }
+          locationPickerPath={() => router.push("/(user)/location-picker")}
         />
 
         <View className="border-t border-gray-200 my-3" />

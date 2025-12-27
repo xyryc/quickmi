@@ -95,6 +95,14 @@ export default function UserLayout() {
         }}
       />
 
+      <Tabs.Screen
+        name="location-picker"
+        options={{
+          href: null,
+          tabBarStyle: { display: "none" },
+        }}
+      />
+
       {/* nested screens */}
 
       <Tabs.Screen
@@ -234,14 +242,6 @@ export default function UserLayout() {
 
       {/* instant delivery */}
       <Tabs.Screen
-        name="instant-delivery/location-picker"
-        options={{
-          href: null,
-          tabBarStyle: { display: "none" },
-        }}
-      />
-
-      <Tabs.Screen
         name="instant-delivery/select-location"
         options={{
           href: null,
@@ -250,6 +250,24 @@ export default function UserLayout() {
       />
       <Tabs.Screen
         name="instant-delivery/select-vehicle"
+        options={{
+          href: null,
+          tabBarStyle: { display: "none" },
+        }}
+      />
+
+      {/* schedule delivery */}
+      <Tabs.Screen
+        name="schedule-delivery/select-location"
+        options={{
+          href: null,
+          tabBarStyle: { display: "none" },
+        }}
+      />
+
+      {/* chat screens */}
+      <Tabs.Screen
+        name="chat/chat"
         options={{
           href: null,
           tabBarStyle: { display: "none" },
