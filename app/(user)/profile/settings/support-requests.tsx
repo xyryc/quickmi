@@ -8,7 +8,7 @@ import {
 } from "@gorhom/bottom-sheet";
 import { Image } from "expo-image";
 import { LinearGradient } from "expo-linear-gradient";
-import React, { useCallback, useMemo, useRef } from "react";
+import React, { useCallback, useMemo, useRef, useState } from "react";
 import {
   KeyboardAvoidingView,
   Platform,
@@ -20,42 +20,43 @@ import {
   View,
 } from "react-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
+import { Select } from "react-native-native-select";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 const SupportRequests = () => {
-  const confirmModalRef = useRef<BottomSheetModal>(null);
+  const [selectedIssue, setSelectedIssue] = useState("Payment Issue");
+  const [complaintText, setComplaintText] = useState("");
+
   const successModalRef = useRef<BottomSheetModal>(null);
 
-  //  Snap points
+  // Snap points
   const successSnapPoints = useMemo(() => ["55%"], []);
 
-  //  Confirm deposit handler
-  const handleWithdraw = useCallback(() => {
-    console.log("Opening confirm deposit modal...");
-    confirmModalRef.current?.present();
-  }, []);
+  // Issue options
+  const issueOptions = ["Delivery Issue", "Payment Issue", "App Issue"];
 
-  //  Confirm (Yes) button handler
-  const handleConfirmYes = useCallback(() => {
-    console.log("User confirmed, showing success modal");
+  // Send complaint handler
+  const handleSendComplaint = useCallback(() => {
+    if (!complaintText.trim()) {
+      console.log("Please write your complaint");
+      return;
+    }
 
-    confirmModalRef.current?.dismiss();
+    console.log("Sending complaint:", {
+      issue: selectedIssue,
+      complaint: complaintText,
+    });
 
-    setTimeout(() => {
-      successModalRef.current?.present();
-    }, 300);
-  }, []);
+    // Show success modal
+    successModalRef.current?.present();
+  }, [selectedIssue, complaintText]);
 
-  //  Confirm (No) button handler
-  const handleConfirmNo = useCallback(() => {
-    console.log("User declined");
-    confirmModalRef.current?.dismiss();
-  }, []);
-
-  //  Success modal close handler
+  // Success modal close handler
   const handleSuccessClose = useCallback(() => {
     successModalRef.current?.dismiss();
-    setTimeout(() => {}, 300);
+    // Clear form
+    setComplaintText("");
+    setSelectedIssue("Payment Issue");
   }, []);
 
   return (
@@ -85,12 +86,9 @@ const SupportRequests = () => {
                 {/* profile image */}
                 <View className="items-center mt-8">
                   <Image
-                    source={{
-                      uri: "https://randomuser.me/api/portraits/men/94.jpg",
-                      // uri: "https://ui-avatars.com/api/?name=ALEX&size=512",
-                    }}
+                    source={require("@/assets/images/logo.svg")}
                     contentFit="cover"
-                    style={{ width: 120, height: 120, borderRadius: 100 }}
+                    style={{ width: 175, height: 130, borderRadius: 100 }}
                   />
                 </View>
 
@@ -100,33 +98,58 @@ const SupportRequests = () => {
                   free to contact us.
                 </Text>
 
-                {/* text aria view */}
-                <TextInput
-                  className="border border-[#B8B8B8] mt-4 rounded-2xl h-48 bg-[#ffff]"
-                  placeholder="Write your complain here"
-                  numberOfLines={7}
-                  multiline={true}
-                  textAlignVertical="top"
-                  style={{ padding: 15 }}
-                />
+                {/* Select Issue Type */}
+                <View className="mt-6">
+                  <Text className="mb-2 text-base font-sf-pro-medium text-[#031731]">
+                    Select Issue Type
+                  </Text>
 
+                  <Select
+                    style={{ height: 50 }}
+                    className="w-full border border-[#E3E6F0] rounded-xl px-4 bg-white"
+                    mode="dropdown"
+                    options={issueOptions}
+                    selectedIndex={0}
+                    onValueChange={(e) => {
+                      console.log("Selected Issue:", e.nativeEvent.value);
+                      setSelectedIssue(e.nativeEvent.value);
+                    }}
+                  />
+                </View>
+
+                {/* Complaint Text Area */}
+                <View className="mt-4">
+                  <Text className="mb-2 text-base font-sf-pro-medium text-[#031731]">
+                    Describe Your Issue
+                  </Text>
+                  <TextInput
+                    className="border border-[#E3E6F0] rounded-2xl h-48 bg-white px-4 py-4"
+                    placeholder="Write your complaint here..."
+                    placeholderTextColor="#9CA3AF"
+                    numberOfLines={7}
+                    multiline={true}
+                    textAlignVertical="top"
+                    value={complaintText}
+                    onChangeText={setComplaintText}
+                  />
+                </View>
+
+                {/* Send Button */}
                 <ButtonPrimary
-                  title="Send to admin"
-                  className="mt-4"
-                  onPress={handleConfirmYes}
+                  title="Send to Admin"
+                  className="mt-6"
+                  onPress={handleSendComplaint}
                 />
               </ScrollView>
             </KeyboardAvoidingView>
           </LinearGradient>
 
-          {/* send confirm */}
+          {/* SUCCESS MODAL */}
           <BottomSheetModal
             ref={successModalRef}
             index={0}
             snapPoints={successSnapPoints}
-            enablePanDownToClose={true}
-            enableHandlePanningGesture={false}
-            enableContentPanningGesture={false}
+            enablePanDownToClose={false}
             backdropComponent={({ style }) => (
               <View
                 style={[style, { backgroundColor: "rgba(0, 0, 0, 0.5)" }]}
@@ -138,18 +161,17 @@ const SupportRequests = () => {
               showsVerticalScrollIndicator={false}
             >
               <View className="px-6 py-4 relative">
-                {/* close button  */}
-
+                {/* Close button */}
                 <TouchableOpacity
                   onPress={handleSuccessClose}
-                  className="absolute bg-[#CFE3FD] p-1 rounded-md right-6 top-0"
+                  className="absolute bg-[#CFE3FD] p-1 rounded-md right-6 top-0 z-10"
                 >
                   <EvilIcons name="close" size={24} color="#0F73F7" />
                 </TouchableOpacity>
 
-                {/* thik icon */}
+                {/* Success icon */}
                 <View className="items-center mb-6 mt-5">
-                  <View className="bg-green-100  rounded-full w-20 h-20 items-center justify-center ">
+                  <View className="bg-green-100 rounded-full w-20 h-20 items-center justify-center">
                     <Image
                       source={require("@/assets/images/thik.svg")}
                       style={{ height: 120, width: 120 }}
@@ -157,21 +179,44 @@ const SupportRequests = () => {
                     />
                   </View>
                 </View>
+
                 <Text className="text-lg font-sf-pro-semibold mt-3 text-center text-[#031731]">
-                  Withdraw Req. Successful
+                  Request Sent Successfully
                 </Text>
 
-                <Text className="text-center mt-4 text-[#031731] font-sf-pro-regular text-sm px-12">
-                  Your Withdraw request has been sent successfully. You will get
-                  the money within 24 hours.
+                <Text className="text-center mt-4 text-[#031731] font-sf-pro-regular text-sm px-8">
+                  Your support request has been sent to admin successfully. We
+                  will review and get back to you within 24-48 hours.
                 </Text>
 
-                {/* button */}
+                {/* Info Card */}
+                <View className="bg-blue-50 p-4 rounded-lg mt-4 border border-blue-100">
+                  <View className="flex-row justify-between mb-2">
+                    <Text className="text-gray-600 font-sf-pro-regular">
+                      Issue Type:
+                    </Text>
+                    <Text className="font-sf-pro-semibold text-gray-800">
+                      {selectedIssue}
+                    </Text>
+                  </View>
+                  <View className="flex-row justify-between">
+                    <Text className="text-gray-600 font-sf-pro-regular">
+                      Status:
+                    </Text>
+                    <View className="flex-row items-center">
+                      <View className="w-2 h-2 bg-yellow-500 rounded-full mr-2" />
+                      <Text className="font-sf-pro-semibold text-yellow-600">
+                        Pending Review
+                      </Text>
+                    </View>
+                  </View>
+                </View>
 
+                {/* Button */}
                 <ButtonPrimary
-                  title={"Go To My Wallet"}
-                  className={" mt-5 mb-20"}
-                  onPress={handleConfirmNo}
+                  title={"Done"}
+                  className={"mt-5"}
+                  onPress={handleSuccessClose}
                 />
               </View>
             </BottomSheetScrollView>
