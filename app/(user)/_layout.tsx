@@ -136,7 +136,19 @@ export default function UserLayout() {
       />
 
       <Tabs.Screen
-        name="profile/wallet"
+        name="profile/payment/payments"
+        options={{
+          href: null,
+        }}
+      />
+      <Tabs.Screen
+        name="profile/payment/transaction"
+        options={{
+          href: null,
+        }}
+      />
+      <Tabs.Screen
+        name="profile/payment/card-details"
         options={{
           href: null,
         }}
