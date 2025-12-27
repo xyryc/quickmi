@@ -80,12 +80,14 @@ const Settings = () => {
                     onPress={() =>
                       router.push("/(user)/profile/settings/change-password")
                     }
-                    className="flex-row justify-between border-b border-[#E3E6F0] items-center py-3 mt-3"
+                    className="flex-row justify-between border-b border-[#E3E6F0] items-center py-3 px-2 mt-2.5"
                   >
-                    <Text>Change Password</Text>
+                    <Text className="text-sm font-sf-pro-regular text-[#031731]">
+                      Change Password
+                    </Text>
                     <MaterialIcons
                       name="arrow-forward-ios"
-                      size={18}
+                      size={14}
                       color="black"
                     />
                   </TouchableOpacity>
@@ -95,12 +97,14 @@ const Settings = () => {
                     onPress={() =>
                       router.push("/(user)/profile/settings/about")
                     }
-                    className="flex-row justify-between border-b border-[#E3E6F0] items-center py-3 mt-3"
+                    className="flex-row justify-between border-b border-[#E3E6F0] items-center py-3 px-2 mt-2.5"
                   >
-                    <Text>About Us</Text>
+                    <Text className="text-sm font-sf-pro-regular text-[#031731]">
+                      About Us
+                    </Text>
                     <MaterialIcons
                       name="arrow-forward-ios"
-                      size={18}
+                      size={14}
                       color="black"
                     />
                   </TouchableOpacity>
@@ -108,12 +112,14 @@ const Settings = () => {
                   {/* Help */}
                   <TouchableOpacity
                     onPress={() => router.push("/(user)/profile/settings/help")}
-                    className="flex-row justify-between border-b border-[#E3E6F0] items-center py-3 mt-3"
+                    className="flex-row justify-between border-b border-[#E3E6F0] items-center py-3 px-2 mt-2.5"
                   >
-                    <Text>Help</Text>
+                    <Text className="text-sm font-sf-pro-regular text-[#031731]">
+                      Help
+                    </Text>
                     <MaterialIcons
                       name="arrow-forward-ios"
-                      size={18}
+                      size={14}
                       color="black"
                     />
                   </TouchableOpacity>
@@ -123,12 +129,14 @@ const Settings = () => {
                     onPress={() =>
                       router.push("/(user)/profile/settings/support-requests")
                     }
-                    className="flex-row justify-between border-b border-[#E3E6F0] items-center py-3 mt-3"
+                    className="flex-row justify-between border-b border-[#E3E6F0] items-center py-3 px-2 mt-2.5"
                   >
-                    <Text>Support Requests</Text>
+                    <Text className="text-sm font-sf-pro-regular text-[#031731]">
+                      Support Requests
+                    </Text>
                     <MaterialIcons
                       name="arrow-forward-ios"
-                      size={18}
+                      size={14}
                       color="black"
                     />
                   </TouchableOpacity>
@@ -138,12 +146,14 @@ const Settings = () => {
                     onPress={() =>
                       router.push("/(user)/profile/settings/privacy-policy")
                     }
-                    className="flex-row justify-between border-b border-[#E3E6F0] items-center py-3 mt-3"
+                    className="flex-row justify-between border-b border-[#E3E6F0] items-center py-3 px-2 mt-2.5"
                   >
-                    <Text>Privacy Policy</Text>
+                    <Text className="text-sm font-sf-pro-regular text-[#031731]">
+                      Privacy Policy
+                    </Text>
                     <MaterialIcons
                       name="arrow-forward-ios"
-                      size={18}
+                      size={14}
                       color="black"
                     />
                   </TouchableOpacity>
@@ -153,12 +163,14 @@ const Settings = () => {
                     onPress={() =>
                       router.push("/(user)/profile/settings/terms-condition")
                     }
-                    className="flex-row justify-between border-b border-[#E3E6F0] items-center py-3 mt-3"
+                    className="flex-row justify-between border-b border-[#E3E6F0] items-center py-3 px-2 mt-2.5"
                   >
-                    <Text>Terms of service</Text>
+                    <Text className="text-sm font-sf-pro-regular text-[#031731]">
+                      Terms of service
+                    </Text>
                     <MaterialIcons
                       name="arrow-forward-ios"
-                      size={18}
+                      size={14}
                       color="black"
                     />
                   </TouchableOpacity>
