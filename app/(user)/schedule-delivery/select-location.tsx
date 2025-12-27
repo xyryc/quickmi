@@ -19,7 +19,7 @@ const SelectLocation = () => {
   const [showTimePicker, setShowTimePicker] = useState(false);
 
   const handleConfirm = () => {
-    router.push("/instant-delivery/select-vehicle");
+    router.push("/(user)/select-vehicle");
   };
 
   const formatDate = (date: Date) => {
@@ -49,13 +49,23 @@ const SelectLocation = () => {
           placeholder="Search Pickup"
           showLocationPicker
           containerClassName="mb-3"
-          locationPickerPath={() => router.push("/(user)/location-picker")}
+          locationPickerPath={() =>
+            router.push({
+              pathname: "/(user)/location-picker",
+              params: { returnTo: "/(user)/schedule-delivery/select-location" },
+            })
+          }
         />
 
         <SearchBar
           placeholder="Search Drop Off"
           showLocationPicker
-          locationPickerPath={() => router.push("/(user)/location-picker")}
+          locationPickerPath={() =>
+            router.push({
+              pathname: "/(user)/location-picker",
+              params: { returnTo: "/(user)/schedule-delivery/select-location" },
+            })
+          }
         />
 
         {/* schedule time */}

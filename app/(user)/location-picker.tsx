@@ -1,5 +1,5 @@
 import { FontAwesome6, MaterialIcons } from "@expo/vector-icons";
-import { useRouter } from "expo-router";
+import { useLocalSearchParams, useRouter } from "expo-router";
 import React, { useRef } from "react";
 import { TouchableOpacity, View } from "react-native";
 import MapView, { Marker, Polyline, PROVIDER_GOOGLE } from "react-native-maps";
@@ -15,6 +15,16 @@ const LocationPicker = () => {
     latitude: 23.7808,
     longitude: 90.4211,
     address: "Block B, Banasree, Dhaka.",
+  };
+
+  const { returnTo } = useLocalSearchParams<{ returnTo?: string }>();
+
+  const handleBack = () => {
+    if (returnTo) {
+      router.replace(returnTo);
+    } else {
+      router.back();
+    }
   };
 
   return (
@@ -41,7 +51,7 @@ const LocationPicker = () => {
 
       {/* Back Button */}
       <TouchableOpacity
-        onPress={() => router.back()}
+        onPress={handleBack}
         className="absolute top-4 left-4 bg-white rounded-full w-11 h-11 items-center justify-center shadow-lg border border-[#0F73F7E5]"
         style={{
           marginTop: insets.top,

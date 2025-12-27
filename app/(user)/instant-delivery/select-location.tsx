@@ -9,7 +9,7 @@ const SelectLocation = () => {
   const router = useRouter();
 
   const handleConfirm = () => {
-    router.push("/instant-delivery/select-vehicle");
+    router.push("/(user)/select-vehicle");
   };
 
   return (
@@ -21,13 +21,23 @@ const SelectLocation = () => {
           placeholder="Search Pickup"
           showLocationPicker
           containerClassName="mb-3"
-          locationPickerPath={() => router.push("/(user)/location-picker")}
+          locationPickerPath={() =>
+            router.push({
+              pathname: "/(user)/location-picker",
+              params: { returnTo: "/(user)/instant-delivery/select-location" },
+            })
+          }
         />
 
         <SearchBar
           placeholder="Search Drop Off"
           showLocationPicker
-          locationPickerPath={() => router.push("/(user)/location-picker")}
+          locationPickerPath={() =>
+            router.push({
+              pathname: "/(user)/location-picker",
+              params: { returnTo: "/(user)/instant-delivery/select-location" },
+            })
+          }
         />
 
         <View className="border-t border-gray-200 my-3" />
