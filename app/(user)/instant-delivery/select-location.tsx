@@ -9,7 +9,10 @@ const SelectLocation = () => {
   const router = useRouter();
 
   const handleConfirm = () => {
-    router.push("/(user)/select-vehicle");
+    router.push({
+      pathname: "/(user)/select-vehicle",
+      params: { returnTo: "/(user)/schedule-delivery/select-location" },
+    });
   };
 
   return (

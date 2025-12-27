@@ -8,7 +8,7 @@ import SelectRide from "@/components/SelectRide";
 import WaitForDriver from "@/components/WaitForDriver";
 import { FontAwesome6, Ionicons, MaterialIcons } from "@expo/vector-icons";
 import BottomSheet from "@gorhom/bottom-sheet";
-import { useRouter } from "expo-router";
+import { useLocalSearchParams, useRouter } from "expo-router";
 import React, { useMemo, useRef, useState } from "react";
 import { TouchableOpacity, View } from "react-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
@@ -128,6 +128,16 @@ const SelectVehicle = () => {
 
   const selectedVehicleData = vehicles.find((v) => v.id === selectedVehicle);
   const suggestedPrice = selectedVehicleData?.price || "$100";
+
+  const { returnTo } = useLocalSearchParams<{ returnTo?: string }>();
+
+  const handleBack = () => {
+    if (returnTo) {
+      router.replace(returnTo);
+    } else {
+      router.back();
+    }
+  };
 
   // step 1
   // Called when user taps on a ride card
@@ -292,7 +302,7 @@ const SelectVehicle = () => {
 
           {/* Back Button */}
           <TouchableOpacity
-            onPress={() => router.back()}
+            onPress={handleBack}
             className="absolute top-4 left-4 bg-white rounded-full w-11 h-11 items-center justify-center shadow-lg border border-[#0F73F7E5]"
             style={{
               marginTop: insets.top,

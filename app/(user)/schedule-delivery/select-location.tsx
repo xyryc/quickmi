@@ -19,7 +19,10 @@ const SelectLocation = () => {
   const [showTimePicker, setShowTimePicker] = useState(false);
 
   const handleConfirm = () => {
-    router.push("/(user)/select-vehicle");
+    router.push({
+      pathname: "/(user)/select-vehicle",
+      params: { returnTo: "/(user)/schedule-delivery/select-location" },
+    });
   };
 
   const formatDate = (date: Date) => {
