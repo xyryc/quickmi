@@ -26,7 +26,6 @@ const SelectRide = ({ vehicles, selectedVehicle, onVehicleSelect, onNext }) => {
           <RideCard
             key={vehicle.id}
             className="mb-4"
-            rideType={vehicle.type}
             vehicle={vehicle}
             isSelected={selectedVehicle === vehicle.id}
             onPress={() => onVehicleSelect(vehicle.id)}

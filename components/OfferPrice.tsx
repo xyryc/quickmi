@@ -10,11 +10,13 @@ interface OfferPriceProps {
   suggestedPrice: string;
   onNext: (offeredPrice: string) => void;
   onBack: () => void;
-  handleCancelRide;
+  handleCancelRide: () => void;
+  onCashPress: () => void;
 }
 
 const OfferPrice: React.FC<OfferPriceProps> = ({
   selectedVehicleData,
+  onCashPress,
   suggestedPrice,
   onNext,
   onBack,
@@ -92,20 +94,20 @@ const OfferPrice: React.FC<OfferPriceProps> = ({
         <View className="border-t border-gray-200 " />
 
         {/* Quick Price Options */}
-        <TouchableOpacity className="flex-row justify-between items-center px-2 py-3">
-          <Text className="font-sf-pro-regular text-base">Cash</Text>
-
+        <TouchableOpacity
+          onPress={onCashPress} // NEW PROP
+          className="flex-row justify-between items-center px-2 py-3"
+        >
+          <View className="flex-row items-center gap-2">
+            <Ionicons name="cash-outline" size={16} color="#008364" />
+            <Text className="font-sf-pro-regular text-base">Cash</Text>
+          </View>
           <MaterialIcons name="keyboard-arrow-right" size={24} color="black" />
         </TouchableOpacity>
       </View>
 
       {/* Action Button */}
-      <View
-        className="flex-row items-center gap-2"
-        // style={{
-        //   marginBottom: insets.bottom,
-        // }}
-      >
+      <View className="flex-row items-center gap-2">
         <ButtonSecondary
           title="Cancel"
           onPress={handleCancelRide}

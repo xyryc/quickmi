@@ -2,8 +2,8 @@ import { Image } from "expo-image";
 import React from "react";
 import { Text, TouchableOpacity, View } from "react-native";
 
-const RideCard = ({ className, rideType, vehicle, isSelected, onPress }) => {
-  const getVehicleImage = () => {
+const RideCard = ({ className, vehicle, isSelected, onPress }) => {
+  const getVehicleImage = (rideType) => {
     switch (rideType) {
       case "bike":
         return require("@/assets/images/bike.svg");
@@ -16,6 +16,8 @@ const RideCard = ({ className, rideType, vehicle, isSelected, onPress }) => {
     }
   };
 
+  // console.log("From ride card", vehicle);
+
   return (
     <TouchableOpacity
       onPress={onPress}
@@ -24,7 +26,7 @@ const RideCard = ({ className, rideType, vehicle, isSelected, onPress }) => {
       } ${className}`}
     >
       <Image
-        source={getVehicleImage()}
+        source={getVehicleImage(vehicle?.type)}
         style={{
           width: 50,
           height: 50,
