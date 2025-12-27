@@ -103,7 +103,12 @@ const Payments = () => {
                 </View>
               </TouchableOpacity>
 
-              <TouchableOpacity className="p-4 border border-[#005FDC24] rounded-xl flex-row items-center justify-between">
+              <TouchableOpacity
+                onPress={() =>
+                  router.push("/(user)/profile/payment/refer-discount")
+                }
+                className="p-4 border border-[#005FDC24] rounded-xl flex-row items-center justify-between"
+              >
                 <View className="flex-row items-center gap-2">
                   <MaterialCommunityIcons
                     name="percent-circle-outline"

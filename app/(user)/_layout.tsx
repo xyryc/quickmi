@@ -154,6 +154,12 @@ export default function UserLayout() {
         }}
       />
       <Tabs.Screen
+        name="profile/payment/refer-discount"
+        options={{
+          href: null,
+        }}
+      />
+      <Tabs.Screen
         name="profile/home-location"
         options={{
           href: null,
