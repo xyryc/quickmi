@@ -86,7 +86,7 @@ const Profile = () => {
 
                   {/* camera icon */}
                   <Ionicons
-                    className="absolute left-56 bottom-2 bg-[#0F73F7] p-1 border border-white rounded-full"
+                    className="absolute left-52 bottom-3 bg-[#0F73F7] p-1 border border-white rounded-full"
                     name="camera-outline"
                     size={16}
                     color="white"
@@ -116,10 +116,12 @@ const Profile = () => {
 
                   {/* secondary Wallet button */}
                   <ButtonSecondary
-                    onPress={() => router.push("/(user)/profile/wallet")}
+                    onPress={() =>
+                      router.push("/(user)/profile/payment/payments")
+                    }
                     iconPosition="left"
                     className="flex-1 !border !border-[#E3E6F0]"
-                    title="Wallet"
+                    title="Payments"
                     icon={<Entypo name="wallet" size={20} color="#0F73F7" />}
                   />
                 </View>

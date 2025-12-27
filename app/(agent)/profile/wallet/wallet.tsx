@@ -11,7 +11,7 @@ import {
 import { Image } from "expo-image";
 import { LinearGradient } from "expo-linear-gradient";
 import { router } from "expo-router";
-import React, { useCallback, useMemo, useRef } from "react";
+import React from "react";
 import {
   KeyboardAvoidingView,
   Platform,
@@ -25,42 +25,6 @@ import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 const Wallet = () => {
-  const confirmModalRef = useRef<BottomSheetModal>(null);
-  const successModalRef = useRef<BottomSheetModal>(null);
-
-  //  Snap points
-  const confirmSnapPoints = useMemo(() => ["40%"], []);
-  const successSnapPoints = useMemo(() => ["45%"], []);
-
-  //  Confirm deposit handler
-  const handleWithdraw = useCallback(() => {
-    console.log("Opening confirm deposit modal...");
-    confirmModalRef.current?.present();
-  }, []);
-
-  //  Confirm (Yes) button handler
-  const handleConfirmYes = useCallback(() => {
-    console.log("User confirmed, showing success modal");
-
-    confirmModalRef.current?.dismiss();
-
-    setTimeout(() => {
-      successModalRef.current?.present();
-    }, 300);
-  }, []);
-
-  //  Confirm (No) button handler
-  const handleConfirmNo = useCallback(() => {
-    console.log("User declined");
-    confirmModalRef.current?.dismiss();
-  }, []);
-
-  //  Success modal close handler
-  const handleSuccessClose = useCallback(() => {
-    successModalRef.current?.dismiss();
-    setTimeout(() => {}, 300);
-  }, []);
-
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
       <BottomSheetModalProvider>
