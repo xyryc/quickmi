@@ -266,13 +266,13 @@ export default function UserLayout() {
       />
 
       {/* chat screens */}
-      <Tabs.Screen
+      {/* <Tabs.Screen
         name="chat/chat"
         options={{
           href: null,
           tabBarStyle: { display: "none" },
         }}
-      />
+      /> */}
     </Tabs>
   );
 }

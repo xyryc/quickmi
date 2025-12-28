@@ -1,11 +1,12 @@
+import ChatHeader from "@/components/ChatHeader";
 import React from "react";
-import { Text, View } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 const ChatScreen = () => {
   return (
-    <View>
-      <Text>ChatScreen</Text>
-    </View>
+    <SafeAreaView>
+      <ChatHeader />
+    </SafeAreaView>
   );
 };
 
