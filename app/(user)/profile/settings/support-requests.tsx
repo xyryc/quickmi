@@ -30,7 +30,7 @@ const SupportRequests = () => {
   const successModalRef = useRef<BottomSheetModal>(null);
 
   // Snap points
-  const successSnapPoints = useMemo(() => ["55%"], []);
+  const successSnapPoints = useMemo(() => ["60%"], []);
 
   // Issue options
   const issueOptions = ["Delivery Issue", "Payment Issue", "App Issue"];
@@ -39,6 +39,7 @@ const SupportRequests = () => {
   const handleSendComplaint = useCallback(() => {
     if (!complaintText.trim()) {
       console.log("Please write your complaint");
+      alert("Please write your complaint");
       return;
     }
 
@@ -137,7 +138,7 @@ const SupportRequests = () => {
                 {/* Send Button */}
                 <ButtonPrimary
                   title="Send to Admin"
-                  className="mt-6"
+                  className="mt-6 mb-16"
                   onPress={handleSendComplaint}
                 />
               </ScrollView>
@@ -215,7 +216,7 @@ const SupportRequests = () => {
                 {/* Button */}
                 <ButtonPrimary
                   title={"Done"}
-                  className={"mt-5"}
+                  className={"mt-5 mb-16"}
                   onPress={handleSuccessClose}
                 />
               </View>

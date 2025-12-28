@@ -1,6 +1,11 @@
 import ButtonPrimary from "@/components/ButtonPrimary";
 import ScreenHeader from "@/components/ScreenHeader";
-import { AntDesign, FontAwesome6, MaterialIcons } from "@expo/vector-icons";
+import {
+  AntDesign,
+  Feather,
+  FontAwesome6,
+  MaterialIcons,
+} from "@expo/vector-icons";
 import {
   BottomSheetModal,
   BottomSheetModalProvider,
@@ -151,7 +156,7 @@ const UploadDocument = () => {
                 >
                   <View className="flex-row items-center gap-3">
                     <View className="bg-[#CFE3FD] p-3 rounded-full">
-                      <FontAwesome6 name="user" size={24} color="#0F73F7" />
+                      <Feather name="user" size={24} color="#0F73F7" />
                     </View>
                     <Text className="text-base text-[#031731] font-sf-pro-medium">
                       Your Picture
@@ -217,12 +222,6 @@ const UploadDocument = () => {
                   title={"Got it"}
                   className={"mt-4 mb-4"}
                   onPress={() => router.push("/(agent)")}
-                />
-
-                <ButtonPrimary
-                  title={"Close"}
-                  className={" mb-4"}
-                  onPress={handleClosePress}
                 />
               </View>
             </BottomSheetScrollView>

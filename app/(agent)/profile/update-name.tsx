@@ -43,10 +43,16 @@ const UpdateName = () => {
             <Text className="mt-3.5 text-sm font-sf-pro-medium">
               First Name
             </Text>
-            <TextInput className="mt-2 p-4 border border-[#E3E6F0] rounded-xl bg-white" />
+            <TextInput
+              className="mt-2 p-4 border border-[#E3E6F0] rounded-xl bg-white"
+              value="Darlene"
+            />
 
             <Text className="mt-5 text-sm font-sf-pro-medium">Last Name</Text>
-            <TextInput className="mt-2 p-4 border border-[#E3E6F0] rounded-xl bg-white" />
+            <TextInput
+              className="mt-2 p-4 border border-[#E3E6F0] rounded-xl bg-white"
+              value="Darlene"
+            />
           </ScrollView>
 
           {/* bottom button */}
