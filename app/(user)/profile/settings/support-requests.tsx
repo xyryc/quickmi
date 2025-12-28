@@ -106,7 +106,7 @@ const SupportRequests = () => {
 
                   <Select
                     style={{ height: 50 }}
-                    className="w-full border border-[#E3E6F0] rounded-xl px-4 bg-white"
+                    className="w-full border border-black rounded-xl px-4 bg-white"
                     mode="dropdown"
                     options={issueOptions}
                     selectedIndex={0}
