@@ -11,7 +11,7 @@ import {
 import { Image } from "expo-image";
 import { LinearGradient } from "expo-linear-gradient";
 import { router } from "expo-router";
-import React from "react";
+import React, { useRef } from "react";
 import {
   KeyboardAvoidingView,
   Platform,
@@ -25,6 +25,35 @@ import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 const Wallet = () => {
+  // ✅ Modal refs
+  const confirmModalRef = useRef<BottomSheetModal>(null);
+  const successModalRef = useRef<BottomSheetModal>(null);
+
+  // ✅ Snap points
+  const confirmSnapPoints = ["35%"];
+  const successSnapPoints = ["55%"];
+
+  // ✅ Handle Withdraw - opens confirm modal
+  const handleWithdraw = () => {
+    confirmModalRef.current?.present();
+  };
+
+  // ✅ Confirm "No" - close confirm modal
+  const handleConfirmNo = () => {
+    confirmModalRef.current?.dismiss();
+  };
+
+  // ✅ Confirm "Yes" - close confirm, open success
+  const handleConfirmYes = () => {
+    confirmModalRef.current?.dismiss();
+    successModalRef.current?.present();
+  };
+
+  // ✅ Close success modal and go back to wallet
+  const handleSuccessClose = () => {
+    successModalRef.current?.dismiss();
+  };
+
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
       <BottomSheetModalProvider>
