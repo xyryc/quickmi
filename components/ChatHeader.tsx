@@ -1,17 +1,27 @@
 import { Ionicons, MaterialIcons } from "@expo/vector-icons";
 import { Image } from "expo-image";
-import { useRouter } from "expo-router";
+import { useLocalSearchParams, useRouter } from "expo-router";
 import React from "react";
 import { Text, TouchableOpacity, View } from "react-native";
 
 const ChatHeader = () => {
   const router = useRouter();
 
+  const { returnTo } = useLocalSearchParams<{ returnTo?: string }>();
+
+  const handleBack = () => {
+    if (returnTo) {
+      router.replace(returnTo);
+    } else {
+      router.back();
+    }
+  };
+
   return (
     <View className="py-3 px-5 flex-row items-center justify-between gap-10 bg-[#d3e6ff38] rounded-b-3xl">
       <View className="flex-row items-center gap-6 w-[48%]">
         <TouchableOpacity
-          onPress={() => router.back()}
+          onPress={handleBack}
           className="w-11 h-11 bg-white items-center justify-center rounded-full border-[0.5px] border-[#0F73F7E5]"
         >
           <MaterialIcons name="keyboard-arrow-left" size={24} color="black" />

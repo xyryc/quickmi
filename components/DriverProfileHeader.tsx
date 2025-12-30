@@ -34,7 +34,12 @@ const DriverProfileHeader = () => {
 
       <View className="flex-row items-center gap-3">
         <TouchableOpacity
-          onPress={() => router.push("/(user)/chat/chat")}
+          onPress={() =>
+            router.push({
+              pathname: "/(user)/chat/chat",
+              params: { returnTo: "/(user)/select-vehicle" },
+            })
+          }
           className="w-11 h-11 rounded-full items-center justify-center bg-[#CFE3FD42] border border-[#0F73F724]"
         >
           <Ionicons name="chatbox-ellipses-outline" size={20} color="#4D4D4D" />
