@@ -75,8 +75,8 @@ const Profile = () => {
                 className="flex-1 !border !border-[#E3E6F0]"
                 title="Inbox"
                 icon={
-                  <MaterialCommunityIcons
-                    name="message-processing"
+                  <Ionicons
+                    name="chatbox-ellipses-outline"
                     size={20}
                     color="#0F73F7"
                   />
@@ -102,10 +102,12 @@ const Profile = () => {
               iconPosition="left"
             />
 
-            <Text className="mt-4 font-sf-pro-medium">Account Information</Text>
+            <Text className="mt-4 text-base font-sf-pro-medium">
+              Account Information
+            </Text>
             <TouchableOpacity
               onPress={() => router.push("/profile/personal-info")}
-              className="flex-row items-center gap-2 py-3"
+              className="flex-row items-center gap-2 mt-5"
             >
               <MaterialCommunityIcons
                 name="account-edit-outline"
@@ -119,41 +121,39 @@ const Profile = () => {
           </View>
 
           {/* Saved place */}
-
-          <View className="mt-3.5 bg-white rounded-xl p-3.5 border-spacing-0.5 border-[#E3E6F0] shadow-md">
-            <Text className=" font-sf-pro-medium">Saved place</Text>
+          <View className="mt-3.5 bg-white rounded-xl p-3.5 border-0.5 border-[#E3E6F0] shadow-md">
+            <Text className="text-base font-sf-pro-medium mb-4">
+              Saved place
+            </Text>
 
             {/* home location */}
-
             <TouchableOpacity
               onPress={() => router.push("/(user)/profile/home-location")}
-              className="flex-row items-center gap-2 py-3"
+              className="flex-row items-center gap-2"
             >
-              <Feather name="home" size={20} color="#4D4D4D" />
+              <Feather name="home" size={18} color="#4D4D4D" />
               <Text className="font-sf-pro-medium text-sm text-[#4D4D4D]">
                 Enter home location
               </Text>
             </TouchableOpacity>
 
             {/* work location */}
-
             <TouchableOpacity
               onPress={() => router.push("/profile/work-location")}
-              className="flex-row items-center gap-2 py-3"
+              className="flex-row items-center gap-2 my-5"
             >
-              <Feather name="briefcase" size={20} color="#4D4D4D" />
+              <Feather name="briefcase" size={18} color="#4D4D4D" />
               <Text className="font-sf-pro-medium text-sm text-[#4D4D4D]">
                 Enter Work location
               </Text>
             </TouchableOpacity>
 
             {/* add-place location */}
-
             <TouchableOpacity
               onPress={() => router.push("/profile/add-place")}
-              className="flex-row items-center gap-2 py-3"
+              className="flex-row items-center gap-2"
             >
-              <SimpleLineIcons name="location-pin" size={20} color="#4D4D4D" />
+              <SimpleLineIcons name="location-pin" size={18} color="#4D4D4D" />
               <Text className="font-sf-pro-medium text-sm text-[#4D4D4D]">
                 Add a place
               </Text>
@@ -161,19 +161,17 @@ const Profile = () => {
           </View>
 
           {/* Setting */}
-
           <View className="mt-3.5 bg-white rounded-xl p-3.5 border-spacing-0.5 border-[#E3E6F0] shadow-md">
-            <Text className=" font-sf-pro-medium">Setting</Text>
+            <Text className="text-base font-sf-pro-medium mb-4">Settings</Text>
 
             {/* home location */}
-
             <TouchableOpacity
               onPress={() => router.push("/profile/permission")}
-              className="flex-row items-center gap-2 py-3"
+              className="flex-row items-center gap-2 mb-5"
             >
               <MaterialCommunityIcons
                 name="shield-check-outline"
-                size={20}
+                size={18}
                 color="#4D4D4D"
               />
               <Text className="font-sf-pro-medium text-sm text-[#4D4D4D]">
@@ -182,12 +180,11 @@ const Profile = () => {
             </TouchableOpacity>
 
             {/* work location */}
-
             <TouchableOpacity
               onPress={() => router.push("/(user)/profile/settings/settings")}
-              className="flex-row items-center gap-2 py-3"
+              className="flex-row items-center gap-2"
             >
-              <Ionicons name="settings-outline" size={20} color="#4D4D4D" />
+              <Ionicons name="settings-outline" size={18} color="#4D4D4D" />
               <Text className="font-sf-pro-medium text-sm text-[#4D4D4D]">
                 Settings
               </Text>
@@ -195,10 +192,9 @@ const Profile = () => {
           </View>
 
           {/* logout */}
-
           <View className="mt-3.5 mb-5 bg-[#ffffff] rounded-xl p-3.5 border-spacing-0.5 border-[#E3E6F0] shadow-md">
-            <TouchableOpacity className="flex-row items-center gap-2 py-3">
-              <SimpleLineIcons name="logout" size={20} color="#4D4D4D" />
+            <TouchableOpacity className="flex-row items-center gap-2">
+              <Ionicons name="exit-outline" size={18} color="#4D4D4D" />
               <Text className="font-sf-pro-medium text-sm text-[#4D4D4D]">
                 Log Out
               </Text>
