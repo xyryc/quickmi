@@ -13,9 +13,15 @@ import {
   BottomSheetModalProvider,
   BottomSheetScrollView,
 } from "@gorhom/bottom-sheet";
+import {
+  BottomSheetModal,
+  BottomSheetModalProvider,
+  BottomSheetScrollView,
+} from "@gorhom/bottom-sheet";
 import { Image } from "expo-image";
 import { LinearGradient } from "expo-linear-gradient";
 import { router } from "expo-router";
+import React, { useCallback, useMemo, useRef } from "react";
 import React, { useCallback, useMemo, useRef } from "react";
 import {
   ScrollView,
@@ -25,9 +31,37 @@ import {
   View,
 } from "react-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 const Profile = () => {
+  // Logout Confirmation Modal
+  const logoutConfirmRef = useRef<BottomSheetModal>(null);
+  // Logout Success Modal
+
+  const confirmSnapPoints = useMemo(() => ["40%"], []);
+
+  // Open logout confirmation
+  const handleLogoutPress = useCallback(() => {
+    console.log("Opening logout confirmation modal...");
+    logoutConfirmRef.current?.present();
+  }, []);
+
+  // Confirm logout (Yes button)
+  const handleConfirmLogout = useCallback(() => {
+    console.log("User confirmed logout");
+    logoutConfirmRef.current?.dismiss();
+    setTimeout(() => {
+      router.push("/(user)/profile");
+    }, 300);
+  }, []);
+
+  // Cancel logout (No button)
+  const handleCancelLogout = useCallback(() => {
+    console.log("User cancelled logout");
+    logoutConfirmRef.current?.dismiss();
+  }, []);
+
   // Logout Confirmation Modal
   const logoutConfirmRef = useRef<BottomSheetModal>(null);
   // Logout Success Modal
@@ -60,7 +94,33 @@ const Profile = () => {
       <BottomSheetModalProvider>
         <SafeAreaView className="flex-1 mb-28" edges={["top", "left", "right"]}>
           <StatusBar backgroundColor="#D3E6FF" barStyle="dark-content" />
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <BottomSheetModalProvider>
+        <SafeAreaView className="flex-1 mb-28" edges={["top", "left", "right"]}>
+          <StatusBar backgroundColor="#D3E6FF" barStyle="dark-content" />
 
+          <LinearGradient
+            colors={["#D3E6FF", "#FFFFFF"]}
+            locations={[0.3, 1]}
+            style={{ flex: 1 }}
+          >
+            {/* history cards */}
+            <ScrollView className="mx-5" showsVerticalScrollIndicator={false}>
+              {/* Personal info */}
+              <View className="mt-8 bg-white rounded-xl p-3.5 border-spacing-0.5 border-[#E3E6F0] shadow-md">
+                {/* profile image */}
+                <View className="flex items-center relative">
+                  <Image
+                    source={{
+                      uri: "https://randomuser.me/api/portraits/men/10.jpg",
+                    }}
+                    style={{
+                      height: 100,
+                      width: 100,
+                      borderRadius: 100,
+                    }}
+                    contentFit="cover"
+                  />
           <LinearGradient
             colors={["#D3E6FF", "#FFFFFF"]}
             locations={[0.3, 1]}
@@ -92,7 +152,19 @@ const Profile = () => {
                     color="white"
                   />
                 </View>
+                  {/* camera icon */}
+                  <Ionicons
+                    className="absolute left-52 bottom-3 bg-[#0F73F7] p-1 border border-white rounded-full"
+                    name="camera-outline"
+                    size={16}
+                    color="white"
+                  />
+                </View>
 
+                {/* profile name */}
+                <Text className="text-center mt-3.5 font-sf-pro-medium text-xl text-black">
+                  Darlene Robertson
+                </Text>
                 {/* profile name */}
                 <Text className="text-center mt-3.5 font-sf-pro-medium text-xl text-black">
                   Darlene Robertson
@@ -125,7 +197,26 @@ const Profile = () => {
                     icon={<Entypo name="wallet" size={20} color="#0F73F7" />}
                   />
                 </View>
+                  {/* secondary Wallet button */}
+                  <ButtonSecondary
+                    onPress={() =>
+                      router.push("/(user)/profile/payment/payments")
+                    }
+                    iconPosition="left"
+                    className="flex-1 !border !border-[#E3E6F0]"
+                    title="Payments"
+                    icon={<Entypo name="wallet" size={20} color="#0F73F7" />}
+                  />
+                </View>
 
+                {/*  Switch to Agent mode */}
+                <ButtonPrimary
+                  onPress={() => router.push("/(agent)/profile/profile")}
+                  title=" Switch to Agent mode"
+                  className="mt-4"
+                  icon={<AntDesign name="car" size={20} color="white" />}
+                  iconPosition="left"
+                />
                 {/*  Switch to Agent mode */}
                 <ButtonPrimary
                   onPress={() => router.push("/(agent)/profile/profile")}
