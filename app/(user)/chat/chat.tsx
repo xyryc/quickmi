@@ -1,8 +1,6 @@
-import {
-  Ionicons,
-  MaterialCommunityIcons,
-  MaterialIcons,
-} from "@expo/vector-icons";
+import ChatHeader from "@/components/ChatHeader";
+import TrackingCard from "@/components/TrackingCard";
+import { Ionicons } from "@expo/vector-icons";
 import React, { useEffect, useRef, useState } from "react";
 import {
   Image,
@@ -104,107 +102,28 @@ const ChatScreen = () => {
   };
 
   return (
-    <SafeAreaView className="flex-1 bg-white" edges={["top"]}>
+    <SafeAreaView className="flex-1 bg-[#d3e6ff38]" edges={["top", "bottom"]}>
       <StatusBar barStyle="dark-content" />
 
       <KeyboardAvoidingView
         behavior={Platform.OS === "ios" ? "padding" : "height"}
-        style={{ flex: 1 }}
+        style={{ flex: 1, backgroundColor: "white" }}
         keyboardVerticalOffset={Platform.OS === "ios" ? 90 : 0}
       >
         {/* Header */}
-        <View className="bg-white px-4 py-3 flex-row items-center justify-between border-b border-gray-100">
-          <View className="flex-row items-center flex-1">
-            <TouchableOpacity className="mr-3">
-              <Ionicons name="chevron-back" size={24} color="#000" />
-            </TouchableOpacity>
-
-            <View className="w-10 h-10 rounded-full bg-gray-200 mr-3">
-              <Image
-                source={{ uri: "https://i.pravatar.cc/100?img=12" }}
-                className="w-10 h-10 rounded-full"
-              />
-            </View>
-
-            <View className="flex-1">
-              <Text className="text-base font-semibold text-gray-900">
-                Wade Warren
-              </Text>
-              <Text className="text-xs text-gray-500" numberOfLines={1}>
-                4 Novella Block,...
-              </Text>
-            </View>
-          </View>
-
-          <View className="flex-row gap-3">
-            <TouchableOpacity>
-              <Ionicons name="videocam-outline" size={24} color="#000" />
-            </TouchableOpacity>
-            <TouchableOpacity>
-              <Ionicons name="call-outline" size={24} color="#000" />
-            </TouchableOpacity>
-          </View>
-        </View>
+        <ChatHeader />
 
         {/* Tracking Card */}
-        <View className="bg-white mx-4 mt-4 rounded-2xl p-4 shadow-sm">
-          <View className="flex-row items-center mb-3">
-            <View className="w-10 h-10 bg-orange-100 rounded-lg items-center justify-center mr-3">
-              <MaterialCommunityIcons
-                name="package-variant"
-                size={24}
-                color="#F97316"
-              />
-            </View>
-            <View className="flex-1 flex-row items-center justify-between">
-              <Text className="text-gray-900 font-medium">
-                Tracking ID: #5R9G87R
-              </Text>
-              <TouchableOpacity>
-                <MaterialCommunityIcons
-                  name="content-copy"
-                  size={20}
-                  color="#6B7280"
-                />
-              </TouchableOpacity>
-            </View>
-          </View>
-
-          <View className="flex-row justify-between mb-3">
-            <View>
-              <Text className="text-gray-500 text-xs mb-1">Distance</Text>
-              <Text className="text-gray-900 font-semibold text-lg">
-                5.39 KM
-              </Text>
-            </View>
-            <View className="items-end">
-              <View className="flex-row items-center gap-1 mb-1">
-                <Text className="text-gray-500 text-xs">Charge</Text>
-                <View className="w-4 h-4 bg-blue-500 rounded-full items-center justify-center">
-                  <Text className="text-white text-xs font-bold">i</Text>
-                </View>
-              </View>
-              <View className="flex-row items-center gap-2">
-                <Text className="text-red-500 text-sm line-through">$150</Text>
-                <Text className="text-gray-900 font-bold text-lg">$140</Text>
-              </View>
-            </View>
-          </View>
-
-          <View className="flex-row items-center justify-between">
-            <Text className="text-gray-900 font-medium">Who will pay?</Text>
-            <TouchableOpacity className="bg-blue-500 rounded-full px-4 py-2 flex-row items-center gap-2">
-              <MaterialIcons name="facebook" size={16} color="#fff" />
-              <Text className="text-white font-medium text-sm">Sender</Text>
-            </TouchableOpacity>
-          </View>
-        </View>
+        <TrackingCard />
 
         {/* Messages */}
         <ScrollView
           ref={scrollViewRef}
-          className="flex-1 px-4 pt-4"
+          className="flex-1 px-4 py-4"
           showsVerticalScrollIndicator={false}
+          contentContainerStyle={{
+            paddingBottom: 10,
+          }}
         >
           {messages.map((message, index) => {
             const showTimestamp =
@@ -251,10 +170,44 @@ const ChatScreen = () => {
           })}
         </ScrollView>
 
-        {/* Input Bar */}
+        {/* Input Section */}
+        <View className="bg-[#d3e6ff38] px-4 py-1.5 flex-row items-center gap-3 border-t border-gray-100">
+          <TouchableOpacity
+            onPress={() => setShowQuickActions(!showQuickActions)}
+          >
+            <Ionicons
+              name={showQuickActions ? "close" : "add"}
+              size={28}
+              color="#000"
+            />
+          </TouchableOpacity>
+
+          <View className="flex-1 bg-white rounded-full px-3">
+            <TextInput
+              value={inputText}
+              onChangeText={setInputText}
+              placeholder="Message"
+              placeholderTextColor="#9CA3AF"
+              className="font-sf-pro-regular text-base"
+              multiline
+              maxLength={500}
+              onFocus={() => setShowQuickActions(false)}
+            />
+          </View>
+
+          {/* Change from camera icon to send button based on input */}
+          <TouchableOpacity onPress={handleSend}>
+            {inputText.trim() ? (
+              <Ionicons name="send" size={28} color="#3B82F6" />
+            ) : (
+              <Ionicons name="camera-outline" size={28} color="#000" />
+            )}
+          </TouchableOpacity>
+        </View>
+
         {/* Quick Actions - Shows when plus is pressed */}
         {showQuickActions && (
-          <View className="bg-white px-4 py-3 flex-row gap-4 justify-center border-t border-gray-100">
+          <View className="bg-white px-4 py-3 flex-row gap-4 border-t border-gray-100">
             <TouchableOpacity
               onPress={() => {
                 handleQuickAction("Photo");
@@ -295,41 +248,6 @@ const ChatScreen = () => {
             </TouchableOpacity>
           </View>
         )}
-
-        {/* Input Section */}
-        <View
-          className="bg-[#E3E6F0] px-4 py-3 flex-row items-center gap-3 border-t border-gray-100"
-          style={{
-            paddingBottom: insets.bottom + 10,
-          }}
-        >
-          <TouchableOpacity
-            onPress={() => setShowQuickActions(!showQuickActions)}
-          >
-            <Ionicons
-              name={showQuickActions ? "close" : "add"}
-              size={28}
-              color="#000"
-            />
-          </TouchableOpacity>
-
-          <View className="flex-1 bg-gray-100 rounded-full px-3">
-            <TextInput
-              value={inputText}
-              onChangeText={setInputText}
-              placeholder="Message"
-              placeholderTextColor="#9CA3AF"
-              className="font-sf-pro-regular text-base"
-              multiline
-              maxLength={500}
-              onFocus={() => setShowQuickActions(false)}
-            />
-          </View>
-
-          <TouchableOpacity>
-            <Ionicons name="camera-outline" size={28} color="#000" />
-          </TouchableOpacity>
-        </View>
       </KeyboardAvoidingView>
     </SafeAreaView>
   );

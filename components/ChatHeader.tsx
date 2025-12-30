@@ -8,7 +8,7 @@ const ChatHeader = () => {
   const router = useRouter();
 
   return (
-    <View className="py-3 px-5 flex-row items-center justify-between gap-10 bg-[#D3E6FF] rounded-b-[30px]">
+    <View className="py-3 px-5 flex-row items-center justify-between gap-10 bg-[#d3e6ff38] rounded-b-3xl">
       <View className="flex-row items-center gap-6 w-[48%]">
         <TouchableOpacity
           onPress={() => router.back()}
