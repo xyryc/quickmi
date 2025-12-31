@@ -7,12 +7,11 @@ import {
   Ionicons,
   MaterialCommunityIcons,
   MaterialIcons,
-  SimpleLineIcons,
 } from "@expo/vector-icons";
 import {
   BottomSheetModal,
   BottomSheetModalProvider,
-  BottomSheetScrollView,
+  BottomSheetView,
 } from "@gorhom/bottom-sheet";
 import { Image } from "expo-image";
 import { LinearGradient } from "expo-linear-gradient";
@@ -26,9 +25,13 @@ import {
   View,
 } from "react-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
-import { SafeAreaView } from "react-native-safe-area-context";
+import {
+  SafeAreaView,
+  useSafeAreaInsets,
+} from "react-native-safe-area-context";
 
 const Profile = () => {
+  const insets = useSafeAreaInsets();
   // Logout Confirmation Modal
   const logoutConfirmRef = useRef<BottomSheetModal>(null);
   // Logout Success Modal
@@ -41,53 +44,50 @@ const Profile = () => {
     logoutConfirmRef.current?.present();
   }, []);
 
-  // Confirm logout (Yes button)
+  // Confirm logout
   const handleConfirmLogout = useCallback(() => {
-    console.log("User confirmed logout");
     logoutConfirmRef.current?.dismiss();
     setTimeout(() => {
-      router.push("/(user)/profile");
+      router.replace("/(auth)/signup");
     }, 300);
   }, []);
 
-  // Cancel logout (No button)
+  // Cancel logout
   const handleCancelLogout = useCallback(() => {
-    console.log("User cancelled logout");
     logoutConfirmRef.current?.dismiss();
   }, []);
+
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
       <BottomSheetModalProvider>
-        <SafeAreaView className="flex-1 mb-28" edges={["top", "left", "right"]}>
+        <SafeAreaView className="flex-1" edges={["left", "right", "bottom"]}>
           <StatusBar backgroundColor="#D3E6FF" barStyle="dark-content" />
 
           <LinearGradient
             colors={["#D3E6FF", "#FFFFFF"]}
             locations={[0.3, 1]}
-            style={{ flex: 1 }}
+            style={{ flex: 1, paddingTop: insets.top }}
           >
-            {/* header */}
-            {/* <ScreenHeader title="Parcel History" /> */}
-
             {/* history cards */}
             <ScrollView className="mx-5" showsVerticalScrollIndicator={false}>
               {/* account */}
-              <View className="  rounded-xl p-3.5 border-spacing-0.5 border-[#E3E6F0] flex-row justify-between ">
-                <Text className="font-sf-pro-medium text-3xl text-[#031731]">
-                  Account
-                </Text>
-                <AntDesign
-                  name="close"
-                  size={22}
-                  color="black"
-                  className="bg-white p-2 rounded-full"
-                />
+              <View className="rounded-xl pt-4 border-spacing-0.5 border-[#E3E6F0] flex-row justify-between">
+                <Text className="font-sf-pro-medium text-3xl">Account</Text>
+
+                <TouchableOpacity onPress={() => router.back()}>
+                  <AntDesign
+                    name="close"
+                    size={16}
+                    color="black"
+                    className="bg-white p-2 rounded-full"
+                  />
+                </TouchableOpacity>
               </View>
 
               {/* Personal info */}
-              <View className="mt-4 bg-white rounded-xl p-3.5 border-spacing-0.5 border-[#E3E6F0] shadow-md">
+              <View className="mt-4 bg-white rounded-xl p-3.5 border-spacing-0.5 border-[#E3E6F0]">
                 {/* profile image */}
-                <View className="flex-row gap-3 items-center px-3 py-2 bg-white shadow-2xl android:elevation-4">
+                <View className="flex-row gap-3 items-center px-3 py-2 bg-white shadow-2xl android:elevation-4 border-[0.5px] border-[#E3E6F0] elevation-lg rounded-lg">
                   <Image
                     source={{
                       uri: "https://randomuser.me/api/portraits/men/10.jpg",
@@ -101,7 +101,7 @@ const Profile = () => {
                   />
 
                   {/* details */}
-                  <View className="">
+                  <View>
                     <Text className="font-sf-pro-medium text-sm text-[#031731]">
                       John Doe
                     </Text>
@@ -131,7 +131,7 @@ const Profile = () => {
                 {/*  <Text className="font-sf-pro-medium text-base text-custom-blue-900 mb-1"> */}
 
                 {/* secondary inbox button */}
-                <View className="flex-row gap-2 mt-4 ">
+                <View className="flex-row gap-2 mt-4">
                   <ButtonSecondary
                     onPress={() => router.push("/(agent)/profile/inbox")}
                     iconPosition="left"
@@ -178,7 +178,7 @@ const Profile = () => {
                   onPress={() => router.push("/(agent)/profile/ride/ride")}
                   className="flex-row items-center gap-2 py-3"
                 >
-                  <AntDesign name="car" size={20} color="#4D4D4D" />
+                  <Ionicons name="car-outline" size={20} color="#4D4D4D" />
                   <Text className="font-sf-pro-medium text-sm text-[#4D4D4D]">
                     My Ride
                   </Text>
@@ -236,20 +236,18 @@ const Profile = () => {
                   </Text>
                 </TouchableOpacity>
 
-                <View className="border-b border-[#A2A2A2] my-6" />
+                <View className="border-b border-[#A2A2A2] my-3" />
 
                 <TouchableOpacity
                   onPress={handleLogoutPress}
-                  className="flex-row items-center gap-2 py-3"
+                  className="flex-row items-center gap-2 pt-3"
                 >
-                  <SimpleLineIcons name="logout" size={20} color="#4D4D4D" />
+                  <Ionicons name="exit-outline" size={20} color="#4D4D4D" />
                   <Text className="font-sf-pro-medium text-sm text-[#4D4D4D]">
                     Log Out
                   </Text>
                 </TouchableOpacity>
               </View>
-
-              {/* logout */}
             </ScrollView>
 
             <ButtonPrimary
@@ -259,6 +257,7 @@ const Profile = () => {
               iconPosition="left"
             />
           </LinearGradient>
+
           {/* CONFIRM LOGOUT MODAL */}
           <BottomSheetModal
             ref={logoutConfirmRef}
@@ -273,35 +272,35 @@ const Profile = () => {
               />
             )}
           >
-            <BottomSheetScrollView
-              contentContainerStyle={{ paddingBottom: 40 }}
-              showsVerticalScrollIndicator={false}
+            <BottomSheetView
+              className="mx-5"
+              style={{
+                paddingBottom: insets.bottom + 20,
+              }}
             >
-              <View className="px-6 py-4">
-                <Text className="text-lg font-sf-pro-semibold text-center mt-2.5 text-[#031731]">
-                  Log Out
-                </Text>
+              <Text className="text-lg font-sf-pro-semibold text-center text-[#031731]">
+                Log Out
+              </Text>
 
-                <Text className="text-center mt-4 text-[#031731] font-sf-pro-regular text-sm">
-                  Are you sure you want to sure Logout?
-                </Text>
+              <Text className="text-center mt-4 text-[#031731] font-sf-pro-regular text-sm">
+                Are you sure you want to sure Logout?
+              </Text>
 
-                {/* Buttons */}
-                <View className="flex-row mt-5 gap-3 mb-20">
-                  <ButtonSecondary
-                    title={"No"}
-                    className={"flex-1"}
-                    onPress={handleCancelLogout}
-                  />
+              {/* Buttons */}
+              <View className="flex-row mt-5 gap-3">
+                <ButtonSecondary
+                  title={"No"}
+                  className={"flex-1"}
+                  onPress={handleCancelLogout}
+                />
 
-                  <ButtonPrimary
-                    title={"Yes"}
-                    className={"flex-1"}
-                    onPress={handleConfirmLogout}
-                  />
-                </View>
+                <ButtonPrimary
+                  title={"Yes"}
+                  className={"flex-1"}
+                  onPress={handleConfirmLogout}
+                />
               </View>
-            </BottomSheetScrollView>
+            </BottomSheetView>
           </BottomSheetModal>
         </SafeAreaView>
       </BottomSheetModalProvider>

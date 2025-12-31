@@ -9,7 +9,7 @@ import {
 import {
   BottomSheetModal,
   BottomSheetModalProvider,
-  BottomSheetScrollView,
+  BottomSheetView,
 } from "@gorhom/bottom-sheet";
 import { Image } from "expo-image";
 import { LinearGradient } from "expo-linear-gradient";
@@ -191,10 +191,7 @@ const UploadDocument = () => {
               />
             )}
           >
-            <BottomSheetScrollView
-              contentContainerStyle={{ paddingBottom: 40 }}
-              showsVerticalScrollIndicator={false}
-            >
+            <BottomSheetView>
               <View className="px-6 py-4">
                 {/* Success Header */}
                 <View className="items-center mb-6 mt-20">
@@ -211,9 +208,8 @@ const UploadDocument = () => {
                   Congrats!
                 </Text>
 
-                <Text className="text-center mt-4 text-[#031731] font-sf-pro-regular text-sm">
-                  Your account will be {"\n"}
-                  activated in 3 business days
+                <Text className="text-center mt-4 text-[#031731] font-sf-pro-regular text-sm w-1/2 mx-auto">
+                  Your account will be activated in 3 business days
                 </Text>
 
                 {/* button */}
@@ -221,10 +217,10 @@ const UploadDocument = () => {
                 <ButtonPrimary
                   title={"Got it"}
                   className={"mt-4 mb-4"}
-                  onPress={() => router.push("/(agent)")}
+                  onPress={() => router.push("/(agent)/home")}
                 />
               </View>
-            </BottomSheetScrollView>
+            </BottomSheetView>
           </BottomSheetModal>
         </SafeAreaView>
       </BottomSheetModalProvider>
