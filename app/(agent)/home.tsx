@@ -1,18 +1,36 @@
 import ButtonSecondary from "@/components/ButtonSecondary";
+import OfferPrice from "@/components/OfferPrice";
+import TripDetailsCard from "@/components/TripDetailsCard";
+import TripOfferCard from "@/components/TripOfferCard";
 import { Ionicons } from "@expo/vector-icons";
 import BottomSheet, { BottomSheetView } from "@gorhom/bottom-sheet";
 import { Image } from "expo-image";
 import * as Location from "expo-location";
 import { router } from "expo-router";
 import React, { useEffect, useMemo, useRef, useState } from "react";
-import { Alert, TouchableOpacity, View } from "react-native";
+import { Alert, Text, TouchableOpacity, View } from "react-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import MapView, { Marker, PROVIDER_GOOGLE } from "react-native-maps";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
+type AgentStatus =
+  | "offline"
+  | "online"
+  | "finding_trips"
+  | "trip_offer"
+  | "offer_price"
+  | "trip_accepted";
+
 const AgentHome = () => {
   const insets = useSafeAreaInsets();
   const mapRef = useRef<MapView>(null);
+  const bottomSheetRef = useRef<BottomSheet>(null);
+
+  // Agent status state
+  const [agentStatus, setAgentStatus] = useState<AgentStatus>("offline");
+
+  // Mock trip data
+  const [currentTrip, setCurrentTrip] = useState<any>(null);
 
   // user location
   const [userLocation, setUserLocation] = useState<{
@@ -31,7 +49,6 @@ const AgentHome = () => {
 
     (async () => {
       try {
-        // Request permission
         const { status } = await Location.requestForegroundPermissionsAsync();
 
         if (status !== "granted") {
@@ -43,7 +60,6 @@ const AgentHome = () => {
           return;
         }
 
-        // Get initial position
         const location = await Location.getCurrentPositionAsync({
           accuracy: Location.Accuracy.High,
         });
@@ -55,7 +71,6 @@ const AgentHome = () => {
 
         setUserLocation(currentLocation);
 
-        // Set initial heading if available
         if (
           location.coords.heading !== null &&
           location.coords.heading !== undefined
@@ -63,7 +78,6 @@ const AgentHome = () => {
           setHeading(location.coords.heading);
         }
 
-        // Animate map to user location
         if (mapRef.current) {
           mapRef.current.animateToRegion(
             {
@@ -76,12 +90,11 @@ const AgentHome = () => {
           );
         }
 
-        // Watch location for continuous updates
         locationSubscription = await Location.watchPositionAsync(
           {
             accuracy: Location.Accuracy.High,
-            timeInterval: 1000, // Update every second
-            distanceInterval: 1, // Update every meter
+            timeInterval: 1000,
+            distanceInterval: 1,
           },
           (location) => {
             const newLocation = {
@@ -90,7 +103,6 @@ const AgentHome = () => {
             };
             setUserLocation(newLocation);
 
-            // Update heading from location if available
             if (
               location.coords.heading !== null &&
               location.coords.heading !== undefined
@@ -100,11 +112,8 @@ const AgentHome = () => {
           }
         );
 
-        // Watch heading separately for more accurate rotation
         headingSubscription = await Location.watchHeadingAsync(
           (headingData) => {
-            // headingData.trueHeading gives the heading relative to true north
-            // headingData.magHeading gives the heading relative to magnetic north
             setHeading(headingData.trueHeading);
           }
         );
@@ -118,7 +127,6 @@ const AgentHome = () => {
       }
     })();
 
-    // Cleanup subscriptions on unmount
     return () => {
       if (locationSubscription) {
         locationSubscription.remove();
@@ -129,11 +137,192 @@ const AgentHome = () => {
     };
   }, []);
 
-  // Create a ref for the bottom sheet
-  const bottomSheetRef = useRef<BottomSheet>(null);
+  // Handle Go Online button press
+  const handleGoOnline = () => {
+    setAgentStatus("online");
 
-  // Define snap points: 20% and 80% of screen
-  const snapPoints = useMemo(() => ["40%", "60%"], []);
+    // Show "You are online" for 2 seconds
+    setTimeout(() => {
+      setAgentStatus("finding_trips");
+
+      // Show "Finding trips" for 3 seconds, then show trip offer
+      setTimeout(() => {
+        // Mock trip data
+        setCurrentTrip({
+          tripId: "5R9G87R",
+          fromLocation: "123 Main St, Downtown, Dhaka 1000",
+          toLocation: "456 Park Ave, Gulshan, Dhaka 1212",
+          distance: "5.39 KM",
+          suggestedPrice: "$150",
+          pickupTime: "14 May 2023, 2:30 PM",
+          estimatedTime: "15 minutes",
+        });
+        setAgentStatus("trip_offer");
+      }, 3000);
+    }, 2000);
+  };
+
+  // Handle trip acceptance
+  const handleAcceptTrip = () => {
+    setAgentStatus("offer_price");
+  };
+
+  // Handle trip decline
+  const handleDeclineTrip = () => {
+    setCurrentTrip(null);
+    setAgentStatus("finding_trips");
+
+    // Search again after 2 seconds
+    setTimeout(() => {
+      Alert.alert("Info", "Searching for another trip...");
+    }, 1000);
+  };
+
+  // Handle trip timeout
+  const handleTripTimeout = () => {
+    Alert.alert("Trip Missed", "This trip has been accepted by another driver");
+    setCurrentTrip(null);
+    setAgentStatus("finding_trips");
+  };
+
+  // Handle price offer confirmation
+  const handleConfirmPrice = (offeredPrice: string) => {
+    setCurrentTrip({
+      ...currentTrip,
+      offeredPrice,
+    });
+    setAgentStatus("trip_accepted");
+  };
+
+  // Handle cancel from offer price
+  const handleCancelOffer = () => {
+    setCurrentTrip(null);
+    setAgentStatus("finding_trips");
+  };
+
+  // Handle start trip navigation
+  const handleStartTrip = () => {
+    Alert.alert("Success", "Starting navigation to pickup location");
+    // Navigate to ongoing trip screen or start navigation
+  };
+
+  // Handle cancel trip
+  const handleCancelTrip = () => {
+    Alert.alert("Cancel Trip", "Are you sure you want to cancel this trip?", [
+      { text: "No", style: "cancel" },
+      {
+        text: "Yes",
+        style: "destructive",
+        onPress: () => {
+          setCurrentTrip(null);
+          setAgentStatus("online");
+        },
+      },
+    ]);
+  };
+
+  // Define snap points based on status
+  const snapPoints = useMemo(() => {
+    switch (agentStatus) {
+      case "offline":
+      case "online":
+      case "finding_trips":
+        return ["20%", "40%"];
+      case "trip_offer":
+      case "trip_accepted":
+        return ["70%", "90%"];
+      case "offer_price":
+        return ["80%", "95%"];
+      default:
+        return ["40%", "60%"];
+    }
+  }, [agentStatus]);
+
+  // Render bottom sheet content based on status
+  const renderBottomSheetContent = () => {
+    switch (agentStatus) {
+      case "offline":
+        return (
+          <View className="flex-1 justify-center">
+            <ButtonSecondary title="Go Online" onPress={handleGoOnline} />
+          </View>
+        );
+
+      case "online":
+        return (
+          <View className="flex-1 justify-center items-center">
+            <Ionicons name="checkmark-circle" size={48} color="#10B981" />
+            <Text className="text-xl font-sf-pro-semibold mt-4">
+              You are Online!
+            </Text>
+            <Text className="text-sm font-sf-pro-regular text-gray-500 mt-2">
+              Waiting for trip requests...
+            </Text>
+          </View>
+        );
+
+      case "finding_trips":
+        return (
+          <View className="flex-1 justify-center items-center">
+            <View className="w-16 h-16 border-4 border-blue-500 border-t-transparent rounded-full animate-spin" />
+            <Text className="text-xl font-sf-pro-semibold mt-4">
+              Finding Trips...
+            </Text>
+            <Text className="text-sm font-sf-pro-regular text-gray-500 mt-2">
+              Please wait while we search for nearby trips
+            </Text>
+          </View>
+        );
+
+      case "trip_offer":
+        return currentTrip ? (
+          <TripOfferCard
+            tripId={currentTrip.tripId}
+            fromLocation={currentTrip.fromLocation}
+            toLocation={currentTrip.toLocation}
+            distance={currentTrip.distance}
+            suggestedPrice={currentTrip.suggestedPrice}
+            pickupTime={currentTrip.pickupTime}
+            onAccept={handleAcceptTrip}
+            onDecline={handleDeclineTrip}
+            onTimeout={handleTripTimeout}
+          />
+        ) : null;
+
+      case "offer_price":
+        return (
+          <OfferPrice
+            suggestedPrice={currentTrip?.suggestedPrice || "$150"}
+            onNext={handleConfirmPrice}
+            onBack={() => setAgentStatus("trip_offer")}
+            handleCancelRide={handleCancelOffer}
+            onCashPress={() => {}}
+            selectedVehicleData={{
+              type: "Car",
+              name: "Standard Car",
+              capacity: "4 seats",
+            }}
+          />
+        );
+
+      case "trip_accepted":
+        return currentTrip ? (
+          <TripDetailsCard
+            tripId={currentTrip.tripId}
+            estimatedTime={currentTrip.estimatedTime}
+            pickupLocation={currentTrip.fromLocation}
+            dropoffLocation={currentTrip.toLocation}
+            distance={currentTrip.distance}
+            price={currentTrip.offeredPrice || currentTrip.suggestedPrice}
+            onStartTrip={handleStartTrip}
+            onCancelTrip={handleCancelTrip}
+          />
+        ) : null;
+
+      default:
+        return null;
+    }
+  };
 
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
@@ -153,13 +342,11 @@ const AgentHome = () => {
             showsMyLocationButton={true}
             followsUserLocation={true}
           >
-            {/* Pickup Marker */}
             {userLocation && (
               <Marker
                 coordinate={userLocation}
                 anchor={{ x: 0.5, y: 0.5 }}
                 flat={true}
-                className="elevation-2xl"
               >
                 <View
                   style={{
@@ -182,7 +369,8 @@ const AgentHome = () => {
           {/* drawer Button */}
           <TouchableOpacity
             onPress={() => router.push("/(agent)/profile/profile")}
-            className="absolute top-4 left-4 bg-white rounded-full w-11 h-11 items-center justify-center shadow-lg border border-[#0F73F7E5]"
+            className="absolute top-4 left-4 bg-white rounded-full w-11 h-11 items-center justify-center          
+  shadow-lg border border-[#0F73F7E5]"
             style={{
               marginTop: insets.top,
               shadowColor: "#000",
@@ -211,7 +399,7 @@ const AgentHome = () => {
               paddingBottom: insets.bottom + 20,
             }}
           >
-            <ButtonSecondary title="Go Online" />
+            {renderBottomSheetContent()}
           </BottomSheetView>
         </BottomSheet>
       </View>
