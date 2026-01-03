@@ -1,7 +1,7 @@
 import ButtonPrimary from "@/components/ButtonPrimary";
 import ButtonSecondary from "@/components/ButtonSecondary";
-import { Octicons } from "@expo/vector-icons";
-import React, { useEffect, useState } from "react";
+import { AntDesign, Octicons } from "@expo/vector-icons";
+import React, { useEffect, useRef, useState } from "react";
 import { Text, View } from "react-native";
 
 interface TripOfferProps {
@@ -27,113 +27,157 @@ const TripOfferCard: React.FC<TripOfferProps> = ({
   onDecline,
   onTimeout,
 }) => {
-  const [timeRemaining, setTimeRemaining] = useState(20);
+  const [timeRemaining, setTimeRemaining] = useState(20000);
+  const timerRef = useRef<NodeJS.Timeout | null>(null);
+  const hasTimedOut = useRef(false);
 
   useEffect(() => {
-    if (timeRemaining <= 0) {
-      onTimeout();
-      return;
+    // Clear any existing timer
+    if (timerRef.current) {
+      clearInterval(timerRef.current);
     }
 
-    const timer = setInterval(() => {
-      setTimeRemaining((prev) => prev - 1);
+    // Reset state
+    hasTimedOut.current = false;
+    setTimeRemaining(20000);
+
+    // Start new timer
+    timerRef.current = setInterval(() => {
+      setTimeRemaining((prev) => {
+        const newTime = prev - 1;
+
+        // Check if time's up
+        if (newTime <= 0) {
+          if (timerRef.current) {
+            clearInterval(timerRef.current);
+          }
+          if (!hasTimedOut.current) {
+            hasTimedOut.current = true;
+            onTimeout();
+          }
+          return 0;
+        }
+
+        return newTime;
+      });
     }, 1000);
 
-    return () => clearInterval(timer);
-  }, [timeRemaining, onTimeout]);
-
-  const getTimerColor = () => {
-    if (timeRemaining > 10) return "#10B981"; // green
-    if (timeRemaining > 5) return "#F59E0B"; // orange
-    return "#EF4444"; // red
-  };
+    // Cleanup on unmount
+    return () => {
+      if (timerRef.current) {
+        clearInterval(timerRef.current);
+      }
+    };
+  }, [tripId]);
 
   return (
     <View className="flex-1">
-      {/* Timer */}
-      <View className="items-center mb-4">
-        <View
-          className="w-20 h-20 rounded-full items-center justify-center border-4"
-          style={{ borderColor: getTimerColor() }}
-        >
-          <Text
-            className="text-3xl font-sf-pro-semibold"
-            style={{ color: getTimerColor() }}
-          >
-            {timeRemaining}
-          </Text>
+      <View className="flex-row items-start justify-between">
+        <View className="bg-[#0F73F7] flex-row items-center rounded-md p-2 gap-1">
+          <Octicons name="dot-fill" size={10} color="white" />
+          <Text className="text-sm font-sf-pro-regular text-white">Trip</Text>
         </View>
-        <Text className="text-sm font-sf-pro-regular text-gray-500 mt-2">
-          seconds to respond
-        </Text>
-      </View>
 
-      {/* Trip Info Header */}
-      <Text className="text-xl font-sf-pro-semibold text-center mb-4">
-        New Trip Request
-      </Text>
-
-      {/* Trip ID and Time */}
-      <View className="flex-row items-center justify-center gap-2 mb-4">
-        <Text className="font-sf-pro-semibold text-sm">#{tripId}</Text>
-        <Octicons name="dot-fill" size={6} color="#BABFC5" />
-        <Text className="text-gray-400 text-sm font-sf-pro-regular">
-          {pickupTime}
-        </Text>
-      </View>
-
-      {/* Route Details */}
-      <View className="border border-[#E3E6F0] rounded-xl p-4 mb-4">
-        {/* From Location */}
-        <View className="flex-row gap-3 mb-3">
-          <View className="items-center">
-            <View className="w-3 h-3 rounded-full bg-blue-500" />
-            <View className="w-0.5 h-8 bg-gray-300 my-1" />
-          </View>
-          <View className="flex-1">
-            <Text className="text-xs font-sf-pro-medium text-gray-500 mb-1">
-              Pickup From
+        <View className="flex items-end">
+          <Text className="font-sf-pro-medium text-2xl mb-1">$150</Text>
+          <View className="flex-row items-center gap-2">
+            <Octicons name="clock-fill" size={16} color="#0F73F7" />
+            <Text className="text-sm font-sf-pro-medium">
+              16 min (1.4 mi) away
             </Text>
-            <Text className="text-sm font-sf-pro-regular">{fromLocation}</Text>
-          </View>
-        </View>
-
-        {/* To Location */}
-        <View className="flex-row gap-3">
-          <View className="items-center">
-            <Octicons name="location" size={16} color="#EF4444" />
-          </View>
-          <View className="flex-1">
-            <Text className="text-xs font-sf-pro-medium text-gray-500 mb-1">
-              Drop Off At
-            </Text>
-            <Text className="text-sm font-sf-pro-regular">{toLocation}</Text>
           </View>
         </View>
       </View>
 
-      {/* Price and Distance */}
-      <View className="border border-[#E3E6F0] rounded-xl p-4 mb-6">
-        <View className="flex-row items-center justify-between mb-2">
-          <Text className="font-sf-pro-regular text-sm text-gray-400">
-            Distance
-          </Text>
-          <Text className="text-lg font-sf-pro-medium">{distance}</Text>
+      {/* trip details */}
+      <View>
+        {/* sender info */}
+        <View className="mt-2">
+          <View className="flex-row gap-2">
+            {/* left */}
+            <View>
+              <Octicons
+                className="mb-2"
+                name="location"
+                size={18}
+                color="#0F73F7"
+              />
+
+              <AntDesign
+                className="rotate-90"
+                name="dash"
+                size={16}
+                color="#80aad9"
+              />
+              <AntDesign
+                className="rotate-90"
+                name="dash"
+                size={16}
+                color="#80aad9"
+              />
+              <AntDesign
+                className="rotate-90"
+                name="dash"
+                size={16}
+                color="#80aad9"
+              />
+            </View>
+
+            {/* right */}
+            <View className="flex-1">
+              {/* 1st row */}
+
+              <View className="flex items-start">
+                <Text className="font-sf-pro-medium text-base">From</Text>
+                <Text className="font-sf-pro-medium text-blue-500 text-sm">
+                  Sender Address
+                </Text>
+              </View>
+
+              <Text className="text-sm font-sf-pro-regular mt-3">
+                Kilometer 6, 278H, Street 201R, Kroalkor Village, Unnamed Road,
+                Phnom Penh
+              </Text>
+            </View>
+          </View>
         </View>
 
-        <View className="flex-row items-center justify-between">
-          <Text className="font-sf-pro-regular text-sm text-gray-400">
-            Suggested Fare
-          </Text>
-          <Text className="text-lg font-sf-pro-semibold text-blue-600">
-            {suggestedPrice}
-          </Text>
+        {/* receiver info */}
+        <View className="mt-2">
+          <View className="flex-row gap-2">
+            {/* left */}
+            <View>
+              <Octicons
+                className="mb-2"
+                name="location"
+                size={18}
+                color="#0F73F7"
+              />
+            </View>
+
+            {/* right */}
+            <View className="flex-1">
+              {/* 1st row */}
+              <View className="flex items-start">
+                <Text className="font-sf-pro-medium text-base">To</Text>
+                <Text className="font-sf-pro-medium text-blue-500 text-sm">
+                  Receiver Details
+                </Text>
+              </View>
+
+              <Text className="text-sm font-sf-pro-regular mt-3">
+                2nd Floor 01, 25 Mao Tse Toung Blvd (245), Phnom Penh 12302,
+                Cambodia
+              </Text>
+            </View>
+          </View>
         </View>
       </View>
 
       {/* Action Buttons */}
-      <View className="gap-3">
-        <ButtonPrimary title="Accept Trip" onPress={onAccept} />
+      <View className="flex gap-2 mt-3">
+        <ButtonPrimary title="Accept Trip" onPress={onAccept} timer={20} />
+
         <ButtonSecondary title="Decline" onPress={onDecline} />
       </View>
     </View>

@@ -251,26 +251,18 @@ const AgentHome = () => {
       case "online":
         return (
           <View className="flex-1 justify-center items-center">
-            <Ionicons name="checkmark-circle" size={48} color="#10B981" />
-            <Text className="text-xl font-sf-pro-semibold mt-4">
-              You are Online!
-            </Text>
-            <Text className="text-sm font-sf-pro-regular text-gray-500 mt-2">
-              Waiting for trip requests...
-            </Text>
+            <Text className="text-xl font-sf-pro-medium">You are Online!</Text>
+
+            <View className="border-2 border-[#005FDC24] w-full mt-4" />
           </View>
         );
 
       case "finding_trips":
         return (
           <View className="flex-1 justify-center items-center">
-            <View className="w-16 h-16 border-4 border-blue-500 border-t-transparent rounded-full animate-spin" />
-            <Text className="text-xl font-sf-pro-semibold mt-4">
-              Finding Trips...
-            </Text>
-            <Text className="text-sm font-sf-pro-regular text-gray-500 mt-2">
-              Please wait while we search for nearby trips
-            </Text>
+            <Text className="text-xl font-sf-pro-medium">Finding Trips</Text>
+
+            <View className="border-2 border-[#005FDC24] w-full mt-4" />
           </View>
         );
 
@@ -369,8 +361,7 @@ const AgentHome = () => {
           {/* drawer Button */}
           <TouchableOpacity
             onPress={() => router.push("/(agent)/profile/profile")}
-            className="absolute top-4 left-4 bg-white rounded-full w-11 h-11 items-center justify-center          
-  shadow-lg border border-[#0F73F7E5]"
+            className="absolute top-4 left-4 bg-white rounded-full w-11 h-11 items-center justify-center shadow-lg border border-[#0F73F7E5]"
             style={{
               marginTop: insets.top,
               shadowColor: "#000",
