@@ -173,14 +173,13 @@ const AgentHome = () => {
     setAgentStatus("finding_trips");
 
     // Search again after 2 seconds
-    setTimeout(() => {
-      Alert.alert("Info", "Searching for another trip...");
-    }, 1000);
+    // setTimeout(() => {
+    //   Alert.alert("Info", "Searching for another trip...");
+    // }, 1000);
   };
 
   // Handle trip timeout
   const handleTripTimeout = () => {
-    Alert.alert("Trip Missed", "This trip has been accepted by another driver");
     setCurrentTrip(null);
     setAgentStatus("finding_trips");
   };
@@ -225,14 +224,20 @@ const AgentHome = () => {
   const snapPoints = useMemo(() => {
     switch (agentStatus) {
       case "offline":
+
       case "online":
+
       case "finding_trips":
         return ["20%", "40%"];
+
       case "trip_offer":
+
       case "trip_accepted":
         return ["70%", "90%"];
+
       case "offer_price":
         return ["80%", "95%"];
+
       default:
         return ["40%", "60%"];
     }
