@@ -1,5 +1,6 @@
 import ButtonPrimary from "@/components/ButtonPrimary";
-import { FontAwesome6, Octicons } from "@expo/vector-icons";
+import { FontAwesome6, Ionicons } from "@expo/vector-icons";
+import { useRouter } from "expo-router";
 import React from "react";
 import { Text, TouchableOpacity, View } from "react-native";
 
@@ -24,6 +25,8 @@ const TripDetailsCard: React.FC<TripDetailsProps> = ({
   onStartTrip,
   onCancelTrip,
 }) => {
+  const router = useRouter();
+
   return (
     <View className="flex-1">
       {/* Header */}
@@ -48,37 +51,48 @@ const TripDetailsCard: React.FC<TripDetailsProps> = ({
       </View>
 
       {/* Route Details */}
-      <View className="border border-[#E3E6F0] rounded-xl p-4 mb-4">
-        {/* Pickup Location */}
-        <View className="flex-row gap-3 mb-4">
-          <View className="items-center">
-            <View className="w-3 h-3 rounded-full bg-blue-500" />
-            <View className="w-0.5 h-12 bg-gray-300 my-1" />
-          </View>
-          <View className="flex-1">
-            <Text className="text-xs font-sf-pro-semibold text-blue-600 mb-1">
-              PICKUP FROM
-            </Text>
-            <Text className="text-sm font-sf-pro-regular">
-              {pickupLocation}
-            </Text>
+      <View className="border border-[#005FDC24] p-4 rounded-xl my-4">
+        {/* header */}
+        <View className="flex-row items-center justify-between">
+          <Text className="text-xl font-sf-pro-medium text-[#031731]">
+            Pick-up From
+          </Text>
+
+          <View className="flex-row items-center gap-3">
+            <TouchableOpacity
+              onPress={() =>
+                router.push({
+                  pathname: "/(user)/chat/chat",
+                  params: { returnTo: "/(user)/select-vehicle" },
+                })
+              }
+              className="w-11 h-11 rounded-full items-center justify-center bg-[#CFE3FD42] border border-[#0F73F724]"
+            >
+              <Ionicons
+                name="chatbox-ellipses-outline"
+                size={20}
+                color="#4D4D4D"
+              />
+            </TouchableOpacity>
+
+            <TouchableOpacity className="w-11 h-11 rounded-full items-center justify-center bg-[#CFE3FD42] border border-[#0F73F724]">
+              <Ionicons name="call-outline" size={20} color="#4D4D4D" />
+            </TouchableOpacity>
           </View>
         </View>
 
-        {/* Dropoff Location */}
-        <View className="flex-row gap-3">
-          <View className="items-center">
-            <Octicons name="location" size={18} color="#EF4444" />
-          </View>
-          <View className="flex-1">
-            <Text className="text-xs font-sf-pro-semibold text-red-600 mb-1">
-              DROP OFF AT
-            </Text>
-            <Text className="text-sm font-sf-pro-regular">
-              {dropoffLocation}
-            </Text>
-          </View>
-        </View>
+        {/* Sender address */}
+        <Text className="mt-3 text-[#3F8FF9] font-sf-pro-regular text-xs">
+          Sender address
+        </Text>
+
+        {/* address */}
+        <Text className="mt-2 text-[#031731] font-sf-pro-regular text-sm">
+          Kilometer 6, 278H, Street 201R, Kroalkor Village, Unnamed Road, Phnom
+          Penh
+        </Text>
+
+        <ButtonPrimary title="Take Photo" className="mt-3.5" />
       </View>
 
       {/* Trip Summary */}

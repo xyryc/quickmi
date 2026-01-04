@@ -233,7 +233,7 @@ const AgentHome = () => {
       case "trip_offer":
 
       case "trip_accepted":
-        return ["70%", "90%"];
+        return ["20%", "60%"];
 
       case "offer_price":
         return ["80%", "95%"];
