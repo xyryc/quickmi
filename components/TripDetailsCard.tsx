@@ -40,7 +40,7 @@ const TripDetailsCard: React.FC<TripDetailsProps> = ({
       <DropoffCard />
 
       {/* Action Buttons */}
-      <ButtonPrimary title="Confirm Pickup" className="mt-5" />
+      <ButtonPrimary title="Complete Delivery" className="mt-5" />
     </View>
   );
 };
