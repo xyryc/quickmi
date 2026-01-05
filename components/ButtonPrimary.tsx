@@ -67,9 +67,8 @@ const ButtonPrimary: React.FC<ButtonPrimaryProps> = ({
     <TouchableOpacity
       onPress={onPress}
       disabled={disabled || (timer && timeRemaining <= 0)}
-      className={`${iconPosition === "left" ? "flex-row-reverse" : "flex-row"}
-      ${timeRemaining <= 0 ? "bg-[#0F73F7]" : "bg-[#6FABFA]"}
-      ${className} relative overflow-hidden items-center justify-center gap-2  py-3 rounded-2xl`}
+      className={`${timeRemaining <= 0 ? "bg-[#0F73F7]" : "bg-[#6FABFA]"}
+      ${className} relative overflow-hidden items-center justify-center gap-2 py-3 rounded-2xl`}
     >
       {/* Animated Progress Background */}
       {timer && timer > 0 && (
@@ -86,7 +85,9 @@ const ButtonPrimary: React.FC<ButtonPrimaryProps> = ({
       )}
 
       {/* Button Content */}
-      <View className="flex-row items-center gap-1 z-10">
+      <View
+        className={`${iconPosition === "left" ? "flex-row-reverse" : "flex-row"} items-center gap-2 z-10`}
+      >
         <Text className={`${textClassName} font-sf-pro-semibold text-white`}>
           {title}
         </Text>

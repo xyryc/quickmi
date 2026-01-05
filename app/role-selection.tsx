@@ -1,8 +1,12 @@
+import ButtonPrimary from "@/components/ButtonPrimary";
+import ButtonSecondary from "@/components/ButtonSecondary";
 import { setHasSelectedRole } from "@/utils/storage";
-import { Ionicons, MaterialIcons } from "@expo/vector-icons";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { Image } from "expo-image";
+import { LinearGradient } from "expo-linear-gradient";
 import { useRouter } from "expo-router";
 import React from "react";
-import { StatusBar, Text, TouchableOpacity, View } from "react-native";
+import { ScrollView, StatusBar, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 const RoleSelection = () => {
@@ -15,57 +19,69 @@ const RoleSelection = () => {
   };
 
   return (
-    <SafeAreaView className="flex-1 bg-white">
-      <StatusBar barStyle="dark-content" />
+    <SafeAreaView className="border flex-1" edges={["left", "right", "bottom"]}>
+      <StatusBar backgroundColor="#D3E6FF" barStyle="dark-content" />
 
-      <View className="flex-1 justify-center px-6">
-        <Text className="text-3xl font-sf-pro-semibold text-center mb-3">
-          Choose Your Role
-        </Text>
-        <Text className="text-center text-custom-gray-dark font-sf-pro-regular mb-12">
-          Select how you want to use the app
-        </Text>
-
-        {/* User Card */}
-        <TouchableOpacity
-          onPress={() => handleRoleSelect("user")}
-          className="bg-custom-blue-50 rounded-2xl p-6 mb-4 border-2      
-  border-custom-blue-500"
+      <LinearGradient
+        colors={["#D3E6FF", "#FFFFFF"]}
+        locations={[0, 0.3]}
+        style={{ flex: 1 }}
+      >
+        <ScrollView
+          contentContainerClassName="mx-5 flex-1"
+          contentContainerStyle={{
+            justifyContent: "center",
+            alignItems: "center",
+          }}
         >
-          <View className="items-center">
-            <Ionicons name="person" size={48} color="#3B82F6" />
-            <Text className="text-xl font-sf-pro-semibold mt-4 mb-2">
-              I'm a User
+          <Image
+            source={require("@/assets/images/role-selection.svg")}
+            style={{
+              width: 272,
+              height: 216,
+              marginBottom: 100,
+            }}
+            contentFit="contain"
+          />
+
+          <View className="mb-10 items-center">
+            <Text className="font-sf-pro-semibold text-[26px] text-blue-600 leading-none">
+              Welcome!
             </Text>
-            <Text
-              className="text-center text-custom-gray-dark            
-  font-sf-pro-regular"
-            >
-              Send and receive parcels with ease
+            <Text className="font-sf-pro-semibold text-[26px]">
+              Select a role
             </Text>
           </View>
-        </TouchableOpacity>
 
-        {/* Agent Card */}
-        <TouchableOpacity
-          onPress={() => handleRoleSelect("agent")}
-          className="bg-gray-50 rounded-2xl p-6 border-2                  
-  border-gray-300"
-        >
-          <View className="items-center">
-            <MaterialIcons name="delivery-dining" size={48} color="#6B7280" />
-            <Text className="text-xl font-sf-pro-semibold mt-4 mb-2">
-              I'm an Agent
-            </Text>
-            <Text
-              className="text-center text-custom-gray-dark            
-  font-sf-pro-regular"
-            >
-              Deliver parcels and earn money
-            </Text>
-          </View>
-        </TouchableOpacity>
-      </View>
+          <ButtonSecondary
+            onPress={() => handleRoleSelect("user")}
+            title="User"
+            className="w-full mb-2"
+            icon={
+              <MaterialCommunityIcons
+                name="package-check"
+                size={20}
+                color="#0F73F7"
+              />
+            }
+            iconPosition="left"
+          />
+
+          <ButtonPrimary
+            onPress={() => handleRoleSelect("agent")}
+            title="Agent"
+            className="w-full"
+            icon={
+              <MaterialCommunityIcons
+                name="truck-delivery"
+                size={20}
+                color="white"
+              />
+            }
+            iconPosition="left"
+          />
+        </ScrollView>
+      </LinearGradient>
     </SafeAreaView>
   );
 };
