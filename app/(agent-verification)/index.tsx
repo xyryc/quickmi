@@ -1,9 +1,10 @@
 import ButtonPrimary from "@/components/ButtonPrimary";
 import ScreenHeader from "@/components/ScreenHeader";
 import {
-  AntDesign,
   Feather,
+  FontAwesome,
   FontAwesome6,
+  Ionicons,
   MaterialIcons,
 } from "@expo/vector-icons";
 import {
@@ -34,15 +35,7 @@ const UploadDocument = () => {
   const snapPoints = useMemo(() => ["70%"], []);
 
   const handleOpenPress = useCallback(() => {
-    console.log("Opening bottom sheet modal...");
     bottomSheetModalRef.current?.present();
-  }, []);
-
-  const handleClosePress = useCallback(() => {
-    bottomSheetModalRef.current?.dismiss();
-    setTimeout(() => {
-      // router.push("/(user)/home");
-    }, 300);
   }, []);
 
   return (
@@ -89,13 +82,14 @@ const UploadDocument = () => {
                   className="flex-row items-center justify-between mt-8 p-2"
                 >
                   <View className="flex-row items-center gap-3">
-                    <View className="bg-[#CFE3FD] p-3 rounded-full">
-                      <FontAwesome6 name="vcard" size={24} color="#0F73F7" />
+                    <View className="bg-[#CFE3FD] rounded-full w-12 h-12 items-center justify-center">
+                      <FontAwesome6 name="vcard" size={20} color="#0F73F7" />
                     </View>
                     <Text className="text-base text-[#031731] font-sf-pro-medium">
                       National ID Card
                     </Text>
                   </View>
+
                   <MaterialIcons
                     name="keyboard-arrow-right"
                     size={24}
@@ -111,13 +105,18 @@ const UploadDocument = () => {
                   className="flex-row items-center justify-between mt-8 p-2"
                 >
                   <View className="flex-row items-center gap-3">
-                    <View className="bg-[#CFE3FD] p-3 rounded-full">
-                      <FontAwesome6 name="vcard" size={24} color="#0F73F7" />
+                    <View className="bg-[#CFE3FD] rounded-full w-12 h-12 items-center justify-center">
+                      <FontAwesome
+                        name="drivers-license-o"
+                        size={20}
+                        color="#0F73F7"
+                      />
                     </View>
                     <Text className="text-base text-[#031731] font-sf-pro-medium">
                       Driver's License
                     </Text>
                   </View>
+
                   <MaterialIcons
                     name="keyboard-arrow-right"
                     size={24}
@@ -133,13 +132,14 @@ const UploadDocument = () => {
                   className="flex-row items-center justify-between mt-8 p-2"
                 >
                   <View className="flex-row items-center gap-3">
-                    <View className="bg-[#CFE3FD] p-3 rounded-full">
-                      <AntDesign name="car" size={24} color="#0F73F7" />
+                    <View className="bg-[#CFE3FD] rounded-full w-12 h-12 items-center justify-center">
+                      <Ionicons name="car-outline" size={24} color="#0F73F7" />
                     </View>
                     <Text className="text-base text-[#031731] font-sf-pro-medium">
                       Car Information
                     </Text>
                   </View>
+
                   <MaterialIcons
                     name="keyboard-arrow-right"
                     size={24}
@@ -155,13 +155,14 @@ const UploadDocument = () => {
                   className="flex-row items-center justify-between mt-8 p-2"
                 >
                   <View className="flex-row items-center gap-3">
-                    <View className="bg-[#CFE3FD] p-3 rounded-full">
-                      <Feather name="user" size={24} color="#0F73F7" />
+                    <View className="bg-[#CFE3FD] rounded-full w-12 h-12 items-center justify-center">
+                      <Feather name="user" size={20} color="#0F73F7" />
                     </View>
                     <Text className="text-base text-[#031731] font-sf-pro-medium">
                       Your Picture
                     </Text>
                   </View>
+
                   <MaterialIcons
                     name="keyboard-arrow-right"
                     size={24}
@@ -178,7 +179,7 @@ const UploadDocument = () => {
             </KeyboardAvoidingView>
           </LinearGradient>
 
-          {/* ✅ BottomSheetModal */}
+          {/* BottomSheetModal */}
           <BottomSheetModal
             ref={bottomSheetModalRef}
             snapPoints={snapPoints}
@@ -208,12 +209,11 @@ const UploadDocument = () => {
                   Congrats!
                 </Text>
 
-                <Text className="text-center mt-4 text-[#031731] font-sf-pro-regular text-sm w-1/2 mx-auto">
+                <Text className="text-center mt-2 text-[#031731] font-sf-pro-regular text-sm w-1/2 mx-auto">
                   Your account will be activated in 3 business days
                 </Text>
 
                 {/* button */}
-
                 <ButtonPrimary
                   title={"Got it"}
                   className={"mt-4 mb-4"}
