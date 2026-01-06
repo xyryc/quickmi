@@ -138,8 +138,8 @@ const Profile = () => {
                     className="flex-1 !border !border-[#E3E6F0]"
                     title="Inbox"
                     icon={
-                      <MaterialCommunityIcons
-                        name="message-processing"
+                      <Ionicons
+                        name="chatbox-ellipses"
                         size={20}
                         color="#0F73F7"
                       />
@@ -195,7 +195,7 @@ const Profile = () => {
                 </TouchableOpacity>
 
                 <TouchableOpacity
-                  onPress={() => router.push("/(agent)/profile/notification")}
+                  onPress={() => router.push("/(shared)/notification")}
                   className="flex-row items-center gap-2 py-3"
                 >
                   <Ionicons
@@ -251,6 +251,7 @@ const Profile = () => {
             </ScrollView>
 
             <ButtonPrimary
+              onPress={() => router.replace("/(user)/home")}
               title=" Switch to User mode"
               className="mx-5"
               icon={<Feather name="user" size={18} color="white" />}

@@ -59,7 +59,10 @@ const Home = () => {
           </View>
 
           {/* notification */}
-          <TouchableOpacity className="w-9 h-9 items-center justify-center">
+          <TouchableOpacity
+            onPress={() => router.push("/(shared)/notification")}
+            className="w-9 h-9 items-center justify-center"
+          >
             <SimpleLineIcons
               className="p-1.5 border border-[#0A66C224] rounded-full bg-white"
               name="bell"

@@ -2,6 +2,7 @@ import ScreenHeader from "@/components/ScreenHeader";
 import TabFilterSecondary from "@/components/TabFilterSecondary";
 import { Image } from "expo-image";
 import { LinearGradient } from "expo-linear-gradient";
+import { useRouter } from "expo-router";
 import React, { useState } from "react";
 import {
   KeyboardAvoidingView,
@@ -16,11 +17,19 @@ import { SafeAreaView } from "react-native-safe-area-context";
 
 const Inbox = () => {
   const [activeTab, setActiveTab] = useState("chat");
+  const router = useRouter();
 
   const tabs = [
     { id: "chat", label: "Chat", icon: "mail" },
     { id: "support", label: "Support", icon: "person-circle-sharp" },
   ];
+
+  const handleNavigation = () => {
+    router.push({
+      pathname: "/(agent)/chat/chat",
+      params: { returnTo: "/(agent)/profile/inbox" },
+    });
+  };
 
   return (
     <SafeAreaView className="flex-1" edges={["top", "left", "right"]}>
@@ -55,7 +64,10 @@ const Inbox = () => {
             </View>
 
             {/* chat list */}
-            <TouchableOpacity className="flex-row justify-between mt-4 items-center">
+            <TouchableOpacity
+              onPress={handleNavigation}
+              className="flex-row justify-between mt-4 items-center"
+            >
               <View className="flex-row items-center gap-4">
                 <Image
                   source={{
@@ -85,7 +97,10 @@ const Inbox = () => {
             </TouchableOpacity>
 
             {/* chat list */}
-            <TouchableOpacity className="flex-row justify-between mt-4 items-center">
+            <TouchableOpacity
+              onPress={handleNavigation}
+              className="flex-row justify-between mt-4 items-center"
+            >
               <View className="flex-row items-center gap-4">
                 <Image
                   source={{
@@ -115,7 +130,10 @@ const Inbox = () => {
             </TouchableOpacity>
 
             {/* chat list */}
-            <TouchableOpacity className="flex-row justify-between mt-4 items-center">
+            <TouchableOpacity
+              onPress={handleNavigation}
+              className="flex-row justify-between mt-4 items-center"
+            >
               <View className="flex-row items-center gap-4">
                 <Image
                   source={{
@@ -145,7 +163,10 @@ const Inbox = () => {
             </TouchableOpacity>
 
             {/* chat list */}
-            <TouchableOpacity className="flex-row justify-between mt-4 items-center">
+            <TouchableOpacity
+              onPress={handleNavigation}
+              className="flex-row justify-between mt-4 items-center"
+            >
               <View className="flex-row items-center gap-4">
                 <Image
                   source={{
@@ -175,7 +196,10 @@ const Inbox = () => {
             </TouchableOpacity>
 
             {/* chat list */}
-            <TouchableOpacity className="flex-row justify-between mt-4 items-center">
+            <TouchableOpacity
+              onPress={handleNavigation}
+              className="flex-row justify-between mt-4 items-center"
+            >
               <View className="flex-row items-center gap-4">
                 <Image
                   source={{

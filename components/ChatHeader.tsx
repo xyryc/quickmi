@@ -11,7 +11,7 @@ const ChatHeader = () => {
 
   const handleBack = () => {
     if (returnTo) {
-      router.replace(returnTo);
+      router.push(returnTo as any);
     } else {
       router.back();
     }

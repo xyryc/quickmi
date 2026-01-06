@@ -24,7 +24,7 @@ const Notification = () => {
         locations={[0, 0.4]}
         style={{ flex: 1 }}
       >
-        <ScreenHeader title="Inbox" />
+        <ScreenHeader title="Notifications" />
 
         <KeyboardAvoidingView
           style={{ flex: 1 }}
