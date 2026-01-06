@@ -1,4 +1,5 @@
 import ButtonSecondary from "@/components/ButtonSecondary";
+import EarningsCard from "@/components/EarningsCard";
 import OfferPrice from "@/components/OfferPrice";
 import TripDetailsCard from "@/components/TripDetailsCard";
 import TripOfferCard from "@/components/TripOfferCard";
@@ -379,6 +380,15 @@ const AgentHome = () => {
           >
             <Ionicons name="reorder-three-outline" size={24} color="black" />
           </TouchableOpacity>
+
+          {/* earning card */}
+          <EarningsCard
+            className="absolute inset-x-0"
+            earnings="$8.07"
+            hours="3"
+            acceptanceRate="60%"
+            trips="03"
+          />
         </View>
 
         {/* bottom sheet */}
