@@ -1,8 +1,8 @@
-import ButtonPrimary from "@/components/ButtonPrimary";
 import ScreenHeader from "@/components/ScreenHeader";
+import TabFilterSecondary from "@/components/TabFilterSecondary";
 import { Image } from "expo-image";
 import { LinearGradient } from "expo-linear-gradient";
-import React from "react";
+import React, { useState } from "react";
 import {
   KeyboardAvoidingView,
   Platform,
@@ -15,6 +15,13 @@ import {
 import { SafeAreaView } from "react-native-safe-area-context";
 
 const Inbox = () => {
+  const [activeTab, setActiveTab] = useState("chat");
+
+  const tabs = [
+    { id: "chat", label: "Chat", icon: "mail" },
+    { id: "support", label: "Support", icon: "person-circle-sharp" },
+  ];
+
   return (
     <SafeAreaView className="flex-1" edges={["top", "left", "right"]}>
       <StatusBar backgroundColor="#D3E6FF" barStyle="dark-content" />
@@ -38,8 +45,13 @@ const Inbox = () => {
             contentContainerStyle={{ paddingBottom: 120 }}
           >
             <View className="flex-row gap-4 mt-2.5">
-              <ButtonPrimary title="Chat" className="flex-1" />
-              <ButtonPrimary title="Support" className="flex-1" />
+              {/* <ButtonPrimary title="Chat" className="flex-1" />
+              <ButtonPrimary title="Support" className="flex-1" /> */}
+              <TabFilterSecondary
+                tabs={tabs}
+                activeTab={activeTab}
+                setActiveTab={setActiveTab}
+              />
             </View>
 
             {/* chat list */}

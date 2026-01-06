@@ -1,5 +1,4 @@
 import {
-  AntDesign,
   Entypo,
   Feather,
   Ionicons,
@@ -56,7 +55,7 @@ const Profile = () => {
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
       <BottomSheetModalProvider>
-        <SafeAreaView className="flex-1 mb-28" edges={["top", "left", "right"]}>
+        <SafeAreaView className="flex-1" edges={["top", "left", "right"]}>
           <StatusBar backgroundColor="#D3E6FF" barStyle="dark-content" />
 
           <LinearGradient
@@ -64,7 +63,13 @@ const Profile = () => {
             locations={[0.3, 1]}
             style={{ flex: 1 }}
           >
-            <ScrollView className="mx-5" showsVerticalScrollIndicator={false}>
+            <ScrollView
+              className="mx-5"
+              contentContainerStyle={{
+                paddingBottom: 120,
+              }}
+              showsVerticalScrollIndicator={false}
+            >
               {/* Personal info */}
               <View className="mt-8 bg-white rounded-xl p-3.5 border-spacing-0.5 border-[#E3E6F0] shadow-md">
                 <View className="flex items-center relative">
@@ -116,10 +121,10 @@ const Profile = () => {
                 </View>
 
                 <ButtonPrimary
-                  onPress={() => router.push("/(agent)/home")}
+                  onPress={() => router.replace("/(agent)/home")}
                   title="Switch to Agent mode"
                   className="mt-4"
-                  icon={<AntDesign name="car" size={20} color="white" />}
+                  icon={<Ionicons name="car-outline" size={22} color="white" />}
                   iconPosition="left"
                 />
 

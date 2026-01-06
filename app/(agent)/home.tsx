@@ -368,7 +368,7 @@ const AgentHome = () => {
           {/* drawer Button */}
           <TouchableOpacity
             onPress={() => router.push("/(agent)/profile/profile")}
-            className="absolute top-4 left-4 bg-white rounded-full w-11 h-11 items-center justify-center shadow-lg border border-[#0F73F7E5]"
+            className="absolute top-4 left-4 z-10 bg-white rounded-full w-11 h-11 items-center justify-center shadow-lg border border-[#0F73F7E5]"
             style={{
               marginTop: insets.top,
               shadowColor: "#000",

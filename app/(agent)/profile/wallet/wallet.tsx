@@ -110,7 +110,6 @@ const Wallet = () => {
                 </Text>
 
                 {/* Transactions history Withdraw */}
-
                 <TouchableOpacity className="border border-[#E3E6F0] flex-row items-center justify-between mt-2 p-4 rounded-xl">
                   <View className="flex-row items-center">
                     <Feather
@@ -137,7 +136,6 @@ const Wallet = () => {
                 </TouchableOpacity>
 
                 {/* Transactions history Add in Wallet */}
-
                 <TouchableOpacity className="border border-[#E3E6F0] flex-row items-center justify-between mt-2 p-4 rounded-xl">
                   <View className="flex-row items-center">
                     <Feather
@@ -229,7 +227,6 @@ const Wallet = () => {
             >
               <View className="px-6 py-4 relative">
                 {/* close button  */}
-
                 <TouchableOpacity
                   onPress={handleSuccessClose}
                   className="absolute bg-[#CFE3FD] p-1 rounded-md right-6 top-0"
