@@ -25,13 +25,12 @@ import { SafeAreaView } from "react-native-safe-area-context";
 const Settings = () => {
   // Logout Confirmation Modal
   const deleteConfirmRef = useRef<BottomSheetModal>(null);
-  // Logout Success Modal
 
-  const confirmSnapPoints = useMemo(() => ["40%"], []);
+  // confirm snap points
+  const confirmSnapPoints = useMemo(() => ["20%"], []);
 
   // Open logout confirmation
   const handleDeletePress = useCallback(() => {
-    console.log("Opening logout confirmation modal...");
     deleteConfirmRef.current?.present();
   }, []);
 
@@ -203,11 +202,8 @@ const Settings = () => {
               />
             )}
           >
-            <BottomSheetScrollView
-              contentContainerStyle={{ paddingBottom: 40 }}
-              showsVerticalScrollIndicator={false}
-            >
-              <View className="px-6 py-4">
+            <BottomSheetScrollView showsVerticalScrollIndicator={false}>
+              <View className="px-6">
                 <Text className="text-lg font-sf-pro-semibold text-center mt-2.5 text-[#031731]">
                   Delete Account
                 </Text>
