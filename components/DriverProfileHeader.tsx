@@ -36,7 +36,7 @@ const DriverProfileHeader = () => {
         <TouchableOpacity
           onPress={() =>
             router.push({
-              pathname: "/(user)/chat/chat",
+              pathname: "/(shared)/chat/chat",
               params: { returnTo: "/(user)/select-vehicle" },
             })
           }

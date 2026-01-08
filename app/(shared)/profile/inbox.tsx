@@ -1,5 +1,6 @@
 import ScreenHeader from "@/components/ScreenHeader";
 import TabFilterSecondary from "@/components/TabFilterSecondary";
+import { useUserRole } from "@/utils/useUserRole";
 import { Image } from "expo-image";
 import { LinearGradient } from "expo-linear-gradient";
 import { useRouter } from "expo-router";
@@ -16,6 +17,7 @@ import {
 import { SafeAreaView } from "react-native-safe-area-context";
 
 const Inbox = () => {
+  const { role } = useUserRole();
   const [activeTab, setActiveTab] = useState("chat");
   const router = useRouter();
 
@@ -25,10 +27,7 @@ const Inbox = () => {
   ];
 
   const handleNavigation = () => {
-    router.push({
-      pathname: "/(agent)/chat/chat",
-      params: { returnTo: "/(agent)/profile/inbox" },
-    });
+    router.push(`/(shared)/chat/chat`);
   };
 
   return (

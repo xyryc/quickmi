@@ -14,6 +14,7 @@ import { LinearGradient } from "expo-linear-gradient";
 import { router } from "expo-router";
 import React, { useCallback, useMemo, useRef } from "react";
 import {
+  ActivityIndicator,
   ScrollView,
   StatusBar,
   Text,
@@ -25,8 +26,11 @@ import { SafeAreaView } from "react-native-safe-area-context";
 
 import ButtonPrimary from "@/components/ButtonPrimary";
 import ButtonSecondary from "@/components/ButtonSecondary";
+import { useUserRole } from "@/utils/useUserRole";
 
 const Profile = () => {
+  const { role, loading } = useUserRole();
+
   // Logout Confirmation Modal
   const logoutConfirmRef = useRef<BottomSheetModal>(null);
   const confirmSnapPoints = useMemo(() => ["40%"], []);
@@ -51,6 +55,10 @@ const Profile = () => {
     console.log("User cancelled logout");
     logoutConfirmRef.current?.dismiss();
   }, []);
+
+  if (loading || !role) {
+    return <ActivityIndicator size="small" color="#0F73F7" />;
+  }
 
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
@@ -96,7 +104,7 @@ const Profile = () => {
                 {/* Buttons */}
                 <View className="flex-row gap-2 mt-4">
                   <ButtonSecondary
-                    onPress={() => router.push("/(user)/profile/inbox")}
+                    onPress={() => router.push("/(shared)/profile/inbox")}
                     iconPosition="left"
                     className="flex-1 !border !border-[#E3E6F0]"
                     title="Inbox"
@@ -190,6 +198,7 @@ const Profile = () => {
                 <Text className="text-base font-sf-pro-medium mb-4">
                   Settings
                 </Text>
+
                 <TouchableOpacity
                   onPress={() => router.push("/profile/permission")}
                   className="flex-row items-center gap-2 mb-5"
@@ -203,10 +212,9 @@ const Profile = () => {
                     Permission
                   </Text>
                 </TouchableOpacity>
+
                 <TouchableOpacity
-                  onPress={() =>
-                    router.push("/(user)/profile/settings/settings")
-                  }
+                  onPress={() => router.push("/(shared)/settings/settings")}
                   className="flex-row items-center gap-2"
                 >
                   <Ionicons name="settings-outline" size={18} color="#4D4D4D" />

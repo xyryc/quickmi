@@ -11,9 +11,14 @@ import {
   TextInput,
   View,
 } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
+import {
+  SafeAreaView,
+  useSafeAreaInsets,
+} from "react-native-safe-area-context";
 
-const UpdatePhoneNumber = () => {
+const ChangePassword = () => {
+  const insets = useSafeAreaInsets();
+
   return (
     <SafeAreaView className="flex-1" edges={["top", "left", "right"]}>
       <StatusBar backgroundColor="#D3E6FF" barStyle="dark-content" />
@@ -23,7 +28,7 @@ const UpdatePhoneNumber = () => {
         locations={[0, 0.4]}
         style={{ flex: 1 }}
       >
-        <ScreenHeader title="Update email address" />
+        <ScreenHeader title="Change Password" />
 
         <KeyboardAvoidingView
           style={{ flex: 1 }}
@@ -32,26 +37,41 @@ const UpdatePhoneNumber = () => {
         >
           {/* scrollable content */}
           <ScrollView
-            className="flex-1 mx-5"
+            className="flex-1 mx-5 mt-5"
             showsVerticalScrollIndicator={false}
             contentContainerStyle={{ paddingBottom: 120 }}
           >
-            <Text className="mt-5 text-sm">
-              Your email is used for delivery receipts and account recovery.
-            </Text>
-
             <Text className="mt-3.5 text-sm font-sf-pro-medium">
-              Email Address
+              Current Password
             </Text>
             <TextInput
-              className="mt-2 p-4 px-5 border border-[#E3E6F0] rounded-xl bg-white"
-              placeholder="Enter email address"
+              placeholder="Enter old password"
+              className="mt-2 p-4 border border-[#E3E6F0] rounded-xl bg-white"
+            />
+            <Text className="mt-3.5 text-sm font-sf-pro-medium">
+              New Password
+            </Text>
+            <TextInput
+              placeholder="Enter new password"
+              className="mt-2 p-4 border border-[#E3E6F0] rounded-xl bg-white"
+            />
+            <Text className="mt-3.5 text-sm font-sf-pro-medium">
+              Conform Password
+            </Text>
+            <TextInput
+              placeholder="Re-enter new password"
+              className="mt-2 p-4 border border-[#E3E6F0] rounded-xl bg-white"
             />
           </ScrollView>
 
           {/* bottom button */}
-          <View className="px-5 pb-32">
-            <ButtonPrimary title="Save" />
+          <View
+            className="px-5"
+            style={{
+              marginBottom: insets.bottom + 20,
+            }}
+          >
+            <ButtonPrimary title="Update password" />
           </View>
         </KeyboardAvoidingView>
       </LinearGradient>
@@ -59,4 +79,4 @@ const UpdatePhoneNumber = () => {
   );
 };
 
-export default UpdatePhoneNumber;
+export default ChangePassword;

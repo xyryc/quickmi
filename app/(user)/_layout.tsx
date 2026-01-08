@@ -172,12 +172,14 @@ export default function UserLayout() {
         name="profile/payment/refer-discount"
         options={{
           href: null,
+          tabBarStyle: { display: "none" },
         }}
       />
       <Tabs.Screen
         name="profile/home-location"
         options={{
           href: null,
+          tabBarStyle: { display: "none" },
         }}
       />
       <Tabs.Screen
@@ -277,15 +279,6 @@ export default function UserLayout() {
       {/* schedule delivery */}
       <Tabs.Screen
         name="schedule-delivery/select-location"
-        options={{
-          href: null,
-          tabBarStyle: { display: "none" },
-        }}
-      />
-
-      {/* chat screens */}
-      <Tabs.Screen
-        name="chat/chat"
         options={{
           href: null,
           tabBarStyle: { display: "none" },

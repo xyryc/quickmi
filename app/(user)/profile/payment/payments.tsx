@@ -68,9 +68,7 @@ const Payments = () => {
               </TouchableOpacity>
 
               <TouchableOpacity
-                onPress={() =>
-                  router.push("/(user)/profile/payment/card-details")
-                }
+                onPress={() => router.push("/(shared)/profile/card-details")}
                 className="p-4 border border-[#005FDC24] rounded-xl flex-row items-center justify-between"
               >
                 <View className="flex-row items-center gap-2">
@@ -85,12 +83,14 @@ const Payments = () => {
             </View>
 
             {/* Header */}
-
             <Text className="text-lg font-sf-pro-medium mt-4 mb-3">Offers</Text>
 
             {/* Payment Methods List */}
             <View className="gap-3">
-              <TouchableOpacity className="p-4 border border-[#005FDC24] rounded-xl">
+              <TouchableOpacity
+                onPress={() => router.push("/(shared)/settings/promo-code")}
+                className="p-4 border border-[#005FDC24] rounded-xl"
+              >
                 <View className="flex-row items-center gap-2">
                   <MaterialCommunityIcons
                     name="ticket-confirmation-outline"

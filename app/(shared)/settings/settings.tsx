@@ -1,6 +1,7 @@
 import ButtonPrimary from "@/components/ButtonPrimary";
 import ButtonSecondary from "@/components/ButtonSecondary";
 import ScreenHeader from "@/components/ScreenHeader";
+import { useUserRole } from "@/utils/useUserRole";
 import { Feather, MaterialIcons } from "@expo/vector-icons";
 import {
   BottomSheetModal,
@@ -11,6 +12,7 @@ import { LinearGradient } from "expo-linear-gradient";
 import { router } from "expo-router";
 import React, { useCallback, useMemo, useRef } from "react";
 import {
+  ActivityIndicator,
   KeyboardAvoidingView,
   Platform,
   ScrollView,
@@ -23,32 +25,36 @@ import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 const Settings = () => {
+  const { role, loading } = useUserRole();
+
   // Logout Confirmation Modal
   const deleteConfirmRef = useRef<BottomSheetModal>(null);
-  // Logout Success Modal
 
-  const confirmSnapPoints = useMemo(() => ["40%"], []);
+  // confirm snap points
+  const confirmSnapPoints = useMemo(() => ["20%"], []);
 
   // Open logout confirmation
   const handleDeletePress = useCallback(() => {
-    console.log("Opening logout confirmation modal...");
     deleteConfirmRef.current?.present();
   }, []);
 
   // Confirm logout (Yes button)
   const handleConfirmDelete = useCallback(() => {
-    console.log("User confirmed Deleted");
     deleteConfirmRef.current?.dismiss();
+
     setTimeout(() => {
-      router.push("/(user)/profile");
+      router.push(`/(${role})/profile`);
     }, 300);
   }, []);
 
   // Cancel logout (No button)
   const handleCancelDelete = useCallback(() => {
-    console.log("User cancelled Deleted");
     deleteConfirmRef.current?.dismiss();
   }, []);
+
+  if (loading || !role) {
+    return <ActivityIndicator size="small" color="#0F73F7" />;
+  }
 
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
@@ -78,7 +84,7 @@ const Settings = () => {
                   {/* change password */}
                   <TouchableOpacity
                     onPress={() =>
-                      router.push("/(agent)/profile/settings/change-password")
+                      router.push(`/(shared)/settings/change-password`)
                     }
                     className="flex-row justify-between border-b border-[#E3E6F0] items-center py-3 px-2 mt-2.5"
                   >
@@ -94,9 +100,7 @@ const Settings = () => {
 
                   {/* About Us */}
                   <TouchableOpacity
-                    onPress={() =>
-                      router.push("/(agent)/profile/settings/about")
-                    }
+                    onPress={() => router.push(`/(shared)/settings/about`)}
                     className="flex-row justify-between border-b border-[#E3E6F0] items-center py-3 px-2 mt-2.5"
                   >
                     <Text className="text-sm font-sf-pro-regular text-[#031731]">
@@ -109,10 +113,42 @@ const Settings = () => {
                     />
                   </TouchableOpacity>
 
+                  {/* Help */}
+                  <TouchableOpacity
+                    onPress={() => router.push(`/(shared)/settings/help`)}
+                    className="flex-row justify-between border-b border-[#E3E6F0] items-center py-3 px-2 mt-2.5"
+                  >
+                    <Text className="text-sm font-sf-pro-regular text-[#031731]">
+                      Help
+                    </Text>
+                    <MaterialIcons
+                      name="arrow-forward-ios"
+                      size={14}
+                      color="black"
+                    />
+                  </TouchableOpacity>
+
+                  {/* Support Requests */}
+                  <TouchableOpacity
+                    onPress={() =>
+                      router.push(`/(shared)/settings/support-requests`)
+                    }
+                    className="flex-row justify-between border-b border-[#E3E6F0] items-center py-3 px-2 mt-2.5"
+                  >
+                    <Text className="text-sm font-sf-pro-regular text-[#031731]">
+                      Support Requests
+                    </Text>
+                    <MaterialIcons
+                      name="arrow-forward-ios"
+                      size={14}
+                      color="black"
+                    />
+                  </TouchableOpacity>
+
                   {/* Privacy Policy */}
                   <TouchableOpacity
                     onPress={() =>
-                      router.push("/(agent)/profile/settings/privacy-policy")
+                      router.push(`/(shared)/settings/privacy-policy`)
                     }
                     className="flex-row justify-between border-b border-[#E3E6F0] items-center py-3 px-2 mt-2.5"
                   >
@@ -129,7 +165,7 @@ const Settings = () => {
                   {/* Terms of service */}
                   <TouchableOpacity
                     onPress={() =>
-                      router.push("/(agent)/profile/settings/terms-condition")
+                      router.push(`/(shared)/settings/terms-condition`)
                     }
                     className="flex-row justify-between border-b border-[#E3E6F0] items-center py-3 px-2 mt-2.5"
                   >
@@ -171,11 +207,8 @@ const Settings = () => {
               />
             )}
           >
-            <BottomSheetScrollView
-              contentContainerStyle={{ paddingBottom: 40 }}
-              showsVerticalScrollIndicator={false}
-            >
-              <View className="px-6 py-4">
+            <BottomSheetScrollView showsVerticalScrollIndicator={false}>
+              <View className="px-6">
                 <Text className="text-lg font-sf-pro-semibold text-center mt-2.5 text-[#031731]">
                   Delete Account
                 </Text>
@@ -187,8 +220,8 @@ const Settings = () => {
                 {/* Buttons */}
                 <View className="flex-row mt-5 gap-3 mb-20">
                   <ButtonSecondary
-                    title={"No"}
-                    className={"flex-1"}
+                    title="No"
+                    className="flex-1"
                     onPress={handleCancelDelete}
                   />
 

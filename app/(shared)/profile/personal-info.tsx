@@ -1,4 +1,5 @@
 import ScreenHeader from "@/components/ScreenHeader";
+import { useUserRole } from "@/utils/useUserRole";
 import { Feather, Ionicons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
 import { router } from "expo-router";
@@ -13,6 +14,8 @@ import {
 import { SafeAreaView } from "react-native-safe-area-context";
 
 const PersonalInfo = () => {
+  const { role } = useUserRole();
+
   return (
     <SafeAreaView className="flex-1 mb-28" edges={["top", "left", "right"]}>
       <StatusBar backgroundColor="#D3E6FF" barStyle="dark-content" />
@@ -27,7 +30,6 @@ const PersonalInfo = () => {
 
         <ScrollView className="mx-5" showsVerticalScrollIndicator={false}>
           {/* profile name */}
-
           <View className="flex-row justify-between items-center mt-5 border-b border-[#E3E6F0] mx-3 py-2 pb-4">
             <View className="flex-row items-center gap-3">
               <Ionicons name="person-outline" size={24} color="#4D4D4D" />
@@ -36,7 +38,7 @@ const PersonalInfo = () => {
               </Text>
             </View>
             <TouchableOpacity
-              onPress={() => router.push("/profile/update-name")}
+              onPress={() => router.push(`/(${role})/profile/update-name`)}
             >
               <Text className="font-sf-pro-regular text-sm text-[#0F73F7]">
                 Edit
@@ -45,7 +47,6 @@ const PersonalInfo = () => {
           </View>
 
           {/* mobile Number */}
-
           <View className="flex-row justify-between items-center mt-5 border-b border-[#E3E6F0] mx-3 py-2 pb-4">
             <View className="flex-row items-center gap-3">
               <Feather name="phone-call" size={24} color="#4D4D4D" />
@@ -54,7 +55,9 @@ const PersonalInfo = () => {
               </Text>
             </View>
             <TouchableOpacity
-              onPress={() => router.push("/profile/update-phone-number")}
+              onPress={() =>
+                router.push(`/(${role})/profile/update-phone-number`)
+              }
             >
               <Text className="font-sf-pro-regular text-sm text-[#0F73F7]">
                 Edit
@@ -63,7 +66,6 @@ const PersonalInfo = () => {
           </View>
 
           {/* E-Mail*/}
-
           <View className="flex-row justify-between items-center mt-5 border-b border-[#E3E6F0] mx-3 py-2 pb-4">
             <View className="flex-row items-center gap-3">
               <Ionicons name="mail-outline" size={24} color="#4D4D4D" />
@@ -72,7 +74,7 @@ const PersonalInfo = () => {
               </Text>
             </View>
             <TouchableOpacity
-              onPress={() => router.push("/profile/update-email")}
+              onPress={() => router.push(`/(${role})/profile/update-email`)}
             >
               <Text className="font-sf-pro-regular text-sm text-[#0F73F7]">
                 Edit
