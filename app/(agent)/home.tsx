@@ -3,7 +3,7 @@ import EarningsCard from "@/components/EarningsCard";
 import OfferPrice from "@/components/OfferPrice";
 import TripDetailsCard from "@/components/TripDetailsCard";
 import TripOfferCard from "@/components/TripOfferCard";
-import { Ionicons } from "@expo/vector-icons";
+import { Ionicons, SimpleLineIcons } from "@expo/vector-icons";
 import BottomSheet, { BottomSheetView } from "@gorhom/bottom-sheet";
 import { Image } from "expo-image";
 import * as Location from "expo-location";
@@ -389,6 +389,31 @@ const AgentHome = () => {
             acceptanceRate="60%"
             trips="03"
           />
+
+          {/* notification */}
+          <TouchableOpacity
+            onPress={() => router.push("/(shared)/notification")}
+            className="absolute top-4 right-4 z-10 bg-white rounded-full w-11 h-11 items-center justify-center shadow-lg border border-[#0F73F7E5]"
+            style={{
+              marginTop: insets.top,
+              shadowColor: "#000",
+              shadowOffset: { width: 0, height: 2 },
+              shadowOpacity: 0.25,
+              shadowRadius: 3.84,
+              elevation: 5,
+            }}
+          >
+            <SimpleLineIcons
+              className="p-1.5 border border-[#0A66C224] rounded-full bg-white"
+              name="bell"
+              size={18}
+              color="black"
+            />
+
+            <Text className="absolute -top-1 -right-1.5 w-[16px] h-[16px] items-center text-center text-white bg-custom-custom-red rounded-full font-sf-pro-medium text-[9px]">
+              06
+            </Text>
+          </TouchableOpacity>
         </View>
 
         {/* bottom sheet */}
