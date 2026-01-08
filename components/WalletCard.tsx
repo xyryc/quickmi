@@ -5,16 +5,16 @@ import ButtonSecondary from "./ButtonSecondary";
 
 const WalletCard = ({ handleWithdraw }: any) => {
   return (
-    <View className=" mt-2.5">
+    <View className="mt-2.5">
       {/* card image */}
       <ImageBackground
         source={require("@/assets/images/wallet-card.png")}
-        contentFit="contain"
+        contentFit="fill"
         style={{ width: "100%", height: 180 }}
-        className="items-center justify-center "
+        className="items-center justify-center"
       >
         <View className="flex-1 justify-center">
-          <View className="flex-row items-center justify-between pr-2 pl-5">
+          <View className="flex-row items-center justify-center gap-3">
             <View>
               <Text className="text-white text-2xl font-sf-pro-medium">
                 Available Balance{" "}
@@ -23,16 +23,17 @@ const WalletCard = ({ handleWithdraw }: any) => {
                 $ 2652
               </Text>
             </View>
+
             <View>
               {/* buttons */}
               <ButtonSecondary
-                title={"Deposits"}
-                className={"px-8"}
+                className="px-8"
+                title="Deposits"
                 onPress={handleWithdraw}
               />
               <ButtonSecondary
-                title={"Withdraw"}
-                className={"px-8 mt-2"}
+                title="Withdraw"
+                className="mt-2 px-8"
                 onPress={handleWithdraw}
               />
             </View>

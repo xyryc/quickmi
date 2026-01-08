@@ -133,7 +133,7 @@ const Profile = () => {
                 {/* secondary inbox button */}
                 <View className="flex-row gap-2 mt-4">
                   <ButtonSecondary
-                    onPress={() => router.push("/(agent)/profile/inbox")}
+                    onPress={() => router.push("/(shared)/profile/inbox")}
                     iconPosition="left"
                     className="flex-1 !border !border-[#E3E6F0]"
                     title="Inbox"
@@ -148,7 +148,9 @@ const Profile = () => {
 
                   {/* secondary Wallet button */}
                   <ButtonSecondary
-                    onPress={() => {}}
+                    onPress={() =>
+                      router.push("/(agent)/profile/wallet/wallet")
+                    }
                     iconPosition="left"
                     className="flex-1 !border !border-[#E3E6F0]"
                     title="Wallet"
@@ -161,7 +163,7 @@ const Profile = () => {
 
               <View className="mt-3.5 bg-white rounded-xl p-3.5 border-spacing-0.5 border-[#E3E6F0] shadow-md">
                 <TouchableOpacity
-                  onPress={() => router.push("/(agent)/profile/permission")}
+                  onPress={() => router.push("/(shared)/profile/permission")}
                   className="flex-row items-center gap-2 py-3"
                 >
                   <MaterialCommunityIcons
@@ -210,7 +212,7 @@ const Profile = () => {
 
                 <TouchableOpacity
                   onPress={() =>
-                    router.push("/(agent)/profile/settings/support-requests")
+                    router.push("/(shared)/settings/support-requests")
                   }
                   className="flex-row items-center gap-2 py-3"
                 >
@@ -225,9 +227,7 @@ const Profile = () => {
                 </TouchableOpacity>
 
                 <TouchableOpacity
-                  onPress={() =>
-                    router.push("/(agent)/profile/settings/settings")
-                  }
+                  onPress={() => router.push("/(shared)/settings/settings")}
                   className="flex-row items-center gap-2 py-3"
                 >
                   <Ionicons name="settings-outline" size={20} color="#4D4D4D" />

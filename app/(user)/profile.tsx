@@ -8,7 +8,9 @@ import {
 import {
   BottomSheetModal,
   BottomSheetModalProvider,
+  BottomSheetView,
 } from "@gorhom/bottom-sheet";
+
 import { Image } from "expo-image";
 import { LinearGradient } from "expo-linear-gradient";
 import { router } from "expo-router";
@@ -22,7 +24,10 @@ import {
   View,
 } from "react-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
-import { SafeAreaView } from "react-native-safe-area-context";
+import {
+  SafeAreaView,
+  useSafeAreaInsets,
+} from "react-native-safe-area-context";
 
 import ButtonPrimary from "@/components/ButtonPrimary";
 import ButtonSecondary from "@/components/ButtonSecondary";
@@ -30,30 +35,15 @@ import { useUserRole } from "@/utils/useUserRole";
 
 const Profile = () => {
   const { role, loading } = useUserRole();
+  const insets = useSafeAreaInsets();
 
   // Logout Confirmation Modal
   const logoutConfirmRef = useRef<BottomSheetModal>(null);
-  const confirmSnapPoints = useMemo(() => ["40%"], []);
+  const snapPoints = useMemo(() => ["50%"], []);
 
   // Open logout confirmation
   const handleLogoutPress = useCallback(() => {
-    console.log("Opening logout confirmation modal...");
     logoutConfirmRef.current?.present();
-  }, []);
-
-  // Confirm logout (Yes button)
-  const handleConfirmLogout = useCallback(() => {
-    console.log("User confirmed logout");
-    logoutConfirmRef.current?.dismiss();
-    setTimeout(() => {
-      router.push("/(user)/profile");
-    }, 300);
-  }, []);
-
-  // Cancel logout (No button)
-  const handleCancelLogout = useCallback(() => {
-    console.log("User cancelled logout");
-    logoutConfirmRef.current?.dismiss();
   }, []);
 
   if (loading || !role) {
@@ -239,6 +229,41 @@ const Profile = () => {
             </ScrollView>
           </LinearGradient>
         </SafeAreaView>
+
+        <BottomSheetModal
+          ref={logoutConfirmRef}
+          snapPoints={snapPoints}
+          index={0}
+          enablePanDownToClose
+          backgroundStyle={{ backgroundColor: "white" }}
+          handleIndicatorStyle={{ backgroundColor: "#D1D5DB" }}
+        >
+          <BottomSheetView
+            className="px-5"
+            style={{ paddingBottom: insets.bottom + 120 }}
+          >
+            <Text className="text-lg font-sf-pro-semibold text-center mt-4">
+              Are you sure you want to logout?
+            </Text>
+
+            <View className="flex-row gap-3 mt-6">
+              <ButtonSecondary
+                title="No"
+                className="flex-1"
+                onPress={() => logoutConfirmRef.current?.dismiss()}
+              />
+
+              <ButtonPrimary
+                title="Yes"
+                className="flex-1"
+                onPress={() => {
+                  logoutConfirmRef.current?.dismiss();
+                  router.replace("/(auth)/signup");
+                }}
+              />
+            </View>
+          </BottomSheetView>
+        </BottomSheetModal>
       </BottomSheetModalProvider>
     </GestureHandlerRootView>
   );

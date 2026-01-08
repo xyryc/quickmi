@@ -85,7 +85,7 @@ const PickupCard = () => {
 
         <View className="flex-row items-center gap-3">
           <TouchableOpacity
-            onPress={() => router.push("/(agent)/chat/chat")}
+            onPress={() => router.push("/(shared)/chat/chat")}
             className="w-11 h-11 rounded-full items-center justify-center bg-[#CFE3FD42] border border-[#0F73F724]"
           >
             <Ionicons

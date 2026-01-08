@@ -137,20 +137,6 @@ export default function UserLayout() {
       />
 
       <Tabs.Screen
-        name="profile/add-place"
-        options={{
-          href: null,
-        }}
-      />
-
-      <Tabs.Screen
-        name="profile/inbox"
-        options={{
-          href: null,
-        }}
-      />
-
-      <Tabs.Screen
         name="profile/payment/payments"
         options={{
           href: null,
@@ -162,12 +148,7 @@ export default function UserLayout() {
           href: null,
         }}
       />
-      <Tabs.Screen
-        name="profile/payment/card-details"
-        options={{
-          href: null,
-        }}
-      />
+
       <Tabs.Screen
         name="profile/payment/refer-discount"
         options={{
@@ -183,87 +164,24 @@ export default function UserLayout() {
         }}
       />
       <Tabs.Screen
-        name="profile/permission"
-        options={{
-          href: null,
-        }}
-      />
-      <Tabs.Screen
-        name="profile/personal-info"
-        options={{
-          href: null,
-        }}
-      />
-      <Tabs.Screen
-        name="profile/update-email"
-        options={{
-          href: null,
-        }}
-      />
-      <Tabs.Screen
-        name="profile/update-name"
-        options={{
-          href: null,
-        }}
-      />
-      <Tabs.Screen
-        name="profile/update-phone-number"
-        options={{
-          href: null,
-        }}
-      />
-      <Tabs.Screen
         name="profile/work-location"
         options={{
           href: null,
+          tabBarStyle: { display: "none" },
         }}
       />
       <Tabs.Screen
-        name="profile/settings/about"
+        name="profile/add-place"
         options={{
           href: null,
+          tabBarStyle: { display: "none" },
         }}
       />
       <Tabs.Screen
-        name="profile/settings/help"
+        name="profile/permission"
         options={{
           href: null,
-        }}
-      />
-      <Tabs.Screen
-        name="profile/settings/settings"
-        options={{
-          href: null,
-        }}
-      />
-      <Tabs.Screen
-        name="profile/settings/promo-code"
-        options={{
-          href: null,
-        }}
-      />
-      <Tabs.Screen
-        name="profile/settings/terms-condition"
-        options={{
-          href: null,
-        }}
-      />
-      <Tabs.Screen
-        name="profile/settings/support-requests"
-        options={{
-          href: null,
-        }}
-      />
-      <Tabs.Screen
-        name="profile/settings/change-password"
-        options={{
-          href: null,
-        }}
-      />
-      <Tabs.Screen
-        name="profile/settings/privacy-policy"
-        options={{
-          href: null,
+          tabBarStyle: { display: "none" },
         }}
       />
 

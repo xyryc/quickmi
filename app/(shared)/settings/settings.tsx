@@ -22,9 +22,13 @@ import {
   View,
 } from "react-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
-import { SafeAreaView } from "react-native-safe-area-context";
+import {
+  SafeAreaView,
+  useSafeAreaInsets,
+} from "react-native-safe-area-context";
 
 const Settings = () => {
+  const insets = useSafeAreaInsets();
   const { role, loading } = useUserRole();
 
   // Logout Confirmation Modal
@@ -43,7 +47,7 @@ const Settings = () => {
     deleteConfirmRef.current?.dismiss();
 
     setTimeout(() => {
-      router.push(`/(${role})/profile`);
+      router.replace("/(auth)/signup");
     }, 300);
   }, []);
 
@@ -182,7 +186,12 @@ const Settings = () => {
               </ScrollView>
 
               {/* bottom button */}
-              <View className="px-5 pb-32">
+              <View
+                className="px-5"
+                style={{
+                  marginBottom: insets.bottom + 40,
+                }}
+              >
                 <ButtonPrimary
                   title="Delete Account"
                   iconPosition="left"

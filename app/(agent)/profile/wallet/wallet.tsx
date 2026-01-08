@@ -88,9 +88,7 @@ const Wallet = () => {
 
                 {/* Add debit/credit card */}
                 <TouchableOpacity
-                  onPress={() =>
-                    router.push("/(agent)/profile/wallet/card-details")
-                  }
+                  onPress={() => router.push("/(shared)/profile/card-details")}
                   className=" flex-row items-center justify-between border border-[#E3E6F0] rounded-xl p-4 mt-3"
                 >
                   <View className="flex-row items-center">
@@ -180,18 +178,16 @@ const Wallet = () => {
               contentContainerStyle={{ paddingBottom: 40 }}
               showsVerticalScrollIndicator={false}
             >
-              <View className="px-6 py-4">
+              <View className="px-6">
                 <Text className="text-lg font-sf-pro-semibold text-center mt-2.5 text-[#031731]">
                   Confirm Withdraw
                 </Text>
 
-                <Text className="text-center mt-4 text-[#031731] font-sf-pro-regular text-sm">
-                  Are you sure you want to withdraw
-                  {"\n"}now?
+                <Text className="text-center mt-2 text-[#031731] font-sf-pro-regular text-sm">
+                  Are you sure you want to withdraw now?
                 </Text>
 
                 {/* button */}
-
                 <View className="flex-row mt-5 gap-3">
                   <ButtonSecondary
                     title={"No"}

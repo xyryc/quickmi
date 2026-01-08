@@ -11,9 +11,14 @@ import {
   TextInput,
   View,
 } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
+import {
+  SafeAreaView,
+  useSafeAreaInsets,
+} from "react-native-safe-area-context";
 
 const AddPlace = () => {
+  const insets = useSafeAreaInsets();
+
   return (
     <SafeAreaView className="flex-1" edges={["top", "left", "right"]}>
       <StatusBar backgroundColor="#D3E6FF" barStyle="dark-content" />
@@ -50,7 +55,12 @@ const AddPlace = () => {
           </ScrollView>
 
           {/* bottom button */}
-          <View className="px-5 pb-32">
+          <View
+            className="px-5"
+            style={{
+              marginBottom: insets.bottom + 40,
+            }}
+          >
             <ButtonPrimary title="Save" />
           </View>
         </KeyboardAvoidingView>
