@@ -8,6 +8,7 @@ const ChatHeader = () => {
   const router = useRouter();
 
   const { returnTo } = useLocalSearchParams<{ returnTo?: string }>();
+  console.log("from chat header", returnTo);
 
   const handleBack = () => {
     if (returnTo) {
@@ -19,7 +20,7 @@ const ChatHeader = () => {
 
   return (
     <View className="py-3 px-5 flex-row items-center justify-between gap-10 bg-[#d3e6ff38] rounded-b-3xl">
-      <View className="flex-row items-center gap-6 w-[48%]">
+      <View className="flex-row items-center gap-2 w-[48%]">
         <TouchableOpacity
           onPress={handleBack}
           className="w-11 h-11 bg-white items-center justify-center rounded-full border-[0.5px] border-[#0F73F7E5]"

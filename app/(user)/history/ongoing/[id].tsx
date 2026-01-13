@@ -1,4 +1,5 @@
 import ButtonPrimary from "@/components/ButtonPrimary";
+import DriverDetails from "@/components/DriverDetails";
 import DriverProfileHeader from "@/components/DriverProfileHeader";
 import {
   FontAwesome6,
@@ -9,16 +10,22 @@ import {
 } from "@expo/vector-icons";
 import BottomSheet, { BottomSheetScrollView } from "@gorhom/bottom-sheet";
 import { useRouter } from "expo-router";
-import React, { useMemo, useRef } from "react";
+import React, { useMemo, useRef, useState } from "react";
 import { Text, TouchableOpacity, View } from "react-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import MapView, { Marker, Polyline, PROVIDER_GOOGLE } from "react-native-maps";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
+// Type definition for ongoing ride steps
+type OngoingStep = "ride-details" | "driver-details";
+
 const ParcelOngoing = () => {
   const router = useRouter();
   const insets = useSafeAreaInsets();
   const mapRef = useRef<MapView>(null);
+
+  // Step state management
+  const [currentStep, setCurrentStep] = useState<OngoingStep>("ride-details");
 
   // Sample data - replace with actual data from params
   const pickupLocation = {
@@ -33,11 +40,49 @@ const ParcelOngoing = () => {
     address: "Green Road, Dhanmondi, Dhaka.",
   };
 
+  // Driver details data
+  const driverDetails = {
+    driverName: "John Doe",
+    driverPhoto: "https://i.pravatar.cc/150?img=33",
+    rating: 4.8,
+    phoneNumber: "+8801570233979",
+    vehicleType: "Toyota Vitz",
+    vehicleNumber: "SK 7776-41",
+    vehicleColor: "Black",
+    estimatedArrival: "7 minutes",
+  };
+
   // Create a ref for the bottom sheet
   const bottomSheetRef = useRef<BottomSheet>(null);
 
-  // Define snap points: 20% and 80% of screen
-  const snapPoints = useMemo(() => ["20%", "70%"], []);
+  // Define dynamic snap points based on current step
+  const snapPoints = useMemo(() => {
+    switch (currentStep) {
+      case "ride-details":
+        return ["20%", "70%"];
+      case "driver-details":
+        return ["60%", "80%"];
+      default:
+        return ["20%", "70%"];
+    }
+  }, [currentStep]);
+
+  // Handler to show driver details
+  const handleShareDriverDetails = () => {
+    setCurrentStep("driver-details");
+  };
+
+  // Handler to go back from driver details
+  const handleDriverDetailsBack = () => {
+    setCurrentStep("ride-details");
+  };
+
+  // Handler for sharing driver details
+  const handleShareDetails = () => {
+    // Implement share functionality
+    console.log("Sharing driver details...");
+    // You can use React Native Share API here
+  };
 
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
@@ -105,142 +150,167 @@ const ParcelOngoing = () => {
         {/* Bottom Sheet */}
         <BottomSheet
           ref={bottomSheetRef}
-          index={0} // Start at first snap point (20%)
+          index={0} // Start at first snap point
           snapPoints={snapPoints}
           enablePanDownToClose={false}
         >
           {/* Scrollable content section */}
           <BottomSheetScrollView>
-            <View className="px-5 py-4">
-              <View>
-                {/* time  */}
-                <View className="flex-row justify-between">
-                  <Text className="text-lg font-sf-pro-medium">
-                    Arriving in 7 minutes
-                  </Text>
-                  <FontAwesome6 name="location-dot" size={20} color="#0F73F7" />
-                </View>
-
-                {/* location */}
-                <View className="flex-row items-center gap-2 mt-1.5 mb-4">
-                  <View className="flex-row items-center gap-1.5">
-                    <Ionicons
-                      name="car-sport-outline"
-                      size={24}
-                      color="black"
+            <View className="px-5">
+              {/* Step 1: Ride Details */}
+              {currentStep === "ride-details" && (
+                <>
+                  {/* time  */}
+                  <View className="flex-row justify-between">
+                    <Text className="text-lg font-sf-pro-medium">
+                      Arriving in 7 minutes
+                    </Text>
+                    <FontAwesome6
+                      name="location-dot"
+                      size={20}
+                      color="#0F73F7"
                     />
-                    <Text className="text-xs font-sf-pro-medium text-gray-600">
-                      Lamborghini Aventador
-                    </Text>
-                  </View>
-                  <View className="bg-[#0F73F7] px-2 py-1 rounded-lg">
-                    <Text className="font-sf-pro-semibold text-xs text-white">
-                      SK 7776-41
-                    </Text>
-                  </View>
-                </View>
-
-                {/* profile with message call */}
-                <DriverProfileHeader />
-
-                {/* receiver details */}
-                <View className="border border-[#005FDC24] p-4 rounded-xl mt-3.5">
-                  <View className="flex-row items-center gap-1 ">
-                    <Text className="font-sf-pro-semibold text-base">
-                      #5R9G87R
-                    </Text>
-
-                    <Octicons name="dot-fill" size={6} color="#BABFC5" />
-
-                    <Text className="text-gray-400 text-sm font-sf-pro-regular">
-                      14 may 2023
-                    </Text>
                   </View>
 
-                  <View className="flex-row gap-2 mt-3.5 pr-4">
-                    <Octicons name="location" size={24} color="#0F73F7" />
-
-                    <View>
-                      <Text className="text-base font-sf-pro-semibold">To</Text>
-                      <Text className="font-sf-pro-regular text-xs text-blue-500">
-                        Receiver Details
+                  {/* location */}
+                  <View className="flex-row items-center gap-2 mt-1.5 mb-4">
+                    <View className="flex-row items-center gap-1.5">
+                      <Ionicons
+                        name="car-sport-outline"
+                        size={24}
+                        color="black"
+                      />
+                      <Text className="text-xs font-sf-pro-medium text-gray-600">
+                        Lamborghini Aventador
                       </Text>
-
-                      <Text className="font-sf-pro-regular text-sm mt-2">
-                        2nd Floor 01, 25 Mao Tse Toung Blvd (245), Phnom Penh
-                        12302, Cambodia
+                    </View>
+                    <View className="bg-[#0F73F7] px-2 py-1 rounded-lg">
+                      <Text className="font-sf-pro-semibold text-xs text-white">
+                        SK 7776-41
                       </Text>
                     </View>
                   </View>
-                </View>
 
-                {/* distance and fair details */}
-                <View className="border border-[#005FDC24] mt-3.5 p-4 rounded-xl">
-                  <View className="flex-row justify-between">
-                    <Text className="text-sm font-sf-pro-regular text-gray-400">
-                      Distance
-                    </Text>
+                  {/* profile with message call */}
+                  <DriverProfileHeader
+                    returnTo={"/(user)/history/ongoing/[id].tsx"}
+                  />
 
-                    <View className="flex-row items-center gap-1">
-                      <Text className="text-sm font-sf-pro-regular text-gray-400">
-                        Charge
+                  {/* receiver details */}
+                  <View className="border border-[#005FDC24] p-4 rounded-xl mt-3.5">
+                    <View className="flex-row items-center gap-1 ">
+                      <Text className="font-sf-pro-semibold text-base">
+                        #5R9G87R
                       </Text>
-                      <Ionicons
-                        name="information-circle"
-                        size={14}
-                        color="#0F73F7"
+
+                      <Octicons name="dot-fill" size={6} color="#BABFC5" />
+
+                      <Text className="text-gray-400 text-sm font-sf-pro-regular">
+                        14 may 2023
+                      </Text>
+                    </View>
+
+                    <View className="flex-row gap-2 mt-3.5 pr-4">
+                      <Octicons name="location" size={24} color="#0F73F7" />
+
+                      <View>
+                        <Text className="text-base font-sf-pro-semibold">
+                          To
+                        </Text>
+                        <Text className="font-sf-pro-regular text-xs text-blue-500">
+                          Receiver Details
+                        </Text>
+
+                        <Text className="font-sf-pro-regular text-sm mt-2">
+                          2nd Floor 01, 25 Mao Tse Toung Blvd (245), Phnom Penh
+                          12302, Cambodia
+                        </Text>
+                      </View>
+                    </View>
+                  </View>
+
+                  {/* distance and fair details */}
+                  <View className="border border-[#005FDC24] mt-3.5 p-4 rounded-xl">
+                    <View className="flex-row justify-between">
+                      <Text className="text-sm font-sf-pro-regular text-gray-400">
+                        Distance
+                      </Text>
+
+                      <View className="flex-row items-center gap-1">
+                        <Text className="text-sm font-sf-pro-regular text-gray-400">
+                          Charge
+                        </Text>
+                        <Ionicons
+                          name="information-circle"
+                          size={14}
+                          color="#0F73F7"
+                        />
+                      </View>
+                    </View>
+
+                    <View className="flex-row justify-between items-center mt-1">
+                      <Text className="font-sf-pro-medium text-lg">
+                        5.53 KM
+                      </Text>
+
+                      <View className="flex-row items-center">
+                        <Text className="font-sf-pro-medium text-sm text-red-500 line-through">
+                          $150
+                        </Text>
+                        <Text className="font-sf-pro-medium text-lg">$140</Text>
+                      </View>
+                    </View>
+
+                    <View className="flex-row justify-between items-center pt-1.5">
+                      <Text className="font-sf-pro-medium text-base">
+                        Who will pay?
+                      </Text>
+
+                      <ButtonPrimary
+                        title="Sender"
+                        className="!py-2 px-3"
+                        iconPosition="left"
+                        icon={
+                          <Ionicons
+                            name="checkmark-circle"
+                            size={20}
+                            color="white"
+                          />
+                        }
                       />
                     </View>
                   </View>
 
-                  <View className="flex-row justify-between items-center mt-1">
-                    <Text className="font-sf-pro-medium text-lg ">5.53 KM</Text>
-
-                    <View className="flex-row items-center">
-                      <Text className="font-sf-pro-medium text-sm text-red-500 line-through">
-                        $150
-                      </Text>
-                      <Text className="font-sf-pro-medium text-lg">$140</Text>
-                    </View>
-                  </View>
-
-                  <View className="flex-row justify-between items-center pt-1.5">
-                    <Text className="font-sf-pro-medium text-base">
-                      Who will pay?
+                  {/* driver details, cancel delivery */}
+                  <TouchableOpacity
+                    onPress={handleShareDriverDetails}
+                    className="border border-[#005FDC24] flex-row items-center gap-2 bg-[#CFE3FD] mt-4 py-3 px-4 rounded-t-xl"
+                  >
+                    <Ionicons name="share-outline" size={24} color="black" />
+                    <Text className="font-sf-pro-regular text-base">
+                      Share driver details
                     </Text>
+                  </TouchableOpacity>
 
-                    <ButtonPrimary
-                      title="Sender"
-                      className="!py-2 px-3"
-                      iconPosition="left"
-                      icon={
-                        <Ionicons
-                          name="checkmark-circle"
-                          size={24}
-                          color="white"
-                        />
-                      }
+                  <TouchableOpacity className="flex-row items-center gap-2 px-4 border border-[#005FDC24] py-3 rounded-b-xl">
+                    <MaterialCommunityIcons
+                      name="archive-cancel-outline"
+                      size={24}
+                      color="black"
                     />
-                  </View>
-                </View>
+                    <Text>Cancel Delivery</Text>
+                  </TouchableOpacity>
+                </>
+              )}
 
-                {/* driver details, cancel delivery */}
-                <View className="border border-[#005FDC24] flex-row items-center gap-2 bg-[#CFE3FD] mt-4 py-3 px-4 rounded-t-xl">
-                  <Ionicons name="share-outline" size={24} color="black" />
-                  <Text className="font-sf-pro-regular text-base">
-                    Share driver details
-                  </Text>
-                </View>
-
-                <TouchableOpacity className="flex-row items-center gap-2 px-4 border border-[#005FDC24] py-3 rounded-b-xl">
-                  <MaterialCommunityIcons
-                    name="archive-cancel-outline"
-                    size={24}
-                    color="black"
-                  />
-                  <Text>Cancel Delivery</Text>
-                </TouchableOpacity>
-              </View>
+              {/* Step 2: Driver Details */}
+              {currentStep === "driver-details" && (
+                <DriverDetails
+                  driverDetails={driverDetails}
+                  onBack={handleDriverDetailsBack}
+                  onShare={handleShareDetails}
+                />
+              )}
             </View>
           </BottomSheetScrollView>
         </BottomSheet>

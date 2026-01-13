@@ -4,7 +4,7 @@ import { useRouter } from "expo-router";
 import React from "react";
 import { Text, TouchableOpacity, View } from "react-native";
 
-const DriverProfileHeader = () => {
+const DriverProfileHeader = ({ returnTo }) => {
   const router = useRouter();
 
   return (
@@ -37,7 +37,7 @@ const DriverProfileHeader = () => {
           onPress={() =>
             router.push({
               pathname: "/(shared)/chat/chat",
-              params: { returnTo: "/(user)/select-vehicle" },
+              params: { returnTo },
             })
           }
           className="w-11 h-11 rounded-full items-center justify-center bg-[#CFE3FD42] border border-[#0F73F724]"
