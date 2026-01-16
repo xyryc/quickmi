@@ -15,8 +15,7 @@ const SelectRide = ({ vehicles, selectedVehicle, onVehicleSelect, onNext }) => {
         Rider Details
       </Text>
 
-      {/* Scrollable Ride List */}
-
+      {/* Ride List */}
       <View>
         {vehicles.map((vehicle) => (
           <RideCard
@@ -32,7 +31,7 @@ const SelectRide = ({ vehicles, selectedVehicle, onVehicleSelect, onNext }) => {
       <View className="border-t border-gray-200 " />
 
       {/* choose car, promo section */}
-      <View className="pt-4">
+      <View>
         <TouchableOpacity className="flex-row justify-between items-center px-2 py-3 mb-2.5">
           <Text className="font-sf-pro-regular text-base">Add Promo</Text>
 

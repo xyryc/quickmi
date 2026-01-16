@@ -1,7 +1,7 @@
 import AcceptDeclineOffer from "@/components/AcceptDeclineOffer";
 import ArrivingDetails from "@/components/ArrivingDetails";
 import DriverDetails from "@/components/DriverDetails";
-import OfferPrice from "@/components/OfferPrice";
+import OfferPriceUser from "@/components/OfferPriceUser";
 import PaymentMethodSelection from "@/components/PaymentMethodSelection";
 import ReceiverDetails from "@/components/ReceiverDetails";
 import SelectRide from "@/components/SelectRide";
@@ -56,7 +56,7 @@ const SelectVehicle = () => {
       id: "bike-1",
       type: "bike" as const,
       name: "Bike",
-      price: "$100",
+      price: 100,
       time: "10 min away",
       description: "Affordable delivery for quick trips",
     },
@@ -64,7 +64,7 @@ const SelectVehicle = () => {
       id: "car-1",
       type: "car" as const,
       name: "Car",
-      price: "$200",
+      price: 200,
       time: "5 min away",
       description: "Comfortable delivery for medium packages",
     },
@@ -72,7 +72,7 @@ const SelectVehicle = () => {
       id: "van-1",
       type: "van" as const,
       name: "Van",
-      price: "$300",
+      price: 300,
       time: "15 min away",
       description: "Spacious delivery for large items",
     },
@@ -100,9 +100,9 @@ const SelectVehicle = () => {
     phone: "",
     address: "",
   });
-  const [offeredPrice, setOfferedPrice] = useState<string>("$100");
+  const [offeredPrice, setOfferedPrice] = useState<number>(100);
   const selectedVehicleData = vehicles.find((v) => v.id === selectedVehicle);
-  const suggestedPrice = selectedVehicleData?.price || "$100";
+  const suggestedPrice = selectedVehicleData?.price || 100;
   const { returnTo } = useLocalSearchParams<{ returnTo?: string }>();
 
   const handleBack = () => {
@@ -299,7 +299,6 @@ const SelectVehicle = () => {
           enablePanDownToClose={false}
         >
           {/* content section */}
-
           <BottomSheetView
             className="flex-1 px-5"
             style={{
@@ -329,7 +328,7 @@ const SelectVehicle = () => {
 
             {/* Step 3: Offer Price */}
             {currentStep === "offer-price" && (
-              <OfferPrice
+              <OfferPriceUser
                 selectedVehicleData={selectedVehicleData}
                 suggestedPrice={suggestedPrice}
                 onNext={handleOfferPriceNext}

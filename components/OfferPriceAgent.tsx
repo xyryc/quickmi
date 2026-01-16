@@ -6,7 +6,7 @@ import { Text, TouchableOpacity, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import ButtonSecondary from "./ButtonSecondary";
 
-interface OfferPriceProps {
+interface OfferPriceAgentProps {
   suggestedPrice: string;
   onNext: (offeredPrice: string) => void;
   onBack: () => void;
@@ -14,7 +14,7 @@ interface OfferPriceProps {
   onCashPress: () => void;
 }
 
-const OfferPrice: React.FC<OfferPriceProps> = ({
+const OfferPriceAgent: React.FC<OfferPriceAgentProps> = ({
   selectedVehicleData,
   onCashPress,
   suggestedPrice,
@@ -92,4 +92,4 @@ const OfferPrice: React.FC<OfferPriceProps> = ({
   );
 };
 
-export default OfferPrice;
+export default OfferPriceAgent;

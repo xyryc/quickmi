@@ -1,6 +1,6 @@
 import ButtonSecondary from "@/components/ButtonSecondary";
 import EarningsCard from "@/components/EarningsCard";
-import OfferPrice from "@/components/OfferPrice";
+import OfferPriceAgent from "@/components/OfferPriceAgent";
 import TripDetailsCard from "@/components/TripDetailsCard";
 import TripOfferCard from "@/components/TripOfferCard";
 import { Ionicons, SimpleLineIcons } from "@expo/vector-icons";
@@ -290,7 +290,7 @@ const AgentHome = () => {
 
       case "offer_price":
         return (
-          <OfferPrice
+          <OfferPriceAgent
             suggestedPrice={currentTrip?.suggestedPrice || "$150"}
             onNext={handleConfirmPrice}
             onBack={() => setAgentStatus("trip_offer")}
