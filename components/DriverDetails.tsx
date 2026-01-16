@@ -42,7 +42,7 @@ const DriverDetails: React.FC<DriverDetailsProps> = ({
       <DriverProfileHeader />
 
       {/* Driver Information */}
-      <View className="p-4 border border-[#E3E6F0] rounded-xl mt-8">
+      <View className="p-4 border border-[#E3E6F0] rounded-xl mt-6">
         <TouchableOpacity onPress={handleCall}>
           <Text className="text-sm font-sf-pro-medium mb-2">Phone number</Text>
           <Text className="font-sf-pro-regular text-sm">

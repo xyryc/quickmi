@@ -4,7 +4,6 @@ import {
   MaterialCommunityIcons,
   Octicons,
 } from "@expo/vector-icons";
-import { BottomSheetScrollView } from "@gorhom/bottom-sheet";
 import React from "react";
 import { Linking, Text, TouchableOpacity, View } from "react-native";
 import ButtonPrimary from "./ButtonPrimary";
@@ -70,109 +69,102 @@ const ArrivingDetails: React.FC<ArrivingDetailsProps> = ({
       </View>
 
       {/* Scrollable content section */}
-      <BottomSheetScrollView
-        showsVerticalScrollIndicator={false}
-        contentContainerStyle={{ paddingBottom: 120 }}
-      >
-        <View>
-          {/* profile with message call */}
-          <DriverProfileHeader />
+      <View>
+        {/* profile with message call */}
+        <DriverProfileHeader />
 
-          {/* receiver details */}
-          <View className="border border-[#005FDC24] p-4 rounded-xl mt-3.5">
-            <View className="flex-row items-center gap-1 ">
-              <Text className="font-sf-pro-semibold text-base">#5R9G87R</Text>
+        {/* receiver details */}
+        <View className="border border-[#005FDC24] p-4 rounded-xl mt-3.5">
+          <View className="flex-row items-center gap-1 ">
+            <Text className="font-sf-pro-semibold text-base">#5R9G87R</Text>
 
-              <Octicons name="dot-fill" size={6} color="#BABFC5" />
+            <Octicons name="dot-fill" size={6} color="#BABFC5" />
 
-              <Text className="text-gray-400 text-sm font-sf-pro-regular">
-                14 may 2023
-              </Text>
-            </View>
-
-            <View className="flex-row gap-2 mt-3.5 pr-4">
-              <Octicons name="location" size={24} color="#0F73F7" />
-
-              <View>
-                <Text className="text-base font-sf-pro-semibold">To</Text>
-                <Text className="font-sf-pro-regular text-xs text-blue-500">
-                  Receiver Details
-                </Text>
-
-                <Text className="font-sf-pro-regular text-sm mt-2">
-                  2nd Floor 01, 25 Mao Tse Toung Blvd (245), Phnom Penh 12302,
-                  Cambodia
-                </Text>
-              </View>
-            </View>
-          </View>
-
-          {/* distance and fair details */}
-          <View className="border border-[#005FDC24] mt-3.5 p-4 rounded-xl">
-            <View className="flex-row justify-between">
-              <Text className="text-sm font-sf-pro-regular text-gray-400">
-                Distance
-              </Text>
-
-              <View className="flex-row items-center gap-1">
-                <Text className="text-sm font-sf-pro-regular text-gray-400">
-                  Charge
-                </Text>
-                <Ionicons name="information-circle" size={14} color="#0F73F7" />
-              </View>
-            </View>
-
-            <View className="flex-row justify-between items-center mt-1">
-              <Text className="font-sf-pro-medium text-lg ">5.53 KM</Text>
-
-              <View className="flex-row items-center">
-                <Text className="font-sf-pro-medium text-sm text-red-500 line-through">
-                  $150
-                </Text>
-                <Text className="font-sf-pro-medium text-lg">$140</Text>
-              </View>
-            </View>
-
-            <View className="flex-row justify-between items-center pt-1.5">
-              <Text className="font-sf-pro-medium text-base">
-                Who will pay?
-              </Text>
-
-              <ButtonPrimary
-                title="Sender"
-                className="!py-2 px-3"
-                iconPosition="left"
-                icon={
-                  <Ionicons name="checkmark-circle" size={24} color="white" />
-                }
-              />
-            </View>
-          </View>
-
-          {/* driver details, cancel delivery */}
-          <TouchableOpacity
-            onPress={onShareDriverDetails}
-            className="border border-[#005FDC24] flex-row items-center gap-2 bg-[#CFE3FD] mt-4 py-3 px-4 rounded-t-xl"
-          >
-            <Ionicons name="share-outline" size={24} color="black" />
-            <Text className="font-sf-pro-regular text-base">
-              Share driver details
+            <Text className="text-gray-400 text-sm font-sf-pro-regular">
+              14 may 2023
             </Text>
-          </TouchableOpacity>
+          </View>
 
-          <TouchableOpacity
-            onPress={onCancelRide}
-            className="flex-row items-center gap-2 px-4 border border-[#005FDC24] py-3 rounded-b-xl"
-          >
-            <MaterialCommunityIcons
-              name="archive-cancel-outline"
-              size={24}
-              color="black"
-            />
-            <Text>Cancel Delivery</Text>
-          </TouchableOpacity>
+          <View className="flex-row gap-2 mt-3.5 pr-4">
+            <Octicons name="location" size={24} color="#0F73F7" />
+
+            <View>
+              <Text className="text-base font-sf-pro-semibold">To</Text>
+              <Text className="font-sf-pro-regular text-xs text-blue-500">
+                Receiver Details
+              </Text>
+
+              <Text className="font-sf-pro-regular text-sm mt-2">
+                2nd Floor 01, 25 Mao Tse Toung Blvd (245), Phnom Penh 12302,
+                Cambodia
+              </Text>
+            </View>
+          </View>
         </View>
-      </BottomSheetScrollView>
+
+        {/* distance and fair details */}
+        <View className="border border-[#005FDC24] mt-3.5 p-4 rounded-xl">
+          <View className="flex-row justify-between">
+            <Text className="text-sm font-sf-pro-regular text-gray-400">
+              Distance
+            </Text>
+
+            <View className="flex-row items-center gap-1">
+              <Text className="text-sm font-sf-pro-regular text-gray-400">
+                Charge
+              </Text>
+              <Ionicons name="information-circle" size={14} color="#0F73F7" />
+            </View>
+          </View>
+
+          <View className="flex-row justify-between items-center mt-1">
+            <Text className="font-sf-pro-medium text-lg ">5.53 KM</Text>
+
+            <View className="flex-row items-center">
+              <Text className="font-sf-pro-medium text-sm text-red-500 line-through">
+                $150
+              </Text>
+              <Text className="font-sf-pro-medium text-lg">$140</Text>
+            </View>
+          </View>
+
+          <View className="flex-row justify-between items-center pt-1.5">
+            <Text className="font-sf-pro-medium text-base">Who will pay?</Text>
+
+            <ButtonPrimary
+              title="Sender"
+              className="!py-2 px-3"
+              iconPosition="left"
+              icon={
+                <Ionicons name="checkmark-circle" size={24} color="white" />
+              }
+            />
+          </View>
+        </View>
+
+        {/* driver details, cancel delivery */}
+        <TouchableOpacity
+          onPress={onShareDriverDetails}
+          className="border border-[#005FDC24] flex-row items-center gap-2 bg-[#CFE3FD] mt-4 py-3 px-4 rounded-t-xl"
+        >
+          <Ionicons name="share-outline" size={24} color="black" />
+          <Text className="font-sf-pro-regular text-base">
+            Share driver details
+          </Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          onPress={onCancelRide}
+          className="flex-row items-center gap-2 px-4 border border-[#005FDC24] py-3 rounded-b-xl"
+        >
+          <MaterialCommunityIcons
+            name="archive-cancel-outline"
+            size={24}
+            color="black"
+          />
+          <Text>Cancel Delivery</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };

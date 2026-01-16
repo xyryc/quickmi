@@ -1,7 +1,6 @@
 import ButtonPrimary from "@/components/ButtonPrimary";
 import ButtonSecondary from "@/components/ButtonSecondary";
 import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
-import { useRouter } from "expo-router";
 import React from "react";
 import { Text, View } from "react-native";
 import DriverProfileHeader from "./DriverProfileHeader";
@@ -30,8 +29,6 @@ const AcceptDeclineOffer: React.FC<AcceptDeclineOfferProps> = ({
   onDecline,
   bottomInset,
 }) => {
-  const router = useRouter();
-
   return (
     <View className="flex-1">
       <Text className="text-xl font-sf-pro-medium text-center mb-4">
@@ -92,12 +89,7 @@ const AcceptDeclineOffer: React.FC<AcceptDeclineOfferProps> = ({
       </View>
 
       {/* Action Buttons */}
-      <View
-        className="pt-4"
-        style={{
-          marginBottom: bottomInset + 20,
-        }}
-      >
+      <View className="pt-4">
         <ButtonPrimary title="Accept Offer" onPress={onAccept} />
 
         <ButtonSecondary

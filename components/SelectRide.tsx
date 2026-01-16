@@ -1,5 +1,4 @@
 import { MaterialIcons } from "@expo/vector-icons";
-import { BottomSheetScrollView } from "@gorhom/bottom-sheet";
 import React from "react";
 import { Dimensions, Text, TouchableOpacity, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
@@ -17,11 +16,8 @@ const SelectRide = ({ vehicles, selectedVehicle, onVehicleSelect, onNext }) => {
       </Text>
 
       {/* Scrollable Ride List */}
-      <BottomSheetScrollView
-        // contentContainerStyle={{ paddingBottom: 40 }}
-        // style={{ flexGrow: 0, flexShrink: 1 }}
-        showsVerticalScrollIndicator={false}
-      >
+
+      <View>
         {vehicles.map((vehicle) => (
           <RideCard
             key={vehicle.id}
@@ -31,16 +27,12 @@ const SelectRide = ({ vehicles, selectedVehicle, onVehicleSelect, onNext }) => {
             onPress={() => onVehicleSelect(vehicle.id)}
           />
         ))}
-      </BottomSheetScrollView>
+      </View>
 
       <View className="border-t border-gray-200 " />
 
       {/* choose car, promo section */}
-      <View
-        style={{
-          marginBottom: insets.bottom + 60,
-        }}
-      >
+      <View className="pt-4">
         <TouchableOpacity className="flex-row justify-between items-center px-2 py-3 mb-2.5">
           <Text className="font-sf-pro-regular text-base">Add Promo</Text>
 

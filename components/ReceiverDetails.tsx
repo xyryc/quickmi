@@ -88,12 +88,7 @@ const ReceiverDetails: React.FC<ReceiverDetailsProps> = ({
       </View>
 
       {/* Action Buttons */}
-      <View
-        className="pt-4"
-        style={{
-          paddingBottom: insets.bottom + 60,
-        }}
-      >
+      <View className="pt-4">
         <ButtonPrimary title="Confirm Receiver" onPress={onNext} />
         <ButtonSecondary title="Skip" onPress={onSkip} className="mt-3" />
       </View>

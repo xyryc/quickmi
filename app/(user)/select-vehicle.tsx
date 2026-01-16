@@ -7,7 +7,7 @@ import ReceiverDetails from "@/components/ReceiverDetails";
 import SelectRide from "@/components/SelectRide";
 import WaitForDriver from "@/components/WaitForDriver";
 import { FontAwesome6, Ionicons, MaterialIcons } from "@expo/vector-icons";
-import BottomSheet from "@gorhom/bottom-sheet";
+import BottomSheet, { BottomSheetView } from "@gorhom/bottom-sheet";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import React, { useMemo, useRef, useState } from "react";
 import { TouchableOpacity, View } from "react-native";
@@ -76,30 +76,6 @@ const SelectVehicle = () => {
       time: "15 min away",
       description: "Spacious delivery for large items",
     },
-    {
-      id: "bike-2",
-      type: "bike" as const,
-      name: "Bike",
-      price: "$100",
-      time: "10 min away",
-      description: "Affordable delivery for quick trips",
-    },
-    {
-      id: "car-2",
-      type: "car" as const,
-      name: "Car",
-      price: "$200",
-      time: "5 min away",
-      description: "Comfortable delivery for medium packages",
-    },
-    {
-      id: "van-2",
-      type: "van" as const,
-      name: "Van",
-      price: "$300",
-      time: "15 min away",
-      description: "Spacious delivery for large items",
-    },
   ];
 
   const driverOffer = {
@@ -125,10 +101,8 @@ const SelectVehicle = () => {
     address: "",
   });
   const [offeredPrice, setOfferedPrice] = useState<string>("$100");
-
   const selectedVehicleData = vehicles.find((v) => v.id === selectedVehicle);
   const suggestedPrice = selectedVehicleData?.price || "$100";
-
   const { returnTo } = useLocalSearchParams<{ returnTo?: string }>();
 
   const handleBack = () => {
@@ -323,11 +297,15 @@ const SelectVehicle = () => {
           index={0}
           snapPoints={snapPoints}
           enablePanDownToClose={false}
-          enableHandlePanningGesture={false}
-          enableContentPanningGesture={false}
         >
-          {/* Scrollable content section */}
-          <View className="px-5 flex-1">
+          {/* content section */}
+
+          <BottomSheetView
+            className="flex-1 px-5"
+            style={{
+              paddingBottom: insets.bottom + 20,
+            }}
+          >
             {/* Step 1: Select Ride */}
             {currentStep === "select-ride" && (
               <SelectRide
@@ -335,7 +313,6 @@ const SelectVehicle = () => {
                 selectedVehicle={selectedVehicle}
                 onVehicleSelect={handleVehicleSelect}
                 onNext={handleSelectRideNext}
-                // bottomInset={insets.bottom}
               />
             )}
 
@@ -408,7 +385,8 @@ const SelectVehicle = () => {
                 onShare={handleShareDetails}
               />
             )}
-          </View>
+            {/* </View> */}
+          </BottomSheetView>
         </BottomSheet>
       </View>
     </GestureHandlerRootView>
