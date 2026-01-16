@@ -12,12 +12,14 @@ interface DriverOffer {
   rating: number;
   vehicleType: string;
   vehicleNumber: string;
-  price: string;
+  price: number;
   estimatedTime: string;
 }
 
 interface AcceptDeclineOfferProps {
   driverOffer: DriverOffer;
+  offeredPrice: number;
+  suggestedPrice: number;
   onAccept: () => void;
   onDecline: () => void;
   bottomInset: number;
@@ -25,9 +27,10 @@ interface AcceptDeclineOfferProps {
 
 const AcceptDeclineOffer: React.FC<AcceptDeclineOfferProps> = ({
   driverOffer,
+  suggestedPrice,
+  offeredPrice,
   onAccept,
   onDecline,
-  bottomInset,
 }) => {
   return (
     <View className="flex-1">
@@ -79,11 +82,11 @@ const AcceptDeclineOffer: React.FC<AcceptDeclineOfferProps> = ({
             <Ionicons name="alert-circle" size={16} color="#0f73f7" />
           </View>
 
-          <View className="flex-row items-center gap-1">
+          <View className="flex-row items-center gap-2">
             <Text className="text-lg font-sf-pro-medium text-red-500 line-through">
-              $150
+              ${suggestedPrice}
             </Text>
-            <Text className="text-lg font-sf-pro-medium">$140</Text>
+            <Text className="text-lg font-sf-pro-medium">${offeredPrice}</Text>
           </View>
         </View>
       </View>

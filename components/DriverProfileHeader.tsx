@@ -4,7 +4,7 @@ import { useRouter } from "expo-router";
 import React from "react";
 import { Text, TouchableOpacity, View } from "react-native";
 
-const DriverProfileHeader = ({ returnTo }) => {
+const DriverProfileHeader = ({ returnTo }: any) => {
   const router = useRouter();
 
   return (

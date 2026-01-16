@@ -6,9 +6,13 @@ interface WaitForDriverProps {
   onDriverAccepted: () => void;
   onCancel: () => void;
   bottomInset: number;
+  offeredPrice: number;
+  suggestedPrice: number;
 }
 
 const WaitForDriver: React.FC<WaitForDriverProps> = ({
+  offeredPrice,
+  suggestedPrice,
   onDriverAccepted,
   onCancel,
   bottomInset,
@@ -47,9 +51,6 @@ const WaitForDriver: React.FC<WaitForDriverProps> = ({
       <Text className="text-xs text-center mt-2 mb-4">
         Elapsed time: {timeWaiting} seconds
       </Text>
-
-      {/* progress */}
-      <View></View>
 
       <View className="items-center">
         <View className="w-12 h-12 border border-[#0F73F724] rounded-full items-center justify-center">
@@ -116,7 +117,7 @@ const WaitForDriver: React.FC<WaitForDriverProps> = ({
             Suggested Fare
           </Text>
 
-          <Text className="text-lg font-sf-pro-medium">$150</Text>
+          <Text className="text-lg font-sf-pro-medium">${suggestedPrice}</Text>
         </View>
 
         <View className="flex-row items-center justify-between mb-3">
@@ -132,11 +133,11 @@ const WaitForDriver: React.FC<WaitForDriverProps> = ({
             Your offer price
           </Text>
 
-          <View className="flex-row items-center">
+          <View className="flex-row items-center gap-2">
             <Text className="text-lg font-sf-pro-medium text-red-500 line-through">
-              $150
+              ${suggestedPrice}
             </Text>
-            <Text className="text-lg font-sf-pro-medium">$140</Text>
+            <Text className="text-lg font-sf-pro-medium">${offeredPrice}</Text>
           </View>
         </View>
       </View>

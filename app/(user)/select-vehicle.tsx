@@ -87,7 +87,7 @@ const SelectVehicle = () => {
     vehicleType: "Toyota Corolla",
     vehicleNumber: "ABC-1234",
     vehicleColor: "Silver",
-    price: "$150",
+    price: 150,
     estimatedTime: "5 mins",
     currentLocation: "500m away from pickup point",
     estimatedArrival: "5 mins", // Added for ArrivingDetails
@@ -107,7 +107,7 @@ const SelectVehicle = () => {
 
   const handleBack = () => {
     if (returnTo) {
-      router.replace(returnTo);
+      router.replace(returnTo as any);
     } else {
       router.back();
     }
@@ -145,7 +145,7 @@ const SelectVehicle = () => {
   // step 3
   // Called when user clicks "Submit Offer" button
   // Receives the price user entered/selected
-  const handleOfferPriceNext = (price: string) => {
+  const handleOfferPriceNext = (price: number) => {
     setOfferedPrice(price);
     setCurrentStep("wait-driver");
   };
@@ -349,6 +349,8 @@ const SelectVehicle = () => {
             {/* Step 4: Wait for Driver */}
             {currentStep === "wait-driver" && (
               <WaitForDriver
+                offeredPrice={offeredPrice}
+                suggestedPrice={suggestedPrice}
                 onDriverAccepted={handleDriverAccepted}
                 onCancel={handleCancelSearch}
                 bottomInset={insets.bottom}
@@ -358,6 +360,8 @@ const SelectVehicle = () => {
             {/* Step 5: Accept/Decline Offer */}
             {currentStep === "accept-decline" && (
               <AcceptDeclineOffer
+                offeredPrice={offeredPrice}
+                suggestedPrice={suggestedPrice}
                 driverOffer={driverOffer}
                 onAccept={handleAcceptOffer}
                 onDecline={handleDeclineOffer}

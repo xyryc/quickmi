@@ -7,8 +7,9 @@ import PriceCalculator from "./PriceCalculator";
 import RideCard from "./RideCard";
 
 interface OfferPriceUserProps {
+  selectedVehicleData: any;
   suggestedPrice: number;
-  onNext: (offeredPrice: string) => void;
+  onNext: (offeredPrice: number) => void;
   onBack: () => void;
   handleCancelRide: () => void;
   onCashPress: () => void;

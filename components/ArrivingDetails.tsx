@@ -20,7 +20,7 @@ interface DriverDetails {
   vehicleColor: string;
   currentLocation: string;
   estimatedArrival: string;
-  price: string;
+  price: number;
 }
 
 interface ArrivingDetailsProps {

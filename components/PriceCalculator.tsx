@@ -2,7 +2,17 @@ import { SimpleLineIcons } from "@expo/vector-icons";
 import React from "react";
 import { Text, TouchableOpacity, View } from "react-native";
 
-const PriceCalculator = ({ price, setPrice, suggestedPrice }) => {
+interface PriceCalculatorProps {
+  price: number;
+  setPrice: (price: number) => number;
+  suggestedPrice: number;
+}
+
+const PriceCalculator = ({
+  price,
+  setPrice,
+  suggestedPrice,
+}: PriceCalculatorProps) => {
   const handlePrice = (status: string) => {
     if (status === "plus") {
       setPrice(price + 1);
