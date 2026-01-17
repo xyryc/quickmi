@@ -1,4 +1,4 @@
-import { SimpleLineIcons } from "@expo/vector-icons";
+import { AntDesign } from "@expo/vector-icons";
 import React from "react";
 import { Text, TouchableOpacity, View } from "react-native";
 
@@ -23,8 +23,11 @@ const PriceCalculator = ({
 
   return (
     <View className="flex-row items-center px-3 py-2 border border-[#E3E6F0] rounded-lg mb-6">
-      <TouchableOpacity onPress={() => handlePrice("minus")}>
-        <SimpleLineIcons name="minus" size={30} color="black" />
+      <TouchableOpacity
+        className="border border-[#0F73F7E5] rounded-full p-3"
+        onPress={() => handlePrice("minus")}
+      >
+        <AntDesign name="minus" size={24} color="black" />
       </TouchableOpacity>
 
       <View className="items-center flex-1">
@@ -34,8 +37,11 @@ const PriceCalculator = ({
         </Text>
       </View>
 
-      <TouchableOpacity onPress={() => handlePrice("plus")}>
-        <SimpleLineIcons name="plus" size={30} color="black" />
+      <TouchableOpacity
+        className="border border-[#0F73F7E5] rounded-full p-3"
+        onPress={() => handlePrice("plus")}
+      >
+        <AntDesign name="plus" size={24} color="black" />
       </TouchableOpacity>
     </View>
   );

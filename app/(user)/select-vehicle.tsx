@@ -372,6 +372,8 @@ const SelectVehicle = () => {
             {/* Step 6: Arriving Details */}
             {currentStep === "arriving-details" && (
               <ArrivingDetails
+                offeredPrice={offeredPrice}
+                suggestedPrice={suggestedPrice}
                 driverDetails={driverOffer}
                 onCallDriver={handleCallDriver}
                 onCancelRide={handleCancelRide}

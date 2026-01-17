@@ -1,7 +1,7 @@
 import ButtonPrimary from "@/components/ButtonPrimary";
 import SearchBar from "@/components/Searchbar";
 import { useRouter } from "expo-router";
-import React from "react";
+import React, { useEffect } from "react";
 import { Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
@@ -14,6 +14,12 @@ const SelectLocation = () => {
       params: { returnTo: "/(user)/instant-delivery/select-location" },
     });
   };
+
+  useEffect(() => {
+    if (true) {
+      router.push("/(agent)/home");
+    }
+  }, []);
 
   return (
     <SafeAreaView>
@@ -47,11 +53,15 @@ const SelectLocation = () => {
 
         <View className="flex-row gap-2.5">
           <TouchableOpacity className="bg-[#9FC7FC40] px-3.5 py-2 rounded-xl">
-            <Text className="text-xs font-sf-pro-medium">Recent</Text>
+            <Text className="text-xs font-sf-pro-medium text-[#031731]">
+              Recent
+            </Text>
           </TouchableOpacity>
 
           <TouchableOpacity className="bg-[#9FC7FC40] px-3.5 py-2 rounded-xl">
-            <Text className="text-xs font-sf-pro-medium">Saved</Text>
+            <Text className="text-xs font-sf-pro-medium text-[#031731]">
+              Saved
+            </Text>
           </TouchableOpacity>
         </View>
 

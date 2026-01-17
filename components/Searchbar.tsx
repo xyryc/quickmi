@@ -33,14 +33,13 @@ export default function SearchBar({
 }: SearchBarProps) {
   return (
     <View
-      className={`flex-row items-center bg-gray-100 rounded-xl px-4 py-3 gap-2 border border-[#E3E6F0]      
-  ${containerClassName}`}
+      className={`flex-row items-center bg-gray-100 rounded-xl px-4 h-14 gap-2 border border-[#E3E6F0] ${containerClassName}`}
     >
       <Feather name="search" size={iconSize} color={iconColor} />
       <TextInput
-        className={`flex-1 text-base font-sf-regular text-[#A2A2A2] ${inputClassName}`}
+        className={`flex-1 text-base font-sf-regular text-black ${inputClassName}`}
         placeholder={placeholder}
-        placeholderTextColor="#999999"
+        placeholderTextColor="#A2A2A2"
         value={value}
         onChangeText={onChangeText}
         {...rest}

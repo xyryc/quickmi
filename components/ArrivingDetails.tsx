@@ -24,6 +24,8 @@ interface DriverDetails {
 }
 
 interface ArrivingDetailsProps {
+  offeredPrice: number;
+  suggestedPrice: number;
   driverDetails: DriverDetails;
   onCallDriver: () => void;
   onCancelRide: () => void;
@@ -32,6 +34,8 @@ interface ArrivingDetailsProps {
 }
 
 const ArrivingDetails: React.FC<ArrivingDetailsProps> = ({
+  offeredPrice,
+  suggestedPrice,
   driverDetails,
   onCallDriver,
   onCancelRide,
@@ -68,7 +72,7 @@ const ArrivingDetails: React.FC<ArrivingDetailsProps> = ({
         </View>
       </View>
 
-      {/* Scrollable content section */}
+      {/* content section */}
       <View>
         {/* profile with message call */}
         <DriverProfileHeader />
@@ -120,11 +124,13 @@ const ArrivingDetails: React.FC<ArrivingDetailsProps> = ({
           <View className="flex-row justify-between items-center mt-1">
             <Text className="font-sf-pro-medium text-lg ">5.53 KM</Text>
 
-            <View className="flex-row items-center">
+            <View className="flex-row items-center gap-2">
               <Text className="font-sf-pro-medium text-sm text-red-500 line-through">
-                $150
+                ${suggestedPrice}
               </Text>
-              <Text className="font-sf-pro-medium text-lg">$140</Text>
+              <Text className="font-sf-pro-medium text-lg">
+                ${offeredPrice}
+              </Text>
             </View>
           </View>
 
