@@ -1,7 +1,7 @@
 import ButtonPrimary from "@/components/ButtonPrimary";
 import SearchBar from "@/components/Searchbar";
 import { useRouter } from "expo-router";
-import React, { useEffect } from "react";
+import React from "react";
 import { Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
@@ -14,12 +14,6 @@ const SelectLocation = () => {
       params: { returnTo: "/(user)/instant-delivery/select-location" },
     });
   };
-
-  useEffect(() => {
-    if (true) {
-      router.push("/(agent)/home");
-    }
-  }, []);
 
   return (
     <SafeAreaView>
