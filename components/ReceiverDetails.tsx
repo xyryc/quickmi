@@ -82,7 +82,7 @@ const ReceiverDetails: React.FC<ReceiverDetailsProps> = ({
           textAlignVertical="top"
         />
 
-        <Text className="font-sf-pro-regular text-xs text-gray-400">
+        <Text className="font-sf-pro-medium text-xs text-gray-500">
           Floor, House, Road, Landmark
         </Text>
       </View>

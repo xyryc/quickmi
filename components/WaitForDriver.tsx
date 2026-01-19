@@ -48,7 +48,7 @@ const WaitForDriver: React.FC<WaitForDriverProps> = ({
       </Text>
 
       {/* waiting time */}
-      <Text className="text-xs text-center mt-2 mb-4">
+      <Text className="text-sm text-center mt-2 mb-4">
         Elapsed time: {timeWaiting} seconds
       </Text>
 
@@ -62,7 +62,7 @@ const WaitForDriver: React.FC<WaitForDriverProps> = ({
         </View>
 
         <TouchableOpacity onPress={onCancel} className="mt-2">
-          <Text className="font-sf-pro-semibold text-xs text-[#F34F4F]">
+          <Text className="font-sf-pro-medium text-[#F34F4F]">
             Cancel order
           </Text>
         </TouchableOpacity>
@@ -75,7 +75,7 @@ const WaitForDriver: React.FC<WaitForDriverProps> = ({
           <Text className="font-sf-pro-semibold text-base">#5R9G87R</Text>
           <View className="flex-row items-center gap-1">
             <Octicons name="dot-fill" size={6} color="#BABFC5" />
-            <Text className="text-gray-400 text-sm font-sf-pro-regular">
+            <Text className="text-gray-400 font-sf-pro-regular">
               14 may 2023
             </Text>
           </View>
@@ -97,12 +97,12 @@ const WaitForDriver: React.FC<WaitForDriverProps> = ({
             {/* 1st row */}
             <View className="flex items-start">
               <Text className="font-sf-pro-semibold text-base">To</Text>
-              <Text className="font-sf-pro-regular text-blue-400 text-xs">
+              <Text className="font-sf-pro-regular text-sm text-blue-400">
                 Receiver Details
               </Text>
             </View>
 
-            <Text className="text-sm font-sf-pro-regular mt-3">
+            <Text className="text-sm font-sf-pro-medium mt-3">
               2nd Floor 01, 25 Mao Tse Toung Blvd (245), Phnom Penh 12302,
               Cambodia
             </Text>
@@ -113,7 +113,7 @@ const WaitForDriver: React.FC<WaitForDriverProps> = ({
       {/* pricing info */}
       <View className="p-4 border border-[#E3E6F0] mt-3.5 rounded-xl">
         <View className="flex-row items-center justify-between mb-3">
-          <Text className="font-sf-pro-regular text-sm text-gray-400">
+          <Text className="font-sf-pro-medium text-gray-400">
             Suggested Fare
           </Text>
 
@@ -121,16 +121,14 @@ const WaitForDriver: React.FC<WaitForDriverProps> = ({
         </View>
 
         <View className="flex-row items-center justify-between mb-3">
-          <Text className="font-sf-pro-regular text-sm text-gray-400">
-            Distance
-          </Text>
+          <Text className="font-sf-pro-medium text-gray-400">Distance</Text>
 
           <Text className="text-lg font-sf-pro-medium">5.39 KM</Text>
         </View>
 
         <View className="flex-row items-center justify-between">
-          <Text className="font-sf-pro-regular text-sm text-gray-400">
-            Your offer price
+          <Text className="font-sf-pro-medium text-gray-400">
+            Your offered price
           </Text>
 
           <View className="flex-row items-center gap-2">

@@ -51,7 +51,7 @@ const ArrivingDetails: React.FC<ArrivingDetailsProps> = ({
     <View className="flex-1">
       {/* time  */}
       <View className="flex-row justify-between">
-        <Text className="text-lg font-sf-pro-medium">
+        <Text className="text-lg font-sf-pro-semibold">
           Arriving in 7 minutes
         </Text>
         <FontAwesome6 name="location-dot" size={20} color="#0F73F7" />
@@ -60,13 +60,13 @@ const ArrivingDetails: React.FC<ArrivingDetailsProps> = ({
       {/* location */}
       <View className="flex-row items-center gap-2 mt-1.5 mb-4">
         <View className="flex-row items-center gap-1.5">
-          <Ionicons name="car-sport-outline" size={24} color="black" />
-          <Text className="text-xs font-sf-pro-medium text-gray-600">
+          <Ionicons name="car-outline" size={24} color="black" />
+          <Text className="text-sm font-sf-pro-medium text-gray-600">
             Lamborghini Aventador
           </Text>
         </View>
         <View className="bg-[#0F73F7] px-2 py-1 rounded-lg">
-          <Text className="font-sf-pro-semibold text-xs text-white">
+          <Text className="font-sf-pro-semibold text-sm text-white">
             SK 7776-41
           </Text>
         </View>
@@ -82,9 +82,9 @@ const ArrivingDetails: React.FC<ArrivingDetailsProps> = ({
           <View className="flex-row items-center gap-1 ">
             <Text className="font-sf-pro-semibold text-base">#5R9G87R</Text>
 
-            <Octicons name="dot-fill" size={6} color="#BABFC5" />
+            <Octicons name="dot-fill" size={6} color="#6b7280" />
 
-            <Text className="text-gray-400 text-sm font-sf-pro-regular">
+            <Text className="text-gray-500 font-sf-pro-regular">
               14 may 2023
             </Text>
           </View>
@@ -94,11 +94,11 @@ const ArrivingDetails: React.FC<ArrivingDetailsProps> = ({
 
             <View>
               <Text className="text-base font-sf-pro-semibold">To</Text>
-              <Text className="font-sf-pro-regular text-xs text-blue-500">
+              <Text className="font-sf-pro-semibold text-sm text-blue-500">
                 Receiver Details
               </Text>
 
-              <Text className="font-sf-pro-regular text-sm mt-2">
+              <Text className="font-sf-pro-semibold text-sm mt-2">
                 2nd Floor 01, 25 Mao Tse Toung Blvd (245), Phnom Penh 12302,
                 Cambodia
               </Text>
@@ -109,14 +109,10 @@ const ArrivingDetails: React.FC<ArrivingDetailsProps> = ({
         {/* distance and fair details */}
         <View className="border border-[#005FDC24] mt-3.5 p-4 rounded-xl">
           <View className="flex-row justify-between">
-            <Text className="text-sm font-sf-pro-regular text-gray-400">
-              Distance
-            </Text>
+            <Text className="font-sf-pro-regular text-gray-500">Distance</Text>
 
             <View className="flex-row items-center gap-1">
-              <Text className="text-sm font-sf-pro-regular text-gray-400">
-                Charge
-              </Text>
+              <Text className="font-sf-pro-regular text-gray-500">Charge</Text>
               <Ionicons name="information-circle" size={14} color="#0F73F7" />
             </View>
           </View>
@@ -154,7 +150,7 @@ const ArrivingDetails: React.FC<ArrivingDetailsProps> = ({
           className="border border-[#005FDC24] flex-row items-center gap-2 bg-[#CFE3FD] mt-4 py-3 px-4 rounded-t-xl"
         >
           <Ionicons name="share-outline" size={24} color="black" />
-          <Text className="font-sf-pro-regular text-base">
+          <Text className="font-sf-pro-semibold text-base">
             Share driver details
           </Text>
         </TouchableOpacity>
@@ -168,7 +164,9 @@ const ArrivingDetails: React.FC<ArrivingDetailsProps> = ({
             size={24}
             color="black"
           />
-          <Text>Cancel Delivery</Text>
+          <Text className="font-sf-pro-semibold text-base">
+            Cancel Delivery
+          </Text>
         </TouchableOpacity>
       </View>
     </View>

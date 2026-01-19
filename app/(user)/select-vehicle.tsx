@@ -47,8 +47,8 @@ const SelectVehicle = () => {
   // Create a ref for the bottom sheet
   const bottomSheetRef = useRef<BottomSheet>(null);
 
-  // Define snap points: 20% and 80% of screen
-  const snapPoints = useMemo(() => ["60%"], []);
+  //  snap point
+  const snapPoints = useMemo(() => ["100%"], []);
 
   // step flow
   const vehicles = [
@@ -193,6 +193,11 @@ const SelectVehicle = () => {
 
   // Called when user clicks "Decline" button
   const handleDeclineOffer = () => {
+    setCurrentStep("wait-driver");
+  };
+
+  // Handle trip timeout
+  const handleTripTimeout = () => {
     setCurrentStep("wait-driver");
   };
 
@@ -366,6 +371,7 @@ const SelectVehicle = () => {
                 onAccept={handleAcceptOffer}
                 onDecline={handleDeclineOffer}
                 bottomInset={insets.bottom}
+                onTimeOut={handleTripTimeout}
               />
             )}
 

@@ -88,7 +88,9 @@ const ButtonPrimary: React.FC<ButtonPrimaryProps> = ({
       <View
         className={`${iconPosition === "left" ? "flex-row-reverse" : "flex-row"} items-center gap-2 z-10`}
       >
-        <Text className={`${textClassName} font-sf-pro-semibold text-white`}>
+        <Text
+          className={`${textClassName} font-sf-pro-semibold text-lg text-white`}
+        >
           {title}
         </Text>
 

@@ -22,6 +22,7 @@ interface AcceptDeclineOfferProps {
   suggestedPrice: number;
   onAccept: () => void;
   onDecline: () => void;
+  onTimeOut?: () => void;
   bottomInset: number;
 }
 
@@ -31,6 +32,7 @@ const AcceptDeclineOffer: React.FC<AcceptDeclineOfferProps> = ({
   offeredPrice,
   onAccept,
   onDecline,
+  onTimeOut,
 }) => {
   return (
     <View className="flex-1">
@@ -41,13 +43,13 @@ const AcceptDeclineOffer: React.FC<AcceptDeclineOfferProps> = ({
       {/* location */}
       <View className="flex-row items-center gap-2 mt-1.5 mb-4">
         <View className="flex-row items-center gap-1.5">
-          <Ionicons name="car-sport-outline" size={24} color="black" />
-          <Text className="text-xs font-sf-pro-medium text-gray-600">
+          <Ionicons name="car-outline" size={24} color="black" />
+          <Text className="text-sm font-sf-pro-medium text-gray-600">
             Lamborghini Aventador
           </Text>
         </View>
         <View className="bg-[#0F73F7] px-2 py-1 rounded-lg">
-          <Text className="font-sf-pro-semibold text-xs text-white">
+          <Text className="font-sf-pro-semibold text-sm text-white">
             SK 7776-41
           </Text>
         </View>
@@ -59,7 +61,7 @@ const AcceptDeclineOffer: React.FC<AcceptDeclineOfferProps> = ({
       {/* pricing info */}
       <View className="p-4 border border-[#E3E6F0] my-3.5 rounded-xl">
         <View className="flex-row items-center justify-between mb-3">
-          <Text className="font-sf-pro-regular text-sm text-gray-400">
+          <Text className="font-sf-pro-medium text-gray-500">
             Suggested Fare
           </Text>
 
@@ -67,18 +69,14 @@ const AcceptDeclineOffer: React.FC<AcceptDeclineOfferProps> = ({
         </View>
 
         <View className="flex-row items-center justify-between mb-3">
-          <Text className="font-sf-pro-regular text-sm text-gray-400">
-            Distance
-          </Text>
+          <Text className="font-sf-pro-medium text-gray-500">Distance</Text>
 
           <Text className="text-lg font-sf-pro-medium">5.39 KM</Text>
         </View>
 
         <View className="flex-row items-center justify-between">
           <View className="flex-row items-center gap-2">
-            <Text className="font-sf-pro-regular text-sm text-gray-400">
-              Charge
-            </Text>
+            <Text className="font-sf-pro-medium text-gray-500">Charge</Text>
             <Ionicons name="alert-circle" size={16} color="#0f73f7" />
           </View>
 
@@ -93,7 +91,12 @@ const AcceptDeclineOffer: React.FC<AcceptDeclineOfferProps> = ({
 
       {/* Action Buttons */}
       <View className="pt-4">
-        <ButtonPrimary title="Accept Offer" onPress={onAccept} />
+        <ButtonPrimary
+          title="Accept Offer"
+          onPress={onAccept}
+          timer={20}
+          onTimerEnd={onTimeOut}
+        />
 
         <ButtonSecondary
           title="Decline"
