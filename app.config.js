@@ -1,6 +1,6 @@
 module.exports = {
   expo: {
-    name: "quickmi",
+    name: "Quickmi",
     slug: "quickmi",
     version: "1.0.0",
     orientation: "portrait",

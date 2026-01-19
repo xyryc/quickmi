@@ -14,13 +14,11 @@ const HistoryCard = ({ onPress }) => {
         {/* date */}
         <View className="flex-row items-center gap-2">
           <View className="w-2 h-2 bg-blue-500 rounded-full" />
-          <Text className="font-sf-pro-regular text-base">
-            14 may 2025, 04:40
-          </Text>
+          <Text className="font-sf-pro-medium">14 may 2025, 04:40</Text>
         </View>
 
         {/* currency */}
-        <Text className="font-sf-pro-medium text-base">$150</Text>
+        <Text className="font-sf-pro-semibold">$150</Text>
       </View>
 
       {/* 2nd row */}
@@ -28,7 +26,7 @@ const HistoryCard = ({ onPress }) => {
         <View>
           <View className="flex-row items-center gap-2 ml-0.5">
             <FontAwesome6 name="person" size={14} color="black" />
-            <Text className="font-sf-pro-regular text-xs">
+            <Text className="font-sf-pro-medium text-sm text-gray-600">
               Block B, Banasree, Dhaka.
             </Text>
           </View>
@@ -38,7 +36,7 @@ const HistoryCard = ({ onPress }) => {
           <View className="flex-row items-center gap-1">
             <Ionicons name="location-sharp" size={14} color="#0F73F7" />
 
-            <Text className="font-sf-pro-regular text-xs">
+            <Text className="font-sf-pro-medium text-sm text-gray-600">
               Green Road, Dhanmondi, Dhaka.
             </Text>
           </View>

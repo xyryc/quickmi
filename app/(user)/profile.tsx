@@ -1,6 +1,5 @@
 import {
   Entypo,
-  Feather,
   Ionicons,
   MaterialCommunityIcons,
   SimpleLineIcons,
@@ -62,7 +61,7 @@ const Profile = () => {
             style={{ flex: 1 }}
           >
             <ScrollView
-              className="mx-5"
+              className="px-5"
               contentContainerStyle={{
                 paddingBottom: 120,
               }}
@@ -87,7 +86,7 @@ const Profile = () => {
                 </View>
 
                 {/* Profile name */}
-                <Text className="text-center mt-3.5 font-sf-pro-medium text-xl text-black">
+                <Text className="text-center mt-3.5 font-sf-pro-semibold text-xl text-black">
                   Darlene Robertson
                 </Text>
 
@@ -127,19 +126,20 @@ const Profile = () => {
                 />
 
                 {/* Account Information */}
-                <Text className="mt-4 text-base font-sf-pro-medium">
+                <Text className="mt-6 text-lg font-sf-pro-semibold">
                   Account Information
                 </Text>
+
                 <TouchableOpacity
                   onPress={() => router.push("/profile/personal-info")}
-                  className="flex-row items-center gap-2 mt-5"
+                  className="flex-row items-center gap-2 mt-2"
                 >
                   <MaterialCommunityIcons
                     name="account-edit-outline"
-                    size={20}
+                    size={24}
                     color="#4D4D4D"
                   />
-                  <Text className="font-sf-pro-medium text-sm text-[#4D4D4D]">
+                  <Text className="font-sf-pro-semibold text-[#4D4D4D]">
                     Personal Information
                   </Text>
                 </TouchableOpacity>
@@ -147,37 +147,43 @@ const Profile = () => {
 
               {/* Saved places */}
               <View className="mt-3.5 bg-white rounded-xl p-3.5 border-0.5 border-[#E3E6F0] shadow-md">
-                <Text className="text-base font-sf-pro-medium mb-4">
+                <Text className="text-lg font-sf-pro-semibold mb-4">
                   Saved place
                 </Text>
                 <TouchableOpacity
                   onPress={() => router.push("/(user)/profile/home-location")}
                   className="flex-row items-center gap-2"
                 >
-                  <Feather name="home" size={18} color="#4D4D4D" />
-                  <Text className="font-sf-pro-medium text-sm text-[#4D4D4D]">
+                  <Ionicons name="home-outline" size={24} color="#4D4D4D" />
+                  <Text className="font-sf-pro-semibold text-[#4D4D4D]">
                     Enter home location
                   </Text>
                 </TouchableOpacity>
+
                 <TouchableOpacity
                   onPress={() => router.push("/profile/work-location")}
                   className="flex-row items-center gap-2 my-5"
                 >
-                  <Feather name="briefcase" size={18} color="#4D4D4D" />
-                  <Text className="font-sf-pro-medium text-sm text-[#4D4D4D]">
-                    Enter Work location
+                  <Ionicons
+                    name="briefcase-outline"
+                    size={24}
+                    color="#4D4D4D"
+                  />
+                  <Text className="font-sf-pro-semibold text-[#4D4D4D]">
+                    Enter work location
                   </Text>
                 </TouchableOpacity>
+
                 <TouchableOpacity
                   onPress={() => router.push("/profile/add-place")}
                   className="flex-row items-center gap-2"
                 >
                   <SimpleLineIcons
                     name="location-pin"
-                    size={18}
+                    size={24}
                     color="#4D4D4D"
                   />
-                  <Text className="font-sf-pro-medium text-sm text-[#4D4D4D]">
+                  <Text className="font-sf-pro-semibold text-[#4D4D4D]">
                     Add a place
                   </Text>
                 </TouchableOpacity>
@@ -185,7 +191,7 @@ const Profile = () => {
 
               {/* Settings */}
               <View className="mt-3.5 bg-white rounded-xl p-3.5 border-spacing-0.5 border-[#E3E6F0] shadow-md">
-                <Text className="text-base font-sf-pro-medium mb-4">
+                <Text className="text-lg font-sf-pro-semibold mb-4">
                   Settings
                 </Text>
 
@@ -195,10 +201,10 @@ const Profile = () => {
                 >
                   <MaterialCommunityIcons
                     name="shield-check-outline"
-                    size={18}
+                    size={24}
                     color="#4D4D4D"
                   />
-                  <Text className="font-sf-pro-medium text-sm text-[#4D4D4D]">
+                  <Text className="font-sf-pro-semibold text-[#4D4D4D]">
                     Permission
                   </Text>
                 </TouchableOpacity>
@@ -207,25 +213,25 @@ const Profile = () => {
                   onPress={() => router.push("/(shared)/settings/settings")}
                   className="flex-row items-center gap-2"
                 >
-                  <Ionicons name="settings-outline" size={18} color="#4D4D4D" />
-                  <Text className="font-sf-pro-medium text-sm text-[#4D4D4D]">
+                  <Ionicons name="settings-outline" size={24} color="#4D4D4D" />
+                  <Text className="font-sf-pro-semibold text-[#4D4D4D]">
                     Settings
                   </Text>
                 </TouchableOpacity>
               </View>
 
               {/* Logout */}
-              <View className="mt-3.5 mb-5 bg-[#ffffff] rounded-xl p-3.5 border-spacing-0.5 border-[#E3E6F0] shadow-md">
-                <TouchableOpacity
-                  className="flex-row items-center gap-2"
-                  onPress={handleLogoutPress}
-                >
-                  <Ionicons name="exit-outline" size={18} color="#4D4D4D" />
-                  <Text className="font-sf-pro-medium text-sm text-[#4D4D4D]">
+              <TouchableOpacity
+                onPress={handleLogoutPress}
+                className="mt-3.5 mb-5 bg-white rounded-xl p-3.5 border-0.5 border-[#E3E6F0] elevation-md"
+              >
+                <View className="flex-row items-center gap-2">
+                  <Ionicons name="exit-outline" size={24} color="#4D4D4D" />
+                  <Text className="font-sf-pro-semibold text-[#4D4D4D]">
                     Log Out
                   </Text>
-                </TouchableOpacity>
-              </View>
+                </View>
+              </TouchableOpacity>
             </ScrollView>
           </LinearGradient>
         </SafeAreaView>

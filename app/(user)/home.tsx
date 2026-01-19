@@ -41,7 +41,9 @@ const Home = () => {
 
             <View>
               <View className="flex-row items-center gap-1">
-                <Text className="text-custom-blue-800">My Location</Text>
+                <Text className="text-custom-blue-800 font-sf-pro-regular">
+                  My Location
+                </Text>
                 <MaterialIcons
                   name="keyboard-arrow-down"
                   size={16}
@@ -51,7 +53,7 @@ const Home = () => {
 
               <View className="flex-row items-center gap-1 mt-0.5">
                 <SimpleLineIcons name="location-pin" size={14} color="black" />
-                <Text className="font-sf-pro-medium text-sm text-custom-blue-900">
+                <Text className="font-sf-pro-semibold text-sm text-custom-blue-900">
                   Los Angeles
                 </Text>
               </View>
@@ -103,10 +105,10 @@ const Home = () => {
               </View>
 
               <View>
-                <Text className="font-sf-pro-medium text-base text-custom-blue-900 mb-1">
+                <Text className="font-sf-pro-semibold text-lg text-custom-blue-900 mb-1">
                   Instant Delivery
                 </Text>
-                <Text className="font-sf-pro-medium text-xs text-gray-400">
+                <Text className="font-sf-pro-medium text-sm text-gray-400">
                   Immediate Pickup, Fast Delivery
                 </Text>
               </View>
@@ -139,10 +141,10 @@ const Home = () => {
               </View>
 
               <View>
-                <Text className="font-sf-pro-medium text-base text-custom-blue-900 mb-1">
+                <Text className="font-sf-pro-semibold text-lg text-custom-blue-900 mb-1">
                   Schedule Delivery
                 </Text>
-                <Text className="font-sf-pro-medium text-xs text-gray-400">
+                <Text className="font-sf-pro-medium text-sm text-gray-400">
                   Plan Ahead, Get On-Time Delivery
                 </Text>
               </View>
@@ -156,7 +158,7 @@ const Home = () => {
           </TouchableOpacity>
 
           {/* history */}
-          <View className="flex-row justify-between p-2.5 my-4">
+          <View className="flex-row justify-between p-2.5 my-6 mb-2">
             <Text className="font-sf-pro-medium text-base">History</Text>
 
             <Text className="font-sf-pro-medium text-base text-blue-600">
