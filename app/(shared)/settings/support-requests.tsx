@@ -30,7 +30,7 @@ const SupportRequests = () => {
   const successModalRef = useRef<BottomSheetModal>(null);
 
   // Snap points
-  const successSnapPoints = useMemo(() => ["50%"], []);
+  const successSnapPoints = useMemo(() => ["60%"], []);
 
   // Issue options
   const issueOptions = ["Delivery Issue", "Payment Issue", "App Issue"];
@@ -94,7 +94,7 @@ const SupportRequests = () => {
                 </View>
 
                 {/* bio */}
-                <Text className="font-sf-pro-regular text-lg text-center text-[#1E1E1E] mt-5">
+                <Text className="font-sf-pro-medium text-base text-center text-[#1E1E1E] mt-5">
                   If you face any kind of problem with {"\n"} our service feel
                   free to contact us.
                 </Text>
@@ -107,7 +107,7 @@ const SupportRequests = () => {
 
                   <Select
                     style={{ height: 50 }}
-                    className="w-full border border-black rounded-xl px-4 bg-white"
+                    className="w-full rounded-xl px-4"
                     mode="dropdown"
                     options={issueOptions}
                     selectedIndex={0}
@@ -120,7 +120,7 @@ const SupportRequests = () => {
 
                 {/* Complaint Text Area */}
                 <View className="mt-4">
-                  <Text className="mb-2 text-base font-sf-pro-medium text-[#031731]">
+                  <Text className="mb-4 text-base font-sf-pro-medium text-[#031731]">
                     Describe Your Issue
                   </Text>
                   <TextInput
@@ -157,10 +157,7 @@ const SupportRequests = () => {
               />
             )}
           >
-            <BottomSheetScrollView
-              contentContainerStyle={{ paddingBottom: 40 }}
-              showsVerticalScrollIndicator={false}
-            >
+            <BottomSheetScrollView showsVerticalScrollIndicator={false}>
               <View className="px-6 py-4 relative">
                 {/* Close button */}
                 <TouchableOpacity
@@ -185,7 +182,7 @@ const SupportRequests = () => {
                   Request Sent Successfully
                 </Text>
 
-                <Text className="text-center mt-4 text-[#031731] font-sf-pro-regular text-sm px-8">
+                <Text className="text-center mt-2 text-[#031731] font-sf-pro-regular px-8">
                   Your support request has been sent to admin successfully. We
                   will review and get back to you within 24-48 hours.
                 </Text>

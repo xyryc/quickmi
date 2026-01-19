@@ -30,27 +30,25 @@ const PersonalInfo = () => {
 
         <ScrollView className="mx-5" showsVerticalScrollIndicator={false}>
           {/* profile name */}
-          <View className="flex-row justify-between items-center mt-5 border-b border-[#E3E6F0] mx-3 py-2 pb-4">
+          <View className="flex-row justify-between items-center mt-4 border-b border-[#E3E6F0] mx-3 pb-4">
             <View className="flex-row items-center gap-3">
-              <Ionicons name="person-outline" size={24} color="#4D4D4D" />
-              <Text className="font-sf-pro-medium text-sm text-black">
+              <Ionicons name="person-circle" size={24} color="#4D4D4D" />
+              <Text className="font-sf-pro-semibold text-black">
                 Darlene Robertson
               </Text>
             </View>
             <TouchableOpacity
               onPress={() => router.push(`/(${role})/profile/update-name`)}
             >
-              <Text className="font-sf-pro-regular text-sm text-[#0F73F7]">
-                Edit
-              </Text>
+              <Text className="font-sf-pro-regular text-[#0F73F7]">Edit</Text>
             </TouchableOpacity>
           </View>
 
           {/* mobile Number */}
-          <View className="flex-row justify-between items-center mt-5 border-b border-[#E3E6F0] mx-3 py-2 pb-4">
+          <View className="flex-row justify-between items-center mt-4 border-b border-[#E3E6F0] mx-3 pb-4">
             <View className="flex-row items-center gap-3">
               <Feather name="phone-call" size={24} color="#4D4D4D" />
-              <Text className="font-sf-pro-medium text-sm text-black">
+              <Text className="font-sf-pro-semibold text-black">
                 (225) 555-0118
               </Text>
             </View>
@@ -59,26 +57,22 @@ const PersonalInfo = () => {
                 router.push(`/(${role})/profile/update-phone-number`)
               }
             >
-              <Text className="font-sf-pro-regular text-sm text-[#0F73F7]">
-                Edit
-              </Text>
+              <Text className="font-sf-pro-regular text-[#0F73F7]">Edit</Text>
             </TouchableOpacity>
           </View>
 
           {/* E-Mail*/}
-          <View className="flex-row justify-between items-center mt-5 border-b border-[#E3E6F0] mx-3 py-2 pb-4">
+          <View className="flex-row justify-between items-center mt-4 border-b border-[#E3E6F0] mx-3 pb-4">
             <View className="flex-row items-center gap-3">
               <Ionicons name="mail-outline" size={24} color="#4D4D4D" />
-              <Text className="font-sf-pro-medium text-sm text-black">
+              <Text className="font-sf-pro-semibold text-black">
                 dolores.chambers@example.com
               </Text>
             </View>
             <TouchableOpacity
               onPress={() => router.push(`/(${role})/profile/update-email`)}
             >
-              <Text className="font-sf-pro-regular text-sm text-[#0F73F7]">
-                Edit
-              </Text>
+              <Text className="font-sf-pro-regular text-[#0F73F7]">Edit</Text>
             </TouchableOpacity>
           </View>
         </ScrollView>

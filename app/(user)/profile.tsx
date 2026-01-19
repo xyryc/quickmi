@@ -38,7 +38,7 @@ const Profile = () => {
 
   // Logout Confirmation Modal
   const logoutConfirmRef = useRef<BottomSheetModal>(null);
-  const snapPoints = useMemo(() => ["50%"], []);
+  const snapPoints = useMemo(() => ["40%"], []);
 
   // Open logout confirmation
   const handleLogoutPress = useCallback(() => {
@@ -243,12 +243,19 @@ const Profile = () => {
           enablePanDownToClose
           backgroundStyle={{ backgroundColor: "white" }}
           handleIndicatorStyle={{ backgroundColor: "#D1D5DB" }}
+          backdropComponent={({ style }) => (
+            <View style={[style, { backgroundColor: "rgba(0, 0, 0, 0.5)" }]} />
+          )}
         >
           <BottomSheetView
             className="px-5"
-            style={{ paddingBottom: insets.bottom + 120 }}
+            style={{ paddingBottom: insets.bottom + 100 }}
           >
-            <Text className="text-lg font-sf-pro-semibold text-center mt-4">
+            <Text className="text-lg font-sf-pro-semibold text-center text-[#031731]">
+              Log Out
+            </Text>
+
+            <Text className="text-base font-sf-pro-medium text-center">
               Are you sure you want to logout?
             </Text>
 

@@ -42,151 +42,146 @@ const TransactionHistory = () => {
                 <Feather
                   name="arrow-up-right"
                   size={24}
-                  color="red"
+                  color="green"
                   className="bg-white border border-[#0F73F724] rounded-full p-2"
                 />
-                <View>
-                  <Text className="font-sf-pro-medium text-sm text-[#222222] ml-3">
+                <View className="ml-3">
+                  <Text className="font-sf-pro-semibold text-[#222222]">
                     Withdraw
                   </Text>
 
-                  <Text className="font-sf-pro-regular text-xs text-[#6B6B6B] ml-3 mt-2">
+                  <Text className="font-sf-pro-regular text-xs text-[#6B6B6B]">
                     Today at 09:20 am
                   </Text>
                 </View>
               </View>
               <View>
-                <Text className="font-sf-pro-medium text-base text-[#0F73F7]">
+                <Text className="font-sf-pro-semibold text-base text-[#0F73F7]">
                   $570.00
                 </Text>
               </View>
             </TouchableOpacity>
 
-            {/* Transactions history Add in Wallet */}
             <TouchableOpacity className="border border-[#E3E6F0] bg-white flex-row items-center justify-between mt-2 p-4 rounded-xl">
               <View className="flex-row items-center">
                 <Feather
                   name="arrow-down-right"
                   size={24}
-                  color="green"
+                  color="red"
                   className="bg-white border border-[#0F73F724] rounded-full p-2"
                 />
-                <View>
-                  <Text className="font-sf-pro-medium text-sm text-[#222222] ml-3">
-                    Add in Wallet
+                <View className="ml-3">
+                  <Text className="font-sf-pro-semibold text-[#222222]">
+                    Withdraw
                   </Text>
 
-                  <Text className="font-sf-pro-regular text-xs text-[#6B6B6B] ml-3 mt-2">
+                  <Text className="font-sf-pro-regular text-xs text-[#6B6B6B]">
                     Today at 09:20 am
                   </Text>
                 </View>
               </View>
               <View>
-                <Text className="font-sf-pro-medium text-base text-[#0F73F7]">
+                <Text className="font-sf-pro-semibold text-base text-[#0F73F7]">
                   $570.00
                 </Text>
               </View>
             </TouchableOpacity>
 
-            {/* Transactions history Withdraw */}
             <TouchableOpacity className="border border-[#E3E6F0] bg-white flex-row items-center justify-between mt-2 p-4 rounded-xl">
               <View className="flex-row items-center">
                 <Feather
                   name="arrow-up-right"
                   size={24}
-                  color="red"
+                  color="green"
                   className="bg-white border border-[#0F73F724] rounded-full p-2"
                 />
-                <View>
-                  <Text className="font-sf-pro-medium text-sm text-[#222222] ml-3">
+                <View className="ml-3">
+                  <Text className="font-sf-pro-semibold text-[#222222]">
                     Withdraw
                   </Text>
 
-                  <Text className="font-sf-pro-regular text-xs text-[#6B6B6B] ml-3 mt-2">
+                  <Text className="font-sf-pro-regular text-xs text-[#6B6B6B]">
                     Today at 09:20 am
                   </Text>
                 </View>
               </View>
               <View>
-                <Text className="font-sf-pro-medium text-base text-[#0F73F7]">
+                <Text className="font-sf-pro-semibold text-base text-[#0F73F7]">
                   $570.00
                 </Text>
               </View>
             </TouchableOpacity>
 
-            {/* Transactions history Add in Wallet */}
             <TouchableOpacity className="border border-[#E3E6F0] bg-white flex-row items-center justify-between mt-2 p-4 rounded-xl">
               <View className="flex-row items-center">
                 <Feather
                   name="arrow-down-right"
                   size={24}
-                  color="green"
+                  color="red"
                   className="bg-white border border-[#0F73F724] rounded-full p-2"
                 />
-                <View>
-                  <Text className="font-sf-pro-medium text-sm text-[#222222] ml-3">
-                    Add in Wallet
+                <View className="ml-3">
+                  <Text className="font-sf-pro-semibold text-[#222222]">
+                    Withdraw
                   </Text>
 
-                  <Text className="font-sf-pro-regular text-xs text-[#6B6B6B] ml-3 mt-2">
+                  <Text className="font-sf-pro-regular text-xs text-[#6B6B6B]">
                     Today at 09:20 am
                   </Text>
                 </View>
               </View>
               <View>
-                <Text className="font-sf-pro-medium text-base text-[#0F73F7]">
+                <Text className="font-sf-pro-semibold text-base text-[#0F73F7]">
                   $570.00
                 </Text>
               </View>
             </TouchableOpacity>
 
-            {/* Transactions history Withdraw */}
             <TouchableOpacity className="border border-[#E3E6F0] bg-white flex-row items-center justify-between mt-2 p-4 rounded-xl">
               <View className="flex-row items-center">
                 <Feather
                   name="arrow-up-right"
                   size={24}
-                  color="red"
+                  color="green"
                   className="bg-white border border-[#0F73F724] rounded-full p-2"
                 />
-                <View>
-                  <Text className="font-sf-pro-medium text-sm text-[#222222] ml-3">
+                <View className="ml-3">
+                  <Text className="font-sf-pro-semibold text-[#222222]">
                     Withdraw
                   </Text>
 
-                  <Text className="font-sf-pro-regular text-xs text-[#6B6B6B] ml-3 mt-2">
+                  <Text className="font-sf-pro-regular text-xs text-[#6B6B6B]">
                     Today at 09:20 am
                   </Text>
                 </View>
               </View>
               <View>
-                <Text className="font-sf-pro-medium text-base text-[#0F73F7]">
+                <Text className="font-sf-pro-semibold text-base text-[#0F73F7]">
                   $570.00
                 </Text>
               </View>
             </TouchableOpacity>
 
-            {/* Transactions history Add in Wallet */}
             <TouchableOpacity className="border border-[#E3E6F0] bg-white flex-row items-center justify-between mt-2 p-4 rounded-xl">
               <View className="flex-row items-center">
                 <Feather
-                  name="arrow-down-right"
+                  name="arrow-up-right"
                   size={24}
                   color="green"
                   className="bg-white border border-[#0F73F724] rounded-full p-2"
                 />
-                <View>
-                  <Text className="font-sf-pro-medium text-sm text-[#222222] ml-3">
-                    Add in Wallet
+                <View className="ml-3">
+                  <Text className="font-sf-pro-semibold text-[#222222]">
+                    Withdraw
                   </Text>
 
-                  <Text className="font-sf-pro-regular text-xs text-[#6B6B6B] ml-3 mt-2">
+                  <Text className="font-sf-pro-regular text-xs text-[#6B6B6B]">
                     Today at 09:20 am
                   </Text>
                 </View>
               </View>
               <View>
-                <Text className="font-sf-pro-medium text-base text-[#0F73F7]">
+                <Text className="font-sf-pro-semibold text-base text-[#0F73F7]">
                   $570.00
                 </Text>
               </View>

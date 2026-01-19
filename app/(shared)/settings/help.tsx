@@ -37,38 +37,50 @@ const Help = () => {
           >
             {/* 1. How do I book a delivery? */}
             <TouchableOpacity className="flex-row justify-between border-b border-[#E3E6F0] items-center py-4 mt-3">
-              <Text> 1. How do I book a delivery?</Text>
-              <MaterialIcons name="arrow-forward-ios" size={18} color="black" />
+              <Text className="font-sf-pro-medium text-base">
+                1. How do I book a delivery?
+              </Text>
+              <MaterialIcons name="arrow-forward-ios" size={14} color="black" />
             </TouchableOpacity>
 
             {/* 2. What items can I send? */}
             <TouchableOpacity className="flex-row justify-between border-b border-[#E3E6F0] items-center py-4 mt-3">
-              <Text> 2. What items can I send?</Text>
-              <MaterialIcons name="arrow-forward-ios" size={18} color="black" />
+              <Text className="font-sf-pro-medium text-base">
+                2. What items can I send?
+              </Text>
+              <MaterialIcons name="arrow-forward-ios" size={14} color="black" />
             </TouchableOpacity>
 
             {/* 3. What items are not allowed? */}
             <TouchableOpacity className="flex-row justify-between border-b border-[#E3E6F0] items-center py-4 mt-3">
-              <Text> 3. What items are not allowed?</Text>
-              <MaterialIcons name="arrow-forward-ios" size={18} color="black" />
+              <Text className="font-sf-pro-medium text-base">
+                3. What items are not allowed?
+              </Text>
+              <MaterialIcons name="arrow-forward-ios" size={14} color="black" />
             </TouchableOpacity>
 
             {/* 4. How much does delivery cost? */}
             <TouchableOpacity className="flex-row justify-between border-b border-[#E3E6F0] items-center py-4 mt-3">
-              <Text> 4. How much does delivery cost?</Text>
-              <MaterialIcons name="arrow-forward-ios" size={18} color="black" />
+              <Text className="font-sf-pro-medium text-base">
+                4. How much does delivery cost?
+              </Text>
+              <MaterialIcons name="arrow-forward-ios" size={14} color="black" />
             </TouchableOpacity>
 
             {/* 5. Can I negotiate the delivery price? */}
             <TouchableOpacity className="flex-row justify-between border-b border-[#E3E6F0] items-center py-4 mt-3">
-              <Text> 5. Can I negotiate the delivery price?</Text>
-              <MaterialIcons name="arrow-forward-ios" size={18} color="black" />
+              <Text className="font-sf-pro-medium text-base">
+                5. Can I negotiate the delivery price?
+              </Text>
+              <MaterialIcons name="arrow-forward-ios" size={14} color="black" />
             </TouchableOpacity>
 
             {/* 6. How do I track my delivery? */}
             <TouchableOpacity className="flex-row justify-between border-b border-[#E3E6F0] items-center py-4 mt-3">
-              <Text> 6. How do I track my delivery?</Text>
-              <MaterialIcons name="arrow-forward-ios" size={18} color="black" />
+              <Text className="font-sf-pro-medium text-base">
+                6. How do I track my delivery?
+              </Text>
+              <MaterialIcons name="arrow-forward-ios" size={14} color="black" />
             </TouchableOpacity>
           </ScrollView>
         </KeyboardAvoidingView>

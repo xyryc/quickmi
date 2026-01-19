@@ -39,10 +39,10 @@ const ChatHeader = () => {
           />
 
           <View className="w-10/12">
-            <Text className="font-sf-pro-regular text-base" numberOfLines={1}>
+            <Text className="font-sf-pro-medium" numberOfLines={1}>
               Md Talath Un Nabi
             </Text>
-            <Text className="font-light text-xs" numberOfLines={1}>
+            <Text className="font-sf-pro-regular text-xs" numberOfLines={1}>
               4 Arron Bushnell St, Jerusalem, Palestine
             </Text>
           </View>

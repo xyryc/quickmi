@@ -44,16 +44,14 @@ const permission = () => {
           >
             <View className="mt-3">
               {/* location access */}
-
               <View className="flex-row justify-between items-center mx-3 py-3 border-b border-[#E3E6F0]">
                 <View className="flex-row items-center gap-2">
-                  <SimpleLineIcons
-                    name="location-pin"
-                    size={24}
-                    color="black"
-                  />
-                  <Text>Location Access </Text>
+                  <Ionicons name="location-outline" size={24} color="black" />
+                  <Text className="font-sf-pro-medium text-lg">
+                    Location Access
+                  </Text>
                 </View>
+
                 <ButtonToggle isOn={isLocationOn} setIsOn={setIsLocationOn} />
               </View>
 
@@ -65,7 +63,9 @@ const permission = () => {
                     size={24}
                     color="black"
                   />
-                  <Text>Allow Notifications </Text>
+                  <Text className="font-sf-pro-medium text-lg">
+                    Allow Notifications
+                  </Text>
                 </View>
                 <ButtonToggle
                   isOn={isNotificationOn}
@@ -77,7 +77,9 @@ const permission = () => {
               <View className="flex-row justify-between items-center mx-3 py-3 border-b border-[#E3E6F0]">
                 <View className="flex-row items-center gap-2">
                   <Ionicons name="camera-outline" size={24} color="black" />
-                  <Text>Camera Access </Text>
+                  <Text className="font-sf-pro-medium text-lg">
+                    Camera Access
+                  </Text>
                 </View>
                 <ButtonToggle isOn={isCameraOn} setIsOn={setIsCameraOn} />
               </View>
@@ -85,8 +87,10 @@ const permission = () => {
               {/* Contact Access */}
               <View className="flex-row justify-between items-center mx-3 py-3 border-b border-[#E3E6F0]">
                 <View className="flex-row items-center gap-2">
-                  <FontAwesome6 name="contact-card" size={20} color="black" />
-                  <Text>Contact Access </Text>
+                  <FontAwesome6 name="contact-card" size={24} color="black" />
+                  <Text className="font-sf-pro-medium text-lg">
+                    Contact Access
+                  </Text>
                 </View>
                 <ButtonToggle isOn={isContactOn} setIsOn={setIsContactOn} />
               </View>
@@ -95,7 +99,9 @@ const permission = () => {
               <View className="flex-row justify-between items-center mx-3 py-3 border-b border-[#E3E6F0]">
                 <View className="flex-row items-center gap-2">
                   <SimpleLineIcons name="microphone" size={24} color="black" />
-                  <Text>Microphone Access </Text>
+                  <Text className="font-sf-pro-medium text-lg">
+                    Microphone Access{" "}
+                  </Text>
                 </View>
                 <ButtonToggle
                   isOn={isMicrophoneOn}

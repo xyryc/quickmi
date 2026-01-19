@@ -149,7 +149,9 @@ const ChatScreen = () => {
                       </TouchableOpacity>
                     ) : (
                       <View className="bg-gray-100 rounded-3xl rounded-tl-none px-4 py-3 max-w-[80%]">
-                        <Text className="text-gray-900">{message.text}</Text>
+                        <Text className="text-gray-800 font-sf-pro-semibold">
+                          {message.text}
+                        </Text>
                       </View>
                     )}
                   </View>
@@ -172,7 +174,7 @@ const ChatScreen = () => {
           >
             <Ionicons
               name={showQuickActions ? "close" : "add"}
-              size={28}
+              size={24}
               color="#000"
             />
           </TouchableOpacity>
@@ -193,9 +195,9 @@ const ChatScreen = () => {
           {/* Change from camera icon to send button based on input */}
           <TouchableOpacity onPress={handleSend}>
             {inputText.trim() ? (
-              <Ionicons name="send" size={28} color="#3B82F6" />
+              <Ionicons name="send" size={24} color="#3B82F6" />
             ) : (
-              <Ionicons name="camera-outline" size={28} color="#000" />
+              <Ionicons name="camera-outline" size={24} color="#000" />
             )}
           </TouchableOpacity>
         </View>

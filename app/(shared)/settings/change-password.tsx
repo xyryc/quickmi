@@ -37,27 +37,23 @@ const ChangePassword = () => {
         >
           {/* scrollable content */}
           <ScrollView
-            className="flex-1 mx-5 mt-5"
+            className="flex-1 mx-5"
             showsVerticalScrollIndicator={false}
             contentContainerStyle={{ paddingBottom: 120 }}
           >
-            <Text className="mt-3.5 text-sm font-sf-pro-medium">
-              Current Password
-            </Text>
+            <Text className="mt-2 font-sf-pro-medium">Current Password</Text>
             <TextInput
               placeholder="Enter old password"
               className="mt-2 p-4 border border-[#E3E6F0] rounded-xl bg-white"
             />
-            <Text className="mt-3.5 text-sm font-sf-pro-medium">
-              New Password
-            </Text>
+
+            <Text className="mt-4 font-sf-pro-medium">New Password</Text>
             <TextInput
               placeholder="Enter new password"
               className="mt-2 p-4 border border-[#E3E6F0] rounded-xl bg-white"
             />
-            <Text className="mt-3.5 text-sm font-sf-pro-medium">
-              Conform Password
-            </Text>
+
+            <Text className="mt-4 font-sf-pro-medium">Confirm Password</Text>
             <TextInput
               placeholder="Re-enter new password"
               className="mt-2 p-4 border border-[#E3E6F0] rounded-xl bg-white"

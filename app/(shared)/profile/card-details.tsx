@@ -38,7 +38,7 @@ const CardDetails = () => {
             contentContainerStyle={{ paddingBottom: 120 }}
           >
             {/* Name of Card */}
-            <Text className="mt-3.5 text-sm font-sf-pro-medium">
+            <Text className="mt-2 font-sf-pro-medium text-base">
               Name on Card
             </Text>
             <TextInput
@@ -47,7 +47,7 @@ const CardDetails = () => {
             />
 
             {/* Name of Card */}
-            <Text className="mt-3.5 text-sm font-sf-pro-medium">
+            <Text className="mt-4 font-sf-pro-medium text-base">
               Card Number
             </Text>
             <TextInput
@@ -57,9 +57,9 @@ const CardDetails = () => {
             />
 
             {/* Expiration Date */}
-            <View className="flex-row gap-4">
+            <View className="flex-row gap-4 mt-4">
               <View className="flex-1">
-                <Text className="mt-3.5 text-sm font-sf-pro-medium">
+                <Text className="font-sf-pro-medium text-base">
                   Expiration Date
                 </Text>
                 <TextInput
@@ -71,7 +71,7 @@ const CardDetails = () => {
               {/* Expiration Date */}
               <View className="flex-1">
                 {/* CVC */}
-                <Text className="mt-3.5 text-sm font-sf-pro-medium">CVC</Text>
+                <Text className="font-sf-pro-medium text-base">CVC</Text>
                 <TextInput
                   className="mt-2 p-4 border border-[#E3E6F0] rounded-xl bg-white"
                   placeholder="123"
@@ -81,14 +81,14 @@ const CardDetails = () => {
             </View>
 
             {/* Country */}
-            <Text className="mt-3.5 text-sm font-sf-pro-medium">Country</Text>
+            <Text className="mt-4 font-sf-pro-medium text-base">Country</Text>
             <TextInput
               className="mt-2 p-4 border border-[#E3E6F0] rounded-xl bg-white"
               placeholder="Bangladesh"
             />
 
             {/* Street Name And Number */}
-            <Text className="mt-3.5 text-sm font-sf-pro-medium">
+            <Text className="mt-4 font-sf-pro-medium text-base">
               Street Name And Number
             </Text>
             <TextInput
@@ -97,7 +97,7 @@ const CardDetails = () => {
             />
 
             {/* Additional Address Details (optional) */}
-            <Text className="mt-3.5 text-sm font-sf-pro-medium">
+            <Text className="mt-4 font-sf-pro-medium text-base">
               Additional Address Details (optional)
             </Text>
             <TextInput
@@ -106,14 +106,14 @@ const CardDetails = () => {
             />
 
             {/* City/Town */}
-            <Text className="mt-3.5 text-sm font-sf-pro-medium">City/Town</Text>
+            <Text className="mt-4 font-sf-pro-medium text-base">City/Town</Text>
             <TextInput
               className="mt-2 p-4 border border-[#E3E6F0] rounded-xl bg-white"
               placeholder="City"
             />
 
             {/* Postcode */}
-            <Text className="mt-3.5 text-sm font-sf-pro-medium">Postcode</Text>
+            <Text className="mt-4 font-sf-pro-medium text-base">Postcode</Text>
             <TextInput
               className="mt-2 p-4 border border-[#E3E6F0] rounded-xl bg-white"
               placeholder="123456"
@@ -121,25 +121,24 @@ const CardDetails = () => {
             />
 
             {/* Your information is secure */}
-            <View className="bg-[#CFE3FD] rounded-xl mt-3 p-4 flex-row items-center gap-4">
-              <View className="mb-3 relative">
-                <FontAwesome6 name="user-large" size={24} color="#0F73F760" />
-                <MaterialIcons
-                  name="verified-user"
-                  size={14}
-                  color="#0F73F7"
-                  className="absolute bottom-0 -right-2 "
-                />
-              </View>
-              <View>
-                <Text className=" text-base font-sf-pro-medium text-[#414141]">
-                  Your information is secure and encrypted.
-                </Text>
-                <Text className="mt-3 text-sm text-[#414141]">
-                  We use bank-level encryption and Stripe to {"\n"} protect your
-                  payment information
-                </Text>
-              </View>
+            <View className="bg-[#CFE3FD] rounded-xl mt-6 p-4 flex-row items-center gap-4">
+              <FontAwesome6 name="user-large" size={24} color="#0F73F760" />
+              <MaterialIcons
+                name="verified-user"
+                size={14}
+                color="#0F73F7"
+                className="absolute bottom-0 -right-2 "
+              />
+            </View>
+
+            <View>
+              <Text className="text-base font-sf-pro-semibold text-[#414141]">
+                Your information is secure and encrypted.
+              </Text>
+              <Text className="mt-1 font-sf-pro-regular text-sm text-[#414141]">
+                We use bank-level encryption and Stripe to protect your payment
+                information
+              </Text>
             </View>
           </ScrollView>
 

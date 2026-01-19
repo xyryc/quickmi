@@ -85,9 +85,9 @@ const Profile = () => {
               </View>
 
               {/* Personal info */}
-              <View className="mt-4 bg-white rounded-xl p-3.5 border-spacing-0.5 border-[#E3E6F0]">
+              <View className="mt-4 bg-white rounded-xl p-3 border-0.5 border-[#E3E6F0]">
                 {/* profile image */}
-                <View className="flex-row gap-3 items-center px-3 py-2 bg-white shadow-2xl android:elevation-4 border-[0.5px] border-[#E3E6F0] elevation-lg rounded-lg">
+                <View className="flex-row gap-3 items-center p-4 bg-white shadow-2xl android:elevation-4 border-[0.5px] border-[#E3E6F0] elevation-lg rounded-lg">
                   <Image
                     source={{
                       uri: "https://randomuser.me/api/portraits/men/10.jpg",
@@ -102,33 +102,31 @@ const Profile = () => {
 
                   {/* details */}
                   <View>
-                    <Text className="font-sf-pro-medium text-sm text-[#031731]">
+                    <Text className="font-sf-pro-semibold text-[#031731]">
                       John Doe
                     </Text>
+
                     <View className="flex-row items-center gap-2">
                       <AntDesign name="star" size={14} color="#FFD700" />
-                      <Text className="font-sf-pro-medium text-xs text-[#1F1D1D]">
+                      <Text className="font-sf-pro-medium text-sm text-[#1F1D1D]">
                         3.35
                       </Text>
                       <Text>|</Text>
-                      <Text className="font-sf-pro-regular text-xs text-[#4D4D4D]">
+                      <Text className="font-sf-pro-medium text-sm text-[#4D4D4D]">
                         150 Delivery
                       </Text>
                     </View>
                     <TouchableOpacity
                       onPress={() =>
-                        router.push("/(agent)/profile/personal-info")
+                        router.push("/(shared)/profile/personal-info")
                       }
                     >
-                      <Text className="font-sf-pro-regular text-xs text-[#0F73F7]">
+                      <Text className="font-sf-pro-regular text-sm text-[#0F73F7]">
                         Go to profile
                       </Text>
                     </TouchableOpacity>
                   </View>
                 </View>
-
-                {/* profile name */}
-                {/*  <Text className="font-sf-pro-medium text-base text-custom-blue-900 mb-1"> */}
 
                 {/* secondary inbox button */}
                 <View className="flex-row gap-2 mt-4">
@@ -160,18 +158,17 @@ const Profile = () => {
               </View>
 
               {/* Setting */}
-
               <View className="mt-3.5 bg-white rounded-xl p-3.5 border-spacing-0.5 border-[#E3E6F0] shadow-md">
                 <TouchableOpacity
                   onPress={() => router.push("/(shared)/profile/permission")}
-                  className="flex-row items-center gap-2 py-3"
+                  className="flex-row items-center gap-2 pb-3"
                 >
                   <MaterialCommunityIcons
                     name="shield-check-outline"
-                    size={20}
+                    size={24}
                     color="#4D4D4D"
                   />
-                  <Text className="font-sf-pro-medium text-sm text-[#4D4D4D]">
+                  <Text className="font-sf-pro-semibold text-base text-[#4D4D4D]">
                     Permission
                   </Text>
                 </TouchableOpacity>
@@ -180,8 +177,8 @@ const Profile = () => {
                   onPress={() => router.push("/(agent)/profile/ride/ride")}
                   className="flex-row items-center gap-2 py-3"
                 >
-                  <Ionicons name="car-outline" size={20} color="#4D4D4D" />
-                  <Text className="font-sf-pro-medium text-sm text-[#4D4D4D]">
+                  <Ionicons name="car-outline" size={24} color="#4D4D4D" />
+                  <Text className="font-sf-pro-semibold text-base text-[#4D4D4D]">
                     My Ride
                   </Text>
                 </TouchableOpacity>
@@ -190,8 +187,8 @@ const Profile = () => {
                   onPress={() => router.push("/(agent)/profile/wallet/wallet")}
                   className="flex-row items-center gap-2 py-3"
                 >
-                  <Ionicons name="wallet-outline" size={20} color="#4D4D4D" />
-                  <Text className="font-sf-pro-medium text-sm text-[#4D4D4D]">
+                  <Ionicons name="wallet-outline" size={24} color="#4D4D4D" />
+                  <Text className="font-sf-pro-semibold text-base text-[#4D4D4D]">
                     Wallet
                   </Text>
                 </TouchableOpacity>
@@ -202,10 +199,10 @@ const Profile = () => {
                 >
                   <Ionicons
                     name="notifications-outline"
-                    size={20}
+                    size={24}
                     color="#4D4D4D"
                   />
-                  <Text className="font-sf-pro-medium text-sm text-[#4D4D4D]">
+                  <Text className="font-sf-pro-semibold text-base text-[#4D4D4D]">
                     Notifications
                   </Text>
                 </TouchableOpacity>
@@ -218,10 +215,10 @@ const Profile = () => {
                 >
                   <MaterialIcons
                     name="support-agent"
-                    size={20}
+                    size={24}
                     color="#4D4D4D"
                   />
-                  <Text className="font-sf-pro-medium text-sm text-[#4D4D4D]">
+                  <Text className="font-sf-pro-semibold text-base text-[#4D4D4D]">
                     Support Requests
                   </Text>
                 </TouchableOpacity>
@@ -230,20 +227,20 @@ const Profile = () => {
                   onPress={() => router.push("/(shared)/settings/settings")}
                   className="flex-row items-center gap-2 py-3"
                 >
-                  <Ionicons name="settings-outline" size={20} color="#4D4D4D" />
-                  <Text className="font-sf-pro-medium text-sm text-[#4D4D4D]">
+                  <Ionicons name="settings-outline" size={24} color="#4D4D4D" />
+                  <Text className="font-sf-pro-semibold text-base text-[#4D4D4D]">
                     Settings
                   </Text>
                 </TouchableOpacity>
 
-                <View className="border-b border-[#A2A2A2] my-3" />
+                <View className="border-b border-[#A2A2A2] mb-3" />
 
                 <TouchableOpacity
                   onPress={handleLogoutPress}
                   className="flex-row items-center gap-2 pt-3"
                 >
-                  <Ionicons name="exit-outline" size={20} color="#4D4D4D" />
-                  <Text className="font-sf-pro-medium text-sm text-[#4D4D4D]">
+                  <Ionicons name="exit-outline" size={24} color="#4D4D4D" />
+                  <Text className="font-sf-pro-semibold text-base text-[#4D4D4D]">
                     Log Out
                   </Text>
                 </TouchableOpacity>
@@ -283,7 +280,7 @@ const Profile = () => {
                 Log Out
               </Text>
 
-              <Text className="text-center mt-4 text-[#031731] font-sf-pro-regular text-sm">
+              <Text className="text-center text-[#031731] font-sf-pro-medium">
                 Are you sure you want to sure Logout?
               </Text>
 

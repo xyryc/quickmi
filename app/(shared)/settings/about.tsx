@@ -7,7 +7,6 @@ import {
   ScrollView,
   StatusBar,
   Text,
-  View,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
@@ -30,43 +29,42 @@ const PrivacyPolicy = () => {
         >
           {/* scrollable content */}
           <ScrollView
-            className="flex-1 mx-5"
+            className="flex-1 mx-5 mt-2"
             showsVerticalScrollIndicator={false}
             contentContainerStyle={{ paddingBottom: 120 }}
           >
-            <View className="mt-8">
-              <Text className="font-sf-pro-medium text-base text-[#1F1D1D]">
-                Privacy & Policy
-              </Text>
-              <Text className="text-sm font-sf-pro-regular text-[#4D4D4D] mt-6">
-                We collect personal information that you voluntarily provide to
-                us when you register on the [app/service], express an interest
-                in obtaining information about us or our products and services,
-              </Text>
-              <Text className="text-sm font-sf-pro-regular text-[#4D4D4D] mt-3">
-                The personal information that we collect depends on the context
-                of your interactions with us and the [app/service], the choices
-                you make, and the products and features you use.
-              </Text>
+            <Text className="font-sf-pro-semibold text-lg text-[#1F1D1D]">
+              Privacy & Policy
+            </Text>
+            <Text className="font-sf-pro-regular text-[#4D4D4D] mt-2">
+              We collect personal information that you voluntarily provide to us
+              when you register on the [app/service], express an interest in
+              obtaining information about us or our products and services,
+            </Text>
 
-              <Text className="font-sf-pro-medium text-base text-[#1F1D1D] mt-6">
-                1.Information we collect
-              </Text>
-              <Text className="text-sm font-sf-pro-regular text-[#4D4D4D] mt-3">
-                The personal information that we collect depends on the context
-                of your interactions with us and the [app/service], the choices
-                you make, and the products and features you use.
-              </Text>
+            <Text className="font-sf-pro-regular text-[#4D4D4D] mt-3">
+              The personal information that we collect depends on the context of
+              your interactions with us and the [app/service], the choices you
+              make, and the products and features you use.
+            </Text>
 
-              <Text className="font-sf-pro-medium text-base text-[#1F1D1D] mt-6">
-                2.Information use collect
-              </Text>
-              <Text className="text-sm font-sf-pro-regular text-[#4D4D4D] mt-3">
-                We process your personal information for these purposes in
-                reliance on our legitimate business interests, in order to enter
-                into or perform a contract with you,
-              </Text>
-            </View>
+            <Text className="font-sf-pro-semibold text-lg text-[#1F1D1D] mt-6">
+              1.Information we collect
+            </Text>
+            <Text className="font-sf-pro-regular text-[#4D4D4D] mt-2">
+              The personal information that we collect depends on the context of
+              your interactions with us and the [app/service], the choices you
+              make, and the products and features you use.
+            </Text>
+
+            <Text className="font-sf-pro-semibold text-lg text-[#1F1D1D] mt-6">
+              2.Information use collect
+            </Text>
+            <Text className="font-sf-pro-regular text-[#4D4D4D] mt-2">
+              We process your personal information for these purposes in
+              reliance on our legitimate business interests, in order to enter
+              into or perform a contract with you,
+            </Text>
           </ScrollView>
         </KeyboardAvoidingView>
       </LinearGradient>
